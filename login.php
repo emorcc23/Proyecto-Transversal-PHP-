@@ -2,14 +2,12 @@
 <!--
 Esta es la pagina para hacer login (usuarios registrados) .. Musicos, Locales, Fans
 -->
-<html>
+<html lang="es">
     <head>
+        <title>OohMusic</title>
         <meta charset="UTF-8">
-        <title></title>
     </head>
     <body>
-        <?php
-        // put your code here
-        ?>
+        
     </body>
 </html>
