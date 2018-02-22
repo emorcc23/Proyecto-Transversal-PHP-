@@ -22,7 +22,7 @@ header label {
 
 .login {
     position: absolute;
-    top: 80;
+    top: 10%;
     left:10%;
     width: 40%;
     height: 100vh;
