@@ -14,8 +14,8 @@
                 <label class="icon-menu" for="menu-bar"></label>
                 <nav class="menu">
                     <a href="">Inicio</a>
-                    <a href="">Login</a>
-                    <a href="">Registro</a>
+                    <a href="login.php">Login</a>
+                    <a href="registro.php">Registro</a>
                     <a href="">Musicos</a>
                     <a href="">Conciertos</a>
                     <a href="">Fans</a>
