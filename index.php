@@ -17,7 +17,7 @@
                     <a href="login.php">Login</a>
                     <a href="registro.php">Registro</a>
                     <a href="">Musicos</a>
-                    <a href="">Conciertos</a>
+                    <a href="">Locales</a>
                     <a href="">Fans</a>
                     <a href="">Contacto</a>
                 </nav>
