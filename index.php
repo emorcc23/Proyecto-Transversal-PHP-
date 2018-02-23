@@ -19,9 +19,9 @@
                         <li class="submenu"><a href="">Registro <span class="icon-down-dir"></span></a>
                         
                             <ul class="submenuu">
-                                <li><a href="rmusicos.php">Musico</a></li>
-                                <li><a href="rlocales.php">Local</a></li>
-                                <li><a href="rfan.php">Fan</a></li>
+                                <li><a href="rmusicos.php">Regístrate como músico</a></li>
+                                <li><a href="rlocales.php">Regístrate como local</a></li>
+                                <li><a href="rfan.php">Regístrate como fan</a></li>
                             </ul>
                             
                         </li>
