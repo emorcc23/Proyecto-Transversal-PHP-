@@ -34,9 +34,11 @@ Pagina login
                 <div class="contenedor">
                     <nav class="login">
                         <p>Usuario</p>
-                        <p><input type="text"></p>
+                        <p><input type="text" name="nombre"></p>
                         <p>Contraseña</p>
-                        <p><input type="password"></p>
+                        <p><input type="password" name="pass1"></p>
+                        <p>Repetir Contraseña</p>
+                        <p><input type="password" name="pass2"</p>
                         <p><input type="submit" value="siguiente" name=""></p>
                     </nav>    
                         

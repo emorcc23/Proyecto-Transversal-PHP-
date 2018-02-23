@@ -3,6 +3,7 @@
 @import url(banner.css);
 @import url(blog.css);
 @import url(info.css);
+@import url(menuR.css);
 
 * {
     margin: 0;
@@ -69,8 +70,32 @@ footer .contenedor {
     text-decoration: none;
 }
 
+.menu ul ul {
+    display: none;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.menu a span {
+    margin-left: 10px;
+    
+}
+
+.menu ul li:hover ul {
+    display: block;
+}
+
+.submenuu {
+    background-color: rgba(255,255,255,0.2);
+    list-style: none;
+}
+
+
 @media(min-width:1024px) {
     .contenedor {
         width: 1000px;
     }
+    
 }

@@ -13,13 +13,23 @@
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
                 <nav class="menu">
-                    <a href="">Inicio</a>
-                    <a href="login.php">Login</a>
-                    <a href="registro.php">Registro</a>
-                    <a href="">Musicos</a>
-                    <a href="">Locales</a>
-                    <a href="">Fans</a>
-                    <a href="">Contacto</a>
+                    <ul>
+                        <li><a href="index.php">Inicio</a></li>
+                        <li><a href="login.php">Login</a></li>
+                        <li class="submenu"><a href="">Registro <span class="icon-down-dir"></span></a>
+                        
+                            <ul class="submenuu">
+                                <li><a href="rmusicos.php">Musico</a></li>
+                                <li><a href="rlocales.php">Local</a></li>
+                                <li><a href="rfan.php">Fan</a></li>
+                            </ul>
+                            
+                        </li>
+                        <li><a href="">Musicos</a></li>
+                        <li><a href="">Conciertos</a></li>
+                        <li><a href="">Fans</a></li>
+                        <li><a href="">Contacto</a></li>
+                    </ul>
                 </nav>
             </div>
         </header>
