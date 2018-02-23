@@ -21,13 +21,13 @@ Pagina login
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
                 <nav class="menu">
-                    <a href="">Inicio</a>
+                    <a href="index.php">Inicio</a>
                     <a href="login.php">Login</a>
                     <a href="rmusicos.php">Registro</a>
-                    <a href="">Musicos</a>
-                    <a href="">Conciertos</a>
-                    <a href="">Fans</a>
-                    <a href="">Contacto</a>
+                    <a href="musicos.php">Musicos</a>
+                    <a href="locales.php">Locales</a>
+                    <a href="fans.php">Fans</a>
+                    <a href="contacto.php">Contacto</a>
                 </nav>
             </div>
         </header>

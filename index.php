@@ -25,10 +25,10 @@
                             </ul>
                             
                         </li>
-                        <li><a href="">Musicos</a></li>
-                        <li><a href="">Conciertos</a></li>
-                        <li><a href="">Fans</a></li>
-                        <li><a href="">Contacto</a></li>
+                        <li><a href="musicos.php">Musicos</a></li>
+                        <li><a href="locales.php">Locales</a></li>
+                        <li><a href="fans.php">Fans</a></li>
+                        <li><a href="contacto.php">Contacto</a></li>
                     </ul>
                 </nav>
             </div>
