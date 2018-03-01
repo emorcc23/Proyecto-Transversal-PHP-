@@ -27,40 +27,59 @@ Esta es la pagina para registrar locales.
                 </nav>
             </div>
         </header>
-        
+
         <main>
             <section id="banner">
                 <img src="Imagenes/banner.jpg">
                 <div class="contenedor">
                     <nav class="login">
-                        <p>Usuario</p>
-                        <p><input type="text" required></p>
-                        <p>Nombre</p>
-                        <p><input type="text" required></p>
-                        <p>Ubicacion</p>
-                        <p><input type="text" ></p>
-                        <p>Email</p>
-                        <p><input type="text" required></p>
-                        <p>Telefono</p>
-                        <p><input type="number" required></p>
-                        <p>Imagen</p>
-                        <p><input type="text"></p>
-                        <p>Aforo</p>
-                        <p><input type="number" min="1" required></p>
-                        <p>Nombre(Artistico)</p>
-                        <p><input type="text"></p>
-                        <p>Genero</p>
-                        <p><input type="text" required></p>
-                        <p>Contraseña</p>
-                        <p><input type="password"></p>
-                        <p>Contraseña</p>
-                        <p><input type="password"></p>
-                        <p><input type="submit" value="siguiente" name=""></p>
+                        <form action="" method="POST">
+                            <p>Usuario</p>
+                            <p><input type="text" name="user" required></p>
+                            <p>Nombre</p>
+                            <p><input type="text" name="name" required></p>
+                            <p>Ciudad</p>
+                            <p><input type="text" name="city"></p>
+                            <p>Ubicacion</p>
+                            <p><input type="text" name="ubication"></p>
+                            <p>Email</p>
+                            <p><input type="text" name="email" required></p>
+                            <p>Telefono</p>
+                            <p><input type="number" name="phone" required></p>
+                            <p>Imagen</p>
+                            <p><input type="text" name="image"></p>
+                            <p>Aforo</p>
+                            <p><input type="number" name="capacity" min="1" required></p>
+                            <p>Nombre(Artistico)</p>
+                            <p><input type="text" name="nickname"></p>
+                            <p>Genero</p>
+                            <p><input type="text" name="gender" required></p>
+                            <p>Contraseña</p>
+                            <p><input type="password" name="pass"></p>
+                            <p>Contraseña</p>
+                            <p><input type="password" name="pass2"></p>
+                            <p><input type="submit" value="siguiente" name="next"></p>
+                        </form>
                     </nav>    
-                        
+
                 </div>
             </section>
-            
+
         </main>
+
+        <?php
+        if (isset($_POST["next"])) {
+            $user = $_POST["user"];
+            $name = $_POST["name"];
+            $surname = $_POST["surname"];
+            $surname2 = $_POST["surname2"];
+            $email = $_POST["email"];
+            $phone = $_POST["phone"];
+            $address = $_POST["address"];
+            $pass = $_POST["pass"];
+            $pass2 = $_POST["pass2"];
+            $city = $_POST["city"];
+        }
+        ?>
     </body>
 </html>

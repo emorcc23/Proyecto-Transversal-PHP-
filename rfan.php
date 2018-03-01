@@ -27,38 +27,76 @@ Esta es la pagina para registrar fans.
                 </nav>
             </div>
         </header>
-        
+
         <main>
             <section id="banner">
                 <img src="Imagenes/banner.jpg">
                 <div class="contenedor">
                     <nav class="login">
-                        <p>Usuario</p>
-                        <p><input type="text" required></p>
-                        <p>Nombre</p>
-                        <p><input type="text" required></p>
-                        <p>Apellido</p>
-                        <p><input type="text" ></p>
-                        <p>Apellido</p>
-                        <p><input type="text" ></p>
-                        <p>Email</p>
-                        <p><input type="text" required></p>
-                        <p>Telefono</p>
-                        <p><input type="number" required></p>
-                        <p>Direccion</p>
-                        <p><input type="text"></p>
-                        <p>Imagen</p>
-                        <p><input type="text"></p>
-                        <p>Contraseña</p>
-                        <p><input type="password"></p>
-                        <p>Contraseña</p>
-                        <p><input type="password"></p>
-                        <p><input type="submit" value="siguiente" name=""></p>
+                        <form action="" method="POST">
+                            <p>Usuario</p>
+                            <p><input type="text" name="user" required></p>
+                            <p>Nombre</p>
+                            <p><input type="text" name="name" required></p>
+                            <p>Apellido</p>
+                            <p><input type="text" name="surname"></p>
+                            <p>Segundo Apellido</p>
+                            <p><input type="text" name="surname2"></p>
+                            <p>Email</p>
+                            <p><input type="text" name="email" required></p>
+                            <p>Telefono</p>
+                            <p><input type="number" name="phone" required></p>
+                            <p>Ciudad</p>
+                            <p><input type="text" name="city"></p>
+                            <p>Direccion</p>
+                            <p><input type="text" name="address"></p>
+                            <p>Imagen</p>
+                            <p><input type="text" name="imagen"></p>
+                            <p>Contraseña</p>
+                            <p><input type="password" name="pass" required></p>
+                            <p>Contraseña</p>
+                            <p><input type="password" name="pass2" required></p>
+                            <p><input type="submit" value="siguiente" name="next"></p>
+                        </form>
                     </nav>    
-                        
+
                 </div>
             </section>
-            
         </main>
+
+        <?php
+        if (isset($_POST["next"])) {
+            $user = $_POST["user"];
+            $name = $_POST["name"];
+            $surname = $_POST["surname"];
+            $surname2 = $_POST["surname2"];
+            $email = $_POST["email"];
+            $phone = $_POST["phone"];
+            $address = $_POST["address"];
+            $pass = $_POST["pass"];
+            $pass2 = $_POST["pass2"];
+            $city = $_POST["city"];
+            
+            echo $user;
+            echo "<br>";
+            echo $name;
+            echo "<br>";
+            echo $surname;
+            echo "<br>";
+            echo $surname2;
+            echo "<br>";
+            echo $email;
+            echo "<br>";
+            echo $phone;
+            echo "<br>";
+            echo $address;
+            echo "<br>";
+            echo $pass;
+            echo "<br>";
+            echo $pass2;
+            echo "<br>";
+            echo $city;
+        }
+        ?>
     </body>
 </html>
