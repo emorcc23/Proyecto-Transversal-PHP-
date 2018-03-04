@@ -1,0 +1,93 @@
+#banner {
+    margin-top: 50px;
+    position: relative;
+}
+
+#banner .contenedor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-120%);
+    color: #fff;
+}
+
+#banner h2 {
+    margin-top: -25%;
+    font-size: 28px;
+}
+
+#banner a {
+    position: relative;
+    width: 100px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 6px;
+    top: -17px;
+    border: 3px solid #fff;
+    text-align: center;
+}
+
+#banner img {
+    height: 1000px;
+    width: 2700px;
+}
+
+#banner form {
+    margin-top: -960px;
+    margin-left: 80px;
+    position: absolute;
+    background: rgba(51,51,51,0.3);
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    width: 800px;
+}
+
+#banner form p {
+    padding: 13px;
+    color: #fff;
+    font-size: 25px;
+}
+
+#banner form input {
+    height: 35px;
+    border: solid;
+    border-width: thin;
+    background: rgba(51,51,51,0.3);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 50px;
+    text-align: center;
+}
+
+#banner form select {
+    height: 35px;
+    border: none;
+    background: rgba(51,51,51,0.5);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#banner form input[type=submit]{
+    font-size: 25px;
+    padding: 10px;
+    height: 50px;
+    cursor: pointer;
+}
+
+table p {
+    text-align: center;
+    margin-left: 90px;
+}
+
+table p input[type=button] {
+    padding: 10px;
+    cursor: pointer;
+} 
+
+#banner form input[type=submit]:hover{
+    background: rgba(51,51,51,0.8);
+}
+

@@ -29,10 +29,8 @@ Pagina de fans.
         </header>
         <main>
             <section id="banner">
-                <img src="Imagenes/banner.jpg">
-                
-            </section>
-            
+                <img src="Imagenes/banner.jpg">              
+            </section>          
         </main>
     </body>
 </html>
