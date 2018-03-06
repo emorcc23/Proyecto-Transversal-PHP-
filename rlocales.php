@@ -36,16 +36,47 @@
             <section id="banner">
                 <img src="Imagenes/banner.jpg">
                 <div id="formulario"> 
-                            <form>  
+                <?php
+                    require_once 'bbdd.php';
+                    if(isset($_POST['name']))
+                    {
+                        extract($_POST);
+                        if(usuarioexiste($username)>0)
+                        {
+                            echo"Error. El usuario que deseas dar de alta ya existe.";
+                        }
+                        else
+                        {
+                             if($pass1==$pass2)
+                            {
+                                if(registrar_local($username,$pass1,1,$name,$mail,$phone,$city,$location,"",$aforo)=="ok")
+                                {
+                                    echo"Local registrado.<br>";                                   
+                                }
+                                else
+                                {
+                                    echo"Error registrando local.<br>";
+                                }
+                            }
+                            else
+                            {
+                                echo"Los dos password no coinciden.<br>";
+                            } 
+                        }                  
+                    }
+                    else
+                    {   
+                ?>
+                            <form method="post">  
                                 <table>
                                     <tr>
                                         <td>
                                             <p>Nombre:</p>
-                                            <p><input type="text" name="name"></p>
+                                            <p><input type="text" name="name" required></p>
                                         </td>
                                         <td>
                                             <p>Nombre de usuario:</p>
-                                            <p><input type="text" name="username"></p>
+                                            <p><input type="text" name="username" required></p>
                                         </td>
                                     </tr>
                                     <tr>
@@ -55,7 +86,7 @@
                                         </td>
                                         <td>
                                             <p>Contraseña:</p>
-                                            <p><input type="password" name="pass1"></p>
+                                            <p><input type="password" name="pass1" required></p>
                                         </td>
                                     </tr>
                                     <tr>
@@ -65,23 +96,28 @@
                                         </td>
                                         <td>
                                             <p>Repetir contraseña:</p>
-                                            <p><input type="password" name="pass2"></p>
+                                            <p><input type="password" name="pass2" required></p>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <p>Ciudad:</p>
-                                            <p><select name="city">
-                                                <option value="barcelona">Barcelona</option>    
-                                                <option value="madrid">Madrid</option>
-                                                <option value="sevilla">Sevilla</option>
-                                               </select></p>
+                                            <p><select name="city" required>-->
+                                                <?php
+                                                    $ciudades = leeciudades("Barcelona");
+                                                    while($fila = mysqli_fetch_assoc($ciudades))
+                                                    {
+                                                        extract($fila);
+                                                        echo"<option value='$nombre'>$nombre</option>";
+                                                    }
+                                                ?>
+                                                </select></p>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <p>Ubicación:</p>
-                                            <p><input type="text" name="location"></p>
+                                            <p><input type="text" name="location" required></p>
                                         </td>
                                     </tr>
                                     <tr>
@@ -93,13 +129,16 @@
                                     <tr>
                                         <td>
                                             <p>Aforo:</p>
-                                            <p><input type="number" name="aforo"></p>
+                                            <p><input type="number" name="aforo" required></p>
                                         </td>
                                     </tr>
                                 </table>
                             <br><br><br>
                             <p><input type="submit" value="Registrarme como local" id="button"></p>
                     </form>
+                <?php
+                    }
+                ?>
                 </div>
             </section>
         </main>
@@ -115,40 +154,6 @@
             </div>
         </footer>
         
-        <?php
         
-        if (isset($_POST["button"])) {
-            
-            $username = $_POST['username'];
-            $pass1 = $_POST['pass1'];
-            $pass2 = $_POST['pass2'];
-            $name = $_POST['name'];
-            $phone = $_POST['phone'];
-            $mail = $_POST['mail'];
-            $city = $_POST ['city'];
-            $location = $_POST['location'];
-            $aforo = $_POST['aforo'];
-            
-            
-            echo "Nombre de usuario: $username";
-            echo "<br>";
-            echo "Contraseña 1: $pass1";
-            echo "<br>";
-            echo "Contraseña 2: $pass2";
-            echo "<br>";
-            echo "Nombre: $name";
-            echo "<br>";
-            echo "Teléfono: $phone";
-            echo "<br>";
-            echo "Email: $mail";
-            echo "<br>";
-            echo "Ciudad: $ciudad";
-            echo "<br>";
-            echo "Ubicación: $location";
-            echo "<br>";
-            echo "Aforo: $aforo";
-        }
-        
-        ?>
     </body>
 </html>

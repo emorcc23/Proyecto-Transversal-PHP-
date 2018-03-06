@@ -39,11 +39,11 @@ Pagina login
             <section id="banner">
                 <img src="Imagenes/banner.jpg">
                 <div id="formulario"> 
-                        <form>
+                    <form method="post" action="usuario.php">
                             <p>Nombre de usuario:</p>
-                            <p><input type="text" name="username"></p>
+                            <p><input type="text" name="username" required></p>
                             <p>Contraseña:</p>
-                            <p><input type="password" name="pass"></p>
+                            <p><input type="password" name="pass" required></p>
                             <br><br><br>
                             <p><input type="submit" value="Entrar a mi cuenta" id="button" name="boton"></p>
                     </form>
