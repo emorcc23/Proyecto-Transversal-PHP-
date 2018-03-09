@@ -108,7 +108,7 @@
                                                     while($fila = mysqli_fetch_assoc($ciudades))
                                                     {
                                                         extract($fila);
-                                                        echo"<option value='$nombre'>$nombre</option>";
+                                                        echo"<option value='$id_ciudad'>$nombre</option>";
                                                     }
                                                 ?>
                                                 </select></p>

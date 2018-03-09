@@ -1,18 +1,143 @@
 <?php
 
 //Desarrollador:Artur
+//Destacar o des-destacar un local
+function destacalocal($usuario,$destacado)
+{
+    //Conectar base de datos
+    $c = conectar();
+    if($destacado)
+    {
+        $valor="true";
+    }
+    else
+    {
+        $valor="false";
+    }
+    //Sentencia sql
+    $update = "update localm set destacado=$valor where usuario='$usuario';";
+    if (mysqli_query($c, $update)) {
+        $resultado ="ok";
+    }
+    else
+    {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador:Artur
+//Modifica el password de un usuario
+//Se necesita el password antiguo por seguridad
+function modificarpassword($usuario,$passantiguo,$pass)
+{
+    $c = conectar();
+    $update="update login set pass='$pass' where $usuario='$usuario' and pass='$passantiguo';";
+    if (mysqli_query($c, $update)) {
+        $resultado="ok";
+    }
+    else
+    {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollado:Artur
+//Obtiene la lista de locales ordenados por ciudad
+function listalocalesordenadosporciudad()
+{
+    $c = conectar();
+    $select = "select login.nombre, ciudad.nombre from login inner join ciudad on login.ciudad = ciudad.id_ciudad order by ciudad.nombre;";
+    $resultado = mysqli_query($c,$select);
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador:Artur
+//Obtiene el identificador de un usuario
+function dimeidusuario($usuario)
+{
+    //Conectar base de datos
+    $c = conectar();
+    //Consulta sql
+    $select = "select id_usuario from login where usuario='$usuario';";
+    $resultado = mysqli_query($c,$select);
+    desconectar($c);
+    if($fila = mysqli_fetch_assoc($resultado))
+    {
+        //Devuelve el id de usuario
+        $id_usuario = $fila['id_usuario'];
+        return $id_usuario;
+    }
+    else
+    {
+        //Si el usuario no existe devuelve -1
+        return -1;
+    }
+}
+
+//Desarrollador:Artur
+//Modifica los datos de un perfil de local
+function modificaperfillocal($usuario,$nombre,$email,$telefono,$ciudad,$ubicacion,$imagen,$aforo)
+{
+    //Conectar base de datos
+    $c = conectar();
+    //Obtengo el id del usuario
+    $id_usuario = dimeidusuario($usuario);
+    //Actualizo los campos de la tabla login
+    $update="update login set nombre='$nombre', email='$email', telefono='$telefono',ciudad=$ciudad where id_usuario=$id_usuario;";
+    if (mysqli_query($c, $update)) {
+        //Actualizo los campos de la tabla localm
+        $update="update localm set ubicacion='$ubicacion', imagen='$imagen', aforo = $aforo where id_usuario='$id_usuario';";
+        if (mysqli_query($c, $update)) {
+            $resultado = "ok";
+        }
+        else
+        {
+            $resultado = mysqli_error($c);
+        }
+    }
+    else
+    {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;    
+}
+
+//Desarrollador:Artur
+//Lee todos los datos del perfil de un local de la base de datos.
+function leeperfillocal($usuario)
+{
+    //Conectar con la base de datos
+    $c = conectar();
+    //Consulta sql con dos inner join evita código.
+    $select="select login.usuario,login.pass,login.tipo,login.nombre,login.email,login.telefono, login.ciudad, localm.ubicacion, localm.aforo, localm.destacado, localm.imagen from login inner join localm on login.id_usuario=localm.id_usuario where usuario='$usuario';";
+    $resultado = mysqli_query($c,$select);
+    desconectar($c);
+    //Se devuelve el resultado de la consulta.
+    return $resultado;
+}
+
+//Desarrollador:Artur
 //Elimina un usuario de la tabla principal login
 function borralogin($usuario)
 {
     $c=conectar();
     $delete = "DELETE FROM login WHERE usuario='$usuario';";
+    desconectar($c);
     if (mysqli_query($c, $delete)) {
         return "ok";
     }
     else
     {
-        return false;
+        return mysqli_error($c);
     }
+    
+    
         
 }
 
@@ -112,9 +237,8 @@ function leeciudades($provincia)
     //Conectar base de datos.
     $c = conectar();
     //Consulta sql ciudades de provincia concreta
-    $select="select nombre from ciudad where provincia='$provincia';";
+    $select="select id_ciudad,nombre from ciudad where provincia='$provincia';";
     $resultado = mysqli_query($c,$select);
-    desconectar($c);
     desconectar($c);
     return $resultado;
 }
@@ -141,7 +265,6 @@ function dimeidciudad($ciudad)
         //Si no se encuentra la ciudad devuelve -1
         return -1;
     }
-    desconectar($c);
 }
 
 //Desarrollador: Artur
@@ -167,14 +290,14 @@ function registrar_local($usuario,$pass,$tipo,$nombre,$email,$telefono,$ciudad,$
             borralogin($usuario);
         }
         desconectar($c);
-        return $resultado;
     }
     else
     {
         //Caso en que ha habido un problema añadiendo el usuario.
         echo"Error añadiendo login.<br>";
-        $resultado = -1;
+        $resultado = -1; 
     }
+    return $resultado;
 }
 
 //Desarrollador: Artur
@@ -182,30 +305,20 @@ function registrar_local($usuario,$pass,$tipo,$nombre,$email,$telefono,$ciudad,$
 //Se añaden los campos comunes.
 function registrar_login($usuario,$pass,$tipo,$nombre,$email,$telefono,$ciudad)
 {
-    //Se obtiene el id de la ciudad partiendo del nombre.
-    $idciudad = dimeidciudad($ciudad);
-    if($idciudad!=-1)
-    {
-        //Conectar base de datos
-        $c = conectar();
-        //Insert sql registro tabla login
-        $insert = "insert into login (usuario,pass,tipo,nombre,email,telefono,ciudad) values ('$usuario','$pass',$tipo,'$nombre','$email','$telefono',$idciudad);";
-        if (mysqli_query($c, $insert)) {
-            //Si el insert ha ido bien se devuelve el id autonumérico generado en el alta.
-            $resultado =  mysqli_insert_id($c);
-        } else {
-            //Caso de error en el alta.
-            echo"Error añadiendo login.";
-            $resultado = -1;
-        }
-        desconectar($c);
-        return $resultado;
+    //Conectar base de datos
+    $c = conectar();
+    //Insert sql registro tabla login
+    $insert = "insert into login (usuario,pass,tipo,nombre,email,telefono,ciudad) values ('$usuario','$pass',$tipo,'$nombre','$email','$telefono',$ciudad);";
+    if (mysqli_query($c, $insert)) {
+        //Si el insert ha ido bien se devuelve el id autonumérico generado en el alta.
+        $resultado =  mysqli_insert_id($c);
+    } else {
+        //Caso de error en el alta  
+        echo"Error añadiendo login.";
+        $resultado = -1;
     }
-    else
-    {
-        echo"Error consultando el id de ciudad.";
-        return -1;
-    } 
+    desconectar($c);
+    return $resultado;
 }
 
 //Desarrollador: Artur
