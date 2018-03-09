@@ -1,10 +1,16 @@
-#blog h3,h4 {
+    #blog h3,h4 {
     text-align: center;
     padding: 10px;
     background: rgba(51,51,51,0.9);
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
+    border-radius: 50px;
     color: white;
+}
+
+#blog h4 {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 #blog .contenedor {
@@ -15,9 +21,30 @@
 
 #blog article {
     margin: 15px;
+    width: 450px;
 }
 
-#blog img {
+#blog article h4 {
+    background: rgba(51,51,51,0.9);
+    cursor: pointer;
+}
+
+#blog .listas {
     width: 100%;
-    max-width: 280px;
-}     
+    max-width: 450px;
+    height: 300px;
+    border: solid;
+    border-width: thin;
+    background: #CACACA;
+    overflow: auto;
+}
+
+#blog .listas p {
+    position: sticky;
+    padding: 8px;
+    font-size: 17px;
+}
+
+#blog .listas p:hover {
+    background: rgba(255,255,255,0.8);
+}

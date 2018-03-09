@@ -50,19 +50,19 @@
             </section>
             
             <section id="blog">
-                <h3>Lo ultimo de nuestro blog</h3>
+                <h3>Aquí tienes a nuestros locales y músicos ¡Échales un ojo!</h3>
                 <div class="contenedor">
                     <article>
-                        <img src="Imagenes/Micr%C3%B3fono.jpg">
-                        <h4>Coge un micrófono</h4>
+                        <h4>Locales</h4>
+                        <div class="listas">
+                           <p></p>
+                        </div>
                     </article>
                     <article>
-                        <img src="Imagenes/conciertos.jpg">
-                        <h4>¡Atrevete! Sal al escenario</h4>
-                    </article>
-                    <article>
-                        <img src="Imagenes/fans.jpg">
-                        <h4>Vivirás una grán experiencia</h4>
+                        <h4>Músicos</h4>
+                        <div class="listas">
+                            <p></p>
+                        </div>
                     </article>
                 </div>
             </section>
