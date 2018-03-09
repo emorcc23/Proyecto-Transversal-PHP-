@@ -104,7 +104,7 @@
                                 echo"<p><b>Apellidos:</b> $apellidoa $apellidob";
                             }
                             ?>
-                            <p>Juan García Aguilar</p>
+                            
                             <hr>
                             <div id="info">
                                 <img src="Imagenes/usuario.png">
