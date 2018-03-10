@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?gamily=Open+Sans);
-@import url(menuLogin.css);
-@import url(bannerLogin.css);
-@import url(infoLogin.css);
+@import url(menulogin.css);
+
 
 * {
     margin: 0;
@@ -33,60 +32,6 @@ h1 {
     float: left;
 }
 
-header .contenedor {
-    display: table;
+.login {
+    padding:50%;
 }
-
-section {
-    width: 100%;
-    margin-bottom: 25px;
-}
-
-#bienvenidos {
-    text-align: center;
-}
-
-footer .contenedor {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-bottom: 25px;
-}
-
-.copy {
-    font-size: 20px;
-}
-
-.sociales {
-    width:100%;
-    text-align: center;
-    font-size: 28px;
-}
-
-.sociales a {
-    color: #333;
-    text-decoration: none;
-}
-
-.menu ul ul {
-    display: none;
-}
-
-.menu ul {
-    list-style: none;
-}
-
-.menu a span {
-    margin-left: 10px;
-    
-}
-
-.menu ul li:hover ul {
-    display: block;
-}
-
-.submenuu {
-    background-color: rgba(255,255,255,0.2);
-    list-style: none;
-}
-

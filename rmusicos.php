@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <!--
-Esta es la pagina para registrar usaurios. 
+Esta es la pagina para registrar musicos. 
 -->
 <!DOCTYPE html>
+<?php
+require_once 'bbdd.php';
+?>
 <html lang="es">
     <head>
         <title>OohMusic</title>
@@ -33,103 +36,130 @@ Esta es la pagina para registrar usaurios.
                         <li><a href="fans.php">Fans</a></li>
                         <li><a href="contacto.php">Contacto</a></li>
                     </ul>
-                    
+
                 </nav>
             </div>
         </header>       
         <main>
             <section id="banner">
                 <img src="Imagenes/banner.jpg">
-                <div id="formulario"> 
-                            <form>  
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <p>Nombre:</p>
-                                            <p><input type="text" name="name"></p>
-                                        </td>
-                                        <td>
-                                            <p>Nombre de usuario:</p>
-                                            <p><input type="text" name="username"></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Primer apellido:</p>
-                                            <p><input type="text" name="surname1"></p>
-                                        </td>
-                                        <td>
-                                            <p>Contraseña:</p>
-                                            <p><input type="password" name="pass2"></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Segundo apellido:</p>
-                                            <p><input type="text" name="surname2"></p>
-                                        </td>
-                                        <td>
-                                            <p>Repetir contraseña:</p>
-                                            <p><input type="text" name="pass2"></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Teléfono:</p>
-                                            <p><input type="tel" name="phone"></p>
-                                        </td>
-                                        <td>
-                                            <p>Nombre artístico:</p>
-                                            <p><input type="text"></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Email:</p>
-                                            <p><input type="email" name="mail"></p>
-                                        </td>
-                                        <td>
-                                            <p>Componentes del grupo:</p>
-                                            <p><input type="number" name="components"></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Ciudad:</p>
-                                            <p><select name="city">
-                                                    <option value="barcelona">
-                                                        Barcelona
-                                                    </option>
-                                                    <option value="madrid">
-                                                        Madrid
-                                                    </option>
-                                                    <option value="sevilla">
-                                                        Sevilla
-                                                    </option>
-                                                </select></p>
-                                        </td>
-                                        <td>
-                                            <p>Web:</p>
-                                            <p><input type="text" name="web"></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        </td>
-                                        <td>
-                                            <p>Género:</p>
-                                            <p><select name="ciudad">
+                <div id="formulario">
+                    <script>
+                        function verificar() {
+                            var pass1 = document.getElementById("pass1").value;
+                            var pass2 = document.getElementById("pass2").value;
+                            if (pass1 != pass2) {
+                                alert("Las contraseñas no son iguales");
+                                return false;
+                            }
+
+                    </script>
+                    <?php
+                    if (isset($_POST['next'])) {
+                        extract($_POST);
+                        if (usuarioexiste($username) > 0) {
+                            echo"Error. El usuario que deseas dar de alta ya existe.";
+                        } else {
+                            $idgenero = dimeidgenero($gender);
+                            if (registrar_musico($username, $pass1, 2, $name, $mail, $phone, $city, $surname1, $surname2, $web, $nickname, $components, $idgenero) == "ok") {
+                                echo"Se ha registrado el musico correctamente";
+                            } else {
+                                echo"Error al registrar musico";
+                            }
+                        }
+                    } else {
+                        ?>
+                        <form action="" method="POST" onsubmit="verificar();">  
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p>Nombre:</p>
+                                        <p><input type="text" name="name" ></p>
+                                    </td>
+                                    <td>
+                                        <p>Nombre de usuario:</p>
+                                        <p><input type="text" name="username" ></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Primer apellido:</p>
+                                        <p><input type="text" name="surname1" ></p>
+                                    </td>
+                                    <td>
+                                        <p>Contraseña:</p>
+                                        <p><input type="password" name="pass1" id="pass1" ></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Segundo apellido:</p>
+                                        <p><input type="text" name="surname2" ></p>
+                                    </td>
+                                    <td>
+                                        <p>Repetir contraseña:</p>
+                                        <p><input type="password" name="pass2" id="pass2"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Teléfono:</p>
+                                        <p><input type="tel" name="phone" ></p>
+                                    </td>
+                                    <td>
+                                        <p>Nombre artístico:</p>
+                                        <p><input type="text" name="nickname" ></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Email:</p>
+                                        <p><input type="email" name="mail" ></p>
+                                    </td>
+                                    <td>
+                                        <p>Componentes del grupo:</p>
+                                        <p><input type="number" name="components" ></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Ciudad:</p>
+                                        <p><select name="city">
+                                                <?php
+                                                $ciudades = leeciudades("Barcelona");
+                                                while ($fila = mysqli_fetch_assoc($ciudades)) {
+                                                    extract($fila);
+                                                    echo"<option value='$nombre'>$nombre</option>";
+                                                }
+                                                ?>
+                                            </select></p>
+                                    </td>
+                                    <td>
+                                        <p>Web:</p>
+                                        <p><input type="text" name="web" ></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <p>Género:</p>
+                                        <p><select name="gender">
                                                 <option value="clasica">Clásica</option>    
                                                 <option value="hiphop">Hip hop</option>
                                                 <option value="rock">Rock</option>
                                                 <option value="electronica">Electrónica</option>
-                                               </select></p>
-                                        </td>
-                                    </tr>
-                                </table>
+                                            </select></p>
+                                    </td>
+                                </tr>
+                            </table>
                             <br><br><br>
-                            <p><input type="submit" value="Registrarme como músico" id="button"></p>
-                    </form>
+                            <p><input type="submit" value="Registrarme como músico" id="button" name="next" ></p>
+                        </form>
+                        <?php
+                    }
+                    ?>
+
                 </div>
             </section>
         </main>
@@ -144,54 +174,7 @@ Esta es la pagina para registrar usaurios.
                 </div>
             </div>
         </footer>
-        
-        <?php
-        
-        if (isset($_POST["boton"])) {
-            
-            $username = $_POST['username'];
-            $pass1 = $_POST['pass1'];
-            $pass2 = $_POST['pass2'];
-            $name = $_POST['name'];
-            $surname1 = $_POST['surname1'];
-            $surname2 = $_POST['surname2'];
-            $phone = $_POST['phone'];
-            $mail = $_POST['mail'];
-            $city = $_POST ['city'];
-            $web = $_POST['web'];
-            $artisticname = $_POST['artisticname'];
-            $components = $_POST['components'];
-            $gender = $_POST['gender'];
-            
-            
-            echo "Nombre de usuario: $username";
-            echo "<br>";
-            echo "Contraseña 1: $pass1";
-            echo "<br>";
-            echo "Contraseña 2: $pass2";
-            echo "<br>";
-            echo "Nombre: $name";
-            echo "<br>";
-            echo "Surname 1: $surname1";
-            echo "<br>";
-            echo "Surname 2: $surname2";
-            echo "<br>";
-            echo "Teléfono: $phone";
-            echo "<br>";
-            echo "Email: $mail";
-            echo "<br>";
-            echo "Ciudad: $city";
-            echo "<br>";
-            echo "Web: $web";
-            echo "<br>";
-            echo "Nombre artístico: $artisticname";
-            echo "Componentes: $components";
-            echo "<br>";
-            echo "Gender: $gender";
-            echo "<br>";
-        }
-        
-        ?>
-        
+
+
     </body>
 </html>
