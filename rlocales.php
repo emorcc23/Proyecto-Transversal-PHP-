@@ -85,6 +85,7 @@
                                             <p><input type="email" name="mail"></p>
                                         </td>
                                         <td>
+                   
                                             <p>Contraseña:</p>
                                             <p><input type="password" name="pass1" required></p>
                                         </td>

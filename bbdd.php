@@ -1,5 +1,4 @@
 <?php
-
 //Desarrollador:Isain
 //Registrar un musico
 function dimeidgenero($gender) {
@@ -337,7 +336,8 @@ function registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ci
 //Desarrollador: Artur
 // Función que conecta a la base de datos 
 function conectar() {
-    $conexion = mysqli_connect("localhost", "root", "isain", "musica");
+    include('mysqlpass.php');
+    $conexion = mysqli_connect("localhost", $userbd, $passbd, "musica");
     // Si no ha ido bien la conexión
     if (!$conexion) {
         die("No se ha podido establecer la conexión");
