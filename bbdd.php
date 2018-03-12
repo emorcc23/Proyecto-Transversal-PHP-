@@ -19,8 +19,6 @@ function dimeidgenero($gender) {
 //Desarrollador:Isain
 //Registrar un musico
 function registrar_musico($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad, $surname1, $surname2, $web, $nickname, $components, $gender) {
-    // llamamos la función dimeciudad para que nos ponga en el registro el numero de ciudad que es.
-    $ciudad = dimeidciudad($ciudad);
 
     //llamamos a la funcion de registrar_login para obtener el idusuario
     $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad);
@@ -44,8 +42,6 @@ function registrar_musico($usuario, $pass, $tipo, $nombre, $email, $telefono, $c
 //Desarrollador:Isain
 //Registrar un fan
 function registrar_fan($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad, $surname1, $surname2, $address, $imagen) {
-    // llamamos la función dimeciudad para que nos ponga en el registro el numero de ciudad que es.
-    $ciudad = dimeidciudad($ciudad);
     // con la funcionregistrar_login obtenemos el id de usuario, despues damos de alta el fan en su respectiva tabla.
     $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad);
     if ($idusuario != -1) {
@@ -341,7 +337,7 @@ function registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ci
 //Desarrollador: Artur
 // Función que conecta a la base de datos 
 function conectar() {
-    $conexion = mysqli_connect("localhost", "root", "91214560", "musica");
+    $conexion = mysqli_connect("localhost", "root", "isain", "musica");
     // Si no ha ido bien la conexión
     if (!$conexion) {
         die("No se ha podido establecer la conexión");
