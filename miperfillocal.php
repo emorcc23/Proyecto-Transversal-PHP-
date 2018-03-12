@@ -80,50 +80,40 @@ Pagina de locales.
                         <div id="formulariodatos">
                             <form>  
                                 <table>
-                                    <tr>
-                                        <td>
-                                            <p>Nombre:
-                                            <input type="text" id="nombre" name="name" value="Juan García Aguilar"></p>
-                                        </td>
-                                        <td>
-                                            <p>Ubicación:
-                                            <input type="text" name="location" value="Sant Esteve Sesrovires"></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Email:
-                                            <input type="email" name="mail" value="juan_garcia@gmail.com"></p>
-                                        </td>
-                                        <td>
-                                            <p>Aforo:
-                                            <input type="number" name="aforo" value="180"></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Teléfono:
-                                            <input type="tel" name="phone" value="652436278"></p>
-                                        </td>
-                                        <td>
-                                            <p>Nombre de usuario:
-                                            <input type="text" name="username" value="JuanG1"></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Ciudad:
-                                            <select id="select" name="city">
-                                                <option value="barcelona">Barcelona</option>    
-                                                <option value="madrid">Madrid</option>
-                                                <option value="sevilla">Sevilla</option>
-                                               </select></p>
-                                        </td>
-                                        <td>
-                                            <p>Imagen:
-                                            <input type="button" value="Seleccionar imagen"></p>
-                                        </td>
-                                    </tr>
+                                    <?php
+                                    session_start();
+                                    require_once 'bbdd.php';
+                                    if(isset($_SESSION['username']))
+                                    {
+                                        extract($_SESSION);
+                                        $perfil=leeperfillocal($username);
+                                        if($datos=mysqli_fetch_assoc($perfil))
+                                        {
+                                            extract($datos);
+                                            echo"<tr><td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre'></p></td>";
+                                            echo"<td><p>Ubicación:<input type='text' name='location' value='$ubicacion'></p></td></tr>";   
+                                            echo"<tr><td><p>Email:<input type='email' name='$email' value=''></p></td>";      
+                                            echo"<td><p>Aforo:<input type='number' name='aforo' value='$aforo'></p></td></tr>";
+                                            echo"<tr><td><p>Teléfono:<input type='tel' name='phone' value='$telefono'></p></td>";
+                                            echo"<td><p>Nombre de usuario:$username</p></td></tr>";
+                                            echo"<tr><td><p>Ciudad:<select id='select' name='city'>";
+                                            
+                                            echo"</select></p></td>";
+                                            
+                                            echo"<td><p>Imagen:<input type='button' value='Seleccionar imagen'></p></td></tr>";
+                                        }
+                                        else
+                                        {
+                                            echo"El usuario se ha eliminado.<br>";
+                                        }
+                                    }
+                                    else
+                                    {
+                                        echo"No puedes entrar aquí.<br>";
+                                    }
+                                    
+                                    
+                                ?>
                                 </table>
                             <br><br><br>
                             <p><input type="submit" value="Cambiar contraseña" id="contraseña" onClick="abrirParametros()"></p>

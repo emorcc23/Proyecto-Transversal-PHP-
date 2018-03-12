@@ -155,7 +155,7 @@ function leeperfillocal($usuario) {
     //Conectar con la base de datos
     $c = conectar();
     //Consulta sql con dos inner join evita código.
-    $select = "select login.usuario,login.pass,login.tipo,login.nombre,login.email,login.telefono, login.ciudad, localm.ubicacion, localm.aforo, localm.destacado, localm.imagen from login inner join localm on login.id_usuario=localm.id_usuario where usuario='$usuario';";
+    $select = "select login.tipo as tipo,login.nombre as nombre,login.email as email,login.telefono as telefono, login.ciudad as ciudad, localm.ubicacion as ubicacion, localm.aforo as aforo, localm.destacado as destacado, localm.imagen as imagen from login inner join localm on login.id_usuario=localm.id_usuario where login.usuario='$usuario';";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     //Se devuelve el resultado de la consulta.
