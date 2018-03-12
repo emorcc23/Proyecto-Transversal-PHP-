@@ -55,7 +55,16 @@
                     <article>
                         <h4>Locales</h4>
                         <div class="listas">
-                           <p></p>
+                           <p><?php
+                               require_once 'bbdd.php';
+                               $locales=listalocalesordenadosporciudad();
+                               while($ellocal=mysqli_fetch_assoc($locales))
+                               {
+                                   extract ($ellocal);
+                                   echo"<p>$nombre - $ciudad</p><hr>";
+                               }
+                               ?>
+                               </p>
                         </div>
                     </article>
                     <article>
