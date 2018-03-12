@@ -12,6 +12,10 @@ Pagina de locales.
         <link rel="stylesheet" href="css/estilosMiperfilLocal.css">
     </head>
     <body>
+        <?php
+        session_start(); 
+        require_once 'bbdd.php';
+        ?>
         <header>
             <div class="contenedor">
                 <h1 class="icon-music">Ooh Music</h1>
@@ -75,14 +79,23 @@ Pagina de locales.
                             ventana.document.write("</form>");
                         }
                     </script>
+                    <?php
+                    if(isset($_POST['name']))
+                    {
+                        //Hacer la modificación.
+                        
+                    }
+                    else
+                    {
+                        
+                    ?>
                     <div id="miperfil">
                         <p id="tituloperfil">Modificar datos</p>
                         <div id="formulariodatos">
-                            <form>  
+                            <form method="post">  
                                 <table>
                                     <?php
-                                    session_start();
-                                    require_once 'bbdd.php';
+                                    
                                     if(isset($_SESSION['username']))
                                     {
                                         extract($_SESSION);
@@ -92,11 +105,25 @@ Pagina de locales.
                                             extract($datos);
                                             echo"<tr><td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre'></p></td>";
                                             echo"<td><p>Ubicación:<input type='text' name='location' value='$ubicacion'></p></td></tr>";   
-                                            echo"<tr><td><p>Email:<input type='email' name='$email' value=''></p></td>";      
+                                            echo"<tr><td><p>Email:<input type='email' name='email' value='$email'></p></td>";      
                                             echo"<td><p>Aforo:<input type='number' name='aforo' value='$aforo'></p></td></tr>";
                                             echo"<tr><td><p>Teléfono:<input type='tel' name='phone' value='$telefono'></p></td>";
                                             echo"<td><p>Nombre de usuario:$username</p></td></tr>";
                                             echo"<tr><td><p>Ciudad:<select id='select' name='city'>";
+                                            $ciudades = leeciudades("Barcelona");
+                                            while($fila = mysqli_fetch_assoc($ciudades))
+                                            {
+                                                extract($fila);
+                                                if ($id_ciudad==$ciudad)
+                                                {
+                                                    echo"<option value='$id_ciudad' selected>$nombre</option>";
+                                                }
+                                                else
+                                                {
+                                                    echo"<option value='$id_ciudad'>$nombre</option>";
+                                                }
+                                                
+                                            }
                                             
                                             echo"</select></p></td>";
                                             
@@ -116,11 +143,14 @@ Pagina de locales.
                                 ?>
                                 </table>
                             <br><br><br>
-                            <p><input type="submit" value="Cambiar contraseña" id="contraseña" onClick="abrirParametros()"></p>
+                            <p><input type="button" value="Cambiar contraseña" id="contraseña" onClick="abrirParametros()"></p>
                             <p><input type="submit" value="Modificar datos de perfil" id="button"></p>
                     </form>
                         </div>
                     </div>
+                   <?php
+                    }
+                   ?>
                 </div>
             </section>
         </main>
