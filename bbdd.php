@@ -96,7 +96,7 @@ function destacalocal($usuario, $destacado) {
 //Se necesita el password antiguo por seguridad
 function modificarpassword($usuario, $passantiguo, $pass) {
     $c = conectar();
-    $update = "update login set pass='$pass' where $usuario='$usuario' and pass='$passantiguo';";
+    $update = "update login set pass='$pass' where usuario='$usuario' and pass='$passantiguo';";
     if (mysqli_query($c, $update)) {
         $resultado = "ok";
     } else {
