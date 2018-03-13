@@ -146,7 +146,7 @@ require_once 'bbdd.php';
                                         <p>Género:</p>
                                         <p><select name="gender">
                                                 <option value="clasica">Clásica</option>    
-                                                <option value="hiphop">Hip hop</option>
+                                                <option value="Hip hop">Hip hop</option>
                                                 <option value="rock">Rock</option>
                                                 <option value="electronica">Electrónica</option>
                                             </select></p>
