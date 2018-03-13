@@ -62,19 +62,20 @@ Pagina de locales.
                             <li><a href="#">Cerrar sesión</a></li>
                         </ul>
                     </div>
-                    <script>
+    <script>
                         function abrirParametros() {
                             var ventana=open('','','status=yes,width=400,height=250,menubar=yes');
                             ventana.document.write("<style>");
                             ventana.document.write("backgound: rgba(51,51,51,0.8);")
                             ventana.document.write("</style>");
-                            ventana.document.write("<form>");
+                            ventana.document.write("\x3Cscript type='text/javascript' src='funciones.js'>\x3C/script>");
+                            ventana.document.write("<form method='post' action='modipass.php' onsubmit='return verificapass();'>");
                             ventana.document.write("<p>Introduce tu contraseña actual:</p>");
-                            ventana.document.write("<p><input type='password' name='passactual'></p>");
+                            ventana.document.write("<p><input type='password' name='passactual' required></p>");
                             ventana.document.write("<p>Introduce la nueva contraseña:</p>");
-                            ventana.document.write("<p><input type='password' name='passnew1'></p>");
+                            ventana.document.write("<p><input type='password' name='pass1' id='pass1' required></p>");
                             ventana.document.write("<p>Repite tu nueva contraseña:</p>");
-                            ventana.document.write("<p><input type='password' name='passnew2'></p>");
+                            ventana.document.write("<p><input type='password' name='pass2' id='pass2' required></p>");
                             ventana.document.write("<p><input type='submit' value='Cambiar contraseña'></p>");
                             ventana.document.write("</form>");
                         }
@@ -82,9 +83,18 @@ Pagina de locales.
                     <?php
                     if(isset($_POST['name']))
                     {
+                        extract($_POST);
+                        extract($_SESSION);
                         //Hacer la modificación.
-                        
-                    }
+                        if(modificaperfillocal($username,$name,$email,$phone,$city,$location,'',$aforo)=="ok")
+                        {
+                            echo"Modificación realizada.<br>";
+                        }
+                        else
+                        {
+                            echo"Error modificando perfil de local.<br>";
+                        }  
+                    } 
                     else
                     {
                         
@@ -103,10 +113,10 @@ Pagina de locales.
                                         if($datos=mysqli_fetch_assoc($perfil))
                                         {
                                             extract($datos);
-                                            echo"<tr><td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre'></p></td>";
-                                            echo"<td><p>Ubicación:<input type='text' name='location' value='$ubicacion'></p></td></tr>";   
+                                            echo"<tr><td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre' required></p></td>";
+                                            echo"<td><p>Ubicación:<input type='text' name='location' value='$ubicacion' required></p></td></tr>";   
                                             echo"<tr><td><p>Email:<input type='email' name='email' value='$email'></p></td>";      
-                                            echo"<td><p>Aforo:<input type='number' name='aforo' value='$aforo'></p></td></tr>";
+                                            echo"<td><p>Aforo:<input type='number' name='aforo' value='$aforo' required></p></td></tr>";
                                             echo"<tr><td><p>Teléfono:<input type='tel' name='phone' value='$telefono'></p></td>";
                                             echo"<td><p>Nombre de usuario:$username</p></td></tr>";
                                             echo"<tr><td><p>Ciudad:<select id='select' name='city'>";

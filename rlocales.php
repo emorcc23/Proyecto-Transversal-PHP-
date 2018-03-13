@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <link rel="stylesheet" href="css/fontello.css">
         <link rel="stylesheet" href="css/estilosRlocal.css">
+        <script type="text/javascript" src="funciones.js"></script>
+
     </head>
     <body>
         <header>
@@ -47,8 +49,8 @@
                         }
                         else
                         {
-                             if($pass1==$pass2)
-                            {
+                             
+                            
                                 if(registrar_local($username,$pass1,1,$name,$mail,$phone,$city,$location,"",$aforo)=="ok")
                                 {
                                     echo"Local registrado.<br>";                                   
@@ -57,17 +59,13 @@
                                 {
                                     echo"Error registrando local.<br>";
                                 }
-                            }
-                            else
-                            {
-                                echo"Los dos password no coinciden.<br>";
-                            } 
+                            
                         }                  
                     }
                     else
                     {   
                 ?>
-                            <form method="post">  
+                            <form method="post" onsubmit="return verificapass()">  
                                 <table>
                                     <tr>
                                         <td>
@@ -87,7 +85,7 @@
                                         <td>
                    
                                             <p>Contraseña:</p>
-                                            <p><input type="password" name="pass1" required></p>
+                                            <p><input type="password" name="pass1" id="pass1" required></p>
                                         </td>
                                     </tr>
                                     <tr>
@@ -97,7 +95,7 @@
                                         </td>
                                         <td>
                                             <p>Repetir contraseña:</p>
-                                            <p><input type="password" name="pass2" required></p>
+                                            <p><input type="password" name="pass2" id="pass2" required></p>
                                         </td>
                                     </tr>
                                     <tr>
