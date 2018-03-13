@@ -1,4 +1,14 @@
 <?php
+//Desarrollador:Isain Alvaro
+//Ordenar Musicos ordenados por genero musical
+function ordenarMusicosPorGenero(){
+    $c = conectar();
+    $select = "select musico.nombreart from musico inner join genero on musico.genero = genero.id_genero order by genero.id_genero;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
 //Desarrollador:Isain
 //Registrar un musico
 function dimeidgenero($gender) {

@@ -17,13 +17,13 @@
                         <li><a href="index.php">Inicio</a></li>
                         <li><a href="login.php">Login</a></li>
                         <li class="submenu"><a href="">Registro <span class="icon-down-dir"></span></a>
-                        
+
                             <ul class="submenuu">
                                 <li><a href="rmusicos.php">Regístrate como músico</a></li>
                                 <li><a href="rlocales.php">Regístrate como local</a></li>
                                 <li><a href="rfan.php">Regístrate como fan</a></li>
                             </ul>
-                            
+
                         </li>
                         <li><a href="musicos.php">Musicos</a></li>
                         <li><a href="locales.php">Locales</a></li>
@@ -33,7 +33,7 @@
                 </nav>
             </div>
         </header>
-        
+
         <main>
             <section id="banner">
                 <img src="Imagenes/banner.jpg">
@@ -43,39 +43,46 @@
                     <a href="#">Leer más</a>
                 </div>
             </section>
-            
+
             <section id="bienvenidos">
                 <h2>Bienvenidos</h2>
                 <p>En nuestra página podrás disfrutar de todos los conciertos de tu ciudad con solo un clik, apoyar a tus artistas favoritos o hacerte fan.</p>
             </section>
-            
+
             <section id="blog">
                 <h3>Aquí tienes a nuestros locales y músicos ¡Échales un ojo!</h3>
                 <div class="contenedor">
                     <article>
                         <h4>Locales</h4>
                         <div class="listas">
-                           <p><?php
-                               require_once 'bbdd.php';
-                               $locales=listalocalesordenadosporciudad();
-                               while($ellocal=mysqli_fetch_assoc($locales))
-                               {
-                                   extract ($ellocal);
-                                   echo"<p>$nombre - $ciudad</p><hr>";
-                               }
-                               ?>
-                               </p>
+                            <?php
+                            require_once 'bbdd.php';
+                            $locales = listalocalesordenadosporciudad();
+                            while ($ellocal = mysqli_fetch_assoc($locales)) {
+                                extract($ellocal);
+                                echo"<p>$nombre - $ciudad</p><hr>";
+                            }
+                            ?>
+
                         </div>
                     </article>
                     <article>
                         <h4>Músicos</h4>
                         <div class="listas">
-                            <p></p>
+                            <?php
+                            $listamusicos = ordenarMusicosPorGenero();
+                            while ($musicos = mysqli_fetch_assoc($listamusicos)) {
+                                extract($musicos);
+                                echo"<p>$nombreart</p><hr>";
+                            }
+                            ?>
+
+
                         </div>
                     </article>
                 </div>
             </section>
-            
+
             <section id="info">
                 <h3>¡Vívelo! No solo es música...</h3>
                 <div class="contenedor">
@@ -98,7 +105,7 @@
                 </div>
             </section>
         </main>
-        
+
         <footer>
             <div class="contenedor">
                 <p class="copy">Ooh Music &copy; 2018</p>

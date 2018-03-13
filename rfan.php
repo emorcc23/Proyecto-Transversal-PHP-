@@ -116,7 +116,7 @@ require_once 'bbdd.php';
                                 <tr>
                                     <td>
                                         <p>Email:</p>
-                                        <p><input type="mail" name="mail" required></p>
+                                        <p><input type="email" name="mail" required></p>
                                     </td>
                                 </tr>
                                 <tr>
