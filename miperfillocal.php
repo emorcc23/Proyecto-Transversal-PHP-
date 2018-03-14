@@ -152,8 +152,8 @@ Pagina de locales.
                                     
                                 ?>
                                 </table>
-                            <br><br><br>
-                            <p><input type="button" value="Cambiar contraseña" id="contraseña" onClick="abrirParametros()"></p>
+                                <br><br><br>
+                                <p><input type="button" value="Cambiar contraseña" id="contraseña" onClick="abrirParametros()"></p>
                             <p><input type="submit" value="Modificar datos de perfil" id="button"></p>
                     </form>
                         </div>
