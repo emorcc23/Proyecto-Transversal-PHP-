@@ -47,19 +47,20 @@ Pagina de locales.
                 <div id="centro"> 
                     <p>Datos de mi perfil</p>
                     <div id="usuario">
-                        <p>Juan García Aguilar</p>
-                        <hr>
-                        <div id="info">
-                            <img src="Imagenes/usuario.png">
-                        </div>
+                        <?php
+                        muestradatoslocal();
+                        
+                        ?>
                     </div>
+                        
                     <div id="menu">
                         <ul>
                             <li><a href="#">Perfil</a></li>
                             <li><a href="#">Fotos</a></li>
                             <li><a href="#">Mensajes</a></li>
                             <li><a href="#">Configuración</a></li>
-                            <li><a href="#">Cerrar sesión</a></li>
+                       
+                            <li><a href="index.php?cerrar=1" value=''>Cerrar sesión</a></li>
                         </ul>
                     </div>
     <script>

@@ -51,7 +51,7 @@
                         {
                              
                             
-                                if(registrar_local($username,$pass1,1,$name,$mail,$phone,$city,$location,"",$aforo)=="ok")
+                                if(registrar_local($username,$pass1,$name,$mail,$phone,$city,$location,"",$aforo)=="ok")
                                 {
                                     echo"Local registrado.<br>";                                   
                                 }

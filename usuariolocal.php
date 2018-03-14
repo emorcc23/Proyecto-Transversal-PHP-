@@ -38,21 +38,7 @@
                 require_once 'bbdd.php';
                 session_start();
                 $mostrar=0;
-                if(isset($_POST['username']))
-                {
-                    extract($_POST);
-                    if(compruebainicio($username,$pass)==1)
-                    {
-                        $_SESSION['username']=$username;
-                        $_SESSION['tipo']=dimetipousuario($username);
-                        $mostrar=1;
-                    }
-                    else
-                    {
-                        echo"Nombre de usuario o contraseña incorrectos.<br>";
-                    }
-                }
-                elseif(isset($_SESSION['username']))
+                if(isset($_SESSION['username']))
                 {
                     //por seguridad compruebo si el usuario existe
                     if(usuarioexiste($_SESSION['username'])>0)
@@ -73,52 +59,25 @@
                  
                     ?>
                     <img src="Imagenes/banner.jpg">
-                    <div id="centro"> 
-                        <p>Bienvenido</p>
-                        <div id="usuario">
-                            <?php
-                            extract($_SESSION);
-                            switch($tipo)
-                            {
-                                case 0:
-                                    echo"Usuario Administador.<br>";
-                                    break;
-                                case 1:
-                                    echo"Local musical<br>";
-                                    break;
-                                case 2:
-                                    echo"Músico<br>";
-                                    break;
-                                case 3:
-                                    echo"Fan<br>";
-                                    break;
-                            } 
-                            $nombre = dimenombre($username);
-                            
-                            echo"<p>$nombre</p>";
-                            
-                            if($tipo==2 || $tipo==3)
-                            {
-                                $apellidoa=dimeapellidoa($username,$tipo);
-                                $apellidob=dimeapellidob($username,$tipo);
-                                echo"<p><b>Apellidos:</b> $apellidoa $apellidob";
-                            }
-                            ?>
-                            
-                            <hr>
-                            <div id="info">
-                                <img src="Imagenes/usuario.png">
-                            </div>
-                        </div>
-                       <div id="menu">
-                            <ul>
-                                <li><a href="miperfillocal.php">Perfil</a></li>
-                                <li><a href="#">Fotos</a></li>
-                                <li><a href="#">Mensajes</a></li>
-                                <li><a href="#">Configuración</a></li>
-                                <li><a href="#">Cerrar sesión</a></li>
-                            </ul>
-                        </div>
+                       <div id="centro"> 
+                    <p>Datos de mi perfil</p>
+                    <div id="usuario">
+                        <?php
+                        muestradatoslocal();
+                        
+                        ?>
+                    </div>
+                        
+                    <div id="menu">
+                        <ul>
+                            <li><a href="#">Perfil</a></li>
+                            <li><a href="#">Fotos</a></li>
+                            <li><a href="#">Mensajes</a></li>
+                            <li><a href="#">Configuración</a></li>
+                       
+                            <li><a href="index.php?cerrar=1" value=''>Cerrar sesión</a></li>
+                        </ul>
+                    </div>
                         <div id="titulonoticias">
                             <p>Últimas noticias</p>
                         </div>

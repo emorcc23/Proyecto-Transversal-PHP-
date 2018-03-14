@@ -7,6 +7,9 @@
         <link rel="stylesheet" href="css/estilos.css">
     </head>
     <body>
+        <?php
+            session_start();
+        ?>
         <header>
             <div class="contenedor">
                 <h1 class="icon-music">Ooh Music</h1>
@@ -48,7 +51,7 @@
                 <h2>Bienvenidos</h2>
                 <p>En nuestra página podrás disfrutar de todos los conciertos de tu ciudad con solo un clik, apoyar a tus artistas favoritos o hacerte fan.</p>
             </section>
-
+            
             <section id="blog">
                 <h3>Aquí tienes a nuestros locales y músicos ¡Échales un ojo!</h3>
                 <div class="contenedor">
@@ -104,6 +107,13 @@
                     </div>
                 </div>
             </section>
+            <?php
+                if(isset($_GET['cerrar']))
+                {
+                    cerraSession();
+                }
+            ?>
+            
         </main>
 
         <footer>

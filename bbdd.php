@@ -1,17 +1,38 @@
 <?php
+
+//Desarrollador Artur
+//Muestra los datos del perfil del local en los campos informativos.
+function muestradatoslocal()
+{
+    extract($_SESSION);
+    switch($tipo)
+    {
+        case 0:
+            echo"Usuario Administador.<br>";
+            break;
+        case 1:
+            echo"Local musical<br>";
+            break;
+        case 2:
+            echo"Músico<br>";
+            break;
+        case 3:
+            echo"Fan<br>";
+            break;
+    } 
+    $nombre = dimenombre($username);
+                            
+    echo"<p>$nombre</p>";
+    echo"<hr>";
+    echo"<div id='info'>";
+    echo"<img src='Imagenes/usuario.png'>";
+    echo"</div>";
+}
+
 //funcion para cerrar session
-function cerraSession(){
-    echo"<form action='' method='POST'>";
-    echo"<input type='submit' name='cerrar' value='CERRAR SESION'>";
-    echo"</form>";
-                
-    if(isset($_POST["cerrar"])){
+function cerraSession(){    
       session_destroy();
-//      header("Location: index.php");
-      echo"sesion cerrada";
-      header("Refresh:1; url=index.php");
-      exit;
-    }
+      echo"Sesión cerrada";
 }
 
 //Desarrollador:Isain Alvaro
@@ -311,9 +332,10 @@ function dimeidciudad($ciudad) {
 
 //Desarrollador: Artur
 //Da de alta un local en la base de datos con todos sus campos.
-function registrar_local($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad, $ubicacion, $imagen, $aforo) {
+function registrar_local($usuario, $pass, $nombre, $email, $telefono, $ciudad, $ubicacion, $imagen, $aforo) {
     //Se da de alta el usuario en la tabla principal de login
     //El método registrar_login devuelve el identificador del alta.
+    $tipo=1;
     $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad);
     if ($idusuario != -1) {
         //Conectar base de datos
