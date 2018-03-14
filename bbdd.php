@@ -1,4 +1,19 @@
 <?php
+//funcion para cerrar session
+function cerraSession(){
+    echo"<form action='' method='POST'>";
+    echo"<input type='submit' name='cerrar' value='CERRAR SESION'>";
+    echo"</form>";
+                
+    if(isset($_POST["cerrar"])){
+      session_destroy();
+//      header("Location: index.php");
+      echo"sesion cerrada";
+      header("Refresh:1; url=index.php");
+      exit;
+    }
+}
+
 //Desarrollador:Isain Alvaro
 //Ordenar Musicos ordenados por genero musical
 function ordenarMusicosPorGenero(){
