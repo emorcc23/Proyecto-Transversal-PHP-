@@ -1,3 +1,7 @@
+<?php
+    require_once 'bbdd.php';
+    session_start();
+?>
 <html lang="es">
     <head>
         <title>OohMusic</title>
@@ -35,8 +39,6 @@
         <main>
             <section id="banner">
                 <?php
-                require_once 'bbdd.php';
-                session_start();
                 $mostrar=0;
                 if(isset($_SESSION['username']))
                 {
@@ -70,7 +72,7 @@
                         
                     <div id="menu">
                         <ul>
-                            <li><a href="#">Perfil</a></li>
+                            <li><a href="miperfillocal.php">Perfil</a></li>
                             <li><a href="#">Fotos</a></li>
                             <li><a href="#">Mensajes</a></li>
                             <li><a href="#">Configuración</a></li>

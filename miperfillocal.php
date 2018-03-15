@@ -1,8 +1,11 @@
+<?php
+    session_start(); 
+    require_once 'bbdd.php';
+?>
 <!DOCTYPE html>
 <!--
 Pagina de locales.
 -->
-
 <html lang="es">
     <head>
         <title>OohMusic</title>
@@ -12,10 +15,7 @@ Pagina de locales.
         <link rel="stylesheet" href="css/estilosMiperfilLocal.css">
     </head>
     <body>
-        <?php
-        session_start(); 
-        require_once 'bbdd.php';
-        ?>
+        
         <header>
             <div class="contenedor">
                 <h1 class="icon-music">Ooh Music</h1>

@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<!--
-Pagina login
--->
 <?php
 session_start();
 require_once 'bbdd.php';
 ?>
+
+<!DOCTYPE html>
+<!--
+Pagina login
+-->
+
 <html lang="es">
     <head>
         <title>OohMusic</title>

@@ -1,3 +1,6 @@
+<?php
+    require_once 'bbdd.php';
+?>
 <html lang="es">
     <head>
         <title>OohMusic</title>
@@ -39,7 +42,6 @@
                 <img src="Imagenes/banner.jpg">
                 <div id="formulario"> 
                 <?php
-                    require_once 'bbdd.php';
                     if(isset($_POST['name']))
                     {
                         extract($_POST);
