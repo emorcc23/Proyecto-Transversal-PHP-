@@ -2,6 +2,10 @@
 <!--
 Pagina login
 -->
+<?php
+session_start();
+require_once 'bbdd.php';
+?>
 <html lang="es">
     <head>
         <title>OohMusic</title>
@@ -40,49 +44,41 @@ Pagina login
                 <img src="Imagenes/banner.jpg">
                 <div id="formulario"> 
                     <?php
-                        require_once 'bbdd.php';
-                        if(isset($_POST['username']))
-                        {
-                            $mostrar=0;
-                            extract($_POST);
-                            if(compruebainicio($username,$pass)==1)
-                            {
-                                $_SESSION['username']=$username;
-                                $_SESSION['tipo']=dimetipousuario($username);
-                                extract($_SESSION);
-                                
-                                switch($tipo)
-                                {
-                                    case 1:
-                                            header('Location: usuariolocal.php');
-                                            break;
-                                    case 2: 
-                                            header('Location: usuariomusico.php');
-                                            break;
-                                    case 3: header('Location: usuariofan.php');
-                                            break;
-                                    default:
-                                }
+                    if (isset($_POST['username'])) {
+                        $mostrar = 0;
+                        extract($_POST);
+                        if (compruebainicio($username, $pass) == 1) {
+                            $_SESSION['username'] = $username;
+                            $_SESSION['tipo'] = dimetipousuario($username);
+                            extract($_SESSION);
+
+                            switch ($tipo) {
+                                case 1:
+                                    header('Location: usuariolocal.php');
+                                    break;
+                                case 2:
+                                    header('Location: usuariomusico.php');
+                                    break;
+                                case 3: header('Location: usuariofan.php');
+                                    break;
+                                default:
                             }
-                            else
-                            {
-                                echo"Nombre de usuario o contraseña incorrectos.<br>";
-                            }
+                        } else {
+                            echo"Nombre de usuario o contraseña incorrectos.<br>";
                         }
-                        else
-                        {
-                    ?>
-                    <form method="post">
+                    } else {
+                        ?>
+                        <form method="post">
                             <p>Nombre de usuario:</p>
                             <p><input type="text" name="username" required></p>
                             <p>Contraseña:</p>
                             <p><input type="password" name="pass" required></p>
                             <br><br><br>
                             <p><input type="submit" value="Entrar a mi cuenta" id="button" name="boton"></p>
-                    </form>
-                    <?php
-                        }
-                    ?>
+                        </form>
+    <?php
+}
+?>
                 </div>
             </section>
         </main>
