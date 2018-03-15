@@ -32,64 +32,55 @@ require_once 'bbdd.php';
                         <li><a href="fans.php">Fans</a></li>
                         <li><a href="contacto.php">Contacto</a></li>
                     </ul>
-                    
+
                 </nav>
             </div>
         </header>       
         <main>
             <section id="banner">
                 <?php
-                $mostrar=0;
-                if(isset($_SESSION['username']))
-                {
+                $mostrar = 0;
+                if (isset($_SESSION['username'])) {
                     //por seguridad compruebo si el usuario existe
-                    if(usuarioexiste($_SESSION['username'])>0)
-                    {
-                        $mostrar=1;
-                    }
-                    else
-                    {
+                    if (usuarioexiste($_SESSION['username']) > 0) {
+                        $mostrar = 1;
+                    } else {
                         echo"El usuario ya no existe.<br>";
                     }
-                }
-                else
-                {
+                } else {
                     echo"No puedes entrar aquí.<br>";
                 }
-                if($mostrar==1)
-                {
-                 
+                if ($mostrar == 1) {
                     ?>
                     <img src="Imagenes/banner.jpg">
-                       <div id="centro"> 
-                    <p>Datos de mi perfil</p>
-                    <div id="usuario">
-                        <?php
-                        muestradatoslocal();
-                        
-                        ?>
-                    </div>
-                        
-                    <div id="menu">
-                        <ul>
-                            <li><a href="#">Perfil</a></li>
-                            <li><a href="#">Fotos</a></li>
-                            <li><a href="#">Mensajes</a></li>
-                            <li><a href="#">Configuración</a></li>
-                       
-                            <li><a href="index.php?cerrar=1" value=''>Cerrar sesión</a></li>
-                        </ul>
-                    </div>
+                    <div id="centro"> 
+                        <p>Datos de mi perfil</p>
+                        <div id="usuario">
+                    <?php
+                    muestradatosmusico();
+                    ?>
+                        </div>
+
+                        <div id="menu">
+                            <ul>
+                                <li><a href="#">Perfil</a></li>
+                                <li><a href="#">Fotos</a></li>
+                                <li><a href="#">Mensajes</a></li>
+                                <li><a href="#">Configuración</a></li>
+
+                                <li><a href="index.php?cerrar=1" value=''>Cerrar sesión</a></li>
+                            </ul>
+                        </div>
                         <div id="titulonoticias">
                             <p>Últimas noticias</p>
                         </div>
                         <div id="noticias">
                         </div>
                     </div>  
-                    <?php                
-                } 
-                ?>
-                        
+    <?php
+}
+?>
+
             </section>
         </main>
         <footer>
@@ -102,7 +93,7 @@ require_once 'bbdd.php';
                     <a class="icon-gmail" href="#"></a>
                 </div>
             </div>
-            
+
         </footer>
     </body>
 </html>

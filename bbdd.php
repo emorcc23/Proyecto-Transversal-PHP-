@@ -1,4 +1,21 @@
 <?php
+//Desarrolador Isain
+//Muestra los datos del perfil del musico
+function muestradatosmusico(){
+    extract($_SESSION);
+    if($tipo == 2){
+        echo"Musicos";
+    }
+    
+    $nombre = dimenombre($username);
+    
+    echo"<p>$nombre</p>";
+    echo"<hr>";
+     echo"<div id='info'>";
+    echo"<img src='Imagenes/usuario.png'>";
+    echo"</div>";
+}
+
 
 //Desarrollador Artur
 //Muestra los datos del perfil del local en los campos informativos.
