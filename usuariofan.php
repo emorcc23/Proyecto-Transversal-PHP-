@@ -1,6 +1,6 @@
 <?php
-    require_once 'bbdd.php';
-    session_start();
+session_start();
+require_once 'bbdd.php';
 ?>
 <html lang="es">
     <head>
@@ -8,7 +8,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <link rel="stylesheet" href="css/fontello.css">
-        <link rel="stylesheet" href="css/estilosLocal.css">
+        <link rel="stylesheet" href="css/estilosFan.css">
     </head>
     <body>
         <header>
@@ -72,7 +72,7 @@
                         
                     <div id="menu">
                         <ul>
-                            <li><a href="miperfillocal.php">Perfil</a></li>
+                            <li><a href="#">Perfil</a></li>
                             <li><a href="#">Fotos</a></li>
                             <li><a href="#">Mensajes</a></li>
                             <li><a href="#">Configuración</a></li>
