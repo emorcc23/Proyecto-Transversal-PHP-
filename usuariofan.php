@@ -65,7 +65,7 @@ require_once 'bbdd.php';
                     <p>Datos de mi perfil</p>
                     <div id="usuario">
                         <?php
-                        muestradatoslocal();
+                        muestradatosfan()
                         
                         ?>
                     </div>
