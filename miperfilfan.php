@@ -1,6 +1,7 @@
 <?php
-    session_start(); 
-    require_once 'bbdd.php';
+session_start();
+require_once 'bbdd.php';
+require_once 'funciones.php';
 ?>
 <!DOCTYPE html>
 <!--
@@ -15,7 +16,7 @@ Pagina de locales.
         <link rel="stylesheet" href="css/estilosMiperfilLocal.css">
     </head>
     <body>
-        
+
         <header>
             <div class="contenedor">
                 <h1 class="icon-music">Ooh Music</h1>
@@ -37,7 +38,7 @@ Pagina de locales.
                         <li><a href="fans.php">Fans</a></li>
                         <li><a href="contacto.php">Contacto</a></li>
                     </ul>
-                    
+
                 </nav>
             </div>
         </header>       
@@ -49,23 +50,22 @@ Pagina de locales.
                     <div id="usuario">
                         <?php
                         muestradatosfan();
-                        
                         ?>
                     </div>
-                        
+
                     <div id="menu">
                         <ul>
                             <li><a href="#">Perfil</a></li>
                             <li><a href="#">Fotos</a></li>
                             <li><a href="#">Mensajes</a></li>
                             <li><a href="#">Configuración</a></li>
-                       
+
                             <li><a href="index.php?cerrar=1" value=''>Cerrar sesión</a></li>
                         </ul>
                     </div>
-    <script>
+                    <script>
                         function abrirParametros() {
-                            var ventana=open('','','status=yes,width=400,height=250,menubar=yes');
+                            var ventana = open('', '', 'status=yes,width=400,height=250,menubar=yes');
                             ventana.document.write("<style>");
                             ventana.document.write("backgound: rgba(51,51,51,0.8);")
                             ventana.document.write("</style>");
@@ -82,86 +82,74 @@ Pagina de locales.
                         }
                     </script>
                     <?php
-                    if(isset($_POST['name']))
-                    {
+                    if (isset($_POST['name'])) {
                         extract($_POST);
                         extract($_SESSION);
                         //Hacer la modificación.
-                        if(modificaperfillocal($username,$name,$email,$phone,$city,$location,'',$aforo)=="ok")
-                        {
-                            echo"Modificación realizada.<br>";
+                        if (modificarperfilfan($username, $name, $email, $phone, $city, $surname1, $surname2, $address, '') == "ok") {
+                            echo "<script>alert('Modificación realizada.')</script>";
+                        } else {
+                            echo"Error modificando perfil de Fan.<br>";
                         }
-                        else
-                        {
-                            echo"Error modificando perfil de local.<br>";
-                        }  
-                    } 
-                    else
-                    {
-                        
-                    ?>
-                    <div id="miperfil">
-                        <p id="tituloperfil">Modificar datos</p>
-                        <div id="formulariodatos">
-                            <form method="post">  
-                                <table>
-                                    <?php
-                                    
-                                    if(isset($_SESSION['username']))
-                                    {
-                                        extract($_SESSION);
-                                        $perfil=leeperfillocal($username);
-                                        if($datos=mysqli_fetch_assoc($perfil))
-                                        {
-                                            extract($datos);
-                                            echo"<tr><td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre' required></p></td>";
-                                            echo"<td><p>Ubicación:<input type='text' name='location' value='$ubicacion' required></p></td></tr>";   
-                                            echo"<tr><td><p>Email:<input type='email' name='email' value='$email'></p></td>";      
-                                            echo"<td><p>Aforo:<input type='number' name='aforo' value='$aforo' required></p></td></tr>";
-                                            echo"<tr><td><p>Teléfono:<input type='tel' name='phone' value='$telefono'></p></td>";
-                                            echo"<td><p>Nombre de usuario:$username</p></td></tr>";
-                                            echo"<tr><td><p>Ciudad:<select id='select' name='city'>";
-                                            $ciudades = leeciudades("Barcelona");
-                                            while($fila = mysqli_fetch_assoc($ciudades))
-                                            {
-                                                extract($fila);
-                                                if ($id_ciudad==$ciudad)
-                                                {
-                                                    echo"<option value='$id_ciudad' selected>$nombre</option>";
-                                                }
-                                                else
-                                                {
-                                                    echo"<option value='$id_ciudad'>$nombre</option>";
-                                                }
-                                                
-                                            }
-                                            
-                                            echo"</select></p></td>";
-                                            
-                                            echo"<td><p>Imagen:<input type='button' value='Seleccionar imagen'></p></td></tr>";
-                                        }
-                                        else
-                                        {
-                                            echo"El usuario se ha eliminado.<br>";
-                                        }
+                    } else {
+                        ?>
+                        <div id="miperfil">
+                            <p id="tituloperfil">Modificar datos</p>
+                            <div id="formulariodatos">
+                                <form method="post">  
+                                    <table>
+                        <?php
+                        if (isset($_SESSION['username'])) {
+                            extract($_SESSION);
+                            $perfil = leerperfilfan($username);
+                            if ($datos = mysqli_fetch_assoc($perfil)) {
+                                extract($datos);
+                                echo "<tr>";
+                                echo "<td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre' required></p></td>";
+                                echo "<td><p>Ciudad:<select id='select' name='city'>";
+                                $ciudades = leeciudades("Barcelona");
+                                while ($fila = mysqli_fetch_assoc($ciudades)) {
+                                    extract($fila);
+                                    if ($id_ciudad == $ciudad) {
+                                        echo "<option value='$id_ciudad' selected>$nombre</option>";
+                                    } else {
+                                        echo "<option value='$id_ciudad'>$nombre</option>";
                                     }
-                                    else
-                                    {
-                                        echo"No puedes entrar aquí.<br>";
-                                    }
-                                    
-                                    
-                                ?>
-                                </table>
-                                <br><br><br>
-                                <p><input type="button" value="Cambiar contraseña" id="contraseña" onClick="abrirParametros()"></p>
-                            <p><input type="submit" value="Modificar datos de perfil" id="button"></p>
-                    </form>
+                                }
+                                echo "</select>";
+                                echo "</tr>";
+                                echo "<tr>";
+                                echo "<td><p>Primer apellido:<input type='text' name='surname1' value='$apellidoa' required></p></td>";
+                                echo "<td><p>Direccion:<input type='text' name='address' value='$direccion' required><p></td>";
+                                echo "</tr>";
+                                echo "<tr>";
+                                echo "<td><p>Segundo apellido: <input type='text' name='surname2' value='$apellidob' required></p>/td>";
+                                echo "<td><p>Imagen: <input type='button' name='image' value='Seleccionar imagen'></p></td></tr>";
+                                echo "</tr>";
+                                echo "<tr>";
+                                echo "<td><p>Email: <input type='email' name='email' value='$email' required></p></td>";
+                                echo "<td><p>Nombre de usuario: $username</p></td>";
+                                echo "</tr>";
+                                echo "<tr>";
+                                echo "<td><p>Telefono: <input type='tel' name='phone' value='$telefono' required></p></td>";
+                                echo "</tr>";
+                            } else {
+                                echo"El usuario se ha eliminado.<br>";
+                            }
+                        } else {
+                            echo"No puedes entrar aquí.<br>";
+                        }
+                        ?>
+                                    </table>
+                                    <br><br><br>
+                                    <p><input type="button" value="Cambiar contraseña" id="contraseña" onClick="abrirParametros()"></p>
+                                    <p><input type="submit" value="Modificar datos de perfil" id="button"></p>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                   <?php
-                    }
-                   ?>
+                                        <?php
+                                    }
+                                    ?>
                 </div>
             </section>
         </main>

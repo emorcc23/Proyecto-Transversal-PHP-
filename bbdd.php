@@ -1,4 +1,38 @@
 <?php
+//Desarrollador: Álvaro
+//Modifica los datos de un perfil fan
+function modificarperfilfan($usuario, $nombre, $email, $telefono, $ciudad, $apellidoa, $apellidob, $direccion, $imagen) {
+    //Conectamos con la base de datos
+    $c = conectar();
+    //Obtenemos el id del usuario
+    $id_usuario = dimeidusuario($usuario);
+    //Actualizamos los campos de la tabla login
+    $update = "update login set nombre='$nombre', email='$email', telefono='$telefono', ciudad=$ciudad where id_usuario=$id_usuario;";
+    if (mysqli_query($c,$update)) {
+        //Actualizamos los campos de la tabla fan
+        $update = "update fan set apellidoa='$apellidoa', apellidob='$apellidob', direccion='$direccion', imagen='' where id_usuario='$id_usuario';";
+        if (mysqli_query($c, $update)) {
+            $resultado = "ok";
+        } else {
+            $resultado = mysqli_error($c);
+        }
+    } else {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Alvaro
+function leerperfilfan($usuario) {
+    //Conectamos con la base de datos
+    $c = conectar();
+    $select = "select login.tipo as tipo, login.nombre as nombre, login.email as email, login.telefono as telefono, login.ciudad as ciudad, fan.apellidoa as apellidoa, fan.apellidob as apellidob, fan.direccion as direccion, fan.imagen as imagen from login inner join fan on login.id_usuario=fan.id_usuario where login.usuario='$usuario';";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
 //Desarrollador:Isain Alvaro
 //Ordenar Musicos ordenados por genero musical
 function ordenarMusicosPorGenero(){
@@ -205,7 +239,7 @@ function dimenombre($usuario) {
 }
 
 function dimeapellidoa($usuario, $tipo) {
-    
+
 }
 
 function dimeapellidob($usuario, $tipo) {
