@@ -7,7 +7,7 @@ if(isset($_POST['passactual']) && isset($_SESSION['username']))
     extract($_SESSION);
     if(compruebainicio($username,$passactual)>0)
     {
-        if(modificarpassword($username,$passactual,$pass1)=='ok')
+        if(modificarpassword($username,$pass1)=='ok')
         {
             echo"Password modificado.<br>";
         }

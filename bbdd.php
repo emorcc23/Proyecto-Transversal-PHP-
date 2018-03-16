@@ -9,6 +9,39 @@ function muestrageneros(){
     return $resultado;
 }
 
+//Desarrollador: Álvaro
+//Modifica los datos de un perfil fan
+function modificarperfilfan($usuario, $nombre, $email, $telefono, $ciudad, $apellidoa, $apellidob, $direccion, $imagen) {
+    //Conectamos con la base de datos
+    $c = conectar();
+    //Obtenemos el id del usuario
+    $id_usuario = dimeidusuario($usuario);
+    //Actualizamos los campos de la tabla login
+    $update = "update login set nombre='$nombre', email='$email', telefono='$telefono', ciudad=$ciudad where id_usuario=$id_usuario;";
+    if (mysqli_query($c,$update)) {
+        //Actualizamos los campos de la tabla fan
+        $update = "update fan set apellidoa='$apellidoa', apellidob='$apellidob', direccion='$direccion', imagen='' where id_usuario='$id_usuario';";
+        if (mysqli_query($c, $update)) {
+            $resultado = "ok";
+        } else {
+            $resultado = mysqli_error($c);
+        }
+    } else {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Alvaro
+function leerperfilfan($usuario) {
+    //Conectamos con la base de datos
+    $c = conectar();
+    $select = "select login.tipo as tipo, login.nombre as nombre, login.email as email, login.telefono as telefono, login.ciudad as ciudad, fan.apellidoa as apellidoa, fan.apellidob as apellidob, fan.direccion as direccion, fan.imagen as imagen from login inner join fan on login.id_usuario=fan.id_usuario where login.usuario='$usuario';";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
 
 //Desarrollador:Isain Alvaro
 //Ordenar Musicos ordenados por genero musical
@@ -105,9 +138,10 @@ function destacalocal($usuario, $destacado) {
 //Desarrollador:Artur
 //Modifica el password de un usuario
 //Se necesita el password antiguo por seguridad
-function modificarpassword($usuario, $passantiguo, $pass) {
+function modificarpassword($usuario, $pass) {
     $c = conectar();
-    $update = "update login set pass='$pass' where usuario='$usuario' and pass='$passantiguo';";
+    $pasc = password_hash($pass,PASSWORD_DEFAULT);
+    $update = "update login set pass='$pasc' where usuario='$usuario';";
     if (mysqli_query($c, $update)) {
         $resultado = "ok";
     } else {
@@ -243,7 +277,7 @@ function dimenombre($usuario) {
 }
 
 function dimeapellidoa($usuario, $tipo) {
-    
+
 }
 
 function dimeapellidob($usuario, $tipo) {
@@ -276,9 +310,25 @@ function compruebainicio($usuario, $pass) {
     //Conectar base de datos
     $c = conectar();
     //Consulta sql cuantos usuarios hay con ese usuario y password.
-    $select = "select count(id_usuario) as cuantos from login where usuario='$usuario' and pass='$pass';";
+ 
+    $select = "select pass as pasc from login where usuario='$usuario';";
     $resultado = mysqli_query($c, $select);
-    $fila = mysqli_fetch_assoc($resultado);
+    if($fila = mysqli_fetch_assoc($resultado))
+    {
+        extract ($fila);
+        if(password_verify($pass,$pasc))
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }   
+    }
+    else
+    {
+        return -1;
+    }
     //Devuelve el número de usuarios con ese usuario y password que pueden ser 0 o 1.
     extract($fila);
     desconectar($c);
@@ -369,7 +419,8 @@ function registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ci
     //Conectar base de datos
     $c = conectar();
     //Insert sql registro tabla login
-    $insert = "insert into login (usuario,pass,tipo,nombre,email,telefono,ciudad) values ('$usuario','$pass',$tipo,'$nombre','$email','$telefono','$ciudad');";
+    $pasc=password_hash("$pass", PASSWORD_DEFAULT);
+    $insert = "insert into login (usuario,pass,tipo,nombre,email,telefono,ciudad) values ('$usuario','$pasc',$tipo,'$nombre','$email','$telefono','$ciudad');";
     if (mysqli_query($c, $insert)) {
         //Si el insert ha ido bien se devuelve el id autonumérico generado en el alta.
         $resultado = mysqli_insert_id($c);
