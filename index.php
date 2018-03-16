@@ -9,6 +9,8 @@
     <body>
         <?php
             session_start();
+            require_once 'bbdd.php';
+            require_once 'funciones.php';
         ?>
         <header>
             <div class="contenedor">
@@ -59,7 +61,6 @@
                         <h4>Locales</h4>
                         <div class="listas">
                             <?php
-                            require_once 'bbdd.php';
                             $locales = listalocalesordenadosporciudad();
                             while ($ellocal = mysqli_fetch_assoc($locales)) {
                                 extract($ellocal);
