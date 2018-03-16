@@ -123,7 +123,7 @@ Pagina de locales.
                                 echo "<td><p>Direccion:<input type='text' name='address' value='$direccion' required><p></td>";
                                 echo "</tr>";
                                 echo "<tr>";
-                                echo "<td><p>Segundo apellido: <input type='text' name='surname2' value='$apellidob' required></p>/td>";
+                                echo "<td><p>Segundo apellido: <input type='text' name='surname2' value='$apellidob' required></p></td>";
                                 echo "<td><p>Imagen: <input type='button' name='image' value='Seleccionar imagen'></p></td></tr>";
                                 echo "</tr>";
                                 echo "<tr>";
