@@ -76,7 +76,7 @@
                             $listamusicos = ordenarMusicosPorGenero();
                             while ($musicos = mysqli_fetch_assoc($listamusicos)) {
                                 extract($musicos);
-                                echo"<p>$nombreart</p><hr>";
+                                echo"<p>$nombreart - $nombre</p><hr>";
                             }
                             ?>
 

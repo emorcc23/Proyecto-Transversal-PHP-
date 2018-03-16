@@ -52,11 +52,25 @@ function cerraSession(){
       echo"Sesión cerrada";
 }
 
+function cerraSession2(){
+    echo"<form action='' method='POST'>";
+    echo"<input type='submit' name='cerrar' value='CERRAR SESION'>";
+    echo"</form>";
+                
+    if(isset($_POST["cerrar"])){
+      session_destroy();
+//      header("Location: index.php");
+      echo"sesion cerrada";
+      header("Refresh:3; url=index.php");
+      exit;
+    }
+}
+
 //Desarrollador:Isain Alvaro
 //Ordenar Musicos ordenados por genero musical
 function ordenarMusicosPorGenero(){
     $c = conectar();
-    $select = "select musico.nombreart from musico inner join genero on musico.genero = genero.id_genero order by genero.id_genero;";
+    $select = "select genero.nombre,musico.nombreart from musico inner join genero on musico.genero = genero.id_genero order by genero.id_genero desc;";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;

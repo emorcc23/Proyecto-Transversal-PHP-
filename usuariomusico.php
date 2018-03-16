@@ -67,8 +67,10 @@ require_once 'bbdd.php';
                                 <li><a href="#">Fotos</a></li>
                                 <li><a href="#">Mensajes</a></li>
                                 <li><a href="#">Configuración</a></li>
+                                
+                                <li><a href="#"><?php cerraSession2()?></a></li>
 
-                                <li><a href="index.php?cerrar=1" value=''>Cerrar sesión</a></li>
+                                <li><a href="index.php?cerrar=1" value=''>Cerra Session</a></li>
                             </ul>
                         </div>
                         <div id="titulonoticias">
