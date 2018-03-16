@@ -3,7 +3,7 @@
 ////Muestra los generos
 function muestrageneros(){
     $c = conectar();
-    $select = "select nombre from genero;";
+    $select = "select nombre,id_genero from genero;";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
@@ -184,7 +184,7 @@ function modificarperfilmusico($usuario, $nombre, $email, $telefono, $ciudad, $s
     $id_usuario = dimeidusuario($usuario);
     $update = "update login set nombre='$nombre', email='$email', telefono='$telefono',ciudad=$ciudad where id_usuario=$id_usuario;";
     if(mysqli_query($c, $update)){
-       $update = "update musico set apellidoa='$surname1', apellidob='$surname2', web='$web', nombreart='$nickname', componentes='$components', genero='$gender' where id_usuario='13';";
+       $update = "update musico set apellidoa='$surname1', apellidob='$surname2', web='$web', nombreart='$nickname', componentes='$components', genero='$gender' where id_usuario='$id_usuario';";
        if (mysqli_query($c, $update)){
            $resultado = "ok";
        }else{
