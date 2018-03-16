@@ -1,6 +1,7 @@
 <?php
     session_start(); 
     require_once 'bbdd.php';
+    require_once 'funciones.php';
 ?>
 <!DOCTYPE html>
 <!--
