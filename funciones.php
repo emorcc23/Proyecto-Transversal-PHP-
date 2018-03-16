@@ -1,4 +1,5 @@
 <?php
+
 //Desarrollador: Álvaro
 //Muestra los datos de perfil de fan
 function muestradatosfan() {

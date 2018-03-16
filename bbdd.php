@@ -1,4 +1,14 @@
 <?php
+//Desarrolador: Isain
+////Muestra los generos
+function muestrageneros(){
+    $c = conectar();
+    $select = "select nombre from genero;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
 //Desarrollador: Álvaro
 //Modifica los datos de un perfil fan
 function modificarperfilfan($usuario, $nombre, $email, $telefono, $ciudad, $apellidoa, $apellidob, $direccion, $imagen) {
@@ -169,6 +179,23 @@ function dimeidusuario($usuario) {
         return -1;
     }
 }
+function modificarperfilmusico($usuario, $nombre, $email, $telefono, $ciudad, $surname1, $surname2, $web, $nickname, $components, $gender){
+    $c = conectar();
+    $id_usuario = dimeidusuario($usuario);
+    $update = "update login set nombre='$nombre', email='$email', telefono='$telefono',ciudad=$ciudad where id_usuario=$id_usuario;";
+    if(mysqli_query($c, $update)){
+       $update = "update musico set apellidoa='$surname1', apellidob='$surname2', web='$web', nombreart='$nickname', componentes='$components', genero='$gender' where id_usuario='13';";
+       if (mysqli_query($c, $update)){
+           $resultado = "ok";
+       }else{
+           $resultado = mysqli_error($c);
+       }
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
 
 //Desarrollador:Artur
 //Modifica los datos de un perfil de local
@@ -190,6 +217,16 @@ function modificaperfillocal($usuario, $nombre, $email, $telefono, $ciudad, $ubi
     } else {
         $resultado = mysqli_error($c);
     }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador:Isain
+//Lee todos los datos del perfil de musico
+function leerPerfilMusico($usuario){
+    $c = conectar();
+    $select = "select login.tipo as tipo,login.nombre as nombre,login.email as email,login.telefono as telefono, login.ciudad as ciudad, musico.apellidoa as apellidoa, musico.apellidob as apellidob, musico.web as web, musico.nombreart as nombreart, musico.componentes as componentes, musico.genero as genero from login inner join musico on login.id_usuario=musico.id_usuario where login.usuario='$usuario';";
+    $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
 }

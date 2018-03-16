@@ -64,7 +64,7 @@ require_once 'funciones.php';
 
                         <div id="menu">
                             <ul>
-                                <li><a href="#">Perfil</a></li>
+                                <li><a href="miperfilmusico.php">Perfil</a></li>
                                 <li><a href="#">Fotos</a></li>
                                 <li><a href="#">Mensajes</a></li>
                                 <li><a href="#">Configuración</a></li>
