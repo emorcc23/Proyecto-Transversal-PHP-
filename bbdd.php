@@ -1,4 +1,6 @@
+ 
 <?php
+
 //Desarrollador: Álvaro
 //Muestra los datos de perfil de fan
 function muestradatosfan() {
@@ -12,6 +14,24 @@ function muestradatosfan() {
         echo "<img src='Imagenes/usuario.png'>";
         echo "</div>";
     }
+}
+
+//Desarrolador Isain
+//Muestra los datos del perfil del musico
+function muestradatosmusico(){
+    extract($_SESSION);
+    if($tipo == 2){
+        echo"Musicos";
+    }
+    
+    $nombre = dimenombre($username);
+    
+    echo"<p>$nombre</p>";
+    echo"<hr>";
+     echo"<div id='info'>";
+    echo"<img src='Imagenes/usuario.png'>";
+    echo"</div>";
+
 }
 
 
