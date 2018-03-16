@@ -51,14 +51,14 @@ and open the template in the editor.
                     <p>Datos de mi perfil</p>
                     <div id="usuario">
                         <?php
-                        muestradatoslocal();
+                        muestradatosmusico();
                         
                         ?>
                     </div>
                         
                     <div id="menu">
                         <ul>
-                            <li><a href="#">Perfil</a></li>
+                            <li><a href="miperfilmusico.php">Perfil</a></li>
                             <li><a href="#">Fotos</a></li>
                             <li><a href="#">Mensajes</a></li>
                             <li><a href="#">Configuración</a></li>
@@ -89,10 +89,12 @@ and open the template in the editor.
                     {
                         extract($_POST);
                         extract($_SESSION);
+                        echo"$gender";
                         //Hacer la modificación.
-                        if(modificaperfillocal($username,$name,$email,$phone,$city,$location,'',$aforo)=="ok")
+                        $idgenero = dimeidgenero($gender);
+                        if(modificarperfilmusico($username, $name, $email, $phone, $city, $surname1, $surname2, $web, $nombreart, $components, "2")=="ok")
                         {
-                            echo"Modificación realizada.<br>";
+                            echo"<script>alert('Modificacion realizada')</script>";
                         }
                         else
                         {
@@ -113,14 +115,14 @@ and open the template in the editor.
                                     if(isset($_SESSION['username']))
                                     {
                                         extract($_SESSION);
-                                        $perfil=leeperfillocal($username);
+                                        $perfil= leerPerfilMusico($username);
                                         if($datos=mysqli_fetch_assoc($perfil))
                                         {
                                             extract($datos);
                                             echo"<tr><td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre' required></p></td>";
-                                            echo"<td><p>Ubicación:<input type='text' name='location' value='$ubicacion' required></p></td></tr>";   
+                                            echo"<td><p>Nombreart:<input type='text' name='nombreart' value='$nombreart' required></p></td></tr>";   
                                             echo"<tr><td><p>Email:<input type='email' name='email' value='$email'></p></td>";      
-                                            echo"<td><p>Aforo:<input type='number' name='aforo' value='$aforo' required></p></td></tr>";
+                                            echo"<td><p>Aforo:<input type='text' name='web' value='$web' required></p></td></tr>";
                                             echo"<tr><td><p>Teléfono:<input type='tel' name='phone' value='$telefono'></p></td>";
                                             echo"<td><p>Nombre de usuario:$username</p></td></tr>";
                                             echo"<tr><td><p>Ciudad:<select id='select' name='city'>";
@@ -141,7 +143,16 @@ and open the template in the editor.
                                             
                                             echo"</select></p></td>";
                                             
-                                            echo"<td><p>Imagen:<input type='button' value='Seleccionar imagen'></p></td></tr>";
+                                            echo"<td><p>Apellidoa:<input type='text' name='surname1' value='$apellidoa'></p></td></tr>";
+                                            echo"<tr><td><p>Apellidob:<input type='text' name='surname2' value='$apellidob'</p></td>";
+                                            echo"<td><p>Componentes:<input type='number' name='components' value='$componentes'></p></td></tr>";
+                                            echo"<tr><td><p>Genero:<select id='select' name='gender'>";
+                                            $genero = muestrageneros();
+                                            while($fila = mysqli_fetch_assoc($genero)){
+                                                extract($fila);
+                                                echo"<option value='$nombre'>$nombre</option>";
+                                            }
+                                            
                                         }
                                         else
                                         {
