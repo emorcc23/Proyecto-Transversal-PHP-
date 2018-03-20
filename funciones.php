@@ -37,29 +37,32 @@ function muestradatosmusico(){
 //Muestra los datos del perfil del local en los campos informativos.
 function muestradatoslocal()
 {
-    extract($_SESSION);
-    switch($tipo)
+    if(isset($_SESSION['tipo']))
     {
-        case 0:
-            echo"Usuario Administador.<br>";
-            break;
-        case 1:
-            echo"Local musical<br>";
-            break;
-        case 2:
-            echo"Músico<br>";
-            break;
-        case 3:
-            echo"Fan<br>";
-            break;
-    } 
-    $nombre = dimenombre($username);
+        extract($_SESSION);
+        switch($tipo)
+        {
+            case 0:
+                echo"Usuario Administador.<br>";
+                break;
+            case 1:
+                echo"Local musical<br>";
+                break;
+            case 2:
+                echo"Músico<br>";
+                break;
+            case 3:
+                echo"Fan<br>";
+                break;
+        } 
+        $nombre = dimenombre($username);
                             
-    echo"<p>$nombre</p>";
-    echo"<hr>";
-    echo"<div id='info'>";
-    echo"<img src='Imagenes/usuario.png'>";
-    echo"</div>";
+        echo"<p>$nombre</p>";
+        echo"<hr>";
+        echo"<div id='info'>";
+        echo"<img src='Imagenes/usuario.png'>";
+        echo"</div>";
+    }
 }
 
 //funcion para cerrar session
