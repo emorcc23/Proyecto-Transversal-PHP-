@@ -91,7 +91,7 @@ Pagina de locales.
                         } else {
                             echo"Error modificando perfil de Fan.<br>";
                         }
-                    } else {
+                    } 
                         ?>
                         <div id="miperfil">
                             <p id="tituloperfil">Modificar datos</p>
@@ -147,9 +147,6 @@ Pagina de locales.
                                 </form>
                             </div>
                         </div>
-                                        <?php
-                                    }
-                                    ?>
                 </div>
             </section>
         </main>
