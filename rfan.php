@@ -63,7 +63,8 @@ require_once 'bbdd.php';
                         } else {
                             if ($pass1 == $pass2) {
                                 if (registrar_fan($username, $pass1, 3, $name, $mail, $phone, $city, $surname1, $surname2, $address, "") == "ok") {
-                                    echo"Se ha registrado el fan correctamente<br>";
+                                    echo"<script>alert('Se ha registrado el fan correctamente')</script>";
+                                    header("Refresh:0; url=login.php");
                                 } else {
                                     echo"Error al registrar fan";
                                 }
