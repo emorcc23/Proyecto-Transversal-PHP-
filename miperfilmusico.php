@@ -91,14 +91,14 @@ and open the template in the editor.
                         extract($_SESSION);
                         echo"$gender";
                         //Hacer la modificación.
-                        $idgenero = dimeidgenero($gender);
-                        if(modificarperfilmusico($username, $name, $email, $phone, $city, $surname1, $surname2, $web, $nombreart, $components, "2")=="ok")
+
+                        if(modificarperfilmusico($username, $name, $email, $phone, $city, $surname1, $surname2, $web, $nombreart, $components,$gender)=="ok")
                         {
                             echo"<script>alert('Modificacion realizada')</script>";
                         }
                         else
                         {
-                            echo"Error modificando perfil de local.<br>";
+                            echo"Error modificando perfil de Genero.<br>";
                         }  
                     } 
                     else
@@ -150,7 +150,7 @@ and open the template in the editor.
                                             $genero = muestrageneros();
                                             while($fila = mysqli_fetch_assoc($genero)){
                                                 extract($fila);
-                                                echo"<option value='$nombre'>$nombre</option>";
+                                                echo"<option value='$id_genero'>$nombre</option>";
                                             }
                                             
                                         }

@@ -62,7 +62,10 @@ require_once 'bbdd.php';
                         } else {
                             $idgenero = dimeidgenero($gender);
                             if (registrar_musico($username, $pass1, 2, $name, $mail, $phone, $city, $surname1, $surname2, $web, $nickname, $components, $idgenero) == "ok") {
+                                echo"<script>alert('Se ha registrado el musico correctamente')</script>";
+                                header("Refresh:0; url=login.php");
                                 echo"Se ha registrado el musico correctamente";
+                                
                             } else {
                                 echo"Error al registrar musico";
                             }
