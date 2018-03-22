@@ -95,6 +95,7 @@ and open the template in the editor.
                         if(modificarperfilmusico($username, $name, $email, $phone, $city, $surname1, $surname2, $web, $nombreart, $components,$gender)=="ok")
                         {
                             echo"<script>alert('Modificacion realizada')</script>";
+                            header();
                         }
                         else
                         {
