@@ -3,45 +3,45 @@
 //Desarrollador: Álvaro
 //Muestra los datos de perfil de fan
 function muestradatosfan() {
-    extract($_SESSION);
-    if ($tipo == 3) {
-        echo "Fan<br>";
-        $nombre = dimenombre($username);
-        echo "<p>$nombre</p>";
-        echo "<hr>";
-        echo "<div id='info'>";
-        echo "<img src='Imagenes/usuario.png'>";
-        echo "</div>";
+    if (isset($_SESSION['tipo'])) {
+        extract($_SESSION);
+        if ($tipo == 3) {
+            echo "Fan<br>";
+            $nombre = dimenombre($username);
+            echo "<p>$nombre</p>";
+            echo "<hr>";
+            echo "<div id='info'>";
+            echo "<img src='Imagenes/usuario.png'>";
+            echo "</div>";
+        }
     }
 }
 
 //Desarrolador Isain
 //Muestra los datos del perfil del musico
-function muestradatosmusico(){
-    extract($_SESSION);
-    if($tipo == 2){
-        echo"Musicos";
-    }
-    
-    $nombre = dimenombre($username);
-    
-    echo"<p>$nombre</p>";
-    echo"<hr>";
-     echo"<div id='info'>";
-    echo"<img src='Imagenes/usuario.png'>";
-    echo"</div>";
+function muestradatosmusico() {
+    if (isset($_SESSION['tipo'])) {
+        extract($_SESSION);
+        if ($tipo == 2) {
+            echo"Musicos";
+        }
 
+        $nombre = dimenombre($username);
+
+        echo"<p>$nombre</p>";
+        echo"<hr>";
+        echo"<div id='info'>";
+        echo"<img src='Imagenes/usuario.png'>";
+        echo"</div>";
+    }
 }
 
 //Desarrollador Artur
 //Muestra los datos del perfil del local en los campos informativos.
-function muestradatoslocal()
-{
-    if(isset($_SESSION['tipo']))
-    {
+function muestradatoslocal() {
+    if (isset($_SESSION['tipo'])) {
         extract($_SESSION);
-        switch($tipo)
-        {
+        switch ($tipo) {
             case 0:
                 echo"Usuario Administador.<br>";
                 break;
@@ -54,9 +54,9 @@ function muestradatoslocal()
             case 3:
                 echo"Fan<br>";
                 break;
-        } 
+        }
         $nombre = dimenombre($username);
-                            
+
         echo"<p>$nombre</p>";
         echo"<hr>";
         echo"<div id='info'>";
@@ -66,22 +66,23 @@ function muestradatoslocal()
 }
 
 //funcion para cerrar session
-function cerraSession(){    
-      session_destroy();
-      echo"Sesión cerrada";
+function cerraSession() {
+    session_destroy();
+    echo"Sesión cerrada";
 }
 
-function cerraSession2(){
+function cerraSession2() {
     echo"<form action='' method='POST'>";
     echo"<input type='submit' name='cerrar' value='CERRAR SESION'>";
     echo"</form>";
-                
-    if(isset($_POST["cerrar"])){
-      session_destroy();
+
+    if (isset($_POST["cerrar"])) {
+        session_destroy();
 //      header("Location: index.php");
-      echo"sesion cerrada";
-      header("Refresh:3; url=index.php");
-      exit;
+        echo"sesion cerrada";
+        header("Refresh:3; url=index.php");
+        exit;
     }
 }
+
 ?>
