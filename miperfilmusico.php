@@ -58,10 +58,10 @@ and open the template in the editor.
                         
                     <div id="menu">
                         <ul>
-                            <li><a href="miperfilmusico.php">Perfil</a></li>
+                            <li><a href="usuariomusico.php">Perfil</a></li>
                             <li><a href="#">Fotos</a></li>
                             <li><a href="#">Mensajes</a></li>
-                            <li><a href="#">Configuración</a></li>
+                            <li><a href="miperfilmusico.php">Configuración</a></li>
                        
                             <li><a href="index.php?cerrar=1" value=''>Cerrar sesión</a></li>
                         </ul>
