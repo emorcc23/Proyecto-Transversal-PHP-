@@ -64,12 +64,14 @@ require_once 'funciones.php';
 
                         <div id="menu">
                             <ul>
-                                <li><a href="miperfilmusico.php">Perfil</a></li>
+                                <li><a href="#">Perfil</a></li>
                                 <li><a href="#">Fotos</a></li>
                                 <li><a href="#">Mensajes</a></li>
                                 <li><a href="#">Configuración</a></li>
+                                <li><a href="miperfilmusico.php">Configuración</a></li>
 
                                 <li><a href="#"><?php cerraSession2() ?></a></li>
+
                             </ul>
                         </div>
                         <div id="titulonoticias">

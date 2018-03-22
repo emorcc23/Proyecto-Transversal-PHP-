@@ -73,10 +73,10 @@
                         
                     <div id="menu">
                         <ul>
-                            <li><a href="miperfillocal.php">Perfil</a></li>
+                            <li><a href="#">Perfil</a></li>
                             <li><a href="#">Fotos</a></li>
                             <li><a href="#">Mensajes</a></li>
-                            <li><a href="#">Configuración</a></li>
+                            <li><a href="miperfillocal.php">Configuración</a></li>
                        
                             <li><a href="index.php?cerrar=1" value=''>Cerrar sesión</a></li>
                         </ul>
