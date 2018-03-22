@@ -91,7 +91,7 @@ Pagina de locales.
                         } else {
                             echo"Error modificando perfil de Fan.<br>";
                         }
-                    } else {
+                    } 
                         ?>
                         <div id="miperfil">
                             <p id="tituloperfil">Modificar datos</p>
@@ -123,7 +123,7 @@ Pagina de locales.
                                 echo "<td><p>Direccion:<input type='text' name='address' value='$direccion' required><p></td>";
                                 echo "</tr>";
                                 echo "<tr>";
-                                echo "<td><p>Segundo apellido: <input type='text' name='surname2' value='$apellidob' required></p>/td>";
+                                echo "<td><p>Segundo apellido: <input type='text' name='surname2' value='$apellidob' required></p></td>";
                                 echo "<td><p>Imagen: <input type='button' name='image' value='Seleccionar imagen'></p></td></tr>";
                                 echo "</tr>";
                                 echo "<tr>";
@@ -147,9 +147,6 @@ Pagina de locales.
                                 </form>
                             </div>
                         </div>
-                                        <?php
-                                    }
-                                    ?>
                 </div>
             </section>
         </main>

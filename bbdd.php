@@ -72,7 +72,6 @@ function dimeidgenero($gender) {
 //Desarrollador:Isain
 //Registrar un musico
 function registrar_musico($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad, $surname1, $surname2, $web, $nickname, $components, $gender) {
-
     //llamamos a la funcion de registrar_login para obtener el idusuario
     $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad);
     if ($idusuario != -1) {
@@ -99,7 +98,8 @@ function registrar_fan($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciud
     $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad);
     if ($idusuario != -1) {
         $c = conectar();
-        $insert = "insert into fan(id_usuario,apellidoa,apellidob,direccion,imagen) values ('$idusuario','$surname1','$surname2','$address','$imagen')";
+        $addressok = mysqli_escape_string($c, $address);
+        $insert = "insert into fan(id_usuario,apellidoa,apellidob,direccion,imagen) values ('$idusuario','$surname1','$surname2','$addressok','$imagen')";
         if (mysqli_query($c, $insert)) {
             $resultado = "ok";
         } else {

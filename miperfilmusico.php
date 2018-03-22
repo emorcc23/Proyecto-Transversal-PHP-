@@ -101,10 +101,7 @@ and open the template in the editor.
                         {
                             echo"Error modificando perfil de Genero.<br>";
                         }  
-                    } 
-                    else
-                    {
-                        
+                    }        
                     ?>
                     <div id="miperfil">
                         <p id="tituloperfil">Modificar datos</p>
@@ -122,9 +119,9 @@ and open the template in the editor.
                                             extract($datos);
                                             echo"<tr><td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre' required></p></td>";
                                             echo"<td><p>Nombreart:<input type='text' name='nombreart' value='$nombreart' required></p></td></tr>";   
-                                            echo"<tr><td><p>Email:<input type='email' name='email' value='$email'></p></td>";      
+                                            echo"<tr><td><p>Email:<input type='email' name='email' value='$email' required></p></td>";      
                                             echo"<td><p>Aforo:<input type='text' name='web' value='$web' required></p></td></tr>";
-                                            echo"<tr><td><p>Teléfono:<input type='tel' name='phone' value='$telefono'></p></td>";
+                                            echo"<tr><td><p>Teléfono:<input type='tel' name='phone' value='$telefono' required></p></td>";
                                             echo"<td><p>Nombre de usuario:$username</p></td></tr>";
                                             echo"<tr><td><p>Ciudad:<select id='select' name='city'>";
                                             $ciudades = leeciudades("Barcelona");
@@ -174,9 +171,6 @@ and open the template in the editor.
                     </form>
                         </div>
                     </div>
-                   <?php
-                    }
-                   ?>
                 </div>
             </section>
         </main>

@@ -90,15 +90,15 @@ Pagina de locales.
                         //Hacer la modificación.
                         if(modificaperfillocal($username,$name,$email,$phone,$city,$location,'',$aforo)=="ok")
                         {
-                            echo"Modificación realizada.<br>";
+                            echo"<script>alert('Modificación realizada')</script>";
+                            
                         }
                         else
                         {
                             echo"Error modificando perfil de local.<br>";
                         }  
                     } 
-                    else
-                    {
+                 
                         
                     ?>
                     <div id="miperfil">
@@ -117,9 +117,9 @@ Pagina de locales.
                                             extract($datos);
                                             echo"<tr><td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre' required></p></td>";
                                             echo"<td><p>Ubicación:<input type='text' name='location' value='$ubicacion' required></p></td></tr>";   
-                                            echo"<tr><td><p>Email:<input type='email' name='email' value='$email'></p></td>";      
+                                            echo"<tr><td><p>Email:<input type='email' name='email' value='$email' required></p></td>";      
                                             echo"<td><p>Aforo:<input type='number' name='aforo' value='$aforo' required></p></td></tr>";
-                                            echo"<tr><td><p>Teléfono:<input type='tel' name='phone' value='$telefono'></p></td>";
+                                            echo"<tr><td><p>Teléfono:<input type='tel' name='phone' value='$telefono' required></p></td>";
                                             echo"<td><p>Nombre de usuario:$username</p></td></tr>";
                                             echo"<tr><td><p>Ciudad:<select id='select' name='city'>";
                                             $ciudades = leeciudades("Barcelona");
@@ -160,9 +160,7 @@ Pagina de locales.
                     </form>
                         </div>
                     </div>
-                   <?php
-                    }
-                   ?>
+                 
                 </div>
             </section>
         </main>
