@@ -95,7 +95,7 @@ Pagina de locales.
                         }
                         else
                         {
-                            echo"Error modificando perfil de local.<br>";
+                            echo"<script>alert('Error modificando perfil de local')</script>";
                         }  
                     } 
                  
@@ -143,12 +143,12 @@ Pagina de locales.
                                         }
                                         else
                                         {
-                                            echo"El usuario se ha eliminado.<br>";
+                                            echo"<script>alert('El usuario se ha eliminado')</script>";
                                         }
                                     }
                                     else
                                     {
-                                        echo"No puedes entrar aquí.<br>";
+                                        echo"<script>alert('No puedes entrar aquí')</script>";
                                     }
                                     
                                     

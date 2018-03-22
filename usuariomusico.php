@@ -46,10 +46,10 @@ require_once 'funciones.php';
                     if (usuarioexiste($_SESSION['username']) > 0) {
                         $mostrar = 1;
                     } else {
-                        echo"El usuario ya no existe.<br>";
+                        echo"<script>alert('El usuario ya no existe')</script>";
                     }
                 } else {
-                    echo"No puedes entrar aquí.<br>";
+                    echo"<script>alert('No puedes entrar aquí')</script>";
                 }
                 if ($mostrar == 1) {
                     ?>
@@ -57,9 +57,9 @@ require_once 'funciones.php';
                     <div id="centro"> 
                         <p>Datos de mi perfil</p>
                         <div id="usuario">
-                    <?php
-                    muestradatosmusico();
-                    ?>
+                            <?php
+                            muestradatosmusico();
+                            ?>
                         </div>
 
                         <div id="menu">
@@ -68,10 +68,8 @@ require_once 'funciones.php';
                                 <li><a href="#">Fotos</a></li>
                                 <li><a href="#">Mensajes</a></li>
                                 <li><a href="#">Configuración</a></li>
-                                
-                                <li><a href="#"><?php cerraSession2()?></a></li>
 
-                                <li><a href="index.php?cerrar=1" value=''>Cerra Session</a></li>
+                                <li><a href="#"><?php cerraSession2() ?></a></li>
                             </ul>
                         </div>
                         <div id="titulonoticias">
@@ -80,9 +78,9 @@ require_once 'funciones.php';
                         <div id="noticias">
                         </div>
                     </div>  
-    <?php
-}
-?>
+                    <?php
+                }
+                ?>
 
             </section>
         </main>
