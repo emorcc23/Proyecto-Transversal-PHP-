@@ -73,16 +73,15 @@ function cerraSession() {
 
 function cerraSession2() {
     echo"<form action='' method='POST'>";
-    echo"<input type='submit' name='cerrar' value='CERRAR SESION'>";
+    echo"<input id='botoncerrar' type='submit' name='cerrar' value='CERRAR SESSION'>";
     echo"</form>";
 
     if (isset($_POST["cerrar"])) {
         session_destroy();
 //      header("Location: index.php");
-        echo"sesion cerrada";
+        echo"<script>alert('sesion cerrada')</script>";
         header("Refresh:3; url=index.php");
         exit;
     }
 }
-
 ?>
