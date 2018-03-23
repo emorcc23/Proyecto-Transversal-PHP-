@@ -69,7 +69,6 @@ require_once 'funciones.php';
                                 <li><a href="#">Mensajes</a></li>
                                 <li><a href="miperfilmusico.php">Configuración</a></li>
                                 <?php cerraSession2()?>
-
                             </ul>
                         </div>
                         <div id="titulonoticias">
