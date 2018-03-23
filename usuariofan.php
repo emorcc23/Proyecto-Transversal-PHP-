@@ -50,12 +50,12 @@ require_once 'funciones.php';
                     }
                     else
                     {
-                        echo"El usuario ya no existe.<br>";
+                        echo"<script>alert('El usuario ya no existe')</script>";
                     }
                 }
                 else
                 {
-                    echo"No puedes entrar aquí.<br>";
+                    echo"<script>alert('No puedes entrar aquí')</script>";
                 }
                 if($mostrar==1)
                 {

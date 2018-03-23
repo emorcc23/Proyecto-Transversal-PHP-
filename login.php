@@ -67,6 +67,7 @@ Pagina login
                             }
                         } else {
                             echo"<script>alert('Nombre de usuario o contraseña incorrectos')</script>";
+                            header("Refresh:0; url=login.php");
                         }
                     } else {
                         ?>

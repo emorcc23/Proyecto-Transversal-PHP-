@@ -80,7 +80,7 @@ function cerraSession2() {
         session_destroy();
 //      header("Location: index.php");
         echo"<script>alert('sesion cerrada')</script>";
-        header("Refresh:3; url=index.php");
+        header("Refresh:1; url=index.php");
         exit;
     }
 }
