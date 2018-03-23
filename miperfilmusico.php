@@ -98,7 +98,7 @@ and open the template in the editor.
                         }
                         else
                         {
-                            echo"Error modificando perfil de Genero.<br>";
+                            echo"<script>('Error modificando perfil de Genero')</script>";
                         }  
                     }        
                     ?>
@@ -153,12 +153,12 @@ and open the template in the editor.
                                         }
                                         else
                                         {
-                                            echo"El usuario se ha eliminado.<br>";
+                                            echo"<script>alert('El usuario se ha eliminado')</script>";
                                         }
                                     }
                                     else
                                     {
-                                        echo"No puedes entrar aquí.<br>";
+                                        echo"<script>alert('No puedes entrar aquí')</script>";
                                     }
                                     
                                     

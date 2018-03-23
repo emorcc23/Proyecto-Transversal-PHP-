@@ -79,10 +79,9 @@ function cerraSession2() {
     if (isset($_POST["cerrar"])) {
         session_destroy();
 //      header("Location: index.php");
-        echo"sesion cerrada";
+        echo"<script>alert('sesion cerrada')</script>";
         header("Refresh:3; url=index.php");
         exit;
     }
 }
-
 ?>
