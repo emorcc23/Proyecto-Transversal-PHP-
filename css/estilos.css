@@ -97,6 +97,7 @@ form #botoncerrar {
     padding: 10px;
     border-radius: 15px;
     border: thin;
+    margin-top: 190px;
 }
 
 form #botoncerrar:hover {

@@ -62,8 +62,7 @@ and open the template in the editor.
                             <li><a href="#">Fotos</a></li>
                             <li><a href="#">Mensajes</a></li>
                             <li><a href="miperfilmusico.php">Configuración</a></li>
-                       
-                            <li><a href="index.php?cerrar=1" value=''>Cerrar sesión</a></li>
+                            <?php cerraSession2()?>
                         </ul>
                     </div>
     <script>
