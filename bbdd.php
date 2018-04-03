@@ -1,4 +1,48 @@
 <?php
+
+//Desarrollador:Artur
+//Baja de concierto
+function bajaconcierto($idconcierto)
+{
+    $c = conectar();
+    $delete = "DELETE FROM concierto WHERE id_concierto=$idconcierto;";
+    desconectar($c);
+    if (mysqli_query($c, $delete)) {
+        return "ok";
+    } else {
+        return mysqli_error($c);
+    }
+}
+
+//Desarrollador: Artur
+//Lista los conciertos que tiene un local
+function listaconciertoslocal($localm)
+{
+    $c = conectar();
+    //Sentencia SQL. No se leen todos los campos, solo los principales.
+    $select = "select nombre,fecha,hora,genero,estado from concierto where localm='$localm';";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
+//Da de alta un concierto
+//Hemos añadido el campo nombre a la tabla concierto
+function anadeconcierto($nombre,$fecha,$hora,$pago,$localm,$genero)
+{
+    $c = conectar();
+    //Sentencia SQL. Al dar de alta el músico se pone en -1 porque no se ha seleccionado y el estado en 0.
+    $insert = "INSERT INTO concierto (nombre,fecha,hora,pago,localm,genero,musico,estado) VALUES ('$nombre','$fecha','$hora',$pago,$localm,$genero,-1,0);";
+    if (mysqli_query($c, $insert)) {
+        $resultado = "ok";
+    } else {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
 //Desarrolador: Isain
 ////Muestra los generos
 function muestrageneros(){
