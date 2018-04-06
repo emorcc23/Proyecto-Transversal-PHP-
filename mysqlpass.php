@@ -1,5 +1,5 @@
 <?php
 $userbd = "root";
-$passbd = "91214560";
+$passbd = "";
 ?>
 

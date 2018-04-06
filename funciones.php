@@ -1,4 +1,20 @@
 <?php
+//Desarrollador: Isain
+//Muestra Usuario segun tipo
+function muestraUsuariosTipo($tipo){
+    switch ($tipo){
+        case 1:
+            echo"<h1>Local</h1>";
+            break;
+        case 2:
+            echo"<h1>Musico</h1>";
+            break;
+        case 3:
+            echo"<h1>Fan</h1>";
+            break;
+        default;
+    }
+}
 
 //Desarrollador:Artur
 //Devuelve el nombre de un género por el id

@@ -1,6 +1,8 @@
 <html lang="es">
     <head>
         <title>OohMusic</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="funciones.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <link rel="stylesheet" href="css/fontello.css">
@@ -8,9 +10,9 @@
     </head>
     <body>
         <?php
-            session_start();
-            require_once 'bbdd.php';
-            require_once 'funciones.php';
+        session_start();
+        require_once 'bbdd.php';
+        require_once 'funciones.php';
         ?>
         <header>
             <div class="contenedor">
@@ -53,7 +55,7 @@
                 <h2>Bienvenidos</h2>
                 <p>En nuestra página podrás disfrutar de todos los conciertos de tu ciudad con solo un clik, apoyar a tus artistas favoritos o hacerte fan.</p>
             </section>
-            
+
             <section id="blog">
                 <h3>Aquí tienes a nuestros locales y músicos ¡Échales un ojo!</h3>
                 <div class="contenedor">
@@ -84,6 +86,83 @@
 
                         </div>
                     </article>
+                    <article>
+                        <h4>Conciertos</h4>
+                        <div class="listas">
+                            <form method="POST">  
+                                Buscar: <input id="buscador" type="text" name="buscador" required>
+                                <input type="submit" value="buscar" name="buscar2">
+                            </form>
+                            <?php
+                            if (isset($_POST["buscar2"])) {
+                                extract($_POST);
+
+                                $resuBusqueda = buscador($buscador);
+                                if ($resuBusqueda == -1) {
+                                    echo"<br><h1>no encontro nada con este nombre</h1><br>";
+                                } else {
+                                    echo"<br>";
+                                    extract($resuBusqueda);
+                                    muestraUsuariosTipo($tipo);
+                                    echo"<br>";
+                                    echo"<br>Nombre: $nombre<br>";
+                                    echo"<br>Email: $email<br>";
+                                    if ($tipo == 1) {
+                                        echo"<br><h1>Datos Proximo concierto</h1><br>";
+                                        $r = mirarConciertosLocal2($nombre, $id_usuario);
+                                        while ($fila = mysqli_fetch_assoc($r)) {
+                                            extract($fila);
+                                            echo"<p>Fecha: $fecha - Artista: $nombreart - Pago: $pago</p>";
+                                        }
+                                    } 
+                                }
+                            }
+                            ?>
+                        </div>
+
+                    </article>
+                    <article id="buscador">
+                        <p>
+                        <form method="POST">  
+                            Buscar: <input id="buscador" type="text" name="buscador" required>
+                            <input type="submit" value="buscar" name="buscar">
+                        </form>
+
+<?php
+if (isset($_POST["buscar"])) {
+    extract($_POST);
+
+    $resuBusqueda = buscador($buscador);
+    if ($resuBusqueda == -1) {
+        echo"<br><h1>no encontro nada con este nombre</h1><br>";
+    } else {
+        echo"<br>";
+        extract($resuBusqueda);
+        muestraUsuariosTipo($tipo);
+        echo"<br>";
+        echo"<br>Nombre: $nombre<br>";
+        echo"<br>Email: $email<br>";
+        $datosconciertos = mirarConciertosLocal($nombre, $id_usuario);
+        if ($datosconciertos == -1) {
+            if ($tipo == 1) {
+                echo"<br>No hay programados conciertos en este local<br>";
+            }
+        } else {
+            extract($datosconciertos);
+            echo"<br><h1>Datos Proximo concierto</h1><br>";
+            echo"<br>Fecha: $fecha<br>";
+            echo"<br>Artista: $nombreart<br>";
+            echo"<br>Pago: $pago<br>";
+            $nomgenero = mirarGeneroId($genero);
+            echo"<br>Genero: $nomgenero<br>";
+        }
+    }
+}
+?>
+
+
+                        </p>
+                    </article>
                 </div>
             </section>
 
@@ -108,13 +187,12 @@
                     </div>
                 </div>
             </section>
-            <?php
-                if(isset($_GET['cerrar']))
-                {
-                    cerraSession();
-                }
-            ?>
-            
+<?php
+if (isset($_GET['cerrar'])) {
+    cerraSession();
+}
+?>
+
         </main>
 
         <footer>
