@@ -53,15 +53,23 @@ Pagina de locales.
                         ?>
                     </div>
 
-                    <div id="menu">
+                    <nav class="menuLocal">
                         <ul>
                             <li><a href="usuariolocal.php">Perfil</a></li>
                             <li><a href="#">Fotos</a></li>
+                            <li><a class="concierto" href="#" id="boton1">Conciertos</a>
+                                <ul>
+                                    <div id="submenudiv">
+                                        <li><a href="conciertosdelocal.php" id="uno">Mis conciertos</a></li>
+                                        <li><a href="anadirconcierto.php" id="dos">Organizar un concierto</a></li>
+                                    </div>
+                                </ul>
+                            </li>
                             <li><a href="#">Mensajes</a></li>
                             <li><a href="miperfillocal.php">Configuración</a></li>
                             <?php cerraSession2() ?>
                         </ul>
-                    </div>
+                    </nav>
                     <script>
                         function abrirParametros() {
                             var ventana = open('', '', 'status=yes,width=400,height=250,menubar=yes');

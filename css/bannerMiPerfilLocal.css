@@ -193,5 +193,51 @@ hr {
     color: #fff;
     font-size: 18px;
 }
+#centro ul li a {
+    
+}
 
+#centro ul li .contiertos {
+    
+}
 
+.menuLocal #boton1 {
+    width: 270px;
+    border-radius: 0px;
+    /*
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    */
+}
+
+.menuLocal #boton1:hover {
+    border: solid;
+    border-width: thin;
+    border-color:#fff;
+    border-right-style: none;
+}
+
+#submenudiv {
+    border: solid;
+    border-width: thin;
+    border-color: #fff;
+    border-radius: 8px;
+    border-left-style: none;
+    
+    width: 371px;
+    
+    margin-left: 245px;
+    margin-top: -410px;
+    
+    background-color: rgba(255,255,255,0.4);
+}
+
+#submenudiv li a{
+    top:0px;
+}
+
+#submenudiv li a:hover  {
+    width: 370px; 
+    color: black;
+    border-radius: 0px;
+}
