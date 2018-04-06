@@ -1,7 +1,7 @@
 <?php
-    require_once 'bbdd.php';
-    require_once 'funciones.php';
-    session_start();
+require_once 'bbdd.php';
+require_once 'funciones.php';
+session_start();
 ?>
 <html lang="es">
     <head>
@@ -37,47 +37,49 @@
                 </nav>
             </div>
         </header>       
-        <main>
+        <main>    
             <section id="banner">
                 <?php
-                $mostrar=0;
-                if(isset($_SESSION['username']))
-                {
+                $mostrar = 0;
+                if (isset($_SESSION['username'])) {
                     //por seguridad compruebo si el usuario existe
-                    if(usuarioexiste($_SESSION['username'])>0)
-                    {
-                        $mostrar=1;
-                    }
-                    else
-                    {
+                    if (usuarioexiste($_SESSION['username']) > 0) {
+                        $mostrar = 1;
+                    } else {
                         echo"El usuario ya no existe.<br>";
                     }
-                }
-                else
-                {
+                } else {
                     echo"No puedes entrar aquí.<br>";
                 }
-                if($mostrar==1)
-                {
-                 
-                    ?>
+                if ($mostrar == 1) {
+                ?>
                     <img src="Imagenes/banner.jpg">
                        <div id="centro"> 
                     <p>Datos de mi perfil</p>
                     <div id="usuario">
-                        <?php
-                        muestradatoslocal();
-                        
-                        ?>
+                    <?php
+                    muestradatoslocal();
+                    ?>
                     </div>
-                        
-                    <div id="menu">
-                        <ul>
-                            <li><a href="#">Perfil</a></li>
-                            <li><a href="#">Fotos</a></li>
-                            <li><a href="#">Mensajes</a></li>
-                            <li><a href="miperfillocal.php">Configuración</a></li>
-                            <?php cerraSession2()?>
+                    <nav class="menuLocal">
+                    <ul>
+                        <li><a href="#">Perfil</a></li>
+                        <li><a href="#">Fotos</a></li>
+                        <li><a class="concierto" href="" id="boton1">Conciertos</a>
+                            <ul>
+                                <div id="submenudiv">
+                                <li><a href="#" id="uno">Mis conciertos</a></li>
+                                <li><a href="#" id="dos">Organizar un concierto</a></li>
+                                </div>
+                            </ul>
+                        </li>
+                        <li><a href="#">Mensajes</a></li>
+                        <li><a href="miperfillocal.php">Configuración</a></li>
+                        <?php cerraSession2() ?>
+                    </ul>
+                    
+                </nav>    
+                            
                         </ul>
                     </div>
                         <div id="titulonoticias">
@@ -86,11 +88,10 @@
                         <div id="noticias">
                         </div>
                     </div>  
-                    <?php                
-                } 
-                ?>
-                        
-            </section>
+            <?php 
+            }
+            ?>
+            </section> 
         </main>
         <footer>
             <div class="contenedor">

@@ -45,7 +45,8 @@ require_once 'bbdd.php';
                     if (isset($_POST['name'])) {
                         extract($_POST);
                         if (usuarioexiste($username) > 0) {
-                            echo"Error. El usuario que deseas dar de alta ya existe.";
+                            echo "<script>alert('Error. El usuario que deseas dar de alta ya existe')</script>";
+                            //echo"Error. El usuario que deseas dar de alta ya existe.";
                         } else {
 
 
@@ -53,7 +54,8 @@ require_once 'bbdd.php';
                                 echo"<script>alert('Se ha registrado el local correctamente')</script>";
                                 header("Refresh:0; url=login.php");
                             } else {
-                                echo"Error registrando local.<br>";
+                                echo "<script>alert('Error registrando el local')</script>";
+                                //echo"Error registrando local.<br>";
                             }
                         }
                     } else {
@@ -95,13 +97,13 @@ require_once 'bbdd.php';
                                     <td>
                                         <p>Ciudad:</p>
                                         <p><select name="city" required>-->
-    <?php
-    $ciudades = leeciudades("Barcelona");
-    while ($fila = mysqli_fetch_assoc($ciudades)) {
-        extract($fila);
-        echo"<option value='$id_ciudad'>$nombre</option>";
-    }
-    ?>
+                                        <?php
+                                        $ciudades = leeciudades("Barcelona");
+                                        while ($fila = mysqli_fetch_assoc($ciudades)) {
+                                            extract($fila);
+                                            echo"<option value='$id_ciudad'>$nombre</option>";
+                                        }
+                                        ?>
                                             </select></p>
                                     </td>
                                 </tr>
