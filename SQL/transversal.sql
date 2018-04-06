@@ -77,7 +77,7 @@ CREATE TABLE concierto(
 id_concierto INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 nombre VARCHAR(30),
 fecha DATE,
-hora DATE,
+hora TIME,
 pago DECIMAL(6,2),
 localm INT NOT NULL,
 genero INT NOT NULL,
