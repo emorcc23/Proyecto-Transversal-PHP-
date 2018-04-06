@@ -142,13 +142,20 @@ and open the template in the editor.
                                             echo"<td><p>Apellidoa:<input type='text' name='surname1' value='$apellidoa'></p></td></tr>";
                                             echo"<tr><td><p>Apellidob:<input type='text' name='surname2' value='$apellidob'</p></td>";
                                             echo"<td><p>Componentes:<input type='number' name='components' value='$componentes'></p></td></tr>";
-                                            echo"<tr><td><p>Genero:<select id='select' name='gender'>";
-                                            $genero = muestrageneros();
-                                            while($fila = mysqli_fetch_assoc($genero)){
-                                                extract($fila);
-                                                echo"<option value='$id_genero'>$nombre</option>";
-                                            }
                                             
+                                            echo"<tr><td><p>Genero:<select id='select' name='gender'>";
+                                            $generos=muestrageneros();
+                                            while($fila = mysqli_fetch_assoc($generos)){
+                                                extract($fila);
+                                                if($id_genero == $genero)
+                                                {
+                                                    echo"<option value='$id_genero' selected>$nombre</option>";
+                                                }
+                                                else {
+                                                     echo"<option value='$id_genero'>$nombre</option>";
+                                                }
+                                            } 
+                                            echo"</select>";
                                         }
                                         else
                                         {
