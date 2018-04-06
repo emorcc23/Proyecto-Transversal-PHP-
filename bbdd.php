@@ -1,4 +1,76 @@
 <?php
+//Desarrollador: Isain
+//Ver genero con el id
+function mirarGeneroId($genero){
+    $c = conectar();
+    $select = "select nombre from genero where id_genero = '$genero';";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    if($fila = mysqli_fetch_assoc($resultado)){
+        extract($fila);
+        return $nombre;
+    }else{
+        return -1;
+    }
+}
+//Desarrollador: Isain
+//Mirar conciertos en local
+function mirarConciertosLocal($nombre, $id_usuario){
+    $c = conectar();
+    $select = "select musico.nombreart, concierto.fecha, concierto.pago, concierto.genero from musico inner join concierto on concierto.musico = musico.id_usuario  where concierto.localm like '$id_usuario';";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    if($fila = mysqli_fetch_assoc($resultado)){
+        return $fila;
+    }else{
+        return -1;
+    }
+    
+}
+
+//Desarrollador: Isain
+//Mirar conciertos en local
+function mirarConciertosLocal2($nombre, $id_usuario){
+    $c = conectar();
+    $select = "select musico.nombreart, concierto.fecha, concierto.pago, concierto.genero from musico inner join concierto on concierto.musico = musico.id_usuario  where concierto.localm like '$id_usuario' and concierto.estado = 2;";
+    if(mysqli_query($c, $select)){
+        $resultado = mysqli_query($c, $select);
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+    
+}
+
+//Desarrollador: Isain
+//Buscador base de datos
+function buscador($buscador){
+    $c = conectar();
+    $select = "select id_usuario,nombre,email,tipo from login where nombre like '$buscador';";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    if($fila = mysqli_fetch_assoc($resultado)){
+        return $fila;
+    }else{
+        return -1;
+    }
+}
+
+//Desarrollador: Isain
+//Buscador base de datos
+function buscador2($buscador){
+    $c = conectar();
+    $select = "select id_usuario,nombre,email,tipo from login where nombre like '$buscador';";
+    if(mysqli_query($c, $select)){
+        $resultado = mysqli_query($c, $select);
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
 //Desarrolador: Isain
 ////Muestra los generos
 function muestrageneros(){

@@ -3,10 +3,12 @@ function verificapass() {
     var pass2 = document.getElementById("pass2").value;
     if (pass1 == pass2) {
         return true;
-    }
-    else
+    } else
     {
         alert("Las contraseñas no son iguales");
         return false;
-    }  
+    }
 }
+
+
+
