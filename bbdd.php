@@ -1,5 +1,4 @@
 <?php
-
 //Desarrollador:Artur
 //Baja de concierto
 function bajaconcierto($idconcierto)
@@ -33,7 +32,7 @@ function anadeconcierto($nombre,$fecha,$hora,$pago,$localm,$genero)
 {
     $c = conectar();
     //Sentencia SQL. Al dar de alta el músico se pone en -1 porque no se ha seleccionado y el estado en 0.
-    $insert = "INSERT INTO concierto (nombre,fecha,hora,pago,localm,genero,musico,estado) VALUES ('$nombre','$fecha','$hora',$pago,$localm,$genero,-1,0);";
+    $insert = "INSERT INTO concierto (nombre,fecha,hora,pago,localm,genero,musico,estado) VALUES ('$nombre','$fecha','$hora',$pago,$localm,$genero, null,0);";
     if (mysqli_query($c, $insert)) {
         $resultado = "ok";
     } else {

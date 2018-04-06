@@ -81,24 +81,25 @@ Pagina de locales.
                         }
                     </script>
                     <?php
-                    if (isset($_POST['name'])) {
-                        extract($_POST);
-                        extract($_SESSION);
-                        //Hacer la modificación.
-                        if (modificaperfillocal($username, $name, $email, $phone, $city, $location, '', $aforo) == "ok") {
-                            echo"<script>alert('Modificación realizada')</script>";
-                        } else {
-                            echo"<script>alert('Error modificando perfil de local')</script>";
-                        }
-                    }
+                    
                     ?>
                     <div id="miperfil">
                         <p id="tituloperfil">Modificar datos</p>
                         <div id="formulariodatos">
                             <form method="post">  
                                 <table>
-                    <?php
-                    if (isset($_SESSION['username'])) {
+                    <?php 
+                        if (isset($_SESSION['username'])) {
+                            if (isset($_POST['name'])) {
+                            extract($_POST);
+                            extract($_SESSION);
+                            //Hacer la modificación.
+                            if (modificaperfillocal($username, $name, $email, $phone, $city, $location, '', $aforo) == "ok") {
+                                echo"<script>alert('Modificación realizada')</script>";
+                            } else {
+                                echo"<script>alert('Error modificando perfil de local')</script>";
+                            }
+                        }
                         extract($_SESSION);
                         $perfil = leeperfillocal($username);
                         if ($datos = mysqli_fetch_assoc($perfil)) {

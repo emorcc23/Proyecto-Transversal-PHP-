@@ -1,5 +1,42 @@
 <?php
 
+//Desarrollador:Artur
+//Devuelve el nombre de un género por el id
+function dimenombregenero($idgenero)
+{
+    $c = conectar();
+    //Sentencia SQL. No se leen todos los campos, solo los principales.
+    $select = "select nombre from genero where id_genero=$idgenero;";
+    $resultado = mysqli_query($c, $select);
+    if($fila=mysqli_fetch_assoc($resultado))
+    {
+        $salida = $fila['nombre'];
+    }
+    else
+    {
+        $salida="no";
+    }
+    desconectar($c);
+    return $salida;
+}
+
+//Desarrollador: Artur
+//Muestra cual es el estado del concierto según el código
+function cualestado($num)
+{
+    switch($num)
+    {
+        case 0:$cual="Propuesto sin músico";
+            break;
+        case 1:$cual="Por confirmar";
+            break;
+        case 2:$cual="Programado";
+            break;
+        default:
+    }
+    return $cual;
+}
+
 //Desarrollador: Álvaro
 //Muestra los datos de perfil de fan
 function muestradatosfan() {
