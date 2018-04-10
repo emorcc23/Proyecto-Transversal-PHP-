@@ -58,6 +58,17 @@
 
             <section id="blog">
                 <h3>Aquí tienes a nuestros locales y músicos ¡Échales un ojo!</h3>
+                
+                
+                <div id="busc">
+                    <form method="POST">  
+                        <p>Buscar: <input id="buscador" type="text" name="buscador" required>
+                            <input type="submit" value="GO" name="buscar2"></p>
+                    </form>
+                </div>
+                
+                
+                
                 <div class="contenedor">
                     <article>
                         <h4>Locales</h4>
@@ -90,26 +101,43 @@
                     <article>
                         <h4 id="conc">Conciertos</h4>
                         <div class="listas" id="conciertos">
-                            <div id="conclocal">
-                                <table>
-                                    <tr>
-                                        <td><p>Nombre del concierto</p></td>
-                                        <td><p>Genero</p></td>
-                                        <td><p>Organizador</p></td>
-                                        <td><p>Fecha</p></td>
-                                        <td><p>Hora</p></td>
-                                        <td><p>Pago</p></td>
-                                    </tr>
-                                </table>
-                            </div>
+                            <table border="1">
+                                <tr id="titulos">
+                                    <td>Nombre del concierto</td>
+<!--                                        <hr id="l1" width="1" size="298">-->
+                                    <td>Genero</td>
+<!--                                        <hr id="l2" width="1" size="298">-->
+                                    <td>Organizador</td>
+<!--                                        <hr id="l3" width="1" size="298">-->
+                                    <td>Fecha</td>
+<!--                                        <hr id="l4" width="1" size="298">-->
+                                    <td>Hora</td>
+<!--                                        <hr id="l5" width="1" size="298">-->
+                                    <td>Pago</td>
+                                </tr>
+                            
                             <?php
                             $listaConciertosAceptados = mostrarListaConciertosAceptados();
                             
                             while ($lista = mysqli_fetch_assoc($listaConciertosAceptados)){
                                 extract($lista);
-                                echo"<p>$nomconcierto - $fecha - $hora - $pago - $nomlocal - $nomgenero</p>";
-                                echo"<hr>";
+//                                echo"<p>$nomconcierto - $fecha - $hora - $pago - $nomlocal - $nomgenero</p>";
+//                                echo"<p>$nomconcierto</p><br>";
+//                                echo"<p>$nomgenero</p><br>";
+//                                echo"<p>$nomlocal</p><br>";
+//                                echo"<p>$fecha</p><br>";
+//                                echo"<p>$hora</p><br>";
+//                                echo"<p>$pago</p><br>";
+                                echo "<tr id='datos'>";
+                                echo "<td><p>$nomconcierto</p></td>";
+                                echo "<td><p>$nomgenero</p></td>";
+                                echo "<td><p>$nomlocal</p></td>";
+                                echo "<td><p>$fecha</p></td>";
+                                echo "<td><p>$hora</p></td>";
+                                echo "<td><p>$pago</p></td>";
+                                echo "</tr>";
                             }
+                            echo "</table>";
                             ?>
                         </div>
 
@@ -151,10 +179,7 @@
                     </article>
                 </div>
             </section>
-            <form method="POST">  
-                Buscar: <input id="buscador" type="text" name="buscador" required>
-                <input type="submit" value="buscar" name="buscar2">
-            </form>
+
             <section id="info">
                 <h3>¡Vívelo! No solo es música...</h3>
                 <div class="contenedor">
