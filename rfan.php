@@ -59,13 +59,16 @@ require_once 'bbdd.php';
                     if (isset($_POST["next"])) {
                         extract($_POST);
                         if (usuarioexiste($username) > 0) {
-                            echo"Error..este usuario ya esta registrado";
+                            echo "<script>alert('Este usuario ya está registrado')</script>";
+                            //echo"Error..este usuario ya esta registrado";
                         } else {
                             if ($pass1 == $pass2) {
                                 if (registrar_fan($username, $pass1, 3, $name, $mail, $phone, $city, $surname1, $surname2, $address, "") == "ok") {
-                                    echo"Se ha registrado el fan correctamente<br>";
+                                    echo"<script>alert('Se ha registrado el fan correctamente')</script>";
+                                    header("Refresh:0; url=login.php");
                                 } else {
-                                    echo"Error al registrar fan";
+                                    echo "<script>alert('Error al registrar fan')</script>";
+                                    //echo"Error al registrar fan";
                                 }
                             }
                         }

@@ -62,7 +62,7 @@ footer .contenedor {
 .sociales {
     width:100%;
     text-align: center;
-    font-size: 28px;
+    font-size: 20px;
 }
 
 .sociales a {
@@ -92,6 +92,20 @@ footer .contenedor {
     list-style: none;
 }
 
+form #botoncerrar {
+    width: 170px;
+    padding: 10px;
+    border-radius: 15px;
+    border: thin;
+    margin-top: 190px;
+}
+
+form #botoncerrar:hover {
+    cursor: pointer;
+    background: rgba(51,51,51,0.5);
+    box-shadow: 0px 0px 35px #fff;
+    color: #fff;
+}
 
 @media(min-width:1024px) {
     .contenedor {

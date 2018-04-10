@@ -1,7 +1,13 @@
+<?php
+session_start();
+require_once 'bbdd.php';
+?>
+
 <!DOCTYPE html>
 <!--
 Pagina login
 -->
+
 <html lang="es">
     <head>
         <title>OohMusic</title>
@@ -39,14 +45,43 @@ Pagina login
             <section id="banner">
                 <img src="Imagenes/banner.jpg">
                 <div id="formulario"> 
-                    <form method="post" action="usuario.php">
+                    <?php
+                    if (isset($_POST['username'])) {
+                        $mostrar = 0;
+                        extract($_POST);
+                        if (compruebainicio($username, $pass) == 1) {
+                            $_SESSION['username'] = $username;
+                            $_SESSION['tipo'] = dimetipousuario($username);
+                            extract($_SESSION);
+
+                            switch ($tipo) {
+                                case 1:
+                                    header('Location: usuariolocal.php');
+                                    break;
+                                case 2:
+                                    header('Location: usuariomusico.php');
+                                    break;
+                                case 3: header('Location: usuariofan.php');
+                                    break;
+                                default:
+                            }
+                        } else {
+                            echo"<script>alert('Nombre de usuario o contraseña incorrectos')</script>";
+                            header("Refresh:0; url=login.php");
+                        }
+                    } else {
+                        ?>
+                        <form method="post">
                             <p>Nombre de usuario:</p>
                             <p><input type="text" name="username" required></p>
                             <p>Contraseña:</p>
                             <p><input type="password" name="pass" required></p>
                             <br><br><br>
                             <p><input type="submit" value="Entrar a mi cuenta" id="button" name="boton"></p>
-                    </form>
+                        </form>
+    <?php
+}
+?>
                 </div>
             </section>
         </main>

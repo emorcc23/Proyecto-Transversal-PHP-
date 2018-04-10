@@ -16,7 +16,7 @@
 }
 
 #banner h2 {
-    margin-top: -25%;
+    margin-top: -30px;
     font-size: 28px;
 }
 
@@ -27,7 +27,6 @@
     color: #fff;
     text-decoration: none;
     padding: 6px;
-    top: -17;
     border: 3px solid #fff;
     text-align: center;
 }

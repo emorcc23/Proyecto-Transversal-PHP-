@@ -1,3 +1,6 @@
+<?php
+require_once 'bbdd.php';
+?>
 <html lang="es">
     <head>
         <title>OohMusic</title>
@@ -5,6 +8,8 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <link rel="stylesheet" href="css/fontello.css">
         <link rel="stylesheet" href="css/estilosRlocal.css">
+        <script type="text/javascript" src="funciones.js"></script>
+
     </head>
     <body>
         <header>
@@ -28,7 +33,7 @@
                         <li><a href="fans.php">Fans</a></li>
                         <li><a href="contacto.php">Contacto</a></li>
                     </ul>
-                    
+
                 </nav>
             </div>
         </header>       
@@ -36,110 +41,97 @@
             <section id="banner">
                 <img src="Imagenes/banner.jpg">
                 <div id="formulario"> 
-                <?php
-                    require_once 'bbdd.php';
-                    if(isset($_POST['name']))
-                    {
+                    <?php
+                    if (isset($_POST['name'])) {
                         extract($_POST);
-                        if(usuarioexiste($username)>0)
-                        {
-                            echo"Error. El usuario que deseas dar de alta ya existe.";
-                        }
-                        else
-                        {
-                             if($pass1==$pass2)
-                            {
-                                if(registrar_local($username,$pass1,1,$name,$mail,$phone,$city,$location,"",$aforo)=="ok")
-                                {
-                                    echo"Local registrado.<br>";                                   
-                                }
-                                else
-                                {
-                                    echo"Error registrando local.<br>";
-                                }
+                        if (usuarioexiste($username) > 0) {
+                            echo "<script>alert('Error. El usuario que deseas dar de alta ya existe')</script>";
+                            //echo"Error. El usuario que deseas dar de alta ya existe.";
+                        } else {
+
+
+                            if (registrar_local($username, $pass1, $name, $mail, $phone, $city, $location, "", $aforo) == "ok") {
+                                echo"<script>alert('Se ha registrado el local correctamente')</script>";
+                                header("Refresh:0; url=login.php");
+                            } else {
+                                echo "<script>alert('Error registrando el local')</script>";
+                                //echo"Error registrando local.<br>";
                             }
-                            else
-                            {
-                                echo"Los dos password no coinciden.<br>";
-                            } 
-                        }                  
-                    }
-                    else
-                    {   
-                ?>
-                            <form method="post">  
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <p>Nombre:</p>
-                                            <p><input type="text" name="name" required></p>
-                                        </td>
-                                        <td>
-                                            <p>Nombre de usuario:</p>
-                                            <p><input type="text" name="username" required></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Email:</p>
-                                            <p><input type="email" name="mail"></p>
-                                        </td>
-                                        <td>
-                   
-                                            <p>Contraseña:</p>
-                                            <p><input type="password" name="pass1" required></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Teléfono:</p>
-                                            <p><input type="tel" name="phone"></p>
-                                        </td>
-                                        <td>
-                                            <p>Repetir contraseña:</p>
-                                            <p><input type="password" name="pass2" required></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Ciudad:</p>
-                                            <p><select name="city" required>-->
-                                                <?php
-                                                    $ciudades = leeciudades("Barcelona");
-                                                    while($fila = mysqli_fetch_assoc($ciudades))
-                                                    {
-                                                        extract($fila);
-                                                        echo"<option value='$id_ciudad'>$nombre</option>";
-                                                    }
-                                                ?>
-                                                </select></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Ubicación:</p>
-                                            <p><input type="text" name="location" required></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Imagen:</p>
-                                            <p><input type="button" value="Seleccionar imagen"></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Aforo:</p>
-                                            <p><input type="number" name="aforo" required></p>
-                                        </td>
-                                    </tr>
-                                </table>
+                        }
+                    } else {
+                        ?>
+                        <form method="post" onsubmit="return verificapass()">  
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p>Nombre:</p>
+                                        <p><input type="text" name="name" required></p>
+                                    </td>
+                                    <td>
+                                        <p>Nombre de usuario:</p>
+                                        <p><input type="text" name="username" required></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Email:</p>
+                                        <p><input type="email" name="mail"></p>
+                                    </td>
+                                    <td>
+
+                                        <p>Contraseña:</p>
+                                        <p><input type="password" name="pass1" id="pass1" required></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Teléfono:</p>
+                                        <p><input type="tel" name="phone"></p>
+                                    </td>
+                                    <td>
+                                        <p>Repetir contraseña:</p>
+                                        <p><input type="password" name="pass2" id="pass2" required></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Ciudad:</p>
+                                        <p><select name="city" required>-->
+                                        <?php
+                                        $ciudades = leeciudades("Barcelona");
+                                        while ($fila = mysqli_fetch_assoc($ciudades)) {
+                                            extract($fila);
+                                            echo"<option value='$id_ciudad'>$nombre</option>";
+                                        }
+                                        ?>
+                                            </select></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Ubicación:</p>
+                                        <p><input type="text" name="location" required></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Imagen:</p>
+                                        <p><input type="button" value="Seleccionar imagen"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Aforo:</p>
+                                        <p><input type="number" name="aforo" required></p>
+                                    </td>
+                                </tr>
+                            </table>
                             <br><br><br>
                             <p><input type="submit" value="Registrarme como local" id="button"></p>
-                    </form>
-                <?php
-                    }
-                ?>
+                        </form>
+    <?php
+}
+?>
                 </div>
             </section>
         </main>
@@ -154,7 +146,7 @@
                 </div>
             </div>
         </footer>
-        
-        
+
+
     </body>
 </html>

@@ -58,13 +58,19 @@ require_once 'bbdd.php';
                     if (isset($_POST['next'])) {
                         extract($_POST);
                         if (usuarioexiste($username) > 0) {
-                            echo"Error. El usuario que deseas dar de alta ya existe.";
+                            echo "<script>alert('Error. El usuario que deseas dar de alta ya existe')</script>";
+                            //echo"Error. El usuario que deseas dar de alta ya existe.";
                         } else {
                             $idgenero = dimeidgenero($gender);
                             if (registrar_musico($username, $pass1, 2, $name, $mail, $phone, $city, $surname1, $surname2, $web, $nickname, $components, $idgenero) == "ok") {
-                                echo"Se ha registrado el musico correctamente";
+                                echo"<script>alert('Se ha registrado el musico correctamente')</script>";
+                                header("Refresh:0; url=login.php");
+                                echo "<script>alert('Se ha registrado el músico correctamente')</script>";
+                                //echo"Se ha registrado el musico correctamente";
+                                
                             } else {
-                                echo"Error al registrar musico";
+                                echo "<script>alert('Error al registrar músico')</script>";
+                                //echo"Error al registrar musico";
                             }
                         }
                     } else {

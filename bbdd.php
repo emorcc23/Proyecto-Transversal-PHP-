@@ -1,9 +1,165 @@
 <?php
+//Desarrollador: Isain
+//Ver genero con el id
+function mostrarListaConciertosAceptados(){
+    $c = conectar();
+    $select = "select c.nombre as nomconcierto, c.fecha, c.hora, c.pago, l.nombre as nomlocal, g.nombre as nomgenero from concierto c inner join genero g on c.genero = g.id_genero inner join login l on l.id_usuario = c.localm where c.estado = 2;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Isain
+//Ver genero con el id
+function mirarGeneroId($genero){
+    $c = conectar();
+    $select = "select nombre from genero where id_genero = '$genero';";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    if($fila = mysqli_fetch_assoc($resultado)){
+        extract($fila);
+        return $nombre;
+    }else{
+        return -1;
+    }
+}
+//Desarrollador: Isain
+//Mirar conciertos en local
+function mirarConciertosLocal($nombre, $id_usuario){
+    $c = conectar();
+    $select = "select musico.nombreart, concierto.fecha, concierto.pago, concierto.genero from musico inner join concierto on concierto.musico = musico.id_usuario  where concierto.localm like '$id_usuario';";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    if($fila = mysqli_fetch_assoc($resultado)){
+        return $fila;
+    }else{
+        return -1;
+    }
+    
+}
+
+//Desarrollador: Isain
+//Mirar conciertos en local
+function mirarConciertosLocal2($nombre, $id_usuario){
+    $c = conectar();
+    $select = "select musico.nombreart, concierto.fecha, concierto.pago, concierto.genero from musico inner join concierto on concierto.musico = musico.id_usuario  where concierto.localm like '$id_usuario' and concierto.estado = 2;";
+    if(mysqli_query($c, $select)){
+        $resultado = mysqli_query($c, $select);
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+    
+}
+
+//Desarrollador: Isain
+//Buscador base de datos
+function buscador($buscador){
+    $c = conectar();
+    $select = "select id_usuario,nombre,email,tipo from login where nombre like '$buscador';";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    if($fila = mysqli_fetch_assoc($resultado)){
+        return $fila;
+    }else{
+        return -1;
+    }
+}
+
+//Desarrollador:Artur
+//Baja de concierto
+//En el caso de no ser 0 el estado no se borrará.
+function bajaconcierto($idconcierto)
+{
+    $c = conectar();
+    $delete = "DELETE FROM concierto WHERE id_concierto=$idconcierto AND estado=0;";
+    if (mysqli_query($c, $delete)) {
+        return "ok";
+    } else {
+        return mysqli_error($c);
+    }
+    desconectar($c);
+}
+
+//Desarrollador: Artur
+//Lista los conciertos que tiene un local
+function listaconciertoslocal($localm)
+{
+    $c = conectar();
+    //Sentencia SQL. No se leen todos los campos, solo los principales.
+    $select = "select id_concierto,nombre,fecha,hora,genero,estado from concierto where localm='$localm';";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
+//Da de alta un concierto
+//Hemos añadido el campo nombre a la tabla concierto
+function anadeconcierto($nombre,$fecha,$hora,$pago,$localm,$genero)
+{
+    $c = conectar();
+    //Sentencia SQL. Al dar de alta el músico se pone en -1 porque no se ha seleccionado y el estado en 0.
+    $insert = "INSERT INTO concierto (nombre,fecha,hora,pago,localm,genero,musico,estado) VALUES ('$nombre','$fecha','$hora',$pago,$localm,$genero, null,0);";
+    if (mysqli_query($c, $insert)) {
+        $resultado = "ok";
+    } else {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrolador: Isain
+////Muestra los generos
+function muestrageneros(){
+    $c = conectar();
+    $select = "select nombre,id_genero from genero;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Álvaro
+//Modifica los datos de un perfil fan
+function modificarperfilfan($usuario, $nombre, $email, $telefono, $ciudad, $apellidoa, $apellidob, $direccion, $imagen) {
+    //Conectamos con la base de datos
+    $c = conectar();
+    //Obtenemos el id del usuario
+    $id_usuario = dimeidusuario($usuario);
+    //Actualizamos los campos de la tabla login
+    $update = "update login set nombre='$nombre', email='$email', telefono='$telefono', ciudad=$ciudad where id_usuario=$id_usuario;";
+    if (mysqli_query($c,$update)) {
+        //Actualizamos los campos de la tabla fan
+        $update = "update fan set apellidoa='$apellidoa', apellidob='$apellidob', direccion='$direccion', imagen='' where id_usuario='$id_usuario';";
+        if (mysqli_query($c, $update)) {
+            $resultado = "ok";
+        } else {
+            $resultado = mysqli_error($c);
+        }
+    } else {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Alvaro
+function leerperfilfan($usuario) {
+    //Conectamos con la base de datos
+    $c = conectar();
+    $select = "select login.tipo as tipo, login.nombre as nombre, login.email as email, login.telefono as telefono, login.ciudad as ciudad, fan.apellidoa as apellidoa, fan.apellidob as apellidob, fan.direccion as direccion, fan.imagen as imagen from login inner join fan on login.id_usuario=fan.id_usuario where login.usuario='$usuario';";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
 //Desarrollador:Isain Alvaro
 //Ordenar Musicos ordenados por genero musical
 function ordenarMusicosPorGenero(){
     $c = conectar();
-    $select = "select musico.nombreart from musico inner join genero on musico.genero = genero.id_genero order by genero.id_genero;";
+    $select = "select genero.nombre,musico.nombreart from musico inner join genero on musico.genero = genero.id_genero order by genero.id_genero desc;";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
@@ -28,7 +184,6 @@ function dimeidgenero($gender) {
 //Desarrollador:Isain
 //Registrar un musico
 function registrar_musico($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad, $surname1, $surname2, $web, $nickname, $components, $gender) {
-
     //llamamos a la funcion de registrar_login para obtener el idusuario
     $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad);
     if ($idusuario != -1) {
@@ -55,7 +210,8 @@ function registrar_fan($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciud
     $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad);
     if ($idusuario != -1) {
         $c = conectar();
-        $insert = "insert into fan(id_usuario,apellidoa,apellidob,direccion,imagen) values ('$idusuario','$surname1','$surname2','$address','$imagen')";
+        $addressok = mysqli_escape_string($c, $address);
+        $insert = "insert into fan(id_usuario,apellidoa,apellidob,direccion,imagen) values ('$idusuario','$surname1','$surname2','$addressok','$imagen')";
         if (mysqli_query($c, $insert)) {
             $resultado = "ok";
         } else {
@@ -94,9 +250,10 @@ function destacalocal($usuario, $destacado) {
 //Desarrollador:Artur
 //Modifica el password de un usuario
 //Se necesita el password antiguo por seguridad
-function modificarpassword($usuario, $passantiguo, $pass) {
+function modificarpassword($usuario, $pass) {
     $c = conectar();
-    $update = "update login set pass='$pass' where $usuario='$usuario' and pass='$passantiguo';";
+    $pasc = password_hash($pass,PASSWORD_DEFAULT);
+    $update = "update login set pass='$pasc' where usuario='$usuario';";
     if (mysqli_query($c, $update)) {
         $resultado = "ok";
     } else {
@@ -134,6 +291,23 @@ function dimeidusuario($usuario) {
         return -1;
     }
 }
+function modificarperfilmusico($usuario, $nombre, $email, $telefono, $ciudad, $surname1, $surname2, $web, $nickname, $components, $gender){
+    $c = conectar();
+    $id_usuario = dimeidusuario($usuario);
+    $update = "update login set nombre='$nombre', email='$email', telefono='$telefono',ciudad=$ciudad where id_usuario=$id_usuario;";
+    if(mysqli_query($c, $update)){
+       $update = "update musico set apellidoa='$surname1', apellidob='$surname2', web='$web', nombreart='$nickname', componentes='$components', genero='$gender' where id_usuario='$id_usuario';";
+       if (mysqli_query($c, $update)){
+           $resultado = "ok";
+       }else{
+           $resultado = mysqli_error($c);
+       }
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
 
 //Desarrollador:Artur
 //Modifica los datos de un perfil de local
@@ -155,6 +329,16 @@ function modificaperfillocal($usuario, $nombre, $email, $telefono, $ciudad, $ubi
     } else {
         $resultado = mysqli_error($c);
     }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador:Isain
+//Lee todos los datos del perfil de musico
+function leerPerfilMusico($usuario){
+    $c = conectar();
+    $select = "select login.tipo as tipo,login.nombre as nombre,login.email as email,login.telefono as telefono, login.ciudad as ciudad, musico.apellidoa as apellidoa, musico.apellidob as apellidob, musico.web as web, musico.nombreart as nombreart, musico.componentes as componentes, musico.genero as genero from login inner join musico on login.id_usuario=musico.id_usuario where login.usuario='$usuario';";
+    $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
 }
@@ -205,7 +389,7 @@ function dimenombre($usuario) {
 }
 
 function dimeapellidoa($usuario, $tipo) {
-    
+
 }
 
 function dimeapellidob($usuario, $tipo) {
@@ -238,9 +422,25 @@ function compruebainicio($usuario, $pass) {
     //Conectar base de datos
     $c = conectar();
     //Consulta sql cuantos usuarios hay con ese usuario y password.
-    $select = "select count(id_usuario) as cuantos from login where usuario='$usuario' and pass='$pass';";
+ 
+    $select = "select pass as pasc from login where usuario='$usuario';";
     $resultado = mysqli_query($c, $select);
-    $fila = mysqli_fetch_assoc($resultado);
+    if($fila = mysqli_fetch_assoc($resultado))
+    {
+        extract ($fila);
+        if(password_verify($pass,$pasc))
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }   
+    }
+    else
+    {
+        return -1;
+    }
     //Devuelve el número de usuarios con ese usuario y password que pueden ser 0 o 1.
     extract($fila);
     desconectar($c);
@@ -296,9 +496,10 @@ function dimeidciudad($ciudad) {
 
 //Desarrollador: Artur
 //Da de alta un local en la base de datos con todos sus campos.
-function registrar_local($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad, $ubicacion, $imagen, $aforo) {
+function registrar_local($usuario, $pass, $nombre, $email, $telefono, $ciudad, $ubicacion, $imagen, $aforo) {
     //Se da de alta el usuario en la tabla principal de login
     //El método registrar_login devuelve el identificador del alta.
+    $tipo=1;
     $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad);
     if ($idusuario != -1) {
         //Conectar base de datos
@@ -330,7 +531,8 @@ function registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ci
     //Conectar base de datos
     $c = conectar();
     //Insert sql registro tabla login
-    $insert = "insert into login (usuario,pass,tipo,nombre,email,telefono,ciudad) values ('$usuario','$pass',$tipo,'$nombre','$email','$telefono','$ciudad');";
+    $pasc=password_hash("$pass", PASSWORD_DEFAULT);
+    $insert = "insert into login (usuario,pass,tipo,nombre,email,telefono,ciudad) values ('$usuario','$pasc',$tipo,'$nombre','$email','$telefono','$ciudad');";
     if (mysqli_query($c, $insert)) {
         //Si el insert ha ido bien se devuelve el id autonumérico generado en el alta.
         $resultado = mysqli_insert_id($c);
