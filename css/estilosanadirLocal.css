@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?gamily=Open+Sans);
-@import url(menuMiperfilLocal.css);
-@import url(bannerMiPerfilLocal.css);
-@import url(infoMiperfilLocal.css);
+@import url(menuanadirLocal.css);
+@import url(banneranadirLocal.css);
+@import url(infoanadirLocal.css);
 
 * {
     margin: 0;

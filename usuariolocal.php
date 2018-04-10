@@ -63,13 +63,13 @@ session_start();
                     </div>
                     <nav class="menuLocal">
                     <ul>
-                        <li><a href="#">Perfil</a></li>
+                        <li><a href="usuariolocal.php">Perfil</a></li>
                         <li><a href="#">Fotos</a></li>
                         <li><a class="concierto" href="" id="boton1">Conciertos</a>
                             <ul>
                                 <div id="submenudiv">
-                                <li><a href="#" id="uno">Mis conciertos</a></li>
-                                <li><a href="#" id="dos">Organizar un concierto</a></li>
+                                <li><a href="conciertosdelocal.php" id="uno">Mis conciertos</a></li>
+                                <li><a href="anadirconcierto.php" id="dos">Organizar un concierto</a></li>
                                 </div>
                             </ul>
                         </li>
