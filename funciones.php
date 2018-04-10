@@ -48,6 +48,8 @@ function cualestado($num)
             break;
         case 2:$cual="Programado";
             break;
+        case 3:$cual="Cancelado";
+            break;
         default:
     }
     return $cual;

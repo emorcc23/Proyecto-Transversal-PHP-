@@ -59,16 +59,17 @@ function buscador($buscador){
 
 //Desarrollador:Artur
 //Baja de concierto
+//En el caso de no ser 0 el estado no se borrará.
 function bajaconcierto($idconcierto)
 {
     $c = conectar();
-    $delete = "DELETE FROM concierto WHERE id_concierto=$idconcierto;";
-    desconectar($c);
+    $delete = "DELETE FROM concierto WHERE id_concierto=$idconcierto AND estado=0;";
     if (mysqli_query($c, $delete)) {
         return "ok";
     } else {
         return mysqli_error($c);
     }
+    desconectar($c);
 }
 
 //Desarrollador: Artur
@@ -77,7 +78,7 @@ function listaconciertoslocal($localm)
 {
     $c = conectar();
     //Sentencia SQL. No se leen todos los campos, solo los principales.
-    $select = "select nombre,fecha,hora,genero,estado from concierto where localm='$localm';";
+    $select = "select id_concierto,nombre,fecha,hora,genero,estado from concierto where localm='$localm';";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
