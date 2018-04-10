@@ -1,6 +1,16 @@
 <?php
 //Desarrollador: Isain
 //Ver genero con el id
+function mostrarListaConciertosAceptados(){
+    $c = conectar();
+    $select = "select c.nombre as nomconcierto, c.fecha, c.hora, c.pago, l.nombre as nomlocal, g.nombre as nomgenero from concierto c inner join genero g on c.genero = g.id_genero inner join login l on l.id_usuario = c.localm where c.estado = 2;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Isain
+//Ver genero con el id
 function mirarGeneroId($genero){
     $c = conectar();
     $select = "select nombre from genero where id_genero = '$genero';";
