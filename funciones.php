@@ -4,13 +4,13 @@
 function muestraUsuariosTipo($tipo){
     switch ($tipo){
         case 1:
-            echo"<h1>Local</h1>";
+            echo"<p>Local</p>";
             break;
         case 2:
-            echo"<h1>Musico</h1>";
+            echo"<p>Musico</p>";
             break;
         case 3:
-            echo"<h1>Fan</h1>";
+            echo"<p>Fan</p>";
             break;
         default;
     }
