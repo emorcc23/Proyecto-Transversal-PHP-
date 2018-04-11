@@ -267,7 +267,7 @@ function modificarpassword($usuario, $pass) {
 //Obtiene la lista de locales ordenados por ciudad
 function listalocalesordenadosporciudad() {
     $c = conectar();
-    $select = "select login.nombre as nombre, ciudad.nombre as ciudad from login inner join ciudad on login.ciudad = ciudad.id_ciudad where tipo = 1 order by ciudad.nombre;";
+    $select = "select login.nombre as nombre, ciudad.nombre as ciudad from login inner join ciudad on login.ciudad = ciudad.id_ciudad where login.tipo = 1 order by ciudad.nombre;";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;

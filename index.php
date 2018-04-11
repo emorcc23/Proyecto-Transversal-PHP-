@@ -58,6 +58,64 @@
 
             <section id="blog">
                 <h3>Aquí tienes a nuestros locales y músicos ¡Échales un ojo!</h3>
+                
+                
+                
+                
+                
+                <div id="busc">
+                    <form method="POST">  
+                        <p>Buscar: <input id="buscador" type="text" name="buscador" required>
+                            <input type="submit" value="GO" name="buscar2"></p>
+                    </form>
+                </div>
+                
+                
+                
+                    <?php
+                    if (isset($_POST["buscar2"])) {
+                        extract($_POST);
+
+                        $resuBusqueda = buscador($buscador);
+                        if ($resuBusqueda == -1) {
+                            echo "<div id='descripcion' class='recuadro'>";
+                            echo "<br>";
+                            echo"<br><h1>¡Lástima, no se ha encontrado ningún resultado de tu busqueda!</h1><br>";
+                            echo "</div>";
+                        } else {   
+                            echo"<div id='descripcion' class='recuadro'>";
+                            extract($resuBusqueda);
+                            muestraUsuariosTipo($tipo);
+                            echo"<br>";
+                            echo"<p>Nombre: $nombre</p>";
+                            echo"<p><br>Email: $email<br></p>";
+                            if ($tipo == 1) {
+                                echo"<br><p>Datos Proximo concierto</p><br>";
+                                $r = mirarConciertosLocal2($nombre, $id_usuario);
+                                echo "<table border='1'>";
+                                echo "<tr id='tituloss'>";
+                                echo "<td><p>Fecha</p></td>";
+                                echo "<td><p>Artista</p></td>";
+                                echo "<td><p>Pago</p></td>";
+                                echo "</tr>";
+                                echo "<tr>";
+                                while ($fila = mysqli_fetch_assoc($r)) {
+                                    extract($fila);
+                                    echo"<td><p>$fecha</p></td><td><p>$nombreart</p></td> <td><p>$pago</p></td></tr>";
+                                }
+                                //echo "</tr>";
+                                echo "</table>";
+                            }
+                            echo "</div>";
+                        }
+                    }
+                    ?>
+                
+                
+                
+                
+                
+                
                 <div class="contenedor">
                     <article>
                         <h4>Locales</h4>
@@ -86,54 +144,46 @@
 
                         </div>
                     </article>
+                    
                     <article>
-                        <h4>Conciertos</h4>
-                        <div class="listas">
+                        <h4 id="conc">Conciertos</h4>
+                        <div class="listas" id="conciertos">
+                            <table border="1">
+                                <tr id="titulos">
+                                    <td>Nombre del concierto</td>
+                                    <td>Genero</td>
+                                    <td>Organizador</td>
+                                    <td>Fecha</td>
+                                    <td>Hora</td>
+                                    <td>Pago</td>
+                                </tr>
+                            
                             <?php
                             $listaConciertosAceptados = mostrarListaConciertosAceptados();
                             
                             while ($lista = mysqli_fetch_assoc($listaConciertosAceptados)){
                                 extract($lista);
-                                echo"<p>$nomconcierto - $fecha - $hora - $pago - $nomlocal - $nomgenero</p>";
-                                echo"<hr>";
+
+                                echo "<tr id='datos'>";
+                                echo "<td><p>$nomconcierto</p></td>";
+                                echo "<td><p>$nomgenero</p></td>";
+                                echo "<td><p>$nomlocal</p></td>";
+                                echo "<td><p>$fecha</p></td>";
+                                echo "<td><p>$hora</p></td>";
+                                echo "<td><p>$pago</p></td>";
+                                echo "</tr>";
                             }
+                            echo "</table>";
                             ?>
                         </div>
 
                     </article>
                     <article>
-                        <h4>BUSCADOR</h4>
-                        <div class="listas">
+<!--                        Buscador-->
+                        <div>
                         <p>
-                        <form method="POST">  
-                            Buscar: <input id="buscador" type="text" name="buscador" required>
-                            <input type="submit" value="buscar" name="buscar2">
-                        </form>
-                        <?php
-                        if (isset($_POST["buscar2"])) {
-                            extract($_POST);
+                       
 
-                            $resuBusqueda = buscador($buscador);
-                            if ($resuBusqueda == -1) {
-                                echo"<br><h1>no encontro nada con este nombre</h1><br>";
-                            } else {
-                                echo"<br>";
-                                extract($resuBusqueda);
-                                muestraUsuariosTipo($tipo);
-                                echo"<br>";
-                                echo"<p><br>Nombre: $nombre<br></p>";
-                                echo"<p><br>Email: $email<br></p>";
-                                if ($tipo == 1) {
-                                    echo"<br><h1>Datos Proximo concierto</h1><br>";
-                                    $r = mirarConciertosLocal2($nombre, $id_usuario);
-                                    while ($fila = mysqli_fetch_assoc($r)) {
-                                        extract($fila);
-                                        echo"<p>Fecha: $fecha - Artista: $nombreart - Pago: $pago</p>";
-                                    }
-                                }
-                            }
-                        }
-                        ?>
 
 
                         </p>

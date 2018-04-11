@@ -107,6 +107,45 @@ form #botoncerrar:hover {
     color: #fff;
 }
 
+.recuadro {
+    
+    width: 900px;
+    background: rgba(55,55,55,.1);
+    font-size:18px;
+
+    border: solid;
+    border-width: thin;
+    
+    margin-left: 610px;
+    padding: 15px;
+    border-top: none;
+    border-radius: 25px;
+    min-height: 175px;
+    margin: 15 auto;
+}
+
+.recuadro table {
+    border-collapse: collapse;
+    padding: 15px;
+    margin-left: 400px;
+    margin-top: -150px;
+    font-size: 18px;
+    width: 450px;
+    background: rgba(55,55,55,.1);
+    border-color: #fff;
+}
+
+.recuadro #tituloss {
+    background: rgba(255,255,255,.8);
+}
+
+.recuadro table tr:hover {
+    background: rgba(255,255,255,.9);
+    cursor: pointer;
+}
+
+
+
 @media(min-width:1024px) {
     .contenedor {
         width: 1000px;

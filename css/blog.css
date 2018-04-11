@@ -1,4 +1,4 @@
-    #blog h3,h4 {
+#blog h3,h4 {
     text-align: center;
     padding: 10px;
     background: rgba(51,51,51,0.9);
@@ -60,4 +60,85 @@
     width: 100%;
     font-size: 20px;
     background-color: red;
+}
+
+#blog #conciertos {
+    min-width: 928px;
+    
+}
+
+#blog article #conc {
+    width: 928px;
+}
+
+#blog article #conciertos #conclocal {
+    border: solid;
+    border-width: thin;
+    background: rgba(255,255,255,.8);
+    border-right-style: none;
+    border-left-style: none;
+}
+
+#blog article #conciertos table {
+    border: none;
+    border-collapse: collapse;
+    border-width: thin;
+    width: 924px;
+    font-size: 15px;
+    height: 298px;
+}
+
+#blog article #conciertos table tr td {
+    padding: 1px;
+}
+
+#blog article #conciertos #titulos td {
+    padding: 7px;
+    font-size: 18px;
+    background: rgba(255,255,255,.8);
+    border-color: rgba(55,55,55,0.2);
+    
+}
+
+#blog article #conciertos #datos td {
+    padding: 0px;
+    font-size: 16px;
+}
+
+#blog article #conciertos #datos:hover {
+    background: rgba(255,255,255,.9);
+    cursor: pointer;
+}
+
+#blog #busc {
+    border:solid;
+    border-width: thin;
+    width: 400px;
+    border-radius: 25px;
+    padding: 15px;
+    background: rgba(55,55,55,0.1);
+    margin: 15 auto;
+    font-size: 18px;
+}
+
+#blog #busc form input[type=text]{
+    padding: 2px;
+    margin-left: 55px;
+    background: rgba(255,255,255,0.7);
+    border-color: #fff;
+    width: 200px;
+    height: 30px;
+}
+
+#blog #busc form input[type=submit] {
+    padding: 15px;
+    position: absolute;
+    font-size: 25px;
+    border-radius: 50px;
+    color: #fff;
+    background: rgba(55,55,55,20);
+    height:70px;
+    margin-top: -20px;
+    margin-left: 10px;
+    cursor: pointer;
 }
