@@ -1,8 +1,86 @@
 <?php
+
+require_once 'bbdd.php';
+//Desarrolador: Isain
+//Esta función muestra un select con todos los locales y regresa el id_local elegido.
+function muestraSelectCiudad(){
+    $datosCiudad = muestraDatosCiudadLocalMusico();
+    echo"<form action='' method='POST'>";
+    echo"<p>Ciudad<select name = 'ciudad'>";
+    while($fila = mysqli_fetch_assoc($datosCiudad)){
+        extract($fila);
+        echo"<option value = '$id_usuario'>$nombre</option>";
+    }
+    echo"</select></p>";
+
+    echo"<input type='submit' name='buscar3' value='buscar'>";
+    echo"</form>";
+    
+    if (isset($_POST['buscar3'])) {
+        extract($_POST);
+        return $ciudad;
+    }
+    
+}
+
+
+
+//Desarrolador: Isain
+//Esta función muestra un select con todos los locales y regresa el id_local elegido.
+function muestraSelectLocal(){
+    $datosLocales = muestraDatosLocal2();
+    
+    echo"<form action='' method='POST'>";
+    echo"<p>Local<select name = 'local'>";
+    while ($fila = mysqli_fetch_assoc($datosLocales)) {
+        extract($fila);
+        echo"<option value = '$id_usuario'>$nombre</option>";
+    }
+    echo"</select></p>";
+
+    echo"<input type='submit' name='buscar2' value='buscar'>";
+    echo"</form>";
+    
+    if (isset($_POST['buscar2'])) {
+        extract($_POST);
+        return $local;
+        
+    }
+    
+}
+//Desarrollador: Isain
+//Esta función muestra un select con todos los generos y regresa el id_genero elegido.
+function muestraSelectGenero() {
+    $datosGeneros = muestrageneros();
+
+    echo"<form action='' method='POST'>";
+    echo"<p>Genero<select name = 'gender'>";
+    while ($fila = mysqli_fetch_assoc($datosGeneros)) {
+        extract($fila);
+
+        echo"<option value = '$id_genero'>$nombre</option>";
+    }
+    echo"</select></p>";
+
+    echo"<input type='submit' name='buscar' value='buscar'>";
+    echo"</form>";
+    
+    if (isset($_POST['buscar'])) {
+        extract($_POST);
+        $listaConcierto = conciertosPorGenero($gender);
+        while($fila = mysqli_fetch_assoc($listaConcierto)){
+            extract($fila);
+            echo"$nomconcierto -- $fecha -- $hora -- $pago -- $nomlocal -- $nomgenero";
+        }
+    }
+    
+    
+}
+
 //Desarrollador: Isain
 //Muestra Usuario segun tipo
-function muestraUsuariosTipo($tipo){
-    switch ($tipo){
+function muestraUsuariosTipo($tipo) {
+    switch ($tipo) {
         case 1:
             echo"<p>Local</p>";
             break;
@@ -18,19 +96,15 @@ function muestraUsuariosTipo($tipo){
 
 //Desarrollador:Artur
 //Devuelve el nombre de un género por el id
-function dimenombregenero($idgenero)
-{
+function dimenombregenero($idgenero) {
     $c = conectar();
     //Sentencia SQL. No se leen todos los campos, solo los principales.
     $select = "select nombre from genero where id_genero=$idgenero;";
     $resultado = mysqli_query($c, $select);
-    if($fila=mysqli_fetch_assoc($resultado))
-    {
+    if ($fila = mysqli_fetch_assoc($resultado)) {
         $salida = $fila['nombre'];
-    }
-    else
-    {
-        $salida="no";
+    } else {
+        $salida = "no";
     }
     desconectar($c);
     return $salida;
@@ -38,17 +112,15 @@ function dimenombregenero($idgenero)
 
 //Desarrollador: Artur
 //Muestra cual es el estado del concierto según el código
-function cualestado($num)
-{
-    switch($num)
-    {
-        case 0:$cual="Propuesto sin músico";
+function cualestado($num) {
+    switch ($num) {
+        case 0:$cual = "Propuesto sin músico";
             break;
-        case 1:$cual="Por confirmar";
+        case 1:$cual = "Por confirmar";
             break;
-        case 2:$cual="Programado";
+        case 2:$cual = "Programado";
             break;
-        case 3:$cual="Cancelado";
+        case 3:$cual = "Cancelado";
             break;
         default:
     }
