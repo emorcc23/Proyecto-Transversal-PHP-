@@ -105,7 +105,7 @@ extract($_SESSION);
                                     $musicospropuestos = cuantosmusicospropuestos($id_concierto);
                                     echo"<td class='conciertop'><a href='borraconcierto.php?id=$id_concierto'><span class='icon-down-dir'></span></a></td>";
                                     if ($musicospropuestos > 0) {
-                                        echo "<td><a href='confirmarconcierto.php?id=$id_concierto'>Hay $musicospropuestos"
+                                        echo "<td class='conciertop'><a href='confirmarconcierto.php?id=$id_concierto'>Hay $musicospropuestos"
                                                 . "músicos propuestos.</a></td>";
                                     } else {
                                         echo "<td></td>";
