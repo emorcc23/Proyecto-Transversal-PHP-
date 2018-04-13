@@ -1,11 +1,31 @@
 <?php
 
 //Desarrollador: Artur
+//Obtiene el alias del músico por el id
+function dimealiasmusico($musico)
+{
+    $c = conectar();
+    $select = "select nombreart from musico where id_usuario=$musico;";
+    $resultado = mysqli_query($c, $select);
+    if($uno= mysqli_fetch_assoc($resultado))
+    {
+        extract($uno);
+        return $nombreart;
+    }
+    else
+    {
+        return "error";
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
 //Confirma un concierto
 function confirmaconcierto($concierto,$musico)
 {
     $c = conectar();
-    $update = "update concierto set estado=1 where id_concierto=$concierto;";
+    $update = "update concierto set estado=1,musico=$musico where id_concierto=$concierto;";
     if (mysqli_query($c,$update)) {
         $update = "update peticion set estado=1 where musico=$musico and concierto=$concierto;";
         if (mysqli_query($c,$update)) {
@@ -215,7 +235,7 @@ function listaconciertoslocal($localm)
 {
     $c = conectar();
     //Sentencia SQL. No se leen todos los campos, solo los principales.
-    $select = "select id_concierto,nombre,fecha,hora,genero,estado from concierto where localm='$localm';";
+    $select = "select id_concierto,nombre,fecha,hora,genero,estado,musico from concierto where localm='$localm';";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
