@@ -3,6 +3,10 @@ session_start();
 require_once 'bbdd.php';
 require_once 'funciones.php';
 ?>
+<!DOCTYPE html>
+<!--
+PAGINA DE CONCIERTOS
+-->
 <html lang="es">
     <head>
         <title>OohMusic</title>
@@ -55,36 +59,14 @@ require_once 'funciones.php';
                     ?>
                     <img src="Imagenes/banner.jpg">
                     <div id="centro"> 
-                        <p>Datos de mi perfil</p>
-                        <div id="usuario">
-                            <?php
-                            muestradatosmusico();
-                            ?>
-                        </div>
-
-                        <div id="menu">
-                            <ul>
-                                <li><a href="#">Perfil</a></li>
-                                <li><a href="#">Fotos</a></li>
-                                <li><a href="#">Mensajes</a></li>
-                                <li><a href="miperfilmusico.php">Configuración</a></li>
-                                <?php cerraSession2()?>
-                            </ul>
-                        </div>
-                        <div id="titulonoticias">
-                            <p>Últimas noticias</p>
-                        </div>
-                        <div id="noticias">
-                             <?php
-                                $listaCociertos = listaConciertosPropuestos();
-                                while($fila = mysqli_fetch_assoc($listaCociertos)){
-                                    extract($fila);
-                                    echo"<p>$nomconcierto  -  $fecha</p>";
-                                    echo"<a href='conciertos.php'></a>";
-                                }
-                             ?>
-                        </div>
-                    </div>  
+                        <p>Pagina de Conciertos</p>
+                        <?php
+                            muestraSelectGenero();
+                            
+                            $id_login = muestraSelectCiudad();
+                            echo$id_login;
+                        ?>
+                    </div>
                     <?php
                 }
                 ?>
