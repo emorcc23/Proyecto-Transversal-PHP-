@@ -123,8 +123,8 @@ form #botoncerrar:hover {
 }
 
 #tabladedatos {
-    width:1400px;
-    max-height: 300px;
+    width:1500px;
+    padding: 51px;
     margin-left: 750px;
     border-color: #fff;
     border-collapse: collapse;
@@ -142,16 +142,16 @@ form #botoncerrar:hover {
     margin-top: 35px;
 }
 
-#tabladedatos tr #conciertop {
+#tabladedatos tr .conciertop {
     width: 50px;
     
 }
 
-#tabladedatos tr #conciertop a {
+#tabladedatos tr .conciertop a {
     border: none;
 }
 
-#tabladedatos tr #conciertop:hover {
+#tabladedatos tr .conciertop:hover {
     background: rgba(170,60,60,.6);
 }
 
