@@ -1,4 +1,99 @@
 <?php
+
+//Desarrollador: Artur
+//Confirma un concierto
+function confirmaconcierto($concierto,$musico)
+{
+    $c = conectar();
+    $update = "update concierto set estado=1 where id_concierto=$concierto;";
+    if (mysqli_query($c,$update)) {
+        $update = "update peticion set estado=1 where musico=$musico and concierto=$concierto;";
+        if (mysqli_query($c,$update)) {
+            $resultado="ok";
+        }
+        else
+        {
+            $resultado = mysqli_error($c);
+        }
+    } else {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
+//Inserta una proposición de músico para concierto
+function insproposicion($concierto,$musico)
+{
+    $c = conectar();
+    $insert = "INSERT INTO peticion (musico,concierto,estado) VALUES($musico,$concierto,0);";    
+    if (mysqli_query($c, $insert)) {
+        $resultado = "ok";
+    } else {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
+//Devuelve la lista de músicos que han propuesto actuar en un concierto
+function listamusicospropuestos($concierto)
+{
+    $c = conectar();
+    $select = "select peticion.musico as musico, login.nombre as nombre, musico.nombreart as nombreart, musico.apellidoa as apellidoa, musico.apellidob as apellidob from peticion inner join musico on peticion.musico = musico.id_usuario inner join login on musico.id_usuario = login.id_usuario where peticion.concierto=$concierto and peticion.estado=0;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
+//Información de un concierto
+function infoconcierto($concierto)
+{
+    $c = conectar();
+    //Sentencia SQL. No se leen todos los campos, solo los principales.
+    $select = "select nombre,fecha,hora,genero,estado from concierto where id_concierto=$concierto;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
+
+//Desarrollador: Artur
+//Comprueba si un concierto es realmente de un local. Función de seguridad
+function compruebaconciertoesdelocal($elocal,$concierto)
+{
+    $c = conectar();
+    $select ="select localm from concierto where id_concierto=$concierto";
+    $resultado = mysqli_query($c, $select);
+    $numero = mysqli_fetch_assoc($resultado);
+    extract($numero);
+    if($localm = $elocal)
+    {
+        return"ok";
+    }
+    else
+    {
+        return"error";
+    }
+    desconectar($c);
+}
+
+//Desarrollador: Artur
+//Ver cuantos músicos propuestos para concierto
+function cuantosmusicospropuestos($concierto)
+{
+    $c = conectar();
+    $select = "select count(estado) as cuantos from peticion where concierto=$concierto and estado=0;";
+    $resultado = mysqli_query($c, $select);
+    $numero = mysqli_fetch_assoc($resultado);
+    extract($numero);
+    desconectar($c);
+    return $cuantos;
+}
+
 //Desarrollador: Isain
 //Ver genero con el id
 function mostrarListaConciertosAceptados(){

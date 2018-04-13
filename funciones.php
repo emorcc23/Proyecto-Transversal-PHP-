@@ -44,11 +44,9 @@ function cualestado($num)
     {
         case 0:$cual="Propuesto sin músico";
             break;
-        case 1:$cual="Por confirmar";
+        case 1:$cual="Programado";
             break;
-        case 2:$cual="Programado";
-            break;
-        case 3:$cual="Cancelado";
+        case 2:$cual="Cancelado";
             break;
         default:
     }
