@@ -1,6 +1,37 @@
 <?php
 
 //Desarrollador: Artur
+//Quita músico de concierto
+//No se altera la tabla de peticiones marcando los cancelados. Simplemente se ponen en 1 al ser aceptados una vez.
+function quitamusicoconcierto($concierto)
+{
+    $c = conectar();
+    $update = "update concierto set estado=0,musico=null where id_concierto=$concierto;";
+    if (mysqli_query($c,$update)) {
+       return "ok";
+    } else {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
+//Cancela un concierto
+function cancelaconcierto($concierto)
+{
+    $c = conectar();
+    $update = "update concierto set estado=2,musico=null where id_concierto=$concierto;";
+    if (mysqli_query($c,$update)) {
+       return "ok";
+    } else {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
 //Obtiene el alias del músico por el id
 function dimealiasmusico($musico)
 {

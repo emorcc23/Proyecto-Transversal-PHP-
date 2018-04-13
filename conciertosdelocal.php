@@ -117,7 +117,17 @@ extract($_SESSION);
                                     } else {
                                         echo "<td class='conciertop'>Ninguno</td>";
                                     }
-                                    echo "<td class='conciertop'><a href='cancelarconcierto.php?id=$id_concierto'><p>Cancelar</p></a></td>";
+                                    
+                                     if($estado!=2)
+                                    {
+                                        echo"<td class='conciertop'><a href='cancelarconcierto.php?id=$id_concierto'>Cancelar</a></td>";
+                                    }
+                                    else
+                                    {
+                                        echo"<td></td>";
+                                    }
+                                    
+                               
                                     if ($estado == 1) {
                                         echo "<td class='conciertop'><a href='quitamusicoconcierto.php?id=$id_concierto'>Quitar músico</a></td>";
                                     }
