@@ -1,4 +1,4 @@
-@font-face {
+  @font-face {
   font-family: 'fontello';
   src: url('../font/fontello.eot?1496095');
   src: url('../font/fontello.eot?1496095#iefix') format('embedded-opentype'),
@@ -62,3 +62,4 @@
 .icon-menu:before { content: '\f0c9'; } /* '' */
 .icon-instagram:before { content: '\f16d'; } /* '' */
 .icon-facebook-squared:before { content: '\f308'; } /* '' */
+.icon-trash-empty:before { content: '\e800'; } /* '' */
