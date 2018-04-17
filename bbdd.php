@@ -1,4 +1,20 @@
 <?php
+//Desarrollador: Artur
+//Dice cuantos conciertos aceptados hay, sirve para la paginación
+function cuantosconciertosaceptados()
+{
+    $c = conectar();
+    $select="select count(id_concierto) as cuantos from concierto where estado=1;";
+    $resultado = mysqli_query($c, $select);
+    if($dato=mysqli_fetch_assoc($resultado))
+    {
+        return $dato['cuantos'];
+    }
+    else
+    {
+        return 0;
+    }
+}
 
 //Desarrollador: Artur
 //Quita músico de concierto
@@ -250,9 +266,9 @@ function listaConciertosPropuestos(){
 
 //Desarrollador: Isain
 //Muestra todos los conciertos ya programados
-function mostrarListaConciertosAceptados(){
+function mostrarListaConciertosAceptados($inicio, $cuantos){
     $c = conectar();
-    $select = "select c.nombre as nomconcierto, c.fecha, c.hora, c.pago, l.nombre as nomlocal, g.nombre as nomgenero from concierto c inner join genero g on c.genero = g.id_genero inner join login l on l.id_usuario = c.localm where c.estado = 1 order by fecha;";
+    $select = "select c.nombre as nomconcierto, c.fecha, c.hora, c.pago, l.nombre as nomlocal, g.nombre as nomgenero from concierto c inner join genero g on c.genero = g.id_genero inner join login l on l.id_usuario = c.localm where c.estado = 1 order by fecha limit $inicio,$cuantos;";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;

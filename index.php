@@ -157,7 +157,19 @@
                                 </tr>
                             
                             <?php
-                            $listaConciertosAceptados = mostrarListaConciertosAceptados();
+                            if(isset($_GET['pagina']))
+                            {
+                                extract($_GET);
+                            }
+                            else
+                            {
+                                $pagina=1;
+                            }
+                            $elementospagina = 10;
+                            $inicio = ($pagina-1)*$elementospagina;
+                            $cuantosconciertos = cuantosconciertosaceptados();
+                            $totalpaginas = ceil($cuantosconciertos / $elementospagina); 
+                            $listaConciertosAceptados = mostrarListaConciertosAceptados($inicio, $elementospagina);
                             
                             while ($lista = mysqli_fetch_assoc($listaConciertosAceptados)){
                                 extract($lista);
@@ -172,6 +184,21 @@
                                 echo "</tr>";
                             }
                             echo "</table>";
+                            
+                            echo"Página $pagina de $totalpaginas, Hay $cuantosconciertos conciertos aceptados.<br>";
+                            if($pagina>1)
+                            {
+                                echo"<a href='index.php?pagina=1'>Primera</a>";
+                                $anterior=$pagina-1;
+                                echo" <a href='index.php?pagina=$anterior'>Anterior</a>";
+                            }
+                            
+                            if($pagina<$totalpaginas)
+                            {
+                                $siguiente=$pagina+1;
+                                echo" <a href='index.php?pagina=$siguiente'>Siguiente</a>";
+                                echo" <a href='index.php?pagina=$totalpaginas'>Última</a>";
+                            }
                             ?>
                         </div>
 
