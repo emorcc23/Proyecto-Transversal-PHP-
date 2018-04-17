@@ -1,9 +1,70 @@
 <?php
 //Desarrollador: Isain
+//funcion que da de baja la peticion a un concierto
+function bajaPeticionConcierto($id_usuario, $id_concierto){
+    $c = conectar();
+    $delete = "delete from peticion where musico = $id_usuario and concierto = $id_concierto;";
+    if(mysqli_query($c, $delete)){
+        $resultado = "ok";
+    }else{
+        $resultado = mysqli_errno($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+
+//Desarrollador: Isain
+//funcion que da el id_genero de un musico desde el id_usuario.
+function dimeIdgeneroUsuario($id_usuario){
+    $c = conectar();
+    $select = "select genero from musico where id_usuario = $id_usuario;";
+    $resultado = mysqli_query($c, $select);
+    if($fila = mysqli_fetch_assoc($resultado)){
+        extract($fila);
+        $resultado = $genero;
+    }
+    desconectar($c);
+    return $resultado;
+    
+}
+
+//Desarrollador: Isain
+//Verifica si la peticion se ha realizado o no
+function verificarPeticion($id_usuario, $id_concierto){
+    $c = conectar();
+    $select = "select * from peticion where musico = $id_usuario and concierto = $id_concierto;";
+    $resultado = mysqli_query($c, $select);
+    if($fila = mysqli_fetch_assoc($resultado)){
+        extract($fila);
+        $resultado = $musico;
+    }else{
+        $resultado = -1;
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Isain
+//Insertar una petición de concierto
+function insertarPeticionConcierto($id_usuario, $id_concierto){
+    $c = conectar();
+    $insert = "insert into peticion values ($id_usuario,$id_concierto,0);";
+    if(mysqli_query($c, $insert)){
+        $resultado = "ok";
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+
+//Desarrollador: Isain
 //Busqueda de conciertos por genero
 function conciertosPorGenero($gender){
     $c = conectar();
-    $select = "select c.nombre as nomconcierto, c.fecha, c.hora, c.pago, l.nombre as nomlocal, g.nombre as nomgenero from concierto c inner join genero g on c.genero = g.id_genero inner join login l on l.id_usuario = c.localm where c.estado = 0 and c.genero = $gender order by fecha;";
+    $select = "select c.id_concierto, c.nombre as nomconcierto, c.fecha, c.hora, c.pago, l.nombre as nomlocal, g.nombre as nomgenero from concierto c inner join genero g on c.genero = g.id_genero inner join login l on l.id_usuario = c.localm where c.estado = 0 and c.genero = $gender order by fecha;";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
@@ -19,6 +80,16 @@ function muestraDatosCiudadLocalMusico(){
     desconectar($c);
     return $resultado;
     
+}
+
+//Desarrollador: Isain
+//Lista de conciertos ya filtrados, segun sea el genero del musico que haya hecho login
+function listaConciertosporGenero($idgeneroMusico){
+    $c = conectar();
+    $select = "select c.id_concierto,c.nombre as nomconcierto, c.fecha, c.hora, l.nombre from concierto c inner join musico m on c.musico = m.id_usuario inner join localm lo on lo.id_usuario = c.localm inner join login l on lo.id_usuario = l.id_usuario where c.genero = $idgeneroMusico ";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
 }
 
 //Desarrollador: Isain

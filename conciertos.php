@@ -13,7 +13,7 @@ PAGINA DE CONCIERTOS
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <link rel="stylesheet" href="css/fontello.css">
-        <link rel="stylesheet" href="css/estilosMusico.css">
+        <link rel="stylesheet" href="css/estilosConcierto.css">
     </head>
     <body>
         <header>
@@ -60,16 +60,20 @@ PAGINA DE CONCIERTOS
                     <img src="Imagenes/banner.jpg">
                     <div id="centro"> 
                         <p>Pagina de Conciertos</p>
+
                         <?php
-                            muestraSelectGenero();
-                            
-                            $id_login = muestraSelectCiudad();
-                            echo$id_login;
+                       
+                        
+                        
+                        muestraSelectGenero($id_usuario);
+
+                        $id_login = muestraSelectCiudad();
+                        echo$id_login;
                         ?>
                     </div>
-                    <?php
-                }
-                ?>
+                        <?php
+                    }
+                    ?>
 
             </section>
         </main>

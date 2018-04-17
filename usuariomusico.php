@@ -68,21 +68,56 @@ require_once 'funciones.php';
                                 <li><a href="#">Fotos</a></li>
                                 <li><a href="#">Mensajes</a></li>
                                 <li><a href="miperfilmusico.php">Configuración</a></li>
-                                <?php cerraSession2()?>
+                                <?php cerraSession2() ?>
                             </ul>
+                        </div>
+                        <div id="conciertosInteres">
+                            <p>Conciertos que pueden interesarte</p>
+                        </div>
+                        <div id="contenidoInteres">
+                            <p>listas</p>
+                            <?php
+                            extract($_SESSION);
+                            echo"$username";
+                            $id_usuario = dimeidusuario($username);
+                            echo"$id_usuario";
+                            $idgeneroMusico = dimeIdgeneroUsuario($id_usuario);
+                            echo"$idgeneroMusico";
+
+                            $listaConciertosGenero = listaConciertosporGenero($idgeneroMusico);
+                            echo"<table border='1' padding='2px'>";
+                            while ($fila = mysqli_fetch_assoc($listaConciertosGenero)) {
+                                extract($fila);
+                                echo"<tr>";
+                                echo"<td>$nomconcierto</td><td>$fecha</td><td>$hora</td><td>$nombre</td>";
+                                echo"<td>";
+                                altaMusicoConcierto($id_concierto);
+                                echo"</td>";
+                                echo"<td>";
+                                bajaMusicoConcierto($id_concierto);
+                                echo"</td>";
+                                echo"</tr>";
+                            }
+                            echo"</table>";
+                            
+                            insertarPeticion();
+                            bajaPeticion();
+                            
+                            ?>
+
                         </div>
                         <div id="titulonoticias">
                             <p>Últimas noticias</p>
                         </div>
                         <div id="noticias">
-                             <?php
-                                $listaCociertos = listaConciertosPropuestos();
-                                while($fila = mysqli_fetch_assoc($listaCociertos)){
-                                    extract($fila);
-                                    echo"<p>$nomconcierto  -  $fecha</p>";
-                                    echo"<a href='conciertos.php'></a>";
-                                }
-                             ?>
+                            <?php
+                            $listaCociertos = listaConciertosPropuestos();
+                            while ($fila = mysqli_fetch_assoc($listaCociertos)) {
+                                extract($fila);
+                                echo"<p>$nomconcierto  -  $fecha</p>";
+                                echo"<a href='conciertos.php'></a>";
+                            }
+                            ?>
                         </div>
                     </div>  
                     <?php

@@ -1,13 +1,68 @@
 <?php
 
 require_once 'bbdd.php';
+
+//Desarrolador: Isain
+//Funcion que crea un  boton para dar de alta el musico en un concierto.
+function bajaMusicoConcierto($id_concierto) {
+    echo"<form action='' method='POST'>";
+    echo"<input type='hidden' value='$id_concierto' name='id_concierto'>";
+    echo"<input type='submit' value='baja' name='baja'>";
+    echo"</form>";
+}
+
+function bajaPeticion() {
+    if (isset($_POST['baja'])) {
+        extract($_SESSION);
+        $id_usuario = dimeidusuario($username);
+        $id_concierto = $_POST["id_concierto"];
+
+        if (verificarPeticion($id_usuario, $id_concierto) == $id_usuario) {
+            if (bajaPeticionConcierto($id_usuario, $id_concierto) == "ok") {
+                echo"<script>alert('Se ha dado de baja a tu peticion')</script>";
+            } else {
+                echo"<script>alert('Error al dar de baja la peticion')</script>";
+            }
+        }else{
+            echo"<script>alert('No te haza dado de alta para este concierto')</script>";
+        }
+    }
+}
+
+//Desarrolador: Isain
+//Funcion que crea un  boton para dar de alta el musico en un concierto.
+function altaMusicoConcierto($id_concierto) {
+    echo"<form action='' method='POST'>";
+    echo"<input type='hidden' value='$id_concierto' name='id_concierto'>";
+    echo"<input type='submit' value='Peticion' name='peticion'>";
+    echo"</form>";
+}
+
+function insertarPeticion() {
+    if (isset($_POST['peticion'])) {
+        extract($_SESSION);
+        $id_usuario = dimeidusuario($username);
+        $id_concierto = $_POST["id_concierto"];
+
+        if (verificarPeticion($id_usuario, $id_concierto) == $id_usuario) {
+            echo"<script>alert('Ya haz realizado una peticion')</script>";
+        } else {
+            if (insertarPeticionConcierto($id_usuario, $id_concierto) == "ok") {
+                echo"<script>alert('La peticion se ha realizado satisfactoriamente')</script>";
+            } else {
+                echo"<script>alert('Error al realizar la petición')</script>";
+            }
+        }
+    }
+}
+
 //Desarrolador: Isain
 //Esta función muestra un select con todos los locales y regresa el id_local elegido.
-function muestraSelectCiudad(){
+function muestraSelectCiudad() {
     $datosCiudad = muestraDatosCiudadLocalMusico();
     echo"<form action='' method='POST'>";
     echo"<p>Ciudad<select name = 'ciudad'>";
-    while($fila = mysqli_fetch_assoc($datosCiudad)){
+    while ($fila = mysqli_fetch_assoc($datosCiudad)) {
         extract($fila);
         echo"<option value = '$id_usuario'>$nombre</option>";
     }
@@ -15,21 +70,18 @@ function muestraSelectCiudad(){
 
     echo"<input type='submit' name='buscar3' value='buscar'>";
     echo"</form>";
-    
+
     if (isset($_POST['buscar3'])) {
         extract($_POST);
         return $ciudad;
     }
-    
 }
-
-
 
 //Desarrolador: Isain
 //Esta función muestra un select con todos los locales y regresa el id_local elegido.
-function muestraSelectLocal(){
+function muestraSelectLocal() {
     $datosLocales = muestraDatosLocal2();
-    
+
     echo"<form action='' method='POST'>";
     echo"<p>Local<select name = 'local'>";
     while ($fila = mysqli_fetch_assoc($datosLocales)) {
@@ -40,17 +92,16 @@ function muestraSelectLocal(){
 
     echo"<input type='submit' name='buscar2' value='buscar'>";
     echo"</form>";
-    
+
     if (isset($_POST['buscar2'])) {
         extract($_POST);
         return $local;
-        
     }
-    
 }
+
 //Desarrollador: Isain
 //Esta función muestra un select con todos los generos y regresa el id_genero elegido.
-function muestraSelectGenero() {
+function muestraSelectGenero($id_usuario) {
     $datosGeneros = muestrageneros();
 
     echo"<form action='' method='POST'>";
@@ -64,17 +115,26 @@ function muestraSelectGenero() {
 
     echo"<input type='submit' name='buscar' value='buscar'>";
     echo"</form>";
-    
+
     if (isset($_POST['buscar'])) {
         extract($_POST);
         $listaConcierto = conciertosPorGenero($gender);
-        while($fila = mysqli_fetch_assoc($listaConcierto)){
+        echo"<table border='1'>";
+
+        while ($fila = mysqli_fetch_assoc($listaConcierto)) {
             extract($fila);
-            echo"$nomconcierto -- $fecha -- $hora -- $pago -- $nomlocal -- $nomgenero";
+            echo"<tr>";
+            echo"<td>$nomconcierto </td><td>$fecha</td><td>$hora</td><td>$pago</td><td>$nomlocal</td><td>$nomgenero</td>";
+            echo"<td>";
+            altaMusicoConcierto($id_concierto);
+            echo"</td><br>";
+            echo"</tr>";
         }
+
+        echo"</table>";
     }
-    
-    
+
+    insertarPeticion();
 }
 
 //Desarrollador: Isain
@@ -211,4 +271,5 @@ function cerraSession2() {
         exit;
     }
 }
+
 ?>
