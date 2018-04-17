@@ -24,13 +24,11 @@
                         <li><a href="index.php">Inicio</a></li>
                         <li><a href="login.php">Login</a></li>
                         <li class="submenu"><a href="">Registro <span class="icon-down-dir"></span></a>
-
                             <ul class="submenuu">
                                 <li><a href="rmusicos.php">Regístrate como músico</a></li>
                                 <li><a href="rlocales.php">Regístrate como local</a></li>
                                 <li><a href="rfan.php">Regístrate como fan</a></li>
                             </ul>
-
                         </li>
                         <li><a href="musicos.php">Musicos</a></li>
                         <li><a href="locales.php">Locales</a></li>

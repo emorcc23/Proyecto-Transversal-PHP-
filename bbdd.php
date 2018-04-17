@@ -1,4 +1,150 @@
 <?php
+
+//Desarrollador: Artur
+//Quita músico de concierto
+//No se altera la tabla de peticiones marcando los cancelados. Simplemente se ponen en 1 al ser aceptados una vez.
+function quitamusicoconcierto($concierto)
+{
+    $c = conectar();
+    $update = "update concierto set estado=0,musico=null where id_concierto=$concierto;";
+    if (mysqli_query($c,$update)) {
+       return "ok";
+    } else {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
+//Cancela un concierto
+function cancelaconcierto($concierto)
+{
+    $c = conectar();
+    $update = "update concierto set estado=2,musico=null where id_concierto=$concierto;";
+    if (mysqli_query($c,$update)) {
+       return "ok";
+    } else {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
+//Obtiene el alias del músico por el id
+function dimealiasmusico($musico)
+{
+    $c = conectar();
+    $select = "select nombreart from musico where id_usuario=$musico;";
+    $resultado = mysqli_query($c, $select);
+    if($uno= mysqli_fetch_assoc($resultado))
+    {
+        extract($uno);
+        return $nombreart;
+    }
+    else
+    {
+        return "error";
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
+//Confirma un concierto
+function confirmaconcierto($concierto,$musico)
+{
+    $c = conectar();
+    $update = "update concierto set estado=1,musico=$musico where id_concierto=$concierto;";
+    if (mysqli_query($c,$update)) {
+        $update = "update peticion set estado=1 where musico=$musico and concierto=$concierto;";
+        if (mysqli_query($c,$update)) {
+            $resultado="ok";
+        }
+        else
+        {
+            $resultado = mysqli_error($c);
+        }
+    } else {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
+//Inserta una proposición de músico para concierto
+function insproposicion($concierto,$musico)
+{
+    $c = conectar();
+    $insert = "INSERT INTO peticion (musico,concierto,estado) VALUES($musico,$concierto,0);";    
+    if (mysqli_query($c, $insert)) {
+        $resultado = "ok";
+    } else {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
+//Devuelve la lista de músicos que han propuesto actuar en un concierto
+function listamusicospropuestos($concierto)
+{
+    $c = conectar();
+    $select = "select peticion.musico as musico, login.nombre as nombre, musico.nombreart as nombreart, musico.apellidoa as apellidoa, musico.apellidob as apellidob from peticion inner join musico on peticion.musico = musico.id_usuario inner join login on musico.id_usuario = login.id_usuario where peticion.concierto=$concierto and peticion.estado=0;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
+//Información de un concierto
+function infoconcierto($concierto)
+{
+    $c = conectar();
+    //Sentencia SQL. No se leen todos los campos, solo los principales.
+    $select = "select nombre,fecha,hora,genero,estado from concierto where id_concierto=$concierto;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
+
+//Desarrollador: Artur
+//Comprueba si un concierto es realmente de un local. Función de seguridad
+function compruebaconciertoesdelocal($elocal,$concierto)
+{
+    $c = conectar();
+    $select ="select localm from concierto where id_concierto=$concierto";
+    $resultado = mysqli_query($c, $select);
+    $numero = mysqli_fetch_assoc($resultado);
+    extract($numero);
+    if($localm = $elocal)
+    {
+        return"ok";
+    }
+    else
+    {
+        return"error";
+    }
+    desconectar($c);
+}
+
+//Desarrollador: Artur
+//Ver cuantos músicos propuestos para concierto
+function cuantosmusicospropuestos($concierto)
+{
+    $c = conectar();
+    $select = "select count(estado) as cuantos from peticion where concierto=$concierto and estado=0;";
+    $resultado = mysqli_query($c, $select);
+    $numero = mysqli_fetch_assoc($resultado);
+    extract($numero);
+    desconectar($c);
+    return $cuantos;
+}
+
 //Desarrollador: Isain
 //funcion que da de baja la peticion a un concierto
 function bajaPeticionConcierto($id_usuario, $id_concierto){
@@ -191,7 +337,7 @@ function listaconciertoslocal($localm)
 {
     $c = conectar();
     //Sentencia SQL. No se leen todos los campos, solo los principales.
-    $select = "select id_concierto,nombre,fecha,hora,genero,estado from concierto where localm='$localm';";
+    $select = "select id_concierto,nombre,fecha,hora,genero,estado,musico from concierto where localm='$localm';";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
