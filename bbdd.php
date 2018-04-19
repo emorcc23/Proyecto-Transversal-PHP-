@@ -1,4 +1,29 @@
 <?php
+//Desarrollador: Alvaro -- Isain
+//Funcion que dice que si el concierto esta aceptado o no.
+function dimeConciertosAceptados ($id_usuario){
+    $c = conectar();
+    $select = "select c.nombre, c.fecha, c.hora, p.estado from peticion p inner join concierto c on p.estado = c.estado where p.estado = 1 and p.musico = $id_usuario;";
+    $resultado = mysqli_query($c, $select);
+    conectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Alvaro
+//Funcion que dice que si el concierto esta aceptado o no.
+function dimeConciertoAceptado($id_usuario, $id_concierto){
+    $c = conectar();
+    $select = "select * from peticion where musico = $id_usuario and concierto = $id_concierto and estado = 1;";
+    $resultado = mysqli_query($c, $select);
+    if($fila = mysqli_fetch_assoc($resultado)){
+        extract($fila);
+        $resultado = $estado;
+    }else{
+        $resultado = 0;
+    }
+    desconectar($c);
+    return $resultado;
+}
 
 //Desarrollador: Artur
 //Quita músico de concierto

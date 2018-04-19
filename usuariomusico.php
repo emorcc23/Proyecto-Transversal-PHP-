@@ -96,6 +96,9 @@ require_once 'funciones.php';
                                 echo"<td>";
                                 bajaMusicoConcierto($id_concierto);
                                 echo"</td>";
+                                echo"<td>";
+                                
+                                echo"</td>";
                                 echo"</tr>";
                             }
                             echo"</table>";
@@ -103,7 +106,11 @@ require_once 'funciones.php';
                             insertarPeticion();
                             bajaPeticion();
                             
+                            
+                            echo"<p>Locales que han aceptado tu pelticion</p>";
+                            peticionAceptadaLocal($id_usuario);
                             ?>
+                            
 
                         </div>
                         <div id="titulonoticias">
