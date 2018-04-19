@@ -273,7 +273,7 @@ function muestraDatosCiudadLocalMusico(){
 //Lista de conciertos ya filtrados, segun sea el genero del musico que haya hecho login
 function listaConciertosporGenero($idgeneroMusico){
     $c = conectar();
-    $select = "select c.id_concierto,c.nombre as nomconcierto, c.fecha, c.hora, l.nombre from concierto c inner join musico m on c.musico = m.id_usuario inner join localm lo on lo.id_usuario = c.localm inner join login l on lo.id_usuario = l.id_usuario where c.genero = $idgeneroMusico ";
+    $select = "select c.id_concierto,c.nombre as nomconcierto, c.fecha, c.hora, l.nombre from concierto c inner join localm lo on lo.id_usuario = c.localm inner join login l on lo.id_usuario = l.id_usuario where c.genero = $idgeneroMusico ";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
