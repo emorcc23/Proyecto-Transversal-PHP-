@@ -35,7 +35,7 @@ extract($_SESSION);
                         <ul>
                             <li><a href="index.php">Inicio</a></li>
                             <li><a href="login.php">Login</a></li>
-                            <li class="submenu"><a href="">Registro <span class="icon-down-dir"></span></a>
+                            <li class="submenu"><a href="">Registro <span class="icon-sort-down"></span></a>
                                 <ul class="submenuu">
                                     <li><a href="rmusicos.php">Regístrate como músico</a></li>
                                     <li><a href="rlocales.php">Regístrate como local</a></li>
@@ -103,7 +103,7 @@ extract($_SESSION);
                                 echo "<td><p>$estadop</p></td>";
                                 if ($estado == 0) {
                                     $musicospropuestos = cuantosmusicospropuestos($id_concierto);
-                                    echo"<td class='conciertop'><a href='borraconcierto.php?id=$id_concierto'><span class='icon-down-dir'></span></a></td>";
+                                    echo"<td class='conciertop'><a href='borraconcierto.php?id=$id_concierto'><span class='icon-trash-empty'></span></a></td>";
                                     if ($musicospropuestos > 0) {
                                         echo "<td class='conciertop'><a href='confirmarconcierto.php?id=$id_concierto'>Hay $musicospropuestos"
                                                 . "músicos propuestos.</a></td>";
@@ -121,6 +121,7 @@ extract($_SESSION);
                                      if($estado!=2)
                                     {
                                         echo"<td class='conciertop'><a href='cancelarconcierto.php?id=$id_concierto'>Cancelar</a></td>";
+                                        
                                     }
                                     else
                                     {
