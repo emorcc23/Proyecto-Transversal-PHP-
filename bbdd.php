@@ -53,6 +53,8 @@ function quitamusicoconcierto($concierto)
     } else {
         $resultado = mysqli_error($c);
     }
+   //Falta borrar la petición o cambiarla a denegada 
+   
     desconectar($c);
     return $resultado;
 }
