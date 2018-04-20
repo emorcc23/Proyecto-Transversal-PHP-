@@ -33,7 +33,7 @@ Pagina de contacto.
                         <li><a href="fans.php">Fans</a></li>
                         <li><a href="contacto.php">Contacto</a></li>
                     </ul>
-                    
+
                 </nav>
             </div>
         </header>       
@@ -47,24 +47,24 @@ Pagina de contacto.
                             <p class="pe">Nombre:</p>
                             <p><input type="text"></p>
                             <p class="pe">Apellidos:</p>
-                            <p><input type="text"></p>
-                            <p class="pe">Email:</p>
+                            <p><input type="text" name="mail"></p>
+                            <p class="pe" >Email:</p>
                             <p><input type="email"></p>
                             <p class="pe">Teléfono:</p>
                             <p><input type="tel"></p>
                             <p>¿Cómo nos ha conocido?</p>
                             <p><select name="conocer">
-                                <option value="">Ubicación</option>
-                                <option value="">Cliente-Excliente</option>
-                                <option value="">Recomendación</option>
-                                <option value="">Internet</option>
-                                <option value="">Otro</option>
-                            </select></p>
+                                    <option value="">Ubicación</option>
+                                    <option value="">Cliente-Excliente</option>
+                                    <option value="">Recomendación</option>
+                                    <option value="">Internet</option>
+                                    <option value="">Otro</option>
+                                </select></p>
                             <div id="comentario">
-                            <p>Comentario:</p>
+                                <p>Comentario:</p>
                                 <p><textarea id="textarea">
                                 
-                                </textarea></p>
+                                    </textarea></p>
                             </div>
                             <input type="submit" value="Enviar">
                         </form>
@@ -94,7 +94,7 @@ Pagina de contacto.
                     <a class="icon-gmail" href="#"></a>
                 </div>
             </div>
-            
+
         </footer>
     </body>
 </html>
