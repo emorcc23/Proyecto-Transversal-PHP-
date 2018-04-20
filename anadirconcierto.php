@@ -115,7 +115,10 @@
                             <form method="post" onsubmit="return verifech()">  
                                   
                             <p>Nombre:<input type="text" name="nombre" id="nombre" required></p>
-                            <p>Fecha:<input type="date" name="fecha" id="fecha" required></p>
+                            <?php
+                                echo"<p>Fecha:<input type='date' name='fecha' id='fecha' value='".date('Y-m-d')."'"."required></p>"; 
+                            ?>
+                            
                             <p>Hora:<input type="time" name="hora" required></p>
                             <?php
                             echo "<p>Genero:</p><select id='select' name='gender'>";
