@@ -38,22 +38,27 @@ function bajaPeticion() {
 function peticionAceptadaLocal($id_usuario) {
     echo"<table border='1'>";
     $aceptados = dimeConciertosAceptados($id_usuario);
-    while($fila = mysqli_fetch_assoc($aceptados)) {
+    while ($fila = mysqli_fetch_assoc($aceptados)) {
         extract($fila);
-        echo"<tr>";
-        echo"<td>$nombre</td><td>$fecha</td><td>$hora</td>";
-        echo"<td>";
-        estado($estado);
-        echo"</td>";
-        echo"</tr>";
+        $estadoP = $estado;
+        $datosConcierto = dimeConciertosporid($concierto);
+        while ($fila2 = mysqli_fetch_assoc($datosConcierto)) {
+            extract($fila2);
+            echo"<tr>";
+            echo"<td>$nombre</td><td>$fecha</td><td>$hora</td>";
+            echo"<td>";
+            estado($estadoP);
+            echo"</td>";
+            echo"</tr>";
+        }
     }
     echo"</table>";
 }
 
 //Desarrollador: Alvaro -- Isain
 // Funcion que transforma en aceptado o no un numero
-function estado($estado){
-    switch ($estado){
+function estado($estado) {
+    switch ($estado) {
         case 0:
             echo"Pendiente";
             break;
@@ -61,10 +66,7 @@ function estado($estado){
             echo "Aceptado";
             break;
         case 2:
-            echo"Cancelado";
-            break;
-        case 3:
-            echo"Denegado";
+            echo"Rechazado";
             break;
     }
 }
@@ -104,7 +106,7 @@ function muestraSelectCiudad() {
     echo"<p>Ciudad<select name = 'ciudad'>";
     while ($fila = mysqli_fetch_assoc($datosCiudad)) {
         extract($fila);
-        echo"<option value = '$id_usuario'>$nombre</option>";
+        echo"<option value = '$id_ciudad'>$nombre</option>";
     }
     echo"</select></p>";
 
@@ -113,7 +115,21 @@ function muestraSelectCiudad() {
 
     if (isset($_POST['buscar3'])) {
         extract($_POST);
-        return $ciudad;
+        $listaPorCiudad = dimeCociertosPorCiudad($ciudad);
+        echo"<table border='1'>";
+        while ($fila = mysqli_fetch_assoc($listaPorCiudad)) {
+            extract($fila);
+            echo"<tr>";
+            echo"<td>$nombre</td><td>$fecha</td><td>$hora</td><td>$usuario</td>";
+            echo"<td>";
+            altaMusicoConcierto($id_concierto);
+            echo"</td>";
+            echo"<td>";
+            bajaMusicoConcierto($id_concierto);
+            echo"</td>";
+            echo"</tr>";
+        }
+        echo"</table>";
     }
 }
 

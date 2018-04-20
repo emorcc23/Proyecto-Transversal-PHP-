@@ -1,9 +1,30 @@
 <?php
 //Desarrollador: Alvaro -- Isain
+// Funcion que da todos los conciertos de una ciudad en especial
+function dimeCociertosPorCiudad($ciudad){
+    $c = conectar();
+    $select = "select c.id_concierto, c.nombre, c.fecha, c.hora, l.ciudad, l.usuario from concierto c inner join login l on c.localm = l.id_usuario where l.ciudad = $ciudad; ";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Alvaro -- Isain
+//Lista Conciertos, buscados por id.
+function dimeConciertosporid($id_concierto){
+    $c = conectar();
+    $select = "select nombre, fecha, hora from concierto where id_concierto = $id_concierto;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+//Desarrollador: Alvaro -- Isain
 //Funcion que dice que si el concierto esta aceptado o no.
 function dimeConciertosAceptados ($id_usuario){
     $c = conectar();
-    $select = "select c.nombre, c.fecha, c.hora, p.estado from peticion p inner join concierto c on p.estado = c.estado where p.estado = 1 and p.musico = $id_usuario;";
+    // Select con errores preguntar a mar!!
+//    $select = "select c.nombre, c.fecha, c.hora, p.estado, c.musico from peticion p left outer join concierto c on p.estado = c.estado where p.musico = $id_usuario and c.musico is not null;";
+    $select = "select * from peticion p where musico = $id_usuario ;";
     $resultado = mysqli_query($c, $select);
     conectar($c);
     return $resultado;
@@ -264,7 +285,7 @@ function conciertosPorGenero($gender){
 //Muestra id_ciudad de cada local o musico.
 function muestraDatosCiudadLocalMusico(){
     $c = conectar();
-    $select = "select c.id_ciudad, c.nombre, l.id_usuario  from ciudad c inner join login l on c.id_ciudad = l.ciudad where l.tipo != 3;";
+    $select = "select c.id_ciudad, c.nombre, l.id_usuario  from ciudad c inner join login l on c.id_ciudad = l.ciudad where l.tipo = 1;";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
