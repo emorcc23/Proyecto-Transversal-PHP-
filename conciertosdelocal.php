@@ -103,12 +103,14 @@ extract($_SESSION);
                                 echo "<td><p>$estadop</p></td>";
                                 if ($estado == 0) {
                                     $musicospropuestos = cuantosmusicospropuestos($id_concierto);
-                                    echo"<td class='conciertop'><a href='borraconcierto.php?id=$id_concierto'><span class='icon-trash-empty'></span></a></td>";
+                                    
                                     if ($musicospropuestos > 0) {
+                                        echo"<td class='conciertop'><a href='cancelarconcierto.php?id=$id_concierto'>Cancelar</a></td>";
                                         echo "<td class='conciertop'><a href='confirmarconcierto.php?id=$id_concierto'>Hay $musicospropuestos"
                                                 . "músicos propuestos.</a></td>";
                                     } else {
-                                        echo "<td></td>";
+                                        echo"<td class='conciertop'><a href='borraconcierto.php?id=$id_concierto'><span class='icon-down-dir'></span></a></td>";
+                                        
                                     }
                                 } else {
                                     if ($estado == 1) {
@@ -118,20 +120,11 @@ extract($_SESSION);
                                         echo "<td class='conciertop'>Ninguno</td>";
                                     }
                                     
-                                     if($estado!=2)
-                                    {
-                                        echo"<td class='conciertop'><a href='cancelarconcierto.php?id=$id_concierto'>Cancelar</a></td>";
-                                        
-                                    }
-                                    else
-                                    {
-                                        echo"<td></td>";
-                                    }
-                                    
+                              
                                
-                                    if ($estado == 1) {
+                                   /* if ($estado == 1) {
                                         echo "<td class='conciertop'><a href='quitamusicoconcierto.php?id=$id_concierto'>Quitar músico</a></td>";
-                                    }
+                                    }*/
                                 }
                                 echo"</tr>";
                             }

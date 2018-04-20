@@ -78,11 +78,8 @@ require_once 'funciones.php';
                             <p>listas</p>
                             <?php
                             extract($_SESSION);
-                            echo"$username";
                             $id_usuario = dimeidusuario($username);
-                            echo"$id_usuario";
                             $idgeneroMusico = dimeIdgeneroUsuario($id_usuario);
-                            echo"$idgeneroMusico";
 
                             $listaConciertosGenero = listaConciertosporGenero($idgeneroMusico);
                             echo"<table border='1' padding='2px'>";
@@ -96,21 +93,20 @@ require_once 'funciones.php';
                                 echo"<td>";
                                 bajaMusicoConcierto($id_concierto);
                                 echo"</td>";
-                                echo"<td>";
-                                
-                                echo"</td>";
                                 echo"</tr>";
                             }
                             echo"</table>";
-                            
+
                             insertarPeticion();
                             bajaPeticion();
-                            
-                            
-                            echo"<p>Locales que han aceptado tu pelticion</p>";
+
+                            echo"<p>Buscar conciertos por ciudad</p>";
+                            muestraSelectCiudad();
+
+                            echo"<p>Estado de tus peticiones</p>";
                             peticionAceptadaLocal($id_usuario);
                             ?>
-                            
+
 
                         </div>
                         <div id="titulonoticias">
