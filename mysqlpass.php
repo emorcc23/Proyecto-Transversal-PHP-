@@ -1,5 +1,0 @@
-<?php
-$userbd = "root";
-$passbd = "";
-?>
-
