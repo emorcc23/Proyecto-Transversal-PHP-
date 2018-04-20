@@ -10,6 +10,40 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <link rel="stylesheet" href="css/fontello.css">
         <link rel="stylesheet" href="css/estilosanadirLocal.css">
+        <script src="jquery.min.js"></script>
+        <script type="text/javascript" src="funciones.js"></script>
+        <script type="text/javascript"> 
+      /*     $(document).ready( function()
+            {
+            
+                     var now = new Date();
+                    var mes = now.getMonth()+1;
+                    var dia = now.getDate();
+                    var hoy = now.getFullYear() + "-";
+                    if(mes<10)
+                    {
+                        hoy=hoy + 0 + mes;
+                    }
+                    else
+                    {
+                        hoy= hoy + mes;
+                    }
+                    hoy = hoy + "-";
+                    if(dia<10)
+                    {
+                        hoy = hoy + 0 + dia;
+                    }
+                    else
+                    {
+                        hoy = hoy + dia;
+                    }
+                    //document.getElementById("fecha").value = "2018-04-20";
+                    document.getElementById("fecha").value = hoy;
+                
+               
+            });*/
+                    
+        </script>
     </head>
     <body>
         <?php
@@ -78,9 +112,10 @@
                     <div id="miperfil">
                         <p id="tituloperfil">Organizar un concierto</p>
                         <div id="formulariodatos">
-                            <form method="post">  
-                            <p>Nombre:<input type="text" name="nombre"required></p>
-                            <p>Fecha:<input type="date" name="fecha" required></p>
+                            <form method="post" onsubmit="return verifech()">  
+                                  
+                            <p>Nombre:<input type="text" name="nombre" id="nombre" required></p>
+                            <p>Fecha:<input type="date" name="fecha" id="fecha" required></p>
                             <p>Hora:<input type="time" name="hora" required></p>
                             <?php
                             echo "<p>Genero:</p><select id='select' name='gender'>";
