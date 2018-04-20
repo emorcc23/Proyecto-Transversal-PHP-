@@ -1,5 +1,5 @@
 <?php
-$userbd = "arturv";
-$passbd = "ticmysql82";
+$userbd = "root";
+$passbd = "";
 ?>
 
