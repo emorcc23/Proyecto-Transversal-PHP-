@@ -18,14 +18,54 @@ function bajaPeticion() {
         $id_concierto = $_POST["id_concierto"];
 
         if (verificarPeticion($id_usuario, $id_concierto) == $id_usuario) {
-            if (bajaPeticionConcierto($id_usuario, $id_concierto) == "ok") {
-                echo"<script>alert('Se ha dado de baja a tu peticion')</script>";
+            if (dimeConciertoAceptado($id_usuario, $id_concierto) == 1) {
+                echo"<script>alert('El local ya ha aceptado tu peticion, no podemos darlo de baja')</script>";
             } else {
-                echo"<script>alert('Error al dar de baja la peticion')</script>";
+                if (bajaPeticionConcierto($id_usuario, $id_concierto) == "ok") {
+                    echo"<script>alert('Se ha dado de baja a tu peticion')</script>";
+                } else {
+                    echo"<script>alert('Error al dar de baja la peticion')</script>";
+                }
             }
-        }else{
+        } else {
             echo"<script>alert('No te haza dado de alta para este concierto')</script>";
         }
+    }
+}
+
+//Desarrolador: Alvaro -- Isain
+// Funcion que hace una tabla de todos los conciertos en que ha sido aceptado un musico en especial.
+function peticionAceptadaLocal($id_usuario) {
+    echo"<table border='1'>";
+    $aceptados = dimeConciertosAceptados($id_usuario);
+    while($fila = mysqli_fetch_assoc($aceptados)) {
+        extract($fila);
+        echo"<tr>";
+        echo"<td>$nombre</td><td>$fecha</td><td>$hora</td>";
+        echo"<td>";
+        estado($estado);
+        echo"</td>";
+        echo"</tr>";
+    }
+    echo"</table>";
+}
+
+//Desarrollador: Alvaro -- Isain
+// Funcion que transforma en aceptado o no un numero
+function estado($estado){
+    switch ($estado){
+        case 0:
+            echo"Pendiente";
+            break;
+        case 1:
+            echo "Aceptado";
+            break;
+        case 2:
+            echo"Cancelado";
+            break;
+        case 3:
+            echo"Denegado";
+            break;
     }
 }
 
@@ -45,7 +85,7 @@ function insertarPeticion() {
         $id_concierto = $_POST["id_concierto"];
 
         if (verificarPeticion($id_usuario, $id_concierto) == $id_usuario) {
-            echo"<script>alert('Ya haz realizado una peticion')</script>";
+            echo"<script>alert('Ya has realizado una peticion')</script>";
         } else {
             if (insertarPeticionConcierto($id_usuario, $id_concierto) == "ok") {
                 echo"<script>alert('La peticion se ha realizado satisfactoriamente')</script>";

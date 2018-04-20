@@ -1,4 +1,29 @@
 <?php
+//Desarrollador: Alvaro -- Isain
+//Funcion que dice que si el concierto esta aceptado o no.
+function dimeConciertosAceptados ($id_usuario){
+    $c = conectar();
+    $select = "select c.nombre, c.fecha, c.hora, p.estado from peticion p inner join concierto c on p.estado = c.estado where p.estado = 1 and p.musico = $id_usuario;";
+    $resultado = mysqli_query($c, $select);
+    conectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Alvaro
+//Funcion que dice que si el concierto esta aceptado o no.
+function dimeConciertoAceptado($id_usuario, $id_concierto){
+    $c = conectar();
+    $select = "select * from peticion where musico = $id_usuario and concierto = $id_concierto and estado = 1;";
+    $resultado = mysqli_query($c, $select);
+    if($fila = mysqli_fetch_assoc($resultado)){
+        extract($fila);
+        $resultado = $estado;
+    }else{
+        $resultado = 0;
+    }
+    desconectar($c);
+    return $resultado;
+}
 //Desarrollador: Artur
 //Dice cuantos conciertos aceptados hay, sirve para la paginación
 function cuantosconciertosaceptados()
@@ -248,7 +273,7 @@ function muestraDatosCiudadLocalMusico(){
 //Lista de conciertos ya filtrados, segun sea el genero del musico que haya hecho login
 function listaConciertosporGenero($idgeneroMusico){
     $c = conectar();
-    $select = "select c.id_concierto,c.nombre as nomconcierto, c.fecha, c.hora, l.nombre from concierto c inner join musico m on c.musico = m.id_usuario inner join localm lo on lo.id_usuario = c.localm inner join login l on lo.id_usuario = l.id_usuario where c.genero = $idgeneroMusico ";
+    $select = "select c.id_concierto,c.nombre as nomconcierto, c.fecha, c.hora, l.nombre from concierto c inner join localm lo on lo.id_usuario = c.localm inner join login l on lo.id_usuario = l.id_usuario where c.genero = $idgeneroMusico ";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
