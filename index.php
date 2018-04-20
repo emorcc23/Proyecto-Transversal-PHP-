@@ -165,7 +165,7 @@
                             {
                                 $pagina=1;
                             }
-                            $elementospagina = 10;
+                            $elementospagina = 4;
                             $inicio = ($pagina-1)*$elementospagina;
                             $cuantosconciertos = cuantosconciertosaceptados();
                             $totalpaginas = ceil($cuantosconciertos / $elementospagina); 
@@ -185,19 +185,20 @@
                             }
                             echo "</table>";
                             
-                            echo"Página $pagina de $totalpaginas, Hay $cuantosconciertos conciertos aceptados.<br>";
+                            //echo"Página $pagina de $totalpaginas, Hay $cuantosconciertos conciertos aceptados.<br>";
+                            echo "<p id='paginado'>$pagina/$totalpaginas</p>";
                             if($pagina>1)
                             {
-                                echo"<a href='index.php?pagina=1'>Primera</a>";
+                                echo"<a href='index.php?pagina=1' id='primera'><span class='icon-to-start-1'></span></a>";
                                 $anterior=$pagina-1;
-                                echo" <a href='index.php?pagina=$anterior'>Anterior</a>";
+                                echo" <a href='index.php?pagina=$anterior' id='anterior'><span class='icon-left-dir'></span></a>";
                             }
                             
                             if($pagina<$totalpaginas)
                             {
                                 $siguiente=$pagina+1;
-                                echo" <a href='index.php?pagina=$siguiente'>Siguiente</a>";
-                                echo" <a href='index.php?pagina=$totalpaginas'>Última</a>";
+                                echo" <a href='index.php?pagina=$siguiente' id='siguiente'><span class='icon-right-dir'></span></a>";
+                                echo" <a href='index.php?pagina=$totalpaginas' id='ultima'><span class='icon-to-end'></span></a>";
                             }
                             ?>
                         </div>
