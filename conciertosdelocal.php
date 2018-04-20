@@ -35,7 +35,7 @@ extract($_SESSION);
                         <ul>
                             <li><a href="index.php">Inicio</a></li>
                             <li><a href="login.php">Login</a></li>
-                            <li class="submenu"><a href="">Registro <span class="icon-down-dir"></span></a>
+                            <li class="submenu"><a href="">Registro <span class="icon-sort-down"></span></a>
                                 <ul class="submenuu">
                                     <li><a href="rmusicos.php">Regístrate como músico</a></li>
                                     <li><a href="rlocales.php">Regístrate como local</a></li>
