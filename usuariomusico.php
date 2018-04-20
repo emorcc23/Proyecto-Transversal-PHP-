@@ -75,7 +75,7 @@ require_once 'funciones.php';
                             <p>Conciertos que pueden interesarte</p>
                         </div>
                         <div id="contenidoInteres">
-                            <p>listas</p>
+                            <p>LISTA DE TODOS LOS CONCIERTOS PROPUESTOS</p>
                             <?php
                             extract($_SESSION);
                             $id_usuario = dimeidusuario($username);
@@ -100,10 +100,10 @@ require_once 'funciones.php';
                             insertarPeticion();
                             bajaPeticion();
 
-                            echo"<p>Buscar conciertos por ciudad</p>";
+                            echo"<p>BUSCAR CONCIERTOS POR LOCAL</p>";
                             muestraSelectCiudad();
 
-                            echo"<p>Estado de tus peticiones</p>";
+                            echo"<p>ESTADO DE TUS PETICIONES</p>";
                             peticionAceptadaLocal($id_usuario);
                             ?>
 
