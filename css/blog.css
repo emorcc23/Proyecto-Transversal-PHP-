@@ -273,3 +273,78 @@
     margin-left: 10px;
     cursor: pointer;
 }
+
+@media (max-width:1005px) {
+    #blog #conciertos {
+        min-width: 70px;
+    }
+    
+    #blog article #conc {
+        width: 450px;
+    }
+    
+    #siguiente {
+        margin-top: 5px;
+        margin-left: 270px;
+        width: 40px;
+        height: 40px;
+    }
+
+    #siguiente span {
+        font-size: 30px;
+        margin-top: 4px;
+        margin-left:  -20px;
+        position: absolute;
+    }
+
+    #ultima {
+        margin-top: 5px;
+        margin-left: 340px;
+        width: 40px;
+        height: 40px;
+    }
+
+    #ultima span {
+        font-size: 24px;
+        margin-top: 6px;
+        margin-left: -16px;
+        position: absolute;
+    }
+
+    #anterior {
+        margin-top: 5px;
+        margin-left: 120px;
+        width: 40px;
+        height: 40px;
+    }
+
+    #anterior span {
+        font-size: 30px;
+        margin-top: 4px;
+        margin-left: -23px;
+        position: absolute;
+    }
+
+    #primera {
+        margin-top: 5px;
+        margin-left: 50px;
+        width: 40px;
+        height: 40px;
+    }
+
+    #primera span {
+        font-size: 24px;
+        margin-top: 6px;
+        margin-left: -16px;
+        position: absolute;
+    }
+    
+    #conciertos #paginado {
+        font-size: 20px;
+        text-align: center;
+        margin-top: 5px;
+        margin-left: 195px;
+        width: 40px;
+        height: 40px;
+    }
+}
