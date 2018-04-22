@@ -47,23 +47,37 @@ function peticionAceptadaLocal($id_usuario) {
             echo"<tr>";
             echo"<td>$nombre</td><td>$fecha</td><td>$hora</td>";
             echo"<td>";
-            estado($estadoP);
+            estado($estadoP, $estado);
+            echo"</td>";
+            echo"<td>";
+            if($estado == 2){
+                echo"CANCELADO";
+            }else{
+                echo"CONFIRMADO";
+            }
             echo"</td>";
             echo"</tr>";
         }
     }
     echo"</table>";
 }
+//Desarrollador: Alvaro -- Isain
+//Funcion que transforma en aceptado o no un numero
 
 //Desarrollador: Alvaro -- Isain
 // Funcion que transforma en aceptado o no un numero
-function estado($estado) {
-    switch ($estado) {
+function estado($estadoP,$estado) {
+    switch ($estadoP) {
         case 0:
             echo"Pendiente";
             break;
         case 1:
-            echo "Aceptado";
+//            if($estado == 2){
+//                echo"ESTE CONCIERTO HA SIDO CANCELADO";
+//            }else{
+                echo "Aceptado";
+//            }
+            
             break;
         case 2:
             echo"Rechazado";
