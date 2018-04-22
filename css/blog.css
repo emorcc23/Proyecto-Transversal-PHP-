@@ -32,7 +32,7 @@
 #blog .listas {
     width: 100%;
     max-width: 450px;
-    height: 300px;
+    height: 250px;
     border: solid;
     border-width: thin;
     background: #CACACA;
@@ -100,6 +100,137 @@
     
 }
 
+#blog article #conciertos {
+    height: 375px;
+}
+
+#siguiente {
+    border: solid;
+    border-width: thin;
+    text-decoration: none;
+    color: black;
+    margin-top: 15px;
+    margin-left: 500px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    text-align: center;
+    border-radius: 50px;
+    background: rgba(255,255,255,.9);
+    box-shadow: 0px 0px 15px black;   
+}
+
+#siguiente:hover {
+    background: rgba(55,55,55,.3);
+    box-shadow: 0px 0px 45px white;
+}
+
+#siguiente span {
+    font-size: 35px;
+    margin-top: 5px;
+    margin-left:  -23px;
+    position: absolute;
+}
+
+#ultima {
+    border: solid;
+    border-width: thin;
+    text-decoration: none;
+    color: black;
+    margin-top: 15px;
+    margin-left: 570px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    text-align: center;
+    border-radius: 50px;
+    background: rgba(255,255,255,.9);
+    box-shadow: 0px 0px 15px black; 
+}
+
+#ultima:hover {
+    background: rgba(55,55,55,.3);
+    box-shadow: 0px 0px 45px white;
+}
+
+#ultima span {
+    font-size: 28px;
+    margin-top: 9px;
+    margin-left: -19px;
+    position: absolute;
+}
+
+#anterior {
+    border: solid;
+    border-width: thin;
+    text-decoration: none;
+    color: black;
+    margin-top: 15px;
+    margin-left: 360px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    text-align: center;
+    border-radius: 50px;
+    background: rgba(255,255,255,.9);
+    box-shadow: 0px 0px 15px black; 
+}
+
+#anterior span {
+    font-size: 35px;
+    margin-top: 5px;
+    margin-left: -26px;
+    position: absolute;
+}
+
+#anterior:hover {
+    background: rgba(55,55,55,.3);
+    box-shadow: 0px 0px 45px white;
+}
+
+#primera {
+    border: solid;
+    border-width: thin;
+    text-decoration: none;
+    color: black;
+    margin-top: 15px;
+    margin-left: 290px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    text-align: center;
+    border-radius: 50px;
+    background: rgba(255,255,255,.9);
+    box-shadow: 0px 0px 15px black; 
+}
+
+#primera:hover {
+    background: rgba(55,55,55,.3);
+    box-shadow: 0px 0px 45px white;
+}
+
+#primera span {
+    font-size: 28px;
+    margin-top: 9px;
+    margin-left: -19px;
+    position: absolute;
+}
+
+#conciertos #paginado {
+    border: solid;
+    border-width: thin;
+    margin-top: 15px;
+    margin-left: 430px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    text-align: left;
+    border-radius: 50px;
+    font-size: 29px;
+    background: rgba(255,255,255,.9);
+    box-shadow: 0px 0px 15px black; 
+}
+
 #blog article #conciertos #datos td {
     padding: 0px;
     font-size: 16px;
@@ -141,4 +272,79 @@
     margin-top: -20px;
     margin-left: 10px;
     cursor: pointer;
+}
+
+@media (max-width:1005px) {
+    #blog #conciertos {
+        min-width: 70px;
+    }
+    
+    #blog article #conc {
+        width: 450px;
+    }
+    
+    #siguiente {
+        margin-top: 5px;
+        margin-left: 270px;
+        width: 40px;
+        height: 40px;
+    }
+
+    #siguiente span {
+        font-size: 30px;
+        margin-top: 4px;
+        margin-left:  -20px;
+        position: absolute;
+    }
+
+    #ultima {
+        margin-top: 5px;
+        margin-left: 340px;
+        width: 40px;
+        height: 40px;
+    }
+
+    #ultima span {
+        font-size: 24px;
+        margin-top: 6px;
+        margin-left: -16px;
+        position: absolute;
+    }
+
+    #anterior {
+        margin-top: 5px;
+        margin-left: 120px;
+        width: 40px;
+        height: 40px;
+    }
+
+    #anterior span {
+        font-size: 30px;
+        margin-top: 4px;
+        margin-left: -23px;
+        position: absolute;
+    }
+
+    #primera {
+        margin-top: 5px;
+        margin-left: 50px;
+        width: 40px;
+        height: 40px;
+    }
+
+    #primera span {
+        font-size: 24px;
+        margin-top: 6px;
+        margin-left: -16px;
+        position: absolute;
+    }
+    
+    #conciertos #paginado {
+        font-size: 20px;
+        text-align: center;
+        margin-top: 5px;
+        margin-left: 195px;
+        width: 40px;
+        height: 40px;
+    }
 }

@@ -1,4 +1,4 @@
-/*function verifech()
+function verifech()
 {
     alert("hola");
    var Fecha_aux = document.getElementById("fecha").value.split("/");
@@ -16,7 +16,7 @@
     {
         return true;
     }
-}*/
+}
 
 function verificapass() {
     var pass1 = document.getElementById("pass1").value;
