@@ -4,12 +4,6 @@ function verifech()
    var hoy = new Date();
    var Fecha1 = new Date(hoy.getUTCFullYear(),hoy.getMonth(),hoy.getDate()+1);
    
-   
-   
-   
-   
-   
-
     if(fecha_aux.getTime() < Fecha1.getTime())
     {
         alert("La fecha no puede ser anterior a mañana.");
