@@ -13,35 +13,7 @@
         <script src="jquery.min.js"></script>
         <script type="text/javascript" src="funciones.js"></script>
         <script type="text/javascript"> 
-      /*     $(document).ready( function()
-            {
-            
-                     var now = new Date();
-                    var mes = now.getMonth()+1;
-                    var dia = now.getDate();
-                    var hoy = now.getFullYear() + "-";
-                    if(mes<10)
-                    {
-                        hoy=hoy + 0 + mes;
-                    }
-                    else
-                    {
-                        hoy= hoy + mes;
-                    }
-                    hoy = hoy + "-";
-                    if(dia<10)
-                    {
-                        hoy = hoy + 0 + dia;
-                    }
-                    else
-                    {
-                        hoy = hoy + dia;
-                    }
-                    //document.getElementById("fecha").value = "2018-04-20";
-                    document.getElementById("fecha").value = hoy;
-                
-               
-            });*/
+     
                     
         </script>
     </head>
