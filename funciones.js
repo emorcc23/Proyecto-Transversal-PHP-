@@ -1,19 +1,23 @@
 function verifech()
 {
-    alert("hola");
-   var Fecha_aux = document.getElementById("fecha").value.split("/");
-    var Fecha1 = new Date(parseInt(fecha_aux[2]),parseInt(fecha_aux[1]-1),parseInt(fecha_aux[0]));
-    var hoy = new Date();
-    
-    alert(Fecha1);
-    alert(hoy);
-    if(Fecha1<hoy)
+   var fecha_aux = new Date(document.getElementById("fecha").value);
+   var hoy = new Date();
+   var Fecha1 = new Date(hoy.getUTCFullYear(),hoy.getMonth(),hoy.getDate()+1);
+   
+   
+   
+   
+   
+   
+
+    if(fecha_aux.getTime() < Fecha1.getTime())
     {
-        alert("La fecha no puede ser anterior a la actual.");
+        alert("La fecha no puede ser anterior a mañana.");
         return false;
     }
     else
     {
+        alert("ok");
         return true;
     }
 }
