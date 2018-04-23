@@ -7,7 +7,7 @@ require_once 'bbdd.php';
 function bajaMusicoConcierto($id_concierto) {
     echo"<form action='' method='POST'>";
     echo"<input type='hidden' value='$id_concierto' name='id_concierto'>";
-    echo"<input type='submit' value='baja' name='baja'>";
+    echo"<input type='submit' value='Baja' name='baja'>";
     echo"</form>";
 }
 
@@ -36,9 +36,13 @@ function bajaPeticion() {
 //Desarrolador: Alvaro -- Isain
 // Funcion que hace una tabla de todos los conciertos en que ha sido aceptado un musico en especial.
 function peticionAceptadaLocal($id_usuario) {
-    echo"<table border='1'>";
+    echo"<table id='tablapropuestos2' border='1'>";
     echo"<tr>";
-    echo"<td>NOMBRE CONCIERTO</td><td>FECHA</td><td>HORA</td><td>ESTADO PETICION</td><td>ESTADO CONCIERTO</td>";
+    echo "<td class='titulos2'><p>Nombre</p></td>";
+    echo "<td class='titulos2'><p>Fecha</p></td>";
+    echo "<td class='titulos2'><p>Hora</p></td>";
+    echo "<td class='titulos2'><p>Estado de petición</p></td>";
+    echo "<td class='titulos2'><p>Estado del concierto</p></td>";
     echo"</tr>";
     $aceptados = dimeConciertosAceptados($id_usuario);
     while ($fila = mysqli_fetch_assoc($aceptados)) {
@@ -48,15 +52,17 @@ function peticionAceptadaLocal($id_usuario) {
         while ($fila2 = mysqli_fetch_assoc($datosConcierto)) {
             extract($fila2);
             echo"<tr>";
-            echo"<td>$nombre</td><td>$fecha</td><td>$hora</td>";
+            echo"<td><p class='datos2'>$nombre</p></td>";
+            echo"<td><p class='datos2'>$fecha</p></td>";
+            echo"<td><p class='datos2'>$hora</p></td>";
             echo"<td>";
             estado($estadoP, $estado);
             echo"</td>";
             echo"<td>";
             if ($estado == 2) {
-                echo"CANCELADO";
+                echo"<p class='datos2'>Cancelado</p>";
             } else {
-                echo"CONFIRMADO";
+                echo"<p class='datos2'>Confirmado</p>";
             }
             echo"</td>";
             echo"</tr>";
@@ -72,13 +78,13 @@ function peticionAceptadaLocal($id_usuario) {
 function estado($estadoP, $estado) {
     switch ($estadoP) {
         case 0:
-            echo"Pendiente";
+            echo"<p class='datos2'>Pendiente</p>";
             break;
         case 1:
-            echo "Aceptado";
+            echo "<p class='datos2'>Aceptado</p>";
             break;
         case 2:
-            echo"Rechazado";
+            echo"<p class='datos2'>Rechazado</p>";
             break;
     }
 }
@@ -114,15 +120,15 @@ function insertarPeticion() {
 //Esta función muestra un select con todos los locales y regresa el id_local elegido.
 function muestraSelectCiudad() {
     $datosCiudad = muestraDatosCiudadLocalMusico();
-    echo"<form action='' method='POST'>";
+    echo"<form id='formulario' action='' method='POST'>";
     echo"<p>Ciudad<select name = 'ciudad'>";
     while ($fila = mysqli_fetch_assoc($datosCiudad)) {
         extract($fila);
-        echo"<option value = '$id_ciudad'>$nombre</option>";
+        echo"<option value='$id_ciudad'>$nombre</option>";
     }
     echo"</select></p>";
 
-    echo"<input type='submit' name='buscar3' value='buscar'>";
+    echo"<input type='submit' name='buscar3' value='Buscar'>";
     echo"</form>";
 
     if (isset($_POST['buscar3'])) {
