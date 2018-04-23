@@ -37,6 +37,9 @@ function bajaPeticion() {
 // Funcion que hace una tabla de todos los conciertos en que ha sido aceptado un musico en especial.
 function peticionAceptadaLocal($id_usuario) {
     echo"<table border='1'>";
+    echo"<tr>";
+    echo"<td>NOMBRE CONCIERTO</td><td>FECHA</td><td>HORA</td><td>ESTADO PETICION</td><td>ESTADO CONCIERTO</td>";
+    echo"</tr>";
     $aceptados = dimeConciertosAceptados($id_usuario);
     while ($fila = mysqli_fetch_assoc($aceptados)) {
         extract($fila);
@@ -50,9 +53,9 @@ function peticionAceptadaLocal($id_usuario) {
             estado($estadoP, $estado);
             echo"</td>";
             echo"<td>";
-            if($estado == 2){
+            if ($estado == 2) {
                 echo"CANCELADO";
-            }else{
+            } else {
                 echo"CONFIRMADO";
             }
             echo"</td>";
@@ -61,23 +64,18 @@ function peticionAceptadaLocal($id_usuario) {
     }
     echo"</table>";
 }
-//Desarrollador: Alvaro -- Isain
-//Funcion que transforma en aceptado o no un numero
 
 //Desarrollador: Alvaro -- Isain
+//Funcion que transforma en aceptado o no un numero
+//Desarrollador: Alvaro -- Isain
 // Funcion que transforma en aceptado o no un numero
-function estado($estadoP,$estado) {
+function estado($estadoP, $estado) {
     switch ($estadoP) {
         case 0:
             echo"Pendiente";
             break;
         case 1:
-//            if($estado == 2){
-//                echo"ESTE CONCIERTO HA SIDO CANCELADO";
-//            }else{
-                echo "Aceptado";
-//            }
-            
+            echo "Aceptado";
             break;
         case 2:
             echo"Rechazado";
