@@ -13,7 +13,8 @@ if(isset($_GET['id']))
              $correcto=1;
              if(bajaconcierto($_GET['id'])=="ok")
              {
-                 echo"Concierto eliminado.<br>";
+                  echo"<script>alert('Concierto eliminado')</script>";
+                 header("Refresh:1; url=usuariolocal.php");
              }       
          }       
     }

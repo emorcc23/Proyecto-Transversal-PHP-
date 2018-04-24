@@ -11,7 +11,6 @@ function verifech()
     }
     else
     {
-        alert("ok");
         return true;
     }
 }
