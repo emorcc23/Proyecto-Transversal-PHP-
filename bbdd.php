@@ -353,14 +353,10 @@ function mirarConciertosLocal($nombre, $id_usuario){
 
 //Desarrollador: Isain
 //Mirar conciertos en local
-function mirarConciertosLocal2($nombre, $id_usuario){
+function mirarConciertosLocal2($id_usuario){
     $c = conectar();
-    $select = "select musico.nombreart, concierto.fecha, concierto.pago, concierto.genero from musico inner join concierto on concierto.musico = musico.id_usuario  where concierto.localm like '$id_usuario' and concierto.estado = 2;";
-    if(mysqli_query($c, $select)){
-        $resultado = mysqli_query($c, $select);
-    }else{
-        $resultado = mysqli_error($c);
-    }
+    $select = "select * from concierto where localm = $id_usuario and estado = 1;";
+    $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
     

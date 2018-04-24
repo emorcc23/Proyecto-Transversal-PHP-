@@ -210,13 +210,13 @@ function muestraSelectGenero($id_usuario) {
 function muestraUsuariosTipo($tipo) {
     switch ($tipo) {
         case 1:
-            echo"<p>Local</p>";
+            echo"<p>Tipo: Local</p>";
             break;
         case 2:
-            echo"<p>Musico</p>";
+            echo"<p>Tipo: Musico</p>";
             break;
         case 3:
-            echo"<p>Fan</p>";
+            echo"<p>Tipo: Fan</p>";
             break;
         default;
     }

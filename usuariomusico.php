@@ -100,7 +100,7 @@ require_once 'funciones.php';
                             insertarPeticion();
                             bajaPeticion();
 
-                            echo"<p>BUSCAR CONCIERTOS POR LOCAL</p>";
+                            echo"<p>BUSCAR CONCIERTOS POR CIUDAD</p>";
                             muestraSelectCiudad();
 
                             echo"<p>ESTADO DE TUS PETICIONES</p>";
