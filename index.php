@@ -92,16 +92,20 @@
                                 echo "<table border='1' id='tablabuscador'>";
                                 echo"<tr><td><p>PROXIMOS CONCIERTOS</p></td></tr>";
                                 echo "<tr id='tituloss'>";
+                                echo "<td><p>Nombre</p></td>";
                                 echo "<td><p>Fecha</p></td>";
-                                echo "<td><p>Artista</p></td>";
-                                echo "<td><p>Pago</p></td>";
+                                echo "<td><p>Hora</p></td>";
                                 echo "</tr>";
-                                echo "<tr>";
+                                
                                 while ($fila = mysqli_fetch_assoc($r)) {
                                     extract($fila);
-                                    echo"<td><p>$nombre</p></td><td><p>$fecha</p></td> <td><p>$hora</p></td>";
+                                    echo "<tr>";
+                                    echo"<td><p>$nombre</p></td>";
+                                    echo"<td><p>$fecha</p></td>";
+                                    echo"<td><p>$hora</p></td>";
+                                    echo "</tr>";
                                 }
-                                echo "</tr>";
+                                
                                 echo "</table>";
                             }
                             echo "</div>";
