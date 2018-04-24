@@ -1,3 +1,18 @@
+/* 
+  DESPLEGABLE DEL BUSCADOR INDEX.PHP
+ */
+
+var x;
+x = $(document);
+x.ready(inicializarEvento);
+
+function inicializarEvento(){
+    var x;
+    x=$("#buscador2");
+    x.click(presionBuscador);
+}
+
+
 function verifech()
 {
    var fecha_aux = new Date(document.getElementById("fecha").value);

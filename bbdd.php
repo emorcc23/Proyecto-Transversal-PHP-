@@ -1,5 +1,11 @@
 <?php
 //Desarrollador: Alvaro -- Isain
+// Autocompletado buscador
+
+
+
+
+//Desarrollador: Alvaro -- Isain
 // Funcion que da todos los conciertos de una ciudad en especial
 function dimeCociertosPorCiudad($ciudad){
     $c = conectar();
