@@ -75,22 +75,32 @@ require_once 'funciones.php';
                             <p>Conciertos que pueden interesarte</p>
                         </div>
                         <div id="contenidoInteres">
-                            <p>LISTA DE TODOS LOS CONCIERTOS PROPUESTOS</p>
+                            <p class="titulo">LISTA DE TODOS LOS CONCIERTOS PROPUESTOS</p>
                             <?php
                             extract($_SESSION);
                             $id_usuario = dimeidusuario($username);
                             $idgeneroMusico = dimeIdgeneroUsuario($id_usuario);
 
                             $listaConciertosGenero = listaConciertosporGenero($idgeneroMusico);
-                            echo"<table border='1' padding='2px'>";
+                            
+                            echo"<table border='1' id='tablapropuestos'>";
+                            echo "<tr>";
+                            echo "<td><p class='titulodatos'>Nombre</p></td>";
+                            echo "<td><p class='titulodatos'>Fecha</p></td>";
+                            echo "<td><p class='titulodatos'>Hora</p></td>";
+                            echo "<td><p class='titulodatos'>Local</p></td>";
+                            echo "</tr>";
                             while ($fila = mysqli_fetch_assoc($listaConciertosGenero)) {
                                 extract($fila);
                                 echo"<tr>";
-                                echo"<td>$nomconcierto</td><td>$fecha</td><td>$hora</td><td>$nombre</td>";
-                                echo"<td>";
+                                echo"<td><p class='datos'>$nomconcierto</p></td>";
+                                echo"<td><p class='datos'>$fecha</p></td>";
+                                echo"<td><p class='datos'>$hora</p></td>";
+                                echo"<td><p class='datos'>$nombre</p></td>";
+                                echo"<td id='alta'>";
                                 altaMusicoConcierto($id_concierto);
                                 echo"</td>";
-                                echo"<td>";
+                                echo"<td id='baja'>";
                                 bajaMusicoConcierto($id_concierto);
                                 echo"</td>";
                                 echo"</tr>";
@@ -101,9 +111,10 @@ require_once 'funciones.php';
                             bajaPeticion();
 
                             echo"<p>BUSCAR CONCIERTOS POR CIUDAD</p>";
+                            echo"<p class='titulo'>BUSCAR CONCIERTOS POR CIUDAD</p>";
                             muestraSelectCiudad();
 
-                            echo"<p>ESTADO DE TUS PETICIONES</p>";
+                            echo"<p class='titulo'>ESTADO DE TUS PETICIONES</p>";
                             peticionAceptadaLocal($id_usuario);
                             ?>
 

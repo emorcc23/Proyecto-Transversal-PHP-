@@ -13,35 +13,7 @@
         <script src="jquery.min.js"></script>
         <script type="text/javascript" src="funciones.js"></script>
         <script type="text/javascript"> 
-      /*     $(document).ready( function()
-            {
-            
-                     var now = new Date();
-                    var mes = now.getMonth()+1;
-                    var dia = now.getDate();
-                    var hoy = now.getFullYear() + "-";
-                    if(mes<10)
-                    {
-                        hoy=hoy + 0 + mes;
-                    }
-                    else
-                    {
-                        hoy= hoy + mes;
-                    }
-                    hoy = hoy + "-";
-                    if(dia<10)
-                    {
-                        hoy = hoy + 0 + dia;
-                    }
-                    else
-                    {
-                        hoy = hoy + dia;
-                    }
-                    //document.getElementById("fecha").value = "2018-04-20";
-                    document.getElementById("fecha").value = hoy;
-                
-               
-            });*/
+     
                     
         </script>
     </head>
@@ -121,13 +93,13 @@
                             
                             <p>Hora:<input type="time" name="hora" required></p>
                             <?php
-                            echo "<p>Genero:</p><select id='select' name='gender'>";
+                            echo "<p>Genero:<select id='select' name='gender'>";
                             $generos = muestrageneros();
                             while ($fila = mysqli_fetch_assoc($generos)) {
                                 extract($fila);
                                 echo "<option value='$id_genero'>$nombre</option>";
                             }
-                            echo "</select>";
+                            echo "</select></p>";
                             ?>
                             <p>Precio de entradas:<input type="number" name="pago" required> €</p>
                             <p><input type="submit" value="Finalizar"></p>

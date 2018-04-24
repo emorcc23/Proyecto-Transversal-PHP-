@@ -56,6 +56,9 @@ extract($_SESSION);
                     <div id="centro"> 
                         <p></p>
                         <div id="usuario">
+                            <?php
+                                muestradatoslocal();
+                            ?>
                         </div>
                         <nav class="menuLocal">
                             <ul>

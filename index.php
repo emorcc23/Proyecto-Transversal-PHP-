@@ -88,9 +88,8 @@
                             echo"<p>Nombre: $nombre</p>";
                             echo"<p><br>Email: $email<br></p>";
                             if ($tipo == 1) {
-                                echo "<table border='1'>";
-                                echo"<br><p></p><br>";
                                 $r = mirarConciertosLocal2($id_usuario);
+                                echo "<table border='1' id='tablabuscador'>";
                                 echo"<tr><td><p>PROXIMOS CONCIERTOS</p></td></tr>";
                                 echo "<tr id='tituloss'>";
                                 echo "<td><p>Fecha</p></td>";

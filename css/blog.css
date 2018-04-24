@@ -64,7 +64,7 @@
 
 #blog #conciertos {
     min-width: 928px;
-    
+
 }
 
 #blog article #conc {
@@ -97,7 +97,7 @@
     font-size: 18px;
     background: rgba(255,255,255,.8);
     border-color: rgba(55,55,55,0.2);
-    
+
 }
 
 #blog article #conciertos {
@@ -278,11 +278,11 @@
     #blog #conciertos {
         min-width: 70px;
     }
-    
+
     #blog article #conc {
         width: 450px;
     }
-    
+
     #siguiente {
         margin-top: 5px;
         margin-left: 270px;
@@ -338,7 +338,7 @@
         margin-left: -16px;
         position: absolute;
     }
-    
+
     #conciertos #paginado {
         font-size: 20px;
         text-align: center;
@@ -346,5 +346,26 @@
         margin-left: 195px;
         width: 40px;
         height: 40px;
+    }
+
+    .recuadro {
+
+        max-width: 450px;
+        height: 500px;
+    }
+
+    .recuadro #tablabuscador {
+        margin-left: 0px;
+        margin-top: 30px;
+        width: 400px;
+    }
+
+    .recuadro #tituloss {
+        background: rgba(255,255,255,.8);
+    }
+
+    .recuadro table tr:hover {
+        background: rgba(255,255,255,.9);
+        cursor: pointer;
     }
 }
