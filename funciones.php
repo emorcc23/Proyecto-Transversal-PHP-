@@ -270,7 +270,7 @@ function muestradatosfan() {
             echo "<p>$nombre</p>";
             echo "<hr>";
             echo "<div id='info'>";
-            echo "<img src='Imagenes/usuario.png'>";
+            //echo "<img src='Imagenes/usuario.png'>";
             echo "</div>";
         }
     }
@@ -290,7 +290,7 @@ function muestradatosmusico() {
         echo"<p>$nombre</p>";
         echo"<hr>";
         echo"<div id='info'>";
-        echo"<img src='Imagenes/usuario.png'>";
+        //echo"<img src='Imagenes/usuario.png'>";
         echo"</div>";
     }
 }
@@ -319,7 +319,7 @@ function muestradatoslocal() {
         echo"<p>$nombre</p>";
         echo"<hr>";
         echo"<div id='info'>";
-        echo"<img src='Imagenes/usuario.png'>";
+        //echo"<img src='Imagenes/usuario.png'>";
         echo"</div>";
     }
 }

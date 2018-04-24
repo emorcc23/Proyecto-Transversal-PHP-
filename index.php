@@ -88,9 +88,9 @@
                             echo"<p>Nombre: $nombre</p>";
                             echo"<p><br>Email: $email<br></p>";
                             if ($tipo == 1) {
-                                echo"<br><p>Datos Proximo concierto</p><br>";
+                                echo"<br><p>Datos Proximo concierto</p>";
                                 $r = mirarConciertosLocal2($nombre, $id_usuario);
-                                echo "<table border='1'>";
+                                echo "<table border='1' id='tablabuscador'>";
                                 echo "<tr id='tituloss'>";
                                 echo "<td><p>Fecha</p></td>";
                                 echo "<td><p>Artista</p></td>";

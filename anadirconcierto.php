@@ -93,13 +93,13 @@
                             
                             <p>Hora:<input type="time" name="hora" required></p>
                             <?php
-                            echo "<p>Genero:</p><select id='select' name='gender'>";
+                            echo "<p>Genero:<select id='select' name='gender'>";
                             $generos = muestrageneros();
                             while ($fila = mysqli_fetch_assoc($generos)) {
                                 extract($fila);
                                 echo "<option value='$id_genero'>$nombre</option>";
                             }
-                            echo "</select>";
+                            echo "</select></p>";
                             ?>
                             <p>Precio de entradas:<input type="number" name="pago" required> €</p>
                             <p><input type="submit" value="Finalizar"></p>
