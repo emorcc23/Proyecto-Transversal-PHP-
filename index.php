@@ -12,29 +12,6 @@
         <script>
             window.onload = autoCompletado();
         </script>
-           <style>  
-           #autobuscador{  
-                cursor:pointer;
-                width: 197px;
-                margin-left: 445px;
-                margin-top: -16px;
-                position: absolute;
-                z-index: 1;
-                list-style: none;
-                text-align: center; 
-           }  
-           .autobuscar{  
-                background: rgba(255,255,255);
-                padding:12px;  
-           }  
-           .autobuscar:hover {
-               background: rgba(255,255,255);
-               border: solid;
-               border-width: thin;
-               border-left-style: none;
-               border-right-style: none;
-           }
-           </style> 
     </head>
     <body>
         <?php
