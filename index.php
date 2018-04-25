@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="css/estilos.css">
         <script src="jquery.min.js"></script>
         <script type="text/javascript" src="funcionesbuscador.js"></script>
-<!--        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  -->
         <script>
             window.onload = autoCompletado();
         </script>
