@@ -37,6 +37,7 @@
     border-width: thin;
     background: #CACACA;
     overflow: auto;
+    z-index: 2;
 }
 
 #blog .listas p {
