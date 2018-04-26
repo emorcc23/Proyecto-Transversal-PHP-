@@ -1,5 +1,20 @@
 <?php
 
+//Desarrollador: Artur
+//Cancela conciertos antiguos
+function cancelaconciertosantiguos()
+{
+    $c = conectar();
+    $update = "update concierto set estado=2 where estado=0 and fecha<DATE_ADD(NOW(),INTERVAL -1 DAY);";
+    if (mysqli_query($c, $update)) {
+        return "ok";
+    } else {
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
 //Desarrollador: Alvaro -- Isain
 // Autocompletado buscador
 function autoCompletado() {
