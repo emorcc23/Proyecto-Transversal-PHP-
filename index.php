@@ -273,7 +273,10 @@
                           $('#autobuscador').html(data);  
                      }  
                 });  
-           }  
+           } else {
+               $('#autobuscador').fadeOut(); 
+               $('#autobuscador').html(""); 
+           }
       });  
       $(document).on('click', 'li', function(){  
            $('#buscador').val($(this).text());  
