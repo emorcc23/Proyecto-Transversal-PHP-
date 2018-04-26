@@ -37,6 +37,7 @@
     border-width: thin;
     background: #CACACA;
     overflow: auto;
+    z-index: 2;
 }
 
 #blog .listas p {
@@ -272,6 +273,28 @@
     margin-top: -20px;
     margin-left: 10px;
     cursor: pointer;
+}
+
+#autobuscador{  
+    cursor:pointer;
+    width: 197px;
+    margin-left: 564px;
+    margin-top: -16px;
+    position: absolute;
+    z-index: 1;
+    list-style: none;
+    text-align: center; 
+}  
+.autobuscar{  
+    background: rgba(255,255,255);
+    padding:12px;  
+}  
+.autobuscar:hover {
+    background: rgba(255,255,255);
+    border: solid;
+    border-width: thin;
+    border-left-style: none;
+    border-right-style: none;
 }
 
 @media (max-width:1005px) {

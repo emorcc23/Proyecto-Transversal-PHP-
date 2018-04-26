@@ -9,20 +9,9 @@
         <link rel="stylesheet" href="css/estilos.css">
         <script src="jquery.min.js"></script>
         <script type="text/javascript" src="funcionesbuscador.js"></script>
-<!--        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  -->
         <script>
             window.onload = autoCompletado();
         </script>
-           <style>  
-           ul{  
-                background-color:#eee;  
-                cursor:pointer;  
-           }  
-           li{  
-                padding:12px;  
-           }  
-           </style> 
-
     </head>
     <body>
         <?php
@@ -79,17 +68,12 @@
 
                 <div id="busc">
                     <form method="POST">  
-                        <p>Buscar: <input id="buscador" type="text" name="buscador" required>
+                        <p>Buscar: <input id="buscador" type="text" name="buscador" autocomplete="off" placeholder="Busca aquí" required>
                             <input type="submit" value="GO" name="buscar2" id="auto" ></p>
                     </form>
                 </div>
 
                 <div id="autobuscador"></div>
-
-                                
-                
-                
-
                 <?php
                 if (isset($_POST["buscar2"])) {
                     extract($_POST);
@@ -116,23 +100,21 @@
                             echo "<td><p>Artista</p></td>";
                             echo "<td><p>Pago</p></td>";
                             echo "</tr>";
-                            echo "<tr>";
+                            
                             while ($fila = mysqli_fetch_assoc($r)) {
                                 extract($fila);
+                                echo "<tr>";
                                 echo"<td><p>$nombre</p></td><td><p>$fecha</p></td> <td><p>$hora</p></td>";
+                                echo "</tr>";
                             }
-                            echo "</tr>";
+                            
                             echo "</table>";
                         }
+
                         echo "</div>";
                     }
                 }
                 ?>
-
-
-
-
-
 
                 <div class="contenedor">
                     <article>

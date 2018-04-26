@@ -7,13 +7,13 @@ function autoCompletado() {
     $output = '';
     $query = "SELECT * FROM login WHERE usuario LIKE '%" . $_POST["query"] . "%'";
     $result = mysqli_query($c, $query);
-    $output = '<ul class="list-unstyled">';
+    $output = "<ul id='autobuscador'class='list-unstyled'>";
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_array($result)) {
-            $output .= '<li>' . $row["usuario"] . '</li>';
+            $output .= "<li class='autobuscar'>" . $row['usuario'] . "</li>";
         }
     } else {
-        $output .= '<li>User Not Found</li>';
+        $output .= '<li class="autobuscar">Busqueda sin éxito</li>';
     }
     $output .= '</ul>';
     echo $output;
