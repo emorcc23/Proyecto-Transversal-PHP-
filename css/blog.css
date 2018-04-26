@@ -278,9 +278,9 @@
 #autobuscador{  
     cursor:pointer;
     width: 197px;
-    margin-left: 564px;
+    margin-left: 40%;
     margin-top: -16px;
-    position: absolute;
+    position: relative;
     z-index: 1;
     list-style: none;
     text-align: center; 
