@@ -7,9 +7,11 @@ x = $(document);
 x.ready(inicializarEvento);
 
 function inicializarEvento() {
+    //autoCompletado();
     var x;
     x = $("#buscador2");
     x.click(presionBuscador);
+   
 }
 
 
@@ -67,9 +69,8 @@ function mostrarRecuadro()
 }
 
 // !!!!!! PREGUNTAR A MAR !!!!!!
-//  
+////  
 //function autoCompletado() {
-//    $(document).ready(function () {
 //        $('#buscador').keyup(function () {
 //            var query = $(this).val();
 //            if (query != '')
@@ -90,5 +91,4 @@ function mostrarRecuadro()
 //            $('#buscador').val($(this).text());
 //            $('#autobuscador').fadeOut();
 //        });
-//    });
 //}

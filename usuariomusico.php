@@ -77,6 +77,10 @@ require_once 'funciones.php';
                         <div id="contenidoInteres">
                             <p class="titulo">LISTA DE TODOS LOS CONCIERTOS PROPUESTOS</p>
                             <?php
+                            if(cancelaconciertosantiguos()!="ok")
+                            {
+                                echo "<script>alert('Error cancelando conciertos antiguos')</script>";
+                            }
                             extract($_SESSION);
                             $id_usuario = dimeidusuario($username);
                             $idgeneroMusico = dimeIdgeneroUsuario($id_usuario);
