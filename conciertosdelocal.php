@@ -94,6 +94,11 @@ extract($_SESSION);
                             echo "<td><p>Género</p></td>";
                             echo "<td><p>Estado</p></td>";
                             echo "<td><p></p></td>";
+                            if(cancelaconciertosantiguos()!="ok")
+                            {
+                                echo "<script>alert('Error cancelando conciertos antiguos')</script>";
+                            }
+                            
                             while ($fila = mysqli_fetch_assoc($conciertos)) {
                                 extract($fila);
                                 $ngenero = dimenombregenero($genero);
