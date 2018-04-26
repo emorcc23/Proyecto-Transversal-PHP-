@@ -26,7 +26,6 @@
                 $id_usuario = dimeidusuario($username);
                 if (anadeconcierto($nombre, $fecha, $hora, $pago, $id_usuario, $gender)) {
                     echo "<script>alert('Alta realizada con éxito')</script>";
-                    header("Refresh:1; url=usuariolocal.php");
                 } else {
                     echo "<script>alert('Error añadiendo el concierto')</script>";
                 }

@@ -88,7 +88,6 @@ session_start();
                                     extract($_POST);
                                     if (confirmaconcierto($concierto, $musico) == "ok") {
                                         echo"<script>alert('Concierto confirmado')</script>";
-                                        header("Refresh:1; url=usuariolocal.php");
                                     } else {
                                         echo"Error confirmando el concierto. Verifica que no se haya confirmado antes.<br>";
                                     }
