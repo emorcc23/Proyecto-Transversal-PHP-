@@ -70,7 +70,9 @@
                     </form>
                 </div>
 
-                <div id="autobuscador"></div>
+                <div id="autobuscador">
+                    
+                </div>
                 <?php
                 if (isset($_POST["buscar2"])) {
                     extract($_POST);
@@ -93,9 +95,9 @@
                             echo "<table border='1' id='tablabuscador'>";
                             echo"<tr><td><p>PROXIMOS CONCIERTOS</p></td></tr>";
                             echo "<tr id='tituloss'>";
+                            echo "<td><p>Nombre</p></td>";
                             echo "<td><p>Fecha</p></td>";
-                            echo "<td><p>Artista</p></td>";
-                            echo "<td><p>Pago</p></td>";
+                            echo "<td><p>Hora</p></td>";
                             echo "</tr>";
                             
                             while ($fila = mysqli_fetch_assoc($r)) {
@@ -112,7 +114,7 @@
                     }
                 }
                 ?>
-
+                
                 <div class="contenedor">
                     <article>
                         <h4>Locales</h4>

@@ -277,13 +277,11 @@
 
 #autobuscador{  
     cursor:pointer;
-    width: 197px;
-    margin-left: 40%;
-    margin-top: -16px;
-    position: relative;
+    width: 100%;
+    position: absolute;
     z-index: 1;
     list-style: none;
-    text-align: center; 
+    text-align: center;
 }  
 .autobuscar{  
     background: rgba(255,255,255);
