@@ -73,7 +73,9 @@
                     </form>
                 </div>
 
-                <div id="autobuscador"></div>
+                <div id="autobuscador">
+                    
+                </div>
                 <?php
                 if (isset($_POST["buscar2"])) {
                     extract($_POST);
@@ -115,7 +117,7 @@
                     }
                 }
                 ?>
-
+                
                 <div class="contenedor">
                     <article>
                         <h4>Locales</h4>
