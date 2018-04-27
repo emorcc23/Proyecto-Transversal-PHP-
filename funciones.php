@@ -134,15 +134,18 @@ function muestraSelectCiudad() {
     if (isset($_POST['buscar3'])) {
         extract($_POST);
         $listaPorCiudad = dimeCociertosPorCiudad($ciudad);
-        echo"<table border='1'>";
+        echo"<table border='1' id='tablapropuestos'>";
         while ($fila = mysqli_fetch_assoc($listaPorCiudad)) {
             extract($fila);
             echo"<tr>";
-            echo"<td>$nombre</td><td>$fecha</td><td>$hora</td><td>$usuario</td>";
-            echo"<td>";
+            echo"<td><p class='datos'>$nombre</p></td>";
+            echo"<td><p class='datos'>$fecha</p></td>";
+            echo"<td><p class='datos'>$hora</p></td>";
+            echo"<td><p class='datos'>$usuario<p></td>";
+            echo"<td id='alta'>";
             altaMusicoConcierto($id_concierto);
             echo"</td>";
-            echo"<td>";
+            echo"<td id='baja'>";
             bajaMusicoConcierto($id_concierto);
             echo"</td>";
             echo"</tr>";
