@@ -132,8 +132,11 @@ require_once 'funciones.php';
                             $listaCociertos = listaConciertosPropuestos();
                             while ($fila = mysqli_fetch_assoc($listaCociertos)) {
                                 extract($fila);
-                                echo"<p>$nomconcierto  -  $fecha</p>";
-                                echo"<a href='conciertos.php'></a>";
+                                echo"<div class='noti'>";
+//                                echo"<p>$nomconcierto</p>";
+//                                echo"<p>$fecha</p>";
+                                echo"<p><a href='conciertos.php' <p>$nomconcierto --- $fecha</p><img id='imgconc' src='Imagenes/AFS31.jpg'></a></p>";
+                                echo"</div>";
                             }
                             ?>
                         </div>
@@ -141,6 +144,7 @@ require_once 'funciones.php';
                     <?php
                 }
                 ?>
+                    
 
             </section>
         </main>
