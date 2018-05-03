@@ -6,14 +6,42 @@ var x;
 x = $(document);
 x.ready(inicializarEvento);
 
+$(document).ready(function(){
+    cambiaprovincia();
+})
+
 function inicializarEvento() {
-    //autoCompletado();
+    /*autoCompletado();
     var x;
     x = $("#buscador2");
-    x.click(presionBuscador);
+    x.click(presionBuscador);*/
+    
+    var x;
+    x=$("#provincia");
+    x.change(cambiaprovincia);
    
 }
 
+function cambiaprovincia()
+{
+    var provincia=$("#provincia").val();
+    
+    var ciudad = $("#city");
+     $.ajax({
+                    url:"provincias.php",
+                    method:"POST",
+                    data:{provincia:provincia},
+                    dataType:'json',
+                    success:function(data)
+                    {
+                        ciudad.empty();
+                      for(var cont=0;cont<data.length;cont++)
+                       {
+                            ciudad.append('<option value=' + data[cont]['id_ciudad'] + '>'+ data[cont]['nombre'] + '</option>');
+                       }
+                    } ,
+     });
+}
 
 function verifech()
 {
