@@ -1,6 +1,5 @@
-DROP DATABASE musica;
-CREATE DATABASE musica;
-USE musica;
+CREATE DATABASE OhhMusic2;
+USE OhhMusic2;
 
 CREATE TABLE ciudad(
 id_ciudad INT NOT NULL PRIMARY KEY,
@@ -8280,17 +8279,17 @@ INSERT INTO `concierto` VALUES ('14','Concierto14','2019-06-19','15:30:00','16.0
 INSERT INTO `concierto` VALUES ('15','Concierto15','2018-08-24','00:00:00','23.00','7','3','3','1');
 INSERT INTO `concierto` VALUES ('16','Concierto16','2019-06-19','13:00:00','24.00','8','4','4','1');
 
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('17','Concierto17','2020-03-03','12:00:00','23.00','5','1','0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('18','Concierto18','2018-05-04','12:40:00','22.00','6','2','0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('19','Concierto19','2018-06-07','11:00:00','10.00','7','3','0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('20','Concierto20','2019-05-11','15:30:00','10.00','8','4','0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('21','Concierto21','2019-04-12','11:20:00','10.00','5','1','0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('22','Concierto22','2020-03-09','01:00:00','15.00','6','2','0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('23','Concierto23','2020-03-14','11:00:00','16.00','7','3','0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('24','Concierto24','2019-02-11','14:30:00','30.00','8','4','0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('25','Concierto25','2019-01-10','11:00:00','20.00','5','1','0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('26','Concierto26','2018-07-04','15:00:00','25.00','6','2','0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('27','Concierto27','2018-08-08','19:30:00','12.00','7','3','0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('28','Concierto28','2018-09-09','17:00:00','12.00','8','4','0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('29','Concierto29','2020-01-02','11:10:00','30.00','5','1','0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('30','Concierto30','2018-10-07','11:00:00','10.00','6','2','0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('17','Concierto17','2020-03-03','12:00:00','23.00','5',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('18','Concierto18','2018-05-04','12:40:00','22.00','6',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('19','Concierto19','2018-06-07','11:00:00','10.00','7',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('20','Concierto20','2019-05-11','15:30:00','10.00','8',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('21','Concierto21','2019-04-12','11:20:00','10.00','5',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('22','Concierto22','2020-03-09','01:00:00','15.00','6',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('23','Concierto23','2020-03-14','11:00:00','16.00','7',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('24','Concierto24','2019-02-11','14:30:00','30.00','8',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('25','Concierto25','2019-01-10','11:00:00','20.00','5',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('26','Concierto26','2018-07-04','15:00:00','25.00','6',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('27','Concierto27','2018-08-08','19:30:00','12.00','7',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('28','Concierto28','2018-09-09','17:00:00','12.00','8',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('29','Concierto29','2020-01-02','11:10:00','30.00','5',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('30','Concierto30','2018-10-07','11:00:00','10.00','6',null,'0');
