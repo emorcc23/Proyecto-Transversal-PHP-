@@ -29,6 +29,7 @@
                 } else {
                     echo "<script>alert('Error añadiendo el concierto')</script>";
                 }
+                header("Location:usuariolocal.php");
             } else {
                 ?>
 
