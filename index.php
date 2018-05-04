@@ -2,13 +2,13 @@
     <head>
         <title>OohMusic</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="funciones.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <link rel="stylesheet" href="css/fontello.css">
         <link rel="stylesheet" href="css/estilos.css">
         <script src="jquery.min.js"></script>
-        <script type="text/javascript" src="funcionesbuscador.js"></script>
+        <script type="text/javascript" src="funciones.js"></script>
+
     </head>
     <body>
         <?php
@@ -71,7 +71,7 @@
                 </div>
 
                 <div id="autobuscador">
-                    
+
                 </div>
                 <?php
                 if (isset($_POST["buscar2"])) {
@@ -99,14 +99,14 @@
                             echo "<td><p>Fecha</p></td>";
                             echo "<td><p>Hora</p></td>";
                             echo "</tr>";
-                            
+
                             while ($fila = mysqli_fetch_assoc($r)) {
                                 extract($fila);
                                 echo "<tr>";
                                 echo"<td><p>$nombre</p></td><td><p>$fecha</p></td> <td><p>$hora</p></td>";
                                 echo "</tr>";
                             }
-                            
+
                             echo "</table>";
                         }
 
@@ -114,7 +114,7 @@
                     }
                 }
                 ?>
-                
+
                 <div class="contenedor">
                     <article>
                         <h4>Locales</h4>
@@ -256,30 +256,6 @@
         </footer>
     </body>
 </html>
- <script>  
- $(document).ready(function(){  
-      $('#buscador').keyup(function(){  
-           var query = $(this).val();  
-           if(query != '')  
-           {  
-                $.ajax({  
-                     url:"mysql.php",  
-                     method:"POST",  
-                     data:{query:query},  
-                     success:function(data)  
-                     {  
-                          $('#autobuscador').fadeIn();  
-                          $('#autobuscador').html(data);  
-                     }  
-                });  
-           } else {
-               $('#autobuscador').fadeOut(); 
-               $('#autobuscador').html(""); 
-           }
-      });  
-      $(document).on('click', 'li', function(){  
-           $('#buscador').val($(this).text());  
-           $('#autobuscador').fadeOut();  
-      });  
- });  
- </script> 
+<script>
+
+</script> 

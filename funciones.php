@@ -2,6 +2,28 @@
 
 require_once 'bbdd.php';
 
+
+function nuevoVotoMusico($id_musico) {
+    return "<form action='' method='POST'>".
+    "<input type='hidden' value='$id_musico' name='id_musico'>".
+    "<input type='submit' value='voto' name='voto'>".
+    "</form>";
+}
+
+function altaVotoMusico2() {
+    if (isset($_POST['voto'])) {
+        extract($_SESSION);
+        $id_usuario = dimeidusuario($username);
+        echo$id_usuario;
+        $id_musico = $_POST['id_musico'];
+        if(altaVotoMusico($id_usuario, $id_musico) == "ok"){
+            echo"<script>alert('coto registrado')</script>";
+        }else{
+            echo"problemas con el voto";
+        }
+    }
+}
+
 //Desarrollador: Artur
 function conviertearray($datos)
 {
@@ -12,6 +34,7 @@ function conviertearray($datos)
         $cont++;
     }
     return $resultado;
+
 }
 
 //Desarrolador: Isain
