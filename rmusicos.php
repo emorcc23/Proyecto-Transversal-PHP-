@@ -13,6 +13,8 @@ require_once 'bbdd.php';
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <link rel="stylesheet" href="css/fontello.css">
         <link rel="stylesheet" href="css/estilosRmusico.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="funciones.js"></script>
     </head>
     <body>
         <header>
@@ -129,14 +131,26 @@ require_once 'bbdd.php';
                                 </tr>
                                 <tr>
                                     <td>
+                                          <p>Provincia:</p><p><select id="provincia">
+                                            <?php
+                                                $provincias = dimeprovincias();
+                                                while($fila=mysqli_fetch_assoc($provincias))
+                                                {
+                                                    extract($fila);
+                                                    echo"<option value='$provincia'>$provincia</option>";
+                                                }
+                                            ?>
+       
+                                            </select></p>
                                         <p>Ciudad:</p>
-                                        <p><select name="city">
+                                        <p><select name="city" id="city" required>
                                                 <?php
+                                                /*
                                                 $ciudades = leeciudades("Barcelona");
                                                 while ($fila = mysqli_fetch_assoc($ciudades)) {
                                                     extract($fila);
                                                     echo"<option value='$id_ciudad'>$nombre</option>";
-                                                }
+                                                }*/
                                                 ?>
                                             </select></p>
                                     </td>

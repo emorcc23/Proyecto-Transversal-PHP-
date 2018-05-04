@@ -7,7 +7,9 @@ x = $(document);
 x.ready(inicializarEvento);
 
 $(document).ready(function(){
-    cambiaprovincia();
+    /*cambiaprovincia();*/
+        
+ 
 })
 
 function inicializarEvento() {
@@ -15,10 +17,9 @@ function inicializarEvento() {
     var x;
     x = $("#buscador2");
     x.click(presionBuscador);*/
-    
-    var x;
     x=$("#provincia");
     x.change(cambiaprovincia);
+
    
 }
 
