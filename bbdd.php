@@ -24,6 +24,33 @@ function altaVotoMusico($id_usuario,$id_musico){
 }
 
 //Desarrollador: Artur
+//Dice la provincia de una ciudad
+function dimeprovinciadeciudad($ciudad)
+{
+     $c = conectar();
+    $select = "SELECT provincia from ciudad where id_ciudad=$ciudad;";
+    $resultado = mysqli_query($c, $select);
+    $fila=mysqli_fetch_assoc($resultado);
+    extract($fila);
+    desconectar($c);
+    return $provincia;
+    
+}
+    
+
+//Desarrollador: Artur
+//Lee la lista de provincias
+function dimeprovincias()
+{
+    $c = conectar();
+    $select = "SELECT distinct(provincia) from ciudad;";
+    $resultado = mysqli_query($c, $select);
+   
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Artur
 //Cancela conciertos antiguos
 function cancelaconciertosantiguos()
 {

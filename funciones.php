@@ -2,6 +2,7 @@
 
 require_once 'bbdd.php';
 
+
 function nuevoVotoMusico($id_musico) {
     return "<form action='' method='POST'>".
     "<input type='hidden' value='$id_musico' name='id_musico'>".
@@ -21,6 +22,19 @@ function altaVotoMusico2() {
             echo"problemas con el voto";
         }
     }
+}
+
+//Desarrollador: Artur
+function conviertearray($datos)
+{
+    $cont=0;
+    while($fila=mysqli_fetch_assoc($datos))
+    {
+        $resultado[$cont]=$fila;
+        $cont++;
+    }
+    return $resultado;
+
 }
 
 //Desarrolador: Isain
