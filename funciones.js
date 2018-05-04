@@ -1,3 +1,6 @@
+var x;
+x=$(document);
+x.ready(inicializarEventos);
 
 $(document).ready(function () {
     $('#buscador').keyup(buscador);
@@ -28,21 +31,14 @@ function buscador() {
     }
 }
 
-$(document).ready(function(){
-    cambiaprovincia();
-})
 
-function inicializarEvento() {
-    /*autoCompletado();
+function inicializarEventos() {
+    /*autoCompletado();*/
     var x;
-    x = $("#buscador2");
+   /* x = $("#buscador2");
     x.click(presionBuscador);*/
-    
-    var x;
     x=$("#provincia");
     x.change(cambiaprovincia);
-   
-
 }
 
 

@@ -98,9 +98,15 @@ require_once 'bbdd.php';
                                         <p>Provincia:</p><p><select id="provincia">
                                             <?php
                                                 $provincias = dimeprovincias();
+                                                $cont=0;
                                                 while($fila=mysqli_fetch_assoc($provincias))
                                                 {
                                                     extract($fila);
+                                                    if($cont==0)
+                                                    {
+                                                        $primeraprovincia = $provincia;
+                                                        $cont++;
+                                                    }
                                                     echo"<option value='$provincia'>$provincia</option>";
                                                 }
                                             ?>
@@ -109,11 +115,11 @@ require_once 'bbdd.php';
                                         <p>Ciudad:</p>
                                         <p><select name="city" required id="city">-->
                                         <?php
-                                        /*$ciudades = leeciudades("Barcelona");
+                                        $ciudades = leeciudades($primeraprovincia);
                                         while ($fila = mysqli_fetch_assoc($ciudades)) {
                                             extract($fila);
                                             echo"<option value='$id_ciudad'>$nombre</option>";
-                                        }*/
+                                        }
                                         ?>
                                             </select></p>
                                     </td>

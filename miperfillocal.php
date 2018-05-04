@@ -142,6 +142,7 @@ Pagina de locales.
                                             
                             echo"<tr><td><p>Ciudad:<select id='city' name='city' required>";
                             $ciudades = leeciudades($laprovincia);
+                            
                             while ($fila = mysqli_fetch_assoc($ciudades)) {
                                 extract($fila);
                                 if ($id_ciudad == $ciudad) {
