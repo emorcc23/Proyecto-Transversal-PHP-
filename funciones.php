@@ -2,6 +2,28 @@
 
 require_once 'bbdd.php';
 
+function eliminarVotoMusico1($id_musico){
+    return "<form action='' method='POST'>".
+    "<input type='hidden' value='$id_musico' name='id_musico'>".
+    "<input type='submit' value='deletevoto' name='deletevoto'>".
+    "</form>";
+}
+
+function eliminarVotoMusico2(){
+    if (isset($_POST['deletevoto'])) {
+        extract($_SESSION);
+        $id_usuario = dimeidusuario($username);
+        echo$id_usuario;
+        $id_musico = $_POST['id_musico'];
+        if(eliminarVotoMusico($id_usuario, $id_musico) == "ok"){
+            echo"<script>alert('voto eliminado')</script>";
+        }else{
+            echo"<script>alert('problemas eliminando voto')</script>";
+        }
+        header("Refresh:0; url=usuariofan.php");
+    }
+}
+
 
 function nuevoVotoMusico($id_musico) {
     return "<form action='' method='POST'>".
@@ -17,10 +39,11 @@ function altaVotoMusico2() {
         echo$id_usuario;
         $id_musico = $_POST['id_musico'];
         if(altaVotoMusico($id_usuario, $id_musico) == "ok"){
-            echo"<script>alert('coto registrado')</script>";
+            echo"<script>alert('voto registrado')</script>";
         }else{
-            echo"problemas con el voto";
+            echo"<script>alert('problemas registrando voto')</script>";
         }
+        header("Refresh:0; url=usuariofan.php");
     }
 }
 

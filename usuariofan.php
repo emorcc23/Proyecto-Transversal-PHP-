@@ -79,7 +79,6 @@ require_once 'funciones.php';
                             <?php
                             extract($_SESSION);
                             $id_usuario = dimeidusuario($username);
-                            echo$id_usuario;
                             
                             echo"<table>";
                             echo"<tr>";
@@ -90,12 +89,24 @@ require_once 'funciones.php';
                                 extract($musicos);
                                 echo"<tr>";
                                 $id_musico = dimeidusuario($nombreart);
-                                echo"<td>$nombreart</td><td>$nombre</td><td>". nuevoVotoMusico($id_musico)."</td>";
+                                
+                                $numr = verificarVotoMusico($id_usuario, $id_musico);
+                                if(verificarVotoMusico($id_usuario, $id_musico)){
+                                    echo"<td>$nombreart</td><td>$nombre</td><td>". eliminarVotoMusico1($id_musico)."</td>";
+                                    
+                                }else{
+                                    echo"<td>$nombreart</td><td>$nombre</td><td>". nuevoVotoMusico($id_musico)."</td>";
+                                    
+                                }
+//                                
                                 echo"</tr>";
                             }
+                            
                             echo"</table>";
                             
+                            
                             altaVotoMusico2();
+                            eliminarVotoMusico2();
                             ?>
                         </div>
                         <div id="titulonoticias">
