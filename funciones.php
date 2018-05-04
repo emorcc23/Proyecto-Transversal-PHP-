@@ -2,6 +2,54 @@
 
 require_once 'bbdd.php';
 
+//Desarrolador: Isain Alvaro
+function eliminarVotoConcierto1($id_concierto){
+    return "<form action='' method='POST'>".
+    "<input type='hidden' value='$id_concierto' name='id_concierto'>".
+    "<input type='submit' value='Dislike' name='deletevotoConcierto'>".
+    "</form>";
+}
+
+function eliminarVotoConcierto2(){
+    if (isset($_POST['deletevotoConcierto'])) {
+        extract($_SESSION);
+        $id_usuario = dimeidusuario($username);
+        $id_concierto = $_POST['id_concierto'];
+        if(eliminarVotoConcierto($id_usuario, $id_concierto) == "ok"){
+            echo"<script>alert('voto eliminado')</script>";
+        }else{
+            echo"<script>alert('problemas eliminando voto')</script>";
+        }
+        echo "<script type='text/javascript'>window.location.href='usuariofan.php';</script>";
+    }
+}
+
+//Desarrollador: Isain Alvaro
+//Funcion para mostrar el botón de voto
+function nuevoVotoConcierto($id_concierto) {
+    return "<form action='' method='POST'>".
+    "<input type='hidden' value='$id_concierto' name='id_concierto'>".
+    "<input type='submit' value='votoconcierto' name='votoconcierto'>".
+    "</form>";
+}
+
+//Desarrollador: Isain Alvaro
+//Funcion para registrar el voto de un concierto
+function altaVotoConcierto2() {
+    if (isset($_POST['votoconcierto'])) {
+        extract($_SESSION);
+        $id_usuario = dimeidusuario($username);
+        echo$id_usuario;
+        $id_concierto = $_POST['id_concierto'];
+        if(altaVotoConcierto($id_usuario, $id_concierto) == "ok"){
+            echo"<script>alert('voto de concierto registrado')</script>";
+        }else{
+            echo"problemas con el voto de concierto";
+        }
+        echo "<script type='text/javascript'>window.location.href='usuariofan.php';</script>";
+    }
+}
+
 function eliminarVotoMusico1($id_musico){
     return "<form action='' method='POST'>".
     "<input type='hidden' value='$id_musico' name='id_musico'>".
@@ -20,10 +68,9 @@ function eliminarVotoMusico2(){
         }else{
             echo"<script>alert('problemas eliminando voto')</script>";
         }
-        header("Refresh:0; url=usuariofan.php");
+        echo "<script type='text/javascript'>window.location.href='usuariofan.php';</script>";
     }
 }
-
 
 function nuevoVotoMusico($id_musico) {
     return "<form action='' method='POST'>".
@@ -43,7 +90,7 @@ function altaVotoMusico2() {
         }else{
             echo"<script>alert('problemas registrando voto')</script>";
         }
-        header("Refresh:0; url=usuariofan.php");
+        echo "<script type='text/javascript'>window.location.href='usuariofan.php';</script>";
     }
 }
 

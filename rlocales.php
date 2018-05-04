@@ -103,7 +103,7 @@ require_once 'bbdd.php';
 
                             if (registrar_local($username, $pass1, $name, $mail, $phone, $city, $location, $target_file, $aforo) == "ok") {
                                 echo"<script>alert('Se ha registrado el local correctamente')</script>";
-                                header("Refresh:0; url=login.php");
+                                header("Refresh:0; url=login.php"); 
                             } else {
                                 echo "<script>alert('Error registrando el local')</script>";
                                 //echo"Error registrando local.<br>";

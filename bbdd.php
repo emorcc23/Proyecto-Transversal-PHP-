@@ -1,6 +1,69 @@
 <?php
 //Desarrollado: Isain Alvaro
 //Funcion que borra el voto en caso de que este
+function eliminarVotoConcierto($id_usuario,$id_concierto){
+    $c = conectar();
+    $select = "delete from votoconcierto where fan = $id_usuario and concierto = $id_concierto;";
+    if(mysqli_query($c, $select)){
+        $resultado = "ok";
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollado: Isain Alvaro
+//Funcion que valida si el voto del concierto ya esta registrado
+function verificarVotoConcierto($id_usuario,$id_concierto){
+    $c = conectar();
+    $select = "select * from votoconcierto where fan = $id_usuario and concierto = $id_concierto;";
+    $resultado = mysqli_query($c, $select);
+    if($fila = mysqli_fetch_assoc($resultado)){
+        extract($fila);
+        $resultado = true;
+    }else{
+        $resultado = false;
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Isain Alvaro
+//Obtiene el identificador de un concierto
+function dimeidconcierto($nomconcierto) {
+    //Conectar base de datos
+    $c = conectar();
+    //Consulta sql
+    $select = "select id_concierto from concierto where nombre='$nomconcierto';";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    if ($fila = mysqli_fetch_assoc($resultado)) {
+        //Devuelve el id de usuario
+        $id_concierto = $fila['id_concierto'];
+        return $id_concierto;
+    } else {
+        //Si el usuario no existe devuelve -1
+        return -1;
+    }
+}
+//Desarrollado: Isain Alvaro
+//Funcion que da de alta un voto en concierto
+function altaVotoConcierto($id_usuario,$id_concierto){
+    $c = conectar();
+    $select = "insert into votoconcierto values($id_usuario,$id_concierto);";
+    if(mysqli_query($c, $select)){
+        $resultado = "ok";
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+
+//Desarrollado: Isain Alvaro
+//Funcion que borra el voto en caso de que este
 function eliminarVotoMusico($id_usuario,$id_musico){
     $c = conectar();
     $select = "delete from votomusico where fan = $id_usuario and musico = $id_musico;";
