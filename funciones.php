@@ -2,6 +2,30 @@
 
 require_once 'bbdd.php';
 
+//Desarrollador: Isain Alvaro
+//Funcion para mostrar el botón de voto
+function nuevoVotoConcierto($id_concierto) {
+    return "<form action='' method='POST'>".
+    "<input type='hidden' value='$id_concierto' name='id_concierto'>".
+    "<input type='submit' value='votoconcierto' name='votoconcierto'>".
+    "</form>";
+}
+
+//Desarrollador: Isain Alvaro
+//Funcion para registrar el voto de un concierto
+function altaVotoConcierto2() {
+    if (isset($_POST['votoconcierto'])) {
+        extract($_SESSION);
+        $id_usuario = dimeidusuario($username);
+        echo$id_usuario;
+        $id_concierto = $_POST['id_concierto'];
+        if(altaVotoConcierto($id_usuario, $id_concierto) == "ok"){
+            echo"<script>alert('voto de concierto registrado')</script>";
+        }else{
+            echo"problemas con el voto de concierto";
+        }
+    }
+}
 
 function nuevoVotoMusico($id_musico) {
     return "<form action='' method='POST'>".

@@ -1,4 +1,37 @@
 <?php
+//Desarrollador: Isain Alvaro
+//Obtiene el identificador de un concierto
+function dimeidconcierto($nomconcierto) {
+    //Conectar base de datos
+    $c = conectar();
+    //Consulta sql
+    $select = "select id_concierto from concierto where nombre='$nomconcierto';";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    if ($fila = mysqli_fetch_assoc($resultado)) {
+        //Devuelve el id de usuario
+        $id_concierto = $fila['id_concierto'];
+        return $id_concierto;
+    } else {
+        //Si el usuario no existe devuelve -1
+        return -1;
+    }
+}
+//Desarrollado: Isain Alvaro
+//Funcion que da de alta un voto en concierto
+function altaVotoConcierto($id_usuario,$id_concierto){
+    $c = conectar();
+    $select = "insert into votoconcierto values($id_usuario,$id_concierto);";
+    if(mysqli_query($c, $select)){
+        $resultado = "ok";
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+
 //Desarrollado: Isain Alvaro
 //Funcion que valida si el voto ya esta registrado
 function verificarVotoMusico(){

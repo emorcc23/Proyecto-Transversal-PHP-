@@ -80,7 +80,7 @@ require_once 'funciones.php';
                             extract($_SESSION);
                             $id_usuario = dimeidusuario($username);
                             echo$id_usuario;
-                            
+
                             echo"<table>";
                             echo"<tr>";
                             echo"<td>NOMBRE</td><td>GENERO</td><td>VOTO</td>";
@@ -90,12 +90,59 @@ require_once 'funciones.php';
                                 extract($musicos);
                                 echo"<tr>";
                                 $id_musico = dimeidusuario($nombreart);
-                                echo"<td>$nombreart</td><td>$nombre</td><td>". nuevoVotoMusico($id_musico)."</td>";
+                                echo"<td>$nombreart</td><td>$nombre</td><td>" . nuevoVotoMusico($id_musico) . "</td>";
                                 echo"</tr>";
                             }
                             echo"</table>";
-                            
+
                             altaVotoMusico2();
+                            
+                            echo "<hr>";
+                            echo"<table>";
+                            echo"<tr>";
+                            echo"<td>Nombre del concierto</td>";
+                            echo"<td>Genero</td>";
+                            echo"<td>Organizador</td>";
+                            echo"</tr>";
+
+                            if (isset($_GET['pagina'])) {
+                                extract($_GET);
+                            } else {
+                                $pagina = 1;
+                            }
+                            $elementospagina = 4;
+                            $inicio = ($pagina - 1) * $elementospagina;
+                            $cuantosconciertos = cuantosconciertosaceptados();
+                            $totalpaginas = ceil($cuantosconciertos / $elementospagina);
+                            $listaConciertosAceptados = mostrarListaConciertosAceptados($inicio, $elementospagina);
+
+                            while ($lista = mysqli_fetch_assoc($listaConciertosAceptados)) {
+                                extract($lista);
+                                echo "<tr>";
+                                $id_concierto = dimeidconcierto($nomconcierto);
+                                echo "<td>$nomconcierto</td>";
+                                echo "<td>$nomgenero</td>";
+                                echo "<td>$nomlocal</td>";
+                                echo "<td>".nuevoVotoConcierto($id_concierto)."</td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
+                            
+                            altaVotoConcierto2();
+                            
+                            //echo"Página $pagina de $totalpaginas, Hay $cuantosconciertos conciertos aceptados.<br>";
+                            echo "<p id='paginado'>$pagina/$totalpaginas</p>";
+                            if ($pagina > 1) {
+                                echo"<a href='usuariofan.php?pagina=1' id='primera'><span class='icon-to-start-1'></span></a>";
+                                $anterior = $pagina - 1;
+                                echo" <a href='usuariofan.php?pagina=$anterior' id='anterior'><span class='icon-left-dir'></span></a>";
+                            }
+
+                            if ($pagina < $totalpaginas) {
+                                $siguiente = $pagina + 1;
+                                echo" <a href='usuariofan.php?pagina=$siguiente' id='siguiente'><span class='icon-right-dir'></span></a>";
+                                echo" <a href='usuariofan.php?pagina=$totalpaginas' id='ultima'><span class='icon-to-end'></span></a>";
+                            }
                             ?>
                         </div>
                         <div id="titulonoticias">
