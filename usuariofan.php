@@ -90,13 +90,22 @@ require_once 'funciones.php';
                                 extract($musicos);
                                 echo"<tr>";
                                 $id_musico = dimeidusuario($nombreart);
-                                echo"<td>$nombreart</td><td>$nombre</td><td>" . nuevoVotoMusico($id_musico) . "</td>";
+                                    
+                                
+                                if(verificarVotoMusico($id_usuario, $id_musico)){
+                                    echo"<td>$nombreart</td><td>$nombre</td><td>". eliminarVotoMusico1($id_musico)."</td>";
+                                    
+                                }else{
+                                    echo"<td>$nombreart</td><td>$nombre</td><td>". nuevoVotoMusico($id_musico)."</td>";
+                                    
+                                }
                                 echo"</tr>";
                             }
                             echo"</table>";
 
                             altaVotoMusico2();
-                            
+                            eliminarVotoMusico2();
+                            //-------------------------------------------------------------------------------------------------------------------
                             echo "<hr>";
                             echo"<table>";
                             echo"<tr>";
@@ -120,15 +129,21 @@ require_once 'funciones.php';
                                 extract($lista);
                                 echo "<tr>";
                                 $id_concierto = dimeidconcierto($nomconcierto);
-                                echo "<td>$nomconcierto</td>";
-                                echo "<td>$nomgenero</td>";
-                                echo "<td>$nomlocal</td>";
-                                echo "<td>".nuevoVotoConcierto($id_concierto)."</td>";
+//                                echo "<td>$nomconcierto</td>";
+//                                echo "<td>$nomgenero</td>";
+//                                echo "<td>$nomlocal</td>";
+//                                echo "<td>".nuevoVotoConcierto($id_concierto)."</td>";
+                                if (verificarVotoConcierto($id_usuario, $id_concierto)) {
+                                    echo"<td>$nomconcierto</td><td>$nomgenero</td><td>$nomlocal</td><td>". eliminarVotoConcierto1($id_concierto)."</td>";
+                                } else {
+                                    echo"<td>$nomconcierto</td><td>$nomgenero</td><td>$nomlocal</td><td>". nuevoVotoConcierto($id_concierto)."</td>";
+                                }
                                 echo "</tr>";
                             }
                             echo "</table>";
                             
                             altaVotoConcierto2();
+                            eliminarVotoConcierto2();
                             
                             //echo"Página $pagina de $totalpaginas, Hay $cuantosconciertos conciertos aceptados.<br>";
                             echo "<p id='paginado'>$pagina/$totalpaginas</p>";

@@ -16,6 +16,8 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <link rel="stylesheet" href="css/fontello.css">
         <link rel="stylesheet" href="css/estilosMiperfilLocal.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="funciones.js"></script>
     </head>
     <body>
         
@@ -121,8 +123,28 @@ and open the template in the editor.
                                             echo"<td><p>Aforo:<input type='text' name='web' value='$web' required></p></td></tr>";
                                             echo"<tr><td><p>Teléfono:<input type='tel' name='phone' value='$telefono' required></p></td>";
                                             echo"<td><p>Nombre de usuario:$username</p></td></tr>";
-                                            echo"<tr><td><p>Ciudad:<select id='select' name='city'>";
-                                            $ciudades = leeciudades("Barcelona");
+                                            
+                                            echo"<tr>td><p>Provincia:<select id='provincia'>";
+                            
+                            
+                                            $laprovincia = dimeprovinciadeciudad($ciudad);
+                                
+                                            $provincias = dimeprovincias();
+                                            while($fila=mysqli_fetch_assoc($provincias))
+                                            {
+                                                extract($fila);
+                                                if($laprovincia == $provincia)
+                                                {
+                                                    echo"<option value='$provincia' selected>$provincia</option>";
+                                                }
+                                                else
+                                                {
+                                                    echo"<option value='$provincia'>$provincia</option>";
+                                                }                
+                                            }
+                                            
+                                            echo"<tr><td><p>Ciudad:<select id='city' name='city'>";
+                                            $ciudades = leeciudades($laprovincia);
                                             while($fila = mysqli_fetch_assoc($ciudades))
                                             {
                                                 extract($fila);

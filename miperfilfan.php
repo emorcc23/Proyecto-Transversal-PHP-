@@ -14,6 +14,8 @@ Pagina de locales.
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <link rel="stylesheet" href="css/fontello.css">
         <link rel="stylesheet" href="css/estilosMiperfilLocal.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="funciones.js"></script>
     </head>
     <body>
 
@@ -105,8 +107,30 @@ Pagina de locales.
                                             extract($datos);
                                             echo "<tr>";
                                             echo "<td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre' required></p></td>";
-                                            echo "<td><p>Ciudad:<select id='select' name='city'>";
-                                            $ciudades = leeciudades("Barcelona");
+                                            
+                                            echo"<tr>td><p>Provincia:<select id='provincia'>";
+                            
+                            
+                                            $laprovincia = dimeprovinciadeciudad($ciudad);
+                            
+                                            $provincias = dimeprovincias();
+                                            while($fila=mysqli_fetch_assoc($provincias))
+                                            {
+                                                extract($fila);
+                                                if($laprovincia == $provincia)
+                                                {
+                                                    echo"<option value='$provincia' selected>$provincia</option>";
+                                                }
+                                                else
+                                                {
+                                                    echo"<option value='$provincia'>$provincia</option>";
+                                                }
+                                
+                                            }
+                                            
+                                            
+                                            echo "<td><p>Ciudad:<select id='city' name='city'>";
+                                            $ciudades = leeciudades($laprovincia);
                                             while ($fila = mysqli_fetch_assoc($ciudades)) {
                                                 extract($fila);
                                                 if ($id_ciudad == $ciudad) {
