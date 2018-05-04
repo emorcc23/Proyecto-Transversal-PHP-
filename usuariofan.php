@@ -72,10 +72,31 @@ require_once 'funciones.php';
                             </ul>
                         </div>
                         <div id="conciertosInteres">
-                            <p>Conciertos que pueden interesarte</p>
+                            <p>Votos</p>
                         </div>
                         <div id="contenidoInteres">
+
+                            <?php
+                            extract($_SESSION);
+                            $id_usuario = dimeidusuario($username);
+                            echo$id_usuario;
                             
+                            echo"<table>";
+                            echo"<tr>";
+                            echo"<td>NOMBRE</td><td>GENERO</td><td>VOTO</td>";
+                            echo"</tr>";
+                            $listamusicos = ordenarMusicosPorGenero();
+                            while ($musicos = mysqli_fetch_assoc($listamusicos)) {
+                                extract($musicos);
+                                echo"<tr>";
+                                $id_musico = dimeidusuario($nombreart);
+                                echo"<td>$nombreart</td><td>$nombre</td><td>". nuevoVotoMusico($id_musico)."</td>";
+                                echo"</tr>";
+                            }
+                            echo"</table>";
+                            
+                            altaVotoMusico2();
+                            ?>
                         </div>
                         <div id="titulonoticias">
                             <p>Últimas noticias</p>
@@ -87,7 +108,7 @@ require_once 'funciones.php';
                     <?php
                 }
                 ?>
-                    
+
             </section>
         </main>
         <footer>

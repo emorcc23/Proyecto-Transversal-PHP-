@@ -1,4 +1,27 @@
 <?php
+//Desarrollado: Isain Alvaro
+//Funcion que valida si el voto ya esta registrado
+function verificarVotoMusico(){
+    $c = conectar();
+    $select = "";
+    desconectar($c);
+}
+
+
+
+//Desarrollado: Isain Alvaro
+//Funcion que da de alta un voto
+function altaVotoMusico($id_usuario,$id_musico){
+    $c = conectar();
+    $select = "insert into votomusico values($id_usuario,$id_musico);";
+    if(mysqli_query($c, $select)){
+        $resultado = "ok";
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
 
 //Desarrollador: Artur
 //Cancela conciertos antiguos
