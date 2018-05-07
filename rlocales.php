@@ -44,56 +44,47 @@ require_once 'bbdd.php';
                     <?php
                     if (isset($_POST['name'])) {
                         extract($_POST);
-                     /*   if (isset($_FILES['fileupload'])) {
-        
+                        if (isset($_FILES['fileupload'])) {
+
                             $target_dir = "uploads/";
                             $target_file = $target_dir . basename($_FILES["fileupload"]["name"]);
                             $uploadOk = 1;
                             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
                             
-                           
-                            
-                            
-// Check if image file is a actual image or fake image
-                            
-                             /*  $check = getimagesize($_FILES["fileupload"]["tmp_name"]);
-                                if ($check !== false) {
-                                    echo "File is an image - " . $check["mime"] . ".";
-                                    $uploadOk = 1;
-                                } else {
-                                    echo "File is not an image.";
-                                    $uploadOk = 0;
-                                }
-                            */
-// Check if file already exists
-                            /*
+                            $check = getimagesize($_FILES["fileupload"]["tmp_name"]);
+                            if ($check == false) {
+                                echo "<script>alert('El archivo no es una imagen válida.')</script>";
+                                $uploadOk = 0;
+                            }
+                               
+                            // Check if file already exists
+
                             if (file_exists($target_file)) {
-                                echo "Sorry, file already exists.";
+                                 echo "<script>alert('Error. El archivo de la foto ya existe en el servidor.')</script>";
                                 $uploadOk = 0;
                             }
-// Check file size
+                            // Check file size
                             if ($_FILES["fileupload"]["size"] > 500000) {
-                                echo "Sorry, your file is too large.";
+                                 echo "<script>alert('Error. El archivo de la foto es demasiado grande.')</script>";
                                 $uploadOk = 0;
                             }
-// Allow certain file formats
+                            // Allow certain file formats
                             if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-                                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                                 echo "<script>alert('Error. Solo se admiten imágenes jpg, png y gif.')</script>";
                                 $uploadOk = 0;
                             }
-// Check if $uploadOk is set to 0 by an error
+                                // Check if $uploadOk is set to 0 by an error
                             if ($uploadOk == 0) {
-                                echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
+                                 echo "<script>alert('La foto no se ha enviado.')</script>";
+                                // if everything is ok, try to upload file
                             } else {
-                                if (move_uploaded_file($_FILES["fileupload"]["tmp_name"], $target_file)) {
-                                    echo "The file " . basename($_FILES["fileupload"]["name"]) . " has been uploaded.";
-                                } else {
-                                    echo "Sorry, there was an error uploading your file.";
+                                if (!move_uploaded_file($_FILES["fileupload"]["tmp_name"], $target_file)) {
+                                    echo "<script>alert('Ha habido un error subiendo la foto.')</script>";
                                 }
                             }
                         }
-*/
+
 
                         if (usuarioexiste($username) > 0) {
                             echo "<script>alert('Error. El usuario que deseas dar de alta ya existe')</script>";
@@ -103,7 +94,7 @@ require_once 'bbdd.php';
 
                             if (registrar_local($username, $pass1, $name, $mail, $phone, $city, $location, $target_file, $aforo) == "ok") {
                                 echo"<script>alert('Se ha registrado el local correctamente')</script>";
-                                header("Refresh:0; url=login.php"); 
+                                header("Refresh:0; url=login.php");
                             } else {
                                 echo "<script>alert('Error registrando el local')</script>";
                                 //echo"Error registrando local.<br>";
@@ -147,29 +138,29 @@ require_once 'bbdd.php';
                                 <tr>
                                     <td>
                                         <p>Provincia:</p><p><select id="provincia">
-    <?php
-    $provincias = dimeprovincias();
-    $cont = 0;
-    while ($fila = mysqli_fetch_assoc($provincias)) {
-        extract($fila);
-        if ($cont == 0) {
-            $primeraprovincia = $provincia;
-            $cont++;
-        }
-        echo"<option value='$provincia'>$provincia</option>";
-    }
-    ?>
+                                                <?php
+                                                $provincias = dimeprovincias();
+                                                $cont = 0;
+                                                while ($fila = mysqli_fetch_assoc($provincias)) {
+                                                    extract($fila);
+                                                    if ($cont == 0) {
+                                                        $primeraprovincia = $provincia;
+                                                        $cont++;
+                                                    }
+                                                    echo"<option value='$provincia'>$provincia</option>";
+                                                }
+                                                ?>
 
                                             </select></p>
                                         <p>Ciudad:</p>
                                         <p><select name="city" required id="city">-->
-    <?php
-    $ciudades = leeciudades($primeraprovincia);
-    while ($fila = mysqli_fetch_assoc($ciudades)) {
-        extract($fila);
-        echo"<option value='$id_ciudad'>$nombre</option>";
-    }
-    ?>
+                                                <?php
+                                                $ciudades = leeciudades($primeraprovincia);
+                                                while ($fila = mysqli_fetch_assoc($ciudades)) {
+                                                    extract($fila);
+                                                    echo"<option value='$id_ciudad'>$nombre</option>";
+                                                }
+                                                ?>
                                             </select></p>
                                     </td>
                                 </tr>
@@ -197,9 +188,9 @@ require_once 'bbdd.php';
                             <br><br><br>
                             <p><input type="submit" value="Registrarme como local" id="button"></p>
                         </form>
-    <?php
-}
-?>
+                        <?php
+                    }
+                    ?>
                 </div>
             </section>
         </main>
