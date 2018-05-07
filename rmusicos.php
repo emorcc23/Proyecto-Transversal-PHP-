@@ -5,6 +5,7 @@ Esta es la pagina para registrar musicos.
 <!DOCTYPE html>
 <?php
 require_once 'bbdd.php';
+require_once 'funciones.php';
 ?>
 <html lang="es">
     <head>
@@ -59,15 +60,16 @@ require_once 'bbdd.php';
                     <?php
                     if (isset($_POST['next'])) {
                         extract($_POST);
+                        $target_file=subefoto();
+                        
                         if (usuarioexiste($username) > 0) {
                             echo "<script>alert('Error. El usuario que deseas dar de alta ya existe')</script>";
                             //echo"Error. El usuario que deseas dar de alta ya existe.";
                         } else {
                             $idgenero = dimeidgenero($gender);
-                            if (registrar_musico($username, $pass1, 2, $name, $mail, $phone, $city, $surname1, $surname2, $web, $nickname, $components, $idgenero) == "ok") {
+                            if (registrar_musico($username, $pass1, 2, $name, $mail, $phone, $city, $surname1, $surname2, $web, $nickname, $components, $idgenero,$target_file) == "ok") {
                                 echo"<script>alert('Se ha registrado el musico correctamente')</script>";
                                 header("Refresh:0; url=login.php");
-                                echo "<script>alert('Se ha registrado el músico correctamente')</script>";
                                 //echo"Se ha registrado el musico correctamente";
                                 
                             } else {
@@ -77,7 +79,7 @@ require_once 'bbdd.php';
                         }
                     } else {
                         ?>
-                        <form action="" method="POST" onsubmit="verificar();">  
+                        <form action="" method="POST" onsubmit="verificar();" enctype="multipart/form-data">  
                             <table>
                                 <tr>
                                     <td>
@@ -127,6 +129,12 @@ require_once 'bbdd.php';
                                     <td>
                                         <p>Componentes del grupo:</p>
                                         <p><input type="number" name="components" ></p>
+                                    </td>
+                                     <td>
+                                        <p>Imagen:</p>
+                                        <p>
+                                            <input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload">
+                                        </p>
                                     </td>
                                 </tr>
                                 <tr>

@@ -16,6 +16,7 @@ nombre VARCHAR(30),
 email VARCHAR(255),
 telefono VARCHAR(10),
 ciudad INT NOT NULL,
+imagen VARCHAR(255),
 CONSTRAINT fk_login_ciudad FOREIGN KEY (ciudad)
 REFERENCES ciudad(id_ciudad)
 ON DELETE CASCADE ON UPDATE CASCADE);
@@ -25,7 +26,6 @@ id_usuario INT NOT NULL PRIMARY KEY,
 apellidoa VARCHAR(30),
 apellidob VARCHAR(30),
 direccion VARCHAR(255),
-imagen VARCHAR(255),
 CONSTRAINT fk_fan_login FOREIGN KEY (id_usuario)
 REFERENCES login(id_usuario)
 ON DELETE CASCADE ON UPDATE CASCADE);
@@ -33,7 +33,6 @@ ON DELETE CASCADE ON UPDATE CASCADE);
 CREATE TABLE localm(
 id_usuario INT NOT NULL PRIMARY KEY,
 ubicacion VARCHAR(255),
-imagen VARCHAR(255),
 aforo INT,
 destacado BOOLEAN,
 CONSTRAINT fk_local_login FOREIGN KEY (id_usuario)
@@ -8237,30 +8236,30 @@ INSERT INTO `ciudad` (`id_ciudad`,`nombre`,`provincia`) VALUES (8113,'Zierbena',
 INSERT INTO `ciudad` (`id_ciudad`,`nombre`,`provincia`) VALUES (8114,'Arratzu','Bizkaia');
 INSERT INTO `ciudad` (`id_ciudad`,`nombre`,`provincia`) VALUES (8115,'Ziortza-Bolibar','Bizkaia');
 
-INSERT INTO `login` VALUES (1,'musico1','$2y$10$qeFLVgdq/7X0L5U6lxqXIOAm2vJpyCnBsqusvJToBjzR1YLLfBAfS',2,'musico1','musico1@gmail.com','123456789',7);
-INSERT INTO `login` VALUES (2,'musico2','$2y$10$qU4jFNYs0dN/Vk0KDQ4oQur.yprAplOQT1ffTYfe/mfFD4E3oIftO',2,'musico2','musico2@gmail.com','123456789',58);
-INSERT INTO `login` VALUES (3,'musico3','$2y$10$wwlOESuLSLafWTVzOTqt0.UE4Tnrk6NGHwIvvdT/fa6lYY40Rpfey',2,'musico3','musico3@gmail.com','123456789',104);
-INSERT INTO `login` VALUES (4,'musico4','$2y$10$9lQDUwDyesdcPEBJQs.5WOwibSh6iMtZdnLftsICqabv.EvUSOUj.',2,'musico4','musico4@gmail.com','123456789',153);
-INSERT INTO `login` VALUES (5,'local1','$2y$10$XHpyGr0qwp2LEpHjVnIbmO5y81WEX82qC0S5gCK2obUazvHgDLiNu',1,'local1','local1@gmail.com','123456789',7);
-INSERT INTO `login` VALUES (6,'local2','$2y$10$aJqCjZlmFNw4pR0cAGWklOLHYJIF3Sf5n3WgxleECAdIk47uNS5OO',1,'local2','local2@gmail.com','123456789',58);
-INSERT INTO `login` VALUES (7,'local3','$2y$10$vfqSa2DI4txsVMjkSwOKa.z9zVzEsk3kUfWVj0qMxKgTsLheZRqau',1,'local3','local3@gmail.com','123456789',104);
-INSERT INTO `login` VALUES (8,'local4','$2y$10$ZJxApeQb/6hkep83KE7txuvdGmyBLf.a4.lLMIELFW6qbmQ.bDTw2',1,'local4','local4@gmail.com','123456789',247);
-INSERT INTO `login` VALUES (9,'fan1','$2y$10$1djKWQPfqDl8gW4x9a8vAuqUFR2RYXwWVflvHcekJk1TU85CVCqpK',3,'fan1','fan1@gmail.com','123456789',7);
-INSERT INTO `login` VALUES (10,'fan2','$2y$10$mBr2vlr4Mz2hnftTq3EZ4e59QwAkreFdEDhapGudYaKjs760K.YRW',3,'fan2','fan2@gmail.com','123456789',58);
-INSERT INTO `login` VALUES (11,'fan3','$2y$10$e1nDvjBnuZwwjgP2WymUmem095Hz/Lz3VjjcP.no7TjoopLaKyJpO',3,'fan3','fan3@gmail.com','123456789',104);
-INSERT INTO `login` VALUES (12,'fan4','$2y$10$rByoB2g/Xz0MFpEruauHDe2Hfw/rHglwlCq7sWm40Xs/mVXhUP0dy',3,'fan4','fan4@gmail.com','123456789',391);
+INSERT INTO `login` VALUES (1,'musico1','$2y$10$qeFLVgdq/7X0L5U6lxqXIOAm2vJpyCnBsqusvJToBjzR1YLLfBAfS',2,'musico1','musico1@gmail.com','123456789',7,'');
+INSERT INTO `login` VALUES (2,'musico2','$2y$10$qU4jFNYs0dN/Vk0KDQ4oQur.yprAplOQT1ffTYfe/mfFD4E3oIftO',2,'musico2','musico2@gmail.com','123456789',58,'');
+INSERT INTO `login` VALUES (3,'musico3','$2y$10$wwlOESuLSLafWTVzOTqt0.UE4Tnrk6NGHwIvvdT/fa6lYY40Rpfey',2,'musico3','musico3@gmail.com','123456789',104,'');
+INSERT INTO `login` VALUES (4,'musico4','$2y$10$9lQDUwDyesdcPEBJQs.5WOwibSh6iMtZdnLftsICqabv.EvUSOUj.',2,'musico4','musico4@gmail.com','123456789',153,'');
+INSERT INTO `login` VALUES (5,'local1','$2y$10$XHpyGr0qwp2LEpHjVnIbmO5y81WEX82qC0S5gCK2obUazvHgDLiNu',1,'local1','local1@gmail.com','123456789',7,'');
+INSERT INTO `login` VALUES (6,'local2','$2y$10$aJqCjZlmFNw4pR0cAGWklOLHYJIF3Sf5n3WgxleECAdIk47uNS5OO',1,'local2','local2@gmail.com','123456789',58,'');
+INSERT INTO `login` VALUES (7,'local3','$2y$10$vfqSa2DI4txsVMjkSwOKa.z9zVzEsk3kUfWVj0qMxKgTsLheZRqau',1,'local3','local3@gmail.com','123456789',104,'');
+INSERT INTO `login` VALUES (8,'local4','$2y$10$ZJxApeQb/6hkep83KE7txuvdGmyBLf.a4.lLMIELFW6qbmQ.bDTw2',1,'local4','local4@gmail.com','123456789',247,'');
+INSERT INTO `login` VALUES (9,'fan1','$2y$10$1djKWQPfqDl8gW4x9a8vAuqUFR2RYXwWVflvHcekJk1TU85CVCqpK',3,'fan1','fan1@gmail.com','123456789',7,'');
+INSERT INTO `login` VALUES (10,'fan2','$2y$10$mBr2vlr4Mz2hnftTq3EZ4e59QwAkreFdEDhapGudYaKjs760K.YRW',3,'fan2','fan2@gmail.com','123456789',58,'');
+INSERT INTO `login` VALUES (11,'fan3','$2y$10$e1nDvjBnuZwwjgP2WymUmem095Hz/Lz3VjjcP.no7TjoopLaKyJpO',3,'fan3','fan3@gmail.com','123456789',104,'');
+INSERT INTO `login` VALUES (12,'fan4','$2y$10$rByoB2g/Xz0MFpEruauHDe2Hfw/rHglwlCq7sWm40Xs/mVXhUP0dy',3,'fan4','fan4@gmail.com','123456789',391,'');
 INSERT INTO `musico` VALUES (1,'mus','ico1','www.musico1.com','musico1',10,0,1);
 INSERT INTO `musico` VALUES (2,'mus','ico2','www.musico2.com','musico2',3,0,2);
 INSERT INTO `musico` VALUES (3,'mus','ico3','www.musico3.com','musico3',5,0,3);
 INSERT INTO `musico` VALUES (4,'mus','ico4','www.musico4.com','musico4',7,0,4);
-INSERT INTO `localm` VALUES (5,'calle local1 n1','',80,0);
-INSERT INTO `localm` VALUES (6,'calle local2 n2','',39,0);
-INSERT INTO `localm` VALUES (7,'calle local3 n3','',86,0);
-INSERT INTO `localm` VALUES (8,'calle local4 n4','',95,0);
-INSERT INTO `fan` VALUES (9,'fan','fan1','calle fan1 n1','');
-INSERT INTO `fan` VALUES (10,'fan','fan2','calle fan2 n2','');
-INSERT INTO `fan` VALUES (11,'fan','fan3','calle fan3 n3','');
-INSERT INTO `fan` VALUES (12,'fan','fan4','calle fan4 n4','');
+INSERT INTO `localm` VALUES (5,'calle local1 n1',80,0);
+INSERT INTO `localm` VALUES (6,'calle local2 n2',39,0);
+INSERT INTO `localm` VALUES (7,'calle local3 n3',86,0);
+INSERT INTO `localm` VALUES (8,'calle local4 n4',95,0);
+INSERT INTO `fan` VALUES (9,'fan','fan1','calle fan1 n1');
+INSERT INTO `fan` VALUES (10,'fan','fan2','calle fan2 n2');
+INSERT INTO `fan` VALUES (11,'fan','fan3','calle fan3 n3');
+INSERT INTO `fan` VALUES (12,'fan','fan4','calle fan4 n4');
 
 INSERT INTO `concierto` VALUES ('1','Concierto1','2018-09-25','21:30:00','25.00','5','1','1','1');
 INSERT INTO `concierto` VALUES ('2','Concierto2','2018-05-19','15:50:00','15.00','6','2','2','1');
@@ -8279,17 +8278,17 @@ INSERT INTO `concierto` VALUES ('14','Concierto14','2019-06-19','15:30:00','16.0
 INSERT INTO `concierto` VALUES ('15','Concierto15','2018-08-24','00:00:00','23.00','7','3','3','1');
 INSERT INTO `concierto` VALUES ('16','Concierto16','2019-06-19','13:00:00','24.00','8','4','4','1');
 
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('17','Concierto17','2020-03-03','12:00:00','23.00','5',null,'0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('18','Concierto18','2018-05-04','12:40:00','22.00','6',null,'0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('19','Concierto19','2018-06-07','11:00:00','10.00','7',null,'0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('20','Concierto20','2019-05-11','15:30:00','10.00','8',null,'0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('21','Concierto21','2019-04-12','11:20:00','10.00','5',null,'0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('22','Concierto22','2020-03-09','01:00:00','15.00','6',null,'0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('23','Concierto23','2020-03-14','11:00:00','16.00','7',null,'0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('24','Concierto24','2019-02-11','14:30:00','30.00','8',null,'0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('25','Concierto25','2019-01-10','11:00:00','20.00','5',null,'0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('26','Concierto26','2018-07-04','15:00:00','25.00','6',null,'0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('27','Concierto27','2018-08-08','19:30:00','12.00','7',null,'0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('28','Concierto28','2018-09-09','17:00:00','12.00','8',null,'0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('29','Concierto29','2020-01-02','11:10:00','30.00','5',null,'0');
-INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, estado) VALUES ('30','Concierto30','2018-10-07','11:00:00','10.00','6',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, musico, estado) VALUES ('17','Concierto17','2020-03-03','12:00:00','23.00','5',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, musico, estado) VALUES ('18','Concierto18','2018-05-04','12:40:00','22.00','6',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, musico, estado) VALUES ('19','Concierto19','2018-06-07','11:00:00','10.00','7',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, musico, estado) VALUES ('20','Concierto20','2019-05-11','15:30:00','10.00','8',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, musico, estado) VALUES ('21','Concierto21','2019-04-12','11:20:00','10.00','5',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, musico, estado) VALUES ('22','Concierto22','2020-03-09','01:00:00','15.00','6',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, musico, estado) VALUES ('23','Concierto23','2020-03-14','11:00:00','16.00','7',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, musico, estado) VALUES ('24','Concierto24','2019-02-11','14:30:00','30.00','8',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, musico, estado) VALUES ('25','Concierto25','2019-01-10','11:00:00','20.00','5',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, musico, estado) VALUES ('26','Concierto26','2018-07-04','15:00:00','25.00','6',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, musico, estado) VALUES ('27','Concierto27','2018-08-08','19:30:00','12.00','7',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, musico, estado) VALUES ('28','Concierto28','2018-09-09','17:00:00','12.00','8',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, musico, estado) VALUES ('29','Concierto29','2020-01-02','11:10:00','30.00','5',null,'0');
+INSERT INTO `concierto`(id_concierto, nombre, fecha, hora, pago, localm, genero, musico, estado) VALUES ('30','Concierto30','2018-10-07','11:00:00','10.00','6',null,'0');

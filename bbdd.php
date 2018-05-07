@@ -645,9 +645,9 @@ function dimeidgenero($gender) {
 
 //Desarrollador:Isain
 //Registrar un musico
-function registrar_musico($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad, $surname1, $surname2, $web, $nickname, $components, $gender) {
+function registrar_musico($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad, $surname1, $surname2, $web, $nickname, $components, $gender,$imagen) {
     //llamamos a la funcion de registrar_login para obtener el idusuario
-    $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad);
+    $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad,$imagen);
     if ($idusuario != -1) {
         $c = conectar();
         $insert = "INSERT INTO `musica`.`musico` (`id_usuario`, `apellidoa`, `apellidob`, `web`, `nombreart`, `componentes`, `destacado`,`genero`) VALUES ('$idusuario', '$surname1', '$surname2', '$web', '$nickname', '$components', '0','$gender')";
@@ -669,11 +669,11 @@ function registrar_musico($usuario, $pass, $tipo, $nombre, $email, $telefono, $c
 //Registrar un fan
 function registrar_fan($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad, $surname1, $surname2, $address, $imagen) {
     // con la funcionregistrar_login obtenemos el id de usuario, despues damos de alta el fan en su respectiva tabla.
-    $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad);
+    $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad,$imagen);
     if ($idusuario != -1) {
         $c = conectar();
         $addressok = mysqli_escape_string($c, $address);
-        $insert = "insert into fan(id_usuario,apellidoa,apellidob,direccion,imagen) values ('$idusuario','$surname1','$surname2','$addressok','$imagen')";
+        $insert = "insert into fan(id_usuario,apellidoa,apellidob,direccion) values ('$idusuario','$surname1','$surname2','$addressok')";
         if (mysqli_query($c, $insert)) {
             $resultado = "ok";
         } else {
@@ -949,12 +949,12 @@ function registrar_local($usuario, $pass, $nombre, $email, $telefono, $ciudad, $
     //Se da de alta el usuario en la tabla principal de login
     //El método registrar_login devuelve el identificador del alta.
     $tipo = 1;
-    $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad);
+    $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad, $imagen);
     if ($idusuario != -1) {
         //Conectar base de datos
         $c = conectar();
         //Insert para añadir los datos específicos de local en la tabla localm
-        $insert = "insert into localm (id_usuario,ubicacion,imagen,aforo,destacado) values ($idusuario,'$ubicacion','$imagen',$aforo,0);";
+        $insert = "insert into localm (id_usuario,ubicacion,aforo,destacado) values ($idusuario,'$ubicacion',$aforo,0);";
         if (mysqli_query($c, $insert)) {
             //Si todo ha ido bien se devuelve ok
             $resultado = "ok";
@@ -976,12 +976,12 @@ function registrar_local($usuario, $pass, $nombre, $email, $telefono, $ciudad, $
 //Desarrollador: Artur
 //Función que da de alta un usuario, sirve tanto para local, como para músico y fan.
 //Se añaden los campos comunes.
-function registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad) {
+function registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad,$imagen) {
     //Conectar base de datos
     $c = conectar();
     //Insert sql registro tabla login
     $pasc = password_hash("$pass", PASSWORD_DEFAULT);
-    $insert = "insert into login (usuario,pass,tipo,nombre,email,telefono,ciudad) values ('$usuario','$pasc',$tipo,'$nombre','$email','$telefono','$ciudad');";
+    $insert = "insert into login (usuario,pass,tipo,nombre,email,telefono,ciudad,imagen) values ('$usuario','$pasc',$tipo,'$nombre','$email','$telefono','$ciudad','$imagen');";
     if (mysqli_query($c, $insert)) {
         //Si el insert ha ido bien se devuelve el id autonumérico generado en el alta.
         $resultado = mysqli_insert_id($c);

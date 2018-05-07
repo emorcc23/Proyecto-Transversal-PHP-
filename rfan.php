@@ -4,6 +4,7 @@ Esta es la pagina para registrar fans.
 -->
 <?php
 require_once 'bbdd.php';
+require_once 'funciones.php';
 ?>
 <html lang="es">
     <head>
@@ -60,12 +61,14 @@ require_once 'bbdd.php';
                     <?php
                     if (isset($_POST["next"])) {
                         extract($_POST);
+                        $target_file=subefoto();
+    
                         if (usuarioexiste($username) > 0) {
                             echo "<script>alert('Este usuario ya está registrado')</script>";
                             //echo"Error..este usuario ya esta registrado";
                         } else {
                             if ($pass1 == $pass2) {
-                                if (registrar_fan($username, $pass1, 3, $name, $mail, $phone, $city, $surname1, $surname2, $address, "") == "ok") {
+                                if (registrar_fan($username, $pass1, 3, $name, $mail, $phone, $city, $surname1, $surname2, $address, $target_file) == "ok") {
                                     echo"<script>alert('Se ha registrado el fan correctamente')</script>";
                                     header("Refresh:0; url=login.php");
                                 } else {
@@ -76,7 +79,7 @@ require_once 'bbdd.php';
                         }
                     } else {
                         ?>
-                        <form action="" method="POST" onsubmit="return verificar();">  
+                        <form action="" method="POST" onsubmit="return verificar();" enctype="multipart/form-data">  
                             <table>
                                 <tr>
                                     <td>
@@ -115,7 +118,9 @@ require_once 'bbdd.php';
                                     </td>
                                     <td>
                                         <p>Imagen:</p>
-                                        <p><input type="button" value="Seleccionar imagen" name="imagen"></p>
+                                        <p>
+                                            <input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload">
+                                        </p>
                                     </td>
                                 </tr>
                                 <tr>
