@@ -79,11 +79,10 @@ require_once 'funciones.php';
                             <?php
                             extract($_SESSION);
                             $id_usuario = dimeidusuario($username);
-                            echo$id_usuario;
 
-                            echo"<table>";
+                            echo"<table id='tabla1' border='1'>";
                             echo"<tr>";
-                            echo"<td>NOMBRE</td><td>GENERO</td><td>VOTO</td>";
+                            echo"<td>NOMBRE</td><td>GENERO</td>";
                             echo"</tr>";
                             $listamusicos = ordenarMusicosPorGenero();
                             while ($musicos = mysqli_fetch_assoc($listamusicos)) {
@@ -107,7 +106,7 @@ require_once 'funciones.php';
                             eliminarVotoMusico2();
                             //-------------------------------------------------------------------------------------------------------------------
                             echo "<hr>";
-                            echo"<table>";
+                            echo"<table id='tabla2' border='1'>";
                             echo"<tr>";
                             echo"<td>Nombre del concierto</td>";
                             echo"<td>Genero</td>";

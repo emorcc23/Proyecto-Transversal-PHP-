@@ -120,11 +120,6 @@ form #botoncerrar:hover {
 
 #noticias .noti a {
     width: 100%;
-    
-    
-    
-    
-    
     height: 100px;
     border: none;
 }
@@ -133,4 +128,173 @@ form #botoncerrar:hover {
     width: 100%;
     height: 200px;
     margin-top: -80px;
+}
+
+#tabla1 {
+    border-collapse: collapse;
+    width: 600px;
+    height: 250px;
+    margin: 35px;
+}
+
+#tabla1 tr td {
+    border: solid;
+    border-width: thin;
+    border-color: rgba(255,255,255,.4);
+    padding: 15px;
+    font-size: 20px;
+}
+
+#tabla1 input {
+    border: none;
+    background: rgba(55,55,55,.0);
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+}
+
+
+#tabla2 {
+    border-collapse: collapse;
+    width: 600px;
+    height: 250px;
+    margin: 35px;
+}
+
+#tabla2 tr td {
+    border: solid;
+    border-width: thin;
+    border-color: rgba(255,255,255,.4);
+    padding: 15px;
+    font-size: 20px;
+}
+
+#tabla2 input {
+    border: none;
+    background: rgba(55,55,55,.0);
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+}
+
+#siguiente {
+    border: solid;
+    border-width: thin;
+    text-decoration: none;
+    color: black;
+    margin-top: 0px;
+    margin-left: 390px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    text-align: center;
+    border-radius: 50px;
+    background: rgba(255,255,255,.1);
+    box-shadow: 0px 0px 15px black;   
+}
+
+#siguiente:hover {
+    background: rgba(55,55,55,.3);
+    box-shadow: 0px 0px 45px white;
+}
+
+#siguiente span {
+    font-size: 35px;
+    margin-left:  -23px;
+    position: absolute;
+}
+
+#ultima {
+    border: solid;
+    border-width: thin;
+    text-decoration: none;
+    color: black;
+    margin-top: -50px;
+    margin-left: 510px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    text-align: center;
+    border-radius: 50px;
+    background: rgba(255,255,255,.1);
+    box-shadow: 0px 0px 15px black; 
+}
+
+#ultima:hover {
+    background: rgba(55,55,55,.3);
+    box-shadow: 0px 0px 45px white;
+}
+
+#ultima span {
+    font-size: 28px;
+    margin-top: 3px;
+    margin-left: -19px;
+    position: absolute;
+}
+
+#anterior {
+    border: solid;
+    border-width: thin;
+    text-decoration: none;
+    color: black;
+    margin-top: -50px;
+    margin-left: 210px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    text-align: center;
+    border-radius: 50px;
+    background: rgba(255,255,255,.1);
+    box-shadow: 0px 0px 15px black; 
+}
+
+#anterior span {
+    font-size: 35px;
+    margin-left: -26px;
+    position: absolute;
+}
+
+#anterior:hover {
+    background: rgba(55,55,55,.3);
+    box-shadow: 0px 0px 45px white;
+}
+
+#primera {
+    border: solid;
+    border-width: thin;
+    text-decoration: none;
+    color: black;
+    margin-left: 90px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    text-align: center;
+    border-radius: 50px;
+    background: rgba(255,255,255,.1);
+    box-shadow: 0px 0px 15px black; 
+}
+
+#primera:hover {
+    background: rgba(55,55,55,.3);
+    box-shadow: 0px 0px 45px white;
+}
+
+#primera span {
+    font-size: 28px;
+    
+    margin-left: -19px;
+    position: absolute;
+}
+
+#paginado {
+
+    margin-left: 330px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    font-size: 29px;
+    background: rgba(55,55,55,.0);
+
 }
