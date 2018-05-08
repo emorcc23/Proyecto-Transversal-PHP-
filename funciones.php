@@ -39,9 +39,11 @@ function subefoto() {
         if ($uploadOk == 0) {
             echo "<script>alert('La foto no se ha enviado.')</script>";
             // if everything is ok, try to upload file
+            $target_file='';
         } else {
             if (!move_uploaded_file($_FILES["fileupload"]["tmp_name"], $target_file)) {
                 echo "<script>alert('Ha habido un error subiendo la foto.')</script>";
+                $target_file='';
             }
         }
     }

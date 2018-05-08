@@ -96,15 +96,29 @@ Pagina de locales.
                     <div id="miperfil">
                         <p id="tituloperfil">Modificar datos</p>
                         <div id="formulariodatos">
-                            <form method="post">  
+                            <form method="post" enctype="multipart/form-data">  
                                 <table>
                     <?php 
                         if (isset($_SESSION['username'])) {
                             if (isset($_POST['name'])) {
                             extract($_POST);
                             extract($_SESSION);
+                            if($_FILES['fileupload']['name'] == "")
+                            {
+                                $foto = dimefoto($username);
+                            }
+                            else
+                            {
+                                $foto=subefoto();
+                                if(empty($foto))
+                                {
+                                    $foto = dimefoto($username);
+                                }
+                            }
+                     echo"<script>alert('$foto')</script>";
+                            
                             //Hacer la modificación.
-                            if (modificaperfillocal($username, $name, $email, $phone, $city, $location, '', $aforo) == "ok") {
+                            if (modificaperfillocal($username, $name, $email, $phone, $city, $location, $foto, $aforo) == "ok") {
                                 echo"<script>alert('Modificación realizada')</script>";
                             } else {
                                 echo"<script>alert('Error modificando perfil de local')</script>";
@@ -153,8 +167,15 @@ Pagina de locales.
                             }
 
                             echo"</select></p></td>";
-
-                            echo"<td><p>Imagen:<input type='button' value='Seleccionar imagen'></p></td></tr>";
+                            ?>
+      
+                            <td>
+                                <p>Imagen:</p>
+                                <p>
+                                <input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload">
+                                </p>
+                            </td></tr>
+                            <?php
                         } else {
                             echo"<script>alert('El usuario se ha eliminado')</script>";
                         }

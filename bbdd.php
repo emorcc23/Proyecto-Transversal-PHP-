@@ -1,4 +1,23 @@
 <?php
+
+//Desarrollador: Artur
+//Devuelve la ruta de la foto de un usuario
+function dimefoto($usuario)
+{
+    $c = conectar();
+    $select = "select imagen from login where usuario = '$usuario';";
+    $resultado = mysqli_query($c, $select);
+    if($fila = mysqli_fetch_assoc($resultado)){
+        extract($fila);
+    }else{
+        $imagen='';
+    }
+    
+    
+    desconectar($c);
+    return $imagen;
+}
+
 //Desarrollado: Isain Alvaro
 //Funcion que borra el voto en caso de que este
 function eliminarVotoConcierto($id_usuario,$id_concierto){
@@ -611,7 +630,7 @@ function modificarperfilfan($usuario, $nombre, $email, $telefono, $ciudad, $apel
 function leerperfilfan($usuario) {
     //Conectamos con la base de datos
     $c = conectar();
-    $select = "select login.tipo as tipo, login.nombre as nombre, login.email as email, login.telefono as telefono, login.ciudad as ciudad, fan.apellidoa as apellidoa, fan.apellidob as apellidob, fan.direccion as direccion, fan.imagen as imagen from login inner join fan on login.id_usuario=fan.id_usuario where login.usuario='$usuario';";
+    $select = "select login.tipo as tipo, login.nombre as nombre, login.email as email, login.telefono as telefono, login.ciudad as ciudad, fan.apellidoa as apellidoa, fan.apellidob as apellidob, fan.direccion as direccion from login inner join fan on login.id_usuario=fan.id_usuario where login.usuario='$usuario';";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
@@ -780,10 +799,10 @@ function modificaperfillocal($usuario, $nombre, $email, $telefono, $ciudad, $ubi
     //Obtengo el id del usuario
     $id_usuario = dimeidusuario($usuario);
     //Actualizo los campos de la tabla login
-    $update = "update login set nombre='$nombre', email='$email', telefono='$telefono',ciudad=$ciudad where id_usuario=$id_usuario;";
+    $update = "update login set nombre='$nombre', email='$email', telefono='$telefono',ciudad=$ciudad,imagen='$imagen' where id_usuario=$id_usuario;";
     if (mysqli_query($c, $update)) {
         //Actualizo los campos de la tabla localm
-        $update = "update localm set ubicacion='$ubicacion', imagen='$imagen', aforo = $aforo where id_usuario='$id_usuario';";
+        $update = "update localm set ubicacion='$ubicacion', aforo = $aforo where id_usuario='$id_usuario';";
         if (mysqli_query($c, $update)) {
             $resultado = "ok";
         } else {
@@ -812,7 +831,7 @@ function leeperfillocal($usuario) {
     //Conectar con la base de datos
     $c = conectar();
     //Consulta sql con dos inner join evita código.
-    $select = "select login.tipo as tipo,login.nombre as nombre,login.email as email,login.telefono as telefono, login.ciudad as ciudad, localm.ubicacion as ubicacion, localm.aforo as aforo, localm.destacado as destacado, localm.imagen as imagen from login inner join localm on login.id_usuario=localm.id_usuario where login.usuario='$usuario';";
+    $select = "select login.tipo as tipo,login.nombre as nombre,login.email as email,login.telefono as telefono, login.ciudad as ciudad, localm.ubicacion as ubicacion, localm.aforo as aforo, localm.destacado as destacado from login inner join localm on login.id_usuario=localm.id_usuario where login.usuario='$usuario';";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     //Se devuelve el resultado de la consulta.
