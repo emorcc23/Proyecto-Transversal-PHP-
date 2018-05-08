@@ -75,7 +75,7 @@ function eliminarVotoConcierto2() {
 function nuevoVotoConcierto($id_concierto) {
     return "<form action='' method='POST'>" .
             "<input type='hidden' value='$id_concierto' name='id_concierto'>" .
-            "<input type='submit' value='votoconcierto' name='votoconcierto'>" .
+            "<input type='submit' value='Like' name='votoconcierto'>" .
             "</form>";
 }
 
@@ -99,7 +99,7 @@ function altaVotoConcierto2() {
 function eliminarVotoMusico1($id_musico) {
     return "<form action='' method='POST'>" .
             "<input type='hidden' value='$id_musico' name='id_musico'>" .
-            "<input type='submit' value='deletevoto' name='deletevoto'>" .
+            "<input type='submit' value='Dislike' name='deletevoto'>" .
             "</form>";
 }
 
@@ -121,7 +121,7 @@ function eliminarVotoMusico2() {
 function nuevoVotoMusico($id_musico) {
     return "<form action='' method='POST'>" .
             "<input type='hidden' value='$id_musico' name='id_musico'>" .
-            "<input type='submit' value='voto' name='voto'>" .
+            "<input type='submit' value='Like' name='voto'>" .
             "</form>";
 }
 
