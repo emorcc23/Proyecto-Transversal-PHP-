@@ -17,8 +17,16 @@ require_once 'funciones.php';
         <header>
             <div class="contenedor">
                 <h1 class="icon-music">Ooh Music</h1>
+                <!-- Segundo -->
+                <input type="checkbox" id="menu-user">
+                <label id="label1" class="icon-user-circle" for="menu-user"></label>
+                <!-- Primero -->
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
+                <nav class="menuuser">
+                    <a href="#">Mi perfil</a>
+                    <a href="index.php">Cerrar sesión</a>
+                </nav>
                 <nav class="menu">
                     <ul>
                         <li><a href="index.php">Inicio</a></li>

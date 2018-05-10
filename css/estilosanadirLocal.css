@@ -85,6 +85,18 @@ footer .contenedor {
     display: block;
 }
 
+.menuuser {
+    list-style: none;
+}
+
+.menuuser a span {
+    margin-left: 10px;
+}
+
+.menuuser a:hover {
+    display: block;
+}
+
 .submenuu {
     background-color: rgba(255,255,255,0.2);
     list-style: none;
