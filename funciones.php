@@ -39,11 +39,11 @@ function subefoto() {
         if ($uploadOk == 0) {
             echo "<script>alert('La foto no se ha enviado.')</script>";
             // if everything is ok, try to upload file
-            $target_file='';
+            $target_file = '';
         } else {
             if (!move_uploaded_file($_FILES["fileupload"]["tmp_name"], $target_file)) {
                 echo "<script>alert('Ha habido un error subiendo la foto.')</script>";
-                $target_file='';
+                $target_file = '';
             }
         }
     }
@@ -419,13 +419,9 @@ function muestradatosfan() {
         extract($_SESSION);
         if ($tipo == 3) {
             echo "Fan<br>";
-            $nombre = dimenombre($username);
-            echo "<p>$nombre</p>";
-            echo "<hr>";
-            echo "<div id='info'>";
-            //echo "<img src='Imagenes/usuario.png'>";
-            echo "</div>";
+            imprimenombreyfoto($username);
         }
+        
     }
 }
 
@@ -438,13 +434,7 @@ function muestradatosmusico() {
             echo"Musicos";
         }
 
-        $nombre = dimenombre($username);
-
-        echo"<p>$nombre</p>";
-        echo"<hr>";
-        echo"<div id='info'>";
-        //echo"<img src='Imagenes/usuario.png'>";
-        echo"</div>";
+       imprimenombreyfoto($username);
     }
 }
 
@@ -467,14 +457,22 @@ function muestradatoslocal() {
                 echo"Fan<br>";
                 break;
         }
-        $nombre = dimenombre($username);
 
-        echo"<p>$nombre</p>";
-        echo"<hr>";
-        echo"<div id='info'>";
-        //echo"<img src='Imagenes/usuario.png'>";
-        echo"</div>";
+        imprimenombreyfoto($username);
     }
+}
+
+//Desarrollador: Artur
+//Muestra el nombre y la foto de un usuario
+function imprimenombreyfoto($username) {
+    $nombre = dimenombre($username);
+
+    echo"<p>$nombre</p>";
+    echo"<hr>";
+    echo"<div id='info'>";
+    $ruta = dimefoto($username);
+    echo"<img src='$ruta'>";
+    echo"</div>";
 }
 
 //funcion para cerrar session

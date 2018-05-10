@@ -115,7 +115,6 @@ Pagina de locales.
                                     $foto = dimefoto($username);
                                 }
                             }
-                     echo"<script>alert('$foto')</script>";
                             
                             //Hacer la modificación.
                             if (modificaperfillocal($username, $name, $email, $phone, $city, $location, $foto, $aforo) == "ok") {

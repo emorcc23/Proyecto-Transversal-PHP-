@@ -610,10 +610,10 @@ function modificarperfilfan($usuario, $nombre, $email, $telefono, $ciudad, $apel
     //Obtenemos el id del usuario
     $id_usuario = dimeidusuario($usuario);
     //Actualizamos los campos de la tabla login
-    $update = "update login set nombre='$nombre', email='$email', telefono='$telefono', ciudad=$ciudad where id_usuario=$id_usuario;";
+    $update = "update login set nombre='$nombre', email='$email', telefono='$telefono', ciudad=$ciudad, imagen='$imagen' where id_usuario=$id_usuario;";
     if (mysqli_query($c, $update)) {
         //Actualizamos los campos de la tabla fan
-        $update = "update fan set apellidoa='$apellidoa', apellidob='$apellidob', direccion='$direccion', imagen='' where id_usuario='$id_usuario';";
+        $update = "update fan set apellidoa='$apellidoa', apellidob='$apellidob', direccion='$direccion' where id_usuario='$id_usuario';";
         if (mysqli_query($c, $update)) {
             $resultado = "ok";
         } else {
@@ -773,10 +773,10 @@ function dimeidusuario($usuario) {
     }
 }
 
-function modificarperfilmusico($usuario, $nombre, $email, $telefono, $ciudad, $surname1, $surname2, $web, $nickname, $components, $gender) {
+function modificarperfilmusico($usuario, $nombre, $email, $telefono, $ciudad, $surname1, $surname2, $web, $nickname, $components, $gender, $imagen) {
     $c = conectar();
     $id_usuario = dimeidusuario($usuario);
-    $update = "update login set nombre='$nombre', email='$email', telefono='$telefono',ciudad=$ciudad where id_usuario=$id_usuario;";
+    $update = "update login set nombre='$nombre', email='$email', telefono='$telefono',ciudad=$ciudad, imagen='$imagen' where id_usuario=$id_usuario;";
     if (mysqli_query($c, $update)) {
         $update = "update musico set apellidoa='$surname1', apellidob='$surname2', web='$web', nombreart='$nickname', componentes='$components', genero='$gender' where id_usuario='$id_usuario';";
         if (mysqli_query($c, $update)) {
