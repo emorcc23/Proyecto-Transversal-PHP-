@@ -471,7 +471,11 @@ function imprimenombreyfoto($username) {
     echo"<hr>";
     echo"<div id='info'>";
     $ruta = dimefoto($username);
-    echo"<img src='$ruta'>";
+    if(empty($ruta))
+    {
+        $ruta="Imagenes/sinimagen.jpg";
+    }
+    echo"<img src='$ruta' id='fotoperfil'>";
     echo"</div>";
 }
 
