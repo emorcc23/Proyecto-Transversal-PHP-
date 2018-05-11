@@ -476,6 +476,14 @@ function imprimenombreyfoto($username) {
         $ruta="Imagenes/sinimagen.jpg";
     }
     echo"<img src='$ruta' id='fotoperfil'>";
+    echo "<style type='text/css'>";
+        echo "#info #fotoperfil {"
+            . "border-radius: 100px;"
+            . "margin-top: -20px;"
+                . "width: 129px;"
+                . "height: 129px;"
+                . "margin-left: -20px;";
+        echo "</style>";
     echo"</div>";
 }
 

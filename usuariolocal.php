@@ -41,7 +41,7 @@ session_start();
                         <li><a href="fans.php">Fans</a></li>
                         <li><a href="contacto.php">Contacto</a></li>
                     </ul>
-                    
+
                 </nav>
             </div>
         </header>       
@@ -60,45 +60,45 @@ session_start();
                     echo"No puedes entrar aquí.<br>";
                 }
                 if ($mostrar == 1) {
-                ?>
-                    <img src="Imagenes/banner.jpg">
-                       <div id="centro"> 
-                    <p>Datos de mi perfil</p>
-                    <div id="usuario">
-                    <?php
-                    muestradatoslocal();
                     ?>
-                    </div>
-                    <nav class="menuLocal">
-                    <ul>
-                        <li><a href="usuariolocal.php">Perfil</a></li>
-                        <li><a href="#">Fotos</a></li>
-                        <li><a class="concierto" href="" id="boton1">Conciertos</a>
+                    <img src="Imagenes/banner.jpg">
+                    <div id="centro"> 
+                        <p>Datos de mi perfil</p>
+                        <div id="usuario">
+                            <?php
+                            muestradatoslocal();
+                            ?>
+                        </div>
+                        <nav class="menuLocal">
                             <ul>
-                                <div id="submenudiv">
-                                <li><a href="conciertosdelocal.php" id="uno">Mis conciertos</a></li>
-                                <li><a href="anadirconcierto.php" id="dos">Organizar un concierto</a></li>
-                                </div>
+                                <li><a href="usuariolocal.php">Perfil</a></li>
+                                <li><a href="#">Fotos</a></li>
+                                <li><a class="concierto" href="" id="boton1">Conciertos</a>
+                                    <ul>
+                                        <div id="submenudiv">
+                                            <li><a href="conciertosdelocal.php" id="uno">Mis conciertos</a></li>
+                                            <li><a href="anadirconcierto.php" id="dos">Organizar un concierto</a></li>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Mensajes</a></li>
+                                <li><a href="miperfillocal.php">Configuración</a></li>
+                                <?php cerraSession2() ?>
                             </ul>
-                        </li>
-                        <li><a href="#">Mensajes</a></li>
-                        <li><a href="miperfillocal.php">Configuración</a></li>
-                        <?php cerraSession2() ?>
-                    </ul>
-                    
-                </nav>    
-                            
+
+                        </nav>    
+
                         </ul>
                     </div>
-                        <div id="titulonoticias">
-                            <p>Últimas noticias</p>
-                        </div>
-                        <div id="noticias">
-                        </div>
+                    <div id="titulonoticias">
+                        <p>Últimas noticias</p>
+                    </div>
+                    <div id="noticias">
+                    </div>
                     </div>  
-            <?php 
-            }
-            ?>
+                    <?php
+                }
+                ?>
             </section> 
         </main>
         <footer>
@@ -111,7 +111,7 @@ session_start();
                     <a class="icon-gmail" href="#"></a>
                 </div>
             </div>
-            
+
         </footer>
     </body>
 </html>
