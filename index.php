@@ -26,8 +26,17 @@
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
                 <nav class="menuuser">
-                    <a href="#">Mi perfil</a>
-                    <a href="index.php">Cerrar sesión</a>
+                    <a href="usuariomusico.php">Mi perfil</a>
+                    <?php
+                    $mostrar = 0;
+                    if (isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        echo "<a href='usuariomusico.php'>Hola $username</a>";
+                    }else{
+                        echo "<a href='index.php'>Iniciar Sesión</a>";
+                    }
+                    ?>
+                    
                 </nav>
                 <nav class="menu">
                     <ul>
