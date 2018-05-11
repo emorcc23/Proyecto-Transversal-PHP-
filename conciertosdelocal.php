@@ -60,7 +60,7 @@ extract($_SESSION);
             </header>       
             <main>
                 <section id="banner">
-                    <img src="Imagenes/banner.jpg">
+                    <img  id='fotobanner' src="Imagenes/banner.jpg">
                     <div id="centro"> 
                         <p></p>
                         <div id="usuario">
