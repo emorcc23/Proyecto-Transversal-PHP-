@@ -2,6 +2,39 @@
 
 require_once 'bbdd.php';
 
+//Desarrollador: Isain Alvaro
+//Control desplegable de usuario
+function controlDesplegable() {
+    $mostrar = 0;
+    if (isset($_SESSION['username'])) {
+
+        $username = $_SESSION['username'];
+        echo "<p id='saludo'>Hola $username</p>";
+        echo "<style type='text/css'>";
+        echo "#saludo {"
+        . "margin-left: 230px;"
+        . "color: red;";
+        echo "</style>";
+        $_SESSION['tipo'] = dimetipousuario($username);
+        extract($_SESSION);
+
+        switch ($tipo) {
+            case 1:
+                echo "<a href='usuariolocal.php'>Mi Perfil</a>";
+                break;
+            case 2:
+                echo "<a href='usuariomusico.php'>Mi Perfil</a>";
+                break;
+            case 3:
+                echo "<a href='usuariofan.php'>Mi Perfil</a>";
+                break;
+            default:
+        }
+    } else {
+        echo "<a href='login.php'>Iniciar Sesión</a>";
+    }
+}
+
 //Desarrollador: Artur
 //Sube una foto enviada por post al servidor.
 function subefoto() {
@@ -421,7 +454,6 @@ function muestradatosfan() {
             echo "Fan<br>";
             imprimenombreyfoto($username);
         }
-        
     }
 }
 
@@ -434,7 +466,7 @@ function muestradatosmusico() {
             echo"Musicos";
         }
 
-       imprimenombreyfoto($username);
+        imprimenombreyfoto($username);
     }
 }
 
@@ -471,19 +503,18 @@ function imprimenombreyfoto($username) {
     echo"<hr>";
     echo"<div id='info'>";
     $ruta = dimefoto($username);
-    if(empty($ruta))
-    {
-        $ruta="Imagenes/sinimagen.jpg";
+    if (empty($ruta)) {
+        $ruta = "Imagenes/sinimagen.jpg";
     }
     echo"<img src='$ruta' id='fotoperfil'>";
     echo "<style type='text/css'>";
-        echo "#info #fotoperfil {"
-            . "border-radius: 100px;"
-            . "margin-top: -20px;"
-                . "width: 129px;"
-                . "height: 129px;"
-                . "margin-left: -20px;";
-        echo "</style>";
+    echo "#info #fotoperfil {"
+    . "border-radius: 100px;"
+    . "margin-top: -20px;"
+    . "width: 129px;"
+    . "height: 129px;"
+    . "margin-left: -20px;";
+    echo "</style>";
     echo"</div>";
 }
 
