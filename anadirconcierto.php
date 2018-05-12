@@ -1,7 +1,7 @@
 <?php
-    session_start();
-    require_once 'bbdd.php';
-    require_once 'funciones.php';
+session_start();
+require_once 'bbdd.php';
+require_once 'funciones.php';
 ?>
 <html lang="es">
     <head>
@@ -12,9 +12,9 @@
         <link rel="stylesheet" href="css/estilosanadirLocal.css">
         <script src="jquery.min.js"></script>
         <script type="text/javascript" src="funciones.js"></script>
-        <script type="text/javascript"> 
-     
-                    
+        <script type="text/javascript">
+
+
         </script>
     </head>
     <body>
@@ -29,90 +29,99 @@
                 } else {
                     echo "<script>alert('Error añadiendo el concierto')</script>";
                 }
+                header("Location:usuariolocal.php");
             } else {
                 ?>
 
-        <header>
-            <div class="contenedor">
-                <h1 class="icon-music">Ooh Music</h1>
-                <input type="checkbox" id="menu-bar">
-                <label class="icon-menu" for="menu-bar"></label>
-                <nav class="menu">
-                    <ul>
-                        <li><a href="index.php">Inicio</a></li>
-                        <li><a href="login.php">Login</a></li>
-                        <li class="submenu"><a href="">Registro <span class="icon-down-dir"></span></a>
-                            <ul class="submenuu">
-                                <li><a href="rmusicos.php">Regístrate como músico</a></li>
-                                <li><a href="rlocales.php">Regístrate como local</a></li>
-                                <li><a href="rfan.php">Regístrate como fan</a></li>
+                <header>
+                    <div class="contenedor">
+                        <h1 class="icon-music">Ooh Music</h1>
+                        <!-- Segundo -->
+                        <input type="checkbox" id="menu-user">
+                        <label id="label1" class="icon-user-circle" for="menu-user"></label>
+                        <!-- Primero -->
+                        <input type="checkbox" id="menu-bar">
+                        <label class="icon-menu" for="menu-bar"></label>
+                        <nav class="menuuser">
+                            <a href="#">Mi perfil</a>
+                            <a href="index.php">Cerrar sesión</a>
+                        </nav>
+                        <nav class="menu">
+                            <ul>
+                                <li><a href="index.php">Inicio</a></li>
+                                <li><a href="login.php">Login</a></li>
+                                <li class="submenu"><a href="">Registro <span class="icon-down-dir"></span></a>
+                                    <ul class="submenuu">
+                                        <li><a href="rmusicos.php">Regístrate como músico</a></li>
+                                        <li><a href="rlocales.php">Regístrate como local</a></li>
+                                        <li><a href="rfan.php">Regístrate como fan</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="musicos.php">Musicos</a></li>
+                                <li><a href="locales.php">Locales</a></li>
+                                <li><a href="fans.php">Fans</a></li>
+                                <li><a href="contacto.php">Contacto</a></li>
                             </ul>
-                        </li>
-                        <li><a href="musicos.php">Musicos</a></li>
-                        <li><a href="locales.php">Locales</a></li>
-                        <li><a href="fans.php">Fans</a></li>
-                        <li><a href="contacto.php">Contacto</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>       
-        <main>
-            <section id="banner">
-                <img src="Imagenes/banner.jpg">
-                <div id="centro"> 
-                    <p>Datos de mi perfil</p>
-                    <div id="usuario">
+                        </nav>
                     </div>
-                    <nav class="menuLocal">
-                        <ul>
-                            <li><a href="usuariolocal.php">Perfil</a></li>
-                            <li><a href="#">Fotos</a></li>
-                            <li><a class="concierto" href="#" id="boton1">Conciertos</a>
+                </header>       
+                <main>
+                    <section id="banner">
+                        <img src="Imagenes/banner.jpg">
+                        <div id="centro"> 
+                            <p>Datos de mi perfil</p>
+                            <div id="usuario">
+                            </div>
+                            <nav class="menuLocal">
                                 <ul>
-                                    <div id="submenudiv">
-                                        <li><a href="conciertosdelocal.php" id="uno">Mis conciertos</a></li>
-                                        <li><a href="anadirconcierto.php" id="dos">Organizar un concierto</a></li>
-                                    </div>
+                                    <li><a href="usuariolocal.php">Perfil</a></li>
+                                    <li><a href="#">Fotos</a></li>
+                                    <li><a class="concierto" href="#" id="boton1">Conciertos</a>
+                                        <ul>
+                                            <div id="submenudiv">
+                                                <li><a href="conciertosdelocal.php" id="uno">Mis conciertos</a></li>
+                                                <li><a href="anadirconcierto.php" id="dos">Organizar un concierto</a></li>
+                                            </div>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Mensajes</a></li>
+                                    <li><a href="miperfillocal.php">Configuración</a></li>
+                                    <?php cerraSession2() ?>
                                 </ul>
-                            </li>
-                            <li><a href="#">Mensajes</a></li>
-                            <li><a href="miperfillocal.php">Configuración</a></li>
-                            <?php cerraSession2() ?>
-                        </ul>
-                    </nav>
-                    
-                    <div id="miperfil">
-                        <p id="tituloperfil">Organizar un concierto</p>
-                        <div id="formulariodatos">
-                            <form method="post" onsubmit="return verifech()">  
-                                  
-                            <p>Nombre:<input type="text" name="nombre" id="nombre" required></p>
+                            </nav>
+
+                            <div id="miperfil">
+                                <p id="tituloperfil">Organizar un concierto</p>
+                                <div id="formulariodatos">
+                                    <form method="post" onsubmit="return verifech()">  
+
+                                        <p>Nombre:<input type="text" name="nombre" id="nombre" required></p>
+                                        <?php
+                                        echo"<p>Fecha:<input type='date' name='fecha' id='fecha' value='" . date('Y-m-d') . "'" . "required></p>";
+                                        ?>
+
+                                        <p>Hora:<input type="time" name="hora" required></p>
+                                        <?php
+                                        echo "<p>Genero:<select id='select' name='gender'>";
+                                        $generos = muestrageneros();
+                                        while ($fila = mysqli_fetch_assoc($generos)) {
+                                            extract($fila);
+                                            echo "<option value='$id_genero'>$nombre</option>";
+                                        }
+                                        echo "</select></p>";
+                                        ?>
+                                        <p>Precio de entradas:<input type="number" name="pago" required> €</p>
+                                        <p><input type="submit" value="Finalizar"></p>
+                                        <br><br><br>
+                                    </form>
+                                </div>
+                            </div>
                             <?php
-                                echo"<p>Fecha:<input type='date' name='fecha' id='fecha' value='".date('Y-m-d')."'"."required></p>"; 
-                            ?>
-                            
-                            <p>Hora:<input type="time" name="hora" required></p>
-                            <?php
-                            echo "<p>Genero:<select id='select' name='gender'>";
-                            $generos = muestrageneros();
-                            while ($fila = mysqli_fetch_assoc($generos)) {
-                                extract($fila);
-                                echo "<option value='$id_genero'>$nombre</option>";
-                            }
-                            echo "</select></p>";
-                            ?>
-                            <p>Precio de entradas:<input type="number" name="pago" required> €</p>
-                            <p><input type="submit" value="Finalizar"></p>
-                                <br><br><br>
-                            </form>
-                        </div>
-                    </div>
-        <?php
-            }
-        } else {
-            echo "Sesion no iniciada";
-        }
-        ?>
+                        }
+                    } else {
+                        echo "Sesion no iniciada";
+                    }
+                    ?>
 
                 </div>
             </section>

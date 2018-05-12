@@ -22,8 +22,16 @@ Pagina de locales.
         <header>
             <div class="contenedor">
                 <h1 class="icon-music">Ooh Music</h1>
+                <!-- Segundo -->
+                <input type="checkbox" id="menu-user">
+                <label id="label1" class="icon-user-circle" for="menu-user"></label>
+                <!-- Primero -->
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
+                <nav class="menuuser">
+                    <a href="#">Mi perfil</a>
+                    <a href="index.php">Cerrar sesión</a>
+                </nav>
                 <nav class="menu">
                     <ul>
                         <li><a href="index.php">Inicio</a></li>
@@ -61,7 +69,7 @@ Pagina de locales.
                             <li><a href="#">Fotos</a></li>
                             <li><a href="#">Mensajes</a></li>
                             <li><a href="miperfilfan.php">Configuración</a></li>
-                            <?php cerraSession2()?>
+                            <?php cerraSession2() ?>
                         </ul>
                     </div>
                     <script>
@@ -87,7 +95,17 @@ Pagina de locales.
                         extract($_POST);
                         extract($_SESSION);
                         //Hacer la modificación.
-                        if (modificarperfilfan($username, $name, $email, $phone, $city, $surname1, $surname2, $address, '') == "ok") {
+
+                        if ($_FILES['fileupload']['name'] == "") {
+                            $foto = dimefoto($username);
+                        } else {
+                            $foto = subefoto();
+                            if (empty($foto)) {
+                                $foto = dimefoto($username);
+                            }
+                        }
+
+                        if (modificarperfilfan($username, $name, $email, $phone, $city, $surname1, $surname2, $address, $foto) == "ok") {
                             echo "<script>alert('Modificación realizada.')</script>";
                         } else {
                             echo"<script>alert('Error modficando perfil de Fan')</script>";
@@ -97,64 +115,69 @@ Pagina de locales.
                     <div id="miperfil">
                         <p id="tituloperfil">Modificar datos</p>
                         <div id="formulariodatos">
-                            <form method="post">  
+                            <form method="post" enctype="multipart/form-data">  
                                 <table>
+<?php
+if (isset($_SESSION['username'])) {
+    extract($_SESSION);
+    $perfil = leerperfilfan($username);
+    if ($datos = mysqli_fetch_assoc($perfil)) {
+        extract($datos);
+        echo "<tr>";
+        echo "<td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre' required></p></td>";
+
+        echo"<tr>td><p>Provincia:<select id='provincia'>";
+
+
+        $laprovincia = dimeprovinciadeciudad($ciudad);
+
+        $provincias = dimeprovincias();
+        while ($fila = mysqli_fetch_assoc($provincias)) {
+            extract($fila);
+            if ($laprovincia == $provincia) {
+                echo"<option value='$provincia' selected>$provincia</option>";
+            } else {
+                echo"<option value='$provincia'>$provincia</option>";
+            }
+        }
+
+
+        echo "<td><p>Ciudad:<select id='city' name='city'>";
+        $ciudades = leeciudades($laprovincia);
+        while ($fila = mysqli_fetch_assoc($ciudades)) {
+            extract($fila);
+            if ($id_ciudad == $ciudad) {
+                echo "<option value='$id_ciudad' selected>$nombre</option>";
+            } else {
+                echo "<option value='$id_ciudad'>$nombre</option>";
+            }
+        }
+        echo "</select>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td><p>Primer apellido:<input type='text' name='surname1' value='$apellidoa' required></p></td>";
+        echo "<td><p>Direccion:<input type='text' name='address' value='$direccion' required><p></td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td><p>Segundo apellido: <input type='text' name='surname2' value='$apellidob' required></p></td>";
+       // echo "<td><p>Imagen: <input type='button' name='image' value='Seleccionar imagen'></p></td></tr>";
+        ?>
+                                    <td>
+                                                <p>Imagen:</p>
+                                                <p>
+                                                    <input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload">
+                                                </p>
+                                            </td>
+                                    
                                     <?php
-                                    if (isset($_SESSION['username'])) {
-                                        extract($_SESSION);
-                                        $perfil = leerperfilfan($username);
-                                        if ($datos = mysqli_fetch_assoc($perfil)) {
-                                            extract($datos);
-                                            echo "<tr>";
-                                            echo "<td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre' required></p></td>";
-                                            
-                                            echo"<tr>td><p>Provincia:<select id='provincia'>";
-                            
-                            
-                                            $laprovincia = dimeprovinciadeciudad($ciudad);
-                            
-                                            $provincias = dimeprovincias();
-                                            while($fila=mysqli_fetch_assoc($provincias))
-                                            {
-                                                extract($fila);
-                                                if($laprovincia == $provincia)
-                                                {
-                                                    echo"<option value='$provincia' selected>$provincia</option>";
-                                                }
-                                                else
-                                                {
-                                                    echo"<option value='$provincia'>$provincia</option>";
-                                                }
-                                
-                                            }
-                                            
-                                            
-                                            echo "<td><p>Ciudad:<select id='city' name='city'>";
-                                            $ciudades = leeciudades($laprovincia);
-                                            while ($fila = mysqli_fetch_assoc($ciudades)) {
-                                                extract($fila);
-                                                if ($id_ciudad == $ciudad) {
-                                                    echo "<option value='$id_ciudad' selected>$nombre</option>";
-                                                } else {
-                                                    echo "<option value='$id_ciudad'>$nombre</option>";
-                                                }
-                                            }
-                                            echo "</select>";
-                                            echo "</tr>";
-                                            echo "<tr>";
-                                            echo "<td><p>Primer apellido:<input type='text' name='surname1' value='$apellidoa' required></p></td>";
-                                            echo "<td><p>Direccion:<input type='text' name='address' value='$direccion' required><p></td>";
-                                            echo "</tr>";
-                                            echo "<tr>";
-                                            echo "<td><p>Segundo apellido: <input type='text' name='surname2' value='$apellidob' required></p></td>";
-                                            echo "<td><p>Imagen: <input type='button' name='image' value='Seleccionar imagen'></p></td></tr>";
-                                            echo "</tr>";
-                                            echo "<tr>";
-                                            echo "<td><p>Email: <input type='email' name='email' value='$email' required></p></td>";
-                                            echo "<td><p>Nombre de usuario: $username</p></td>";
-                                            echo "</tr>";
-                                            echo "<tr>";
-                                            echo "<td><p>Telefono: <input type='tel' name='phone' value='$telefono' required></p></td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td><p>Email: <input type='email' name='email' value='$email' required></p></td>";
+        echo "<td><p>Nombre de usuario: $username</p></td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td><p>Telefono: <input type='tel' name='phone' value='$telefono' required></p></td>";
+                      
                                             echo "</tr>";
                                         } else {
                                             echo"<script>alert('El usuario se ha elliminado')</script>";

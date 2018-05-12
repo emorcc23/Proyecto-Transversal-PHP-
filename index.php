@@ -19,10 +19,26 @@
         <header>
             <div class="contenedor">
                 <h1 class="icon-music">Ooh Music</h1>
+                <!-- Segundo -->
+                <input type="checkbox" id="menu-user">
+                <label id="label1" class="icon-user-circle" for="menu-user"></label>
+                <!-- Primero -->
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
-                <input type="checkbox" id="menu-bar">
-                <label class="icon-facebook-squared"></label>
+
+                <nav class="menuuser">
+                    <a href="usuariomusico.php">Mi perfil</a>
+                    <?php
+                    $mostrar = 0;
+                    if (isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        echo "<a href='usuariomusico.php'>Hola $username</a>";
+                    }else{
+                        echo "<a href='index.php'>Iniciar Sesión</a>";
+                    }
+                    ?>
+                    
+                </nav>
                 <nav class="menu">
                     <ul>
                         <li><a href="index.php">Inicio</a></li>
@@ -214,7 +230,7 @@
                                 //echo"Página $pagina de $totalpaginas, Hay $cuantosconciertos conciertos aceptados.<br>";
                                 echo "<p id='paginado'>$pagina/$totalpaginas</p>";
                                 if ($pagina > 1) {
-                                    echo"<a href='index.php?pagina=1' id='primera'><span class='icon-to-start-1'></span></a>";
+                                    echo"<a href='index.php?pagina=1' id='primera'><span class='icon-to-start'></span></a>";
                                     $anterior = $pagina - 1;
                                     echo" <a href='index.php?pagina=$anterior' id='anterior'><span class='icon-left-dir'></span></a>";
                                 }

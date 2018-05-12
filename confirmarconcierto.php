@@ -15,8 +15,16 @@ session_start();
         <header>
             <div class="contenedor">
                 <h1 class="icon-music">Ooh Music</h1>
+                <!-- Segundo -->
+                <input type="checkbox" id="menu-user">
+                <label id="label1" class="icon-user-circle" for="menu-user"></label>
+                <!-- Primero -->
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
+                <nav class="menuuser">
+                    <a href="#">Mi perfil</a>
+                    <a href="index.php">Cerrar sesión</a>
+                </nav>
                 <nav class="menu">
                     <ul>
                         <li><a href="index.php">Inicio</a></li>
@@ -103,16 +111,16 @@ session_start();
                                         if ($datos = mysqli_fetch_assoc($datosconcierto)) {
                                             extract($datos);
                                             echo"<div id='datosconciertos'>";
-                                                echo"<div id='datoos'>";
-                                                    echo"<p>Nombre:$nombre</p>";
-                                                    echo"<p>Fecha:$fecha</p>";
-                                                    echo"<p>Hora:$hora</p>";
-                                                    $ngenero = dimenombregenero($genero);
-                                                    $estadop = cualestado($estado);
-                                                    echo"<p>Género:$ngenero<p>";
-                                                    echo"<p class='estado'>Estado del concierto:</p><p class='estado'>$estadop</p>";
-                                                echo"</div>";
-                                                echo"<div id='musicoos'>";
+                                            echo"<div id='datoos'>";
+                                            echo"<p>Nombre:$nombre</p>";
+                                            echo"<p>Fecha:$fecha</p>";
+                                            echo"<p>Hora:$hora</p>";
+                                            $ngenero = dimenombregenero($genero);
+                                            $estadop = cualestado($estado);
+                                            echo"<p>Género:$ngenero<p>";
+                                            echo"<p class='estado'>Estado del concierto:</p><p class='estado'>$estadop</p>";
+                                            echo"</div>";
+                                            echo"<div id='musicoos'>";
                                             if ($estado == 0) {
                                                 echo"<div id='titulolista'>";
                                                 echo"<p>Músicos que han propuesto su actuación.</p>";
@@ -153,7 +161,6 @@ session_start();
                         if ($error == 1) {
                             echo"No puedes entrar aquí.<br>";
                         }
-                        
                         ?>
                         </ul>
                     </div>
@@ -163,9 +170,9 @@ session_start();
                     <div id="noticias">
                     </div>
                     </div>  
-                        <?php
-                    }
-                    ?>
+                    <?php
+                }
+                ?>
             </section> 
         </main>
         <footer>

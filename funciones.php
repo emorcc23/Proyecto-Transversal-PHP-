@@ -2,34 +2,129 @@
 
 require_once 'bbdd.php';
 
-function eliminarVotoMusico1($id_musico){
-    return "<form action='' method='POST'>".
-    "<input type='hidden' value='$id_musico' name='id_musico'>".
-    "<input type='submit' value='deletevoto' name='deletevoto'>".
-    "</form>";
+//Desarrollador: Artur
+//Sube una foto enviada por post al servidor.
+function subefoto() {
+    if (isset($_FILES['fileupload'])) {
+
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["fileupload"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+
+        $check = getimagesize($_FILES["fileupload"]["tmp_name"]);
+        if ($check == false) {
+            echo "<script>alert('El archivo no es una imagen válida.')</script>";
+            $uploadOk = 0;
+        }
+
+        // Check if file already exists
+
+        if (file_exists($target_file)) {
+            echo "<script>alert('Error. El archivo de la foto ya existe en el servidor.')</script>";
+            $uploadOk = 0;
+        }
+        // Check file size
+        if ($_FILES["fileupload"]["size"] > 500000) {
+            echo "<script>alert('Error. El archivo de la foto es demasiado grande.')</script>";
+            $uploadOk = 0;
+        }
+        // Allow certain file formats
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+            echo "<script>alert('Error. Solo se admiten imágenes jpg, png y gif.')</script>";
+            $uploadOk = 0;
+        }
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo "<script>alert('La foto no se ha enviado.')</script>";
+            // if everything is ok, try to upload file
+            $target_file = '';
+        } else {
+            if (!move_uploaded_file($_FILES["fileupload"]["tmp_name"], $target_file)) {
+                echo "<script>alert('Ha habido un error subiendo la foto.')</script>";
+                $target_file = '';
+            }
+        }
+    }
+    return $target_file;
 }
 
-function eliminarVotoMusico2(){
+//Desarrolador: Isain Alvaro
+function eliminarVotoConcierto1($id_concierto) {
+    return "<form action='' method='POST'>" .
+            "<input type='hidden' value='$id_concierto' name='id_concierto'>" .
+            "<input type='submit' value='Dislike' name='deletevotoConcierto'>" .
+            "</form>";
+}
+
+function eliminarVotoConcierto2() {
+    if (isset($_POST['deletevotoConcierto'])) {
+        extract($_SESSION);
+        $id_usuario = dimeidusuario($username);
+        $id_concierto = $_POST['id_concierto'];
+        if (eliminarVotoConcierto($id_usuario, $id_concierto) == "ok") {
+            echo"<script>alert('voto eliminado')</script>";
+        } else {
+            echo"<script>alert('problemas eliminando voto')</script>";
+        }
+        echo "<script type='text/javascript'>window.location.href='usuariofan.php';</script>";
+    }
+}
+
+//Desarrollador: Isain Alvaro
+//Funcion para mostrar el botón de voto
+function nuevoVotoConcierto($id_concierto) {
+    return "<form action='' method='POST'>" .
+            "<input type='hidden' value='$id_concierto' name='id_concierto'>" .
+            "<input type='submit' value='Like' name='votoconcierto'>" .
+            "</form>";
+}
+
+//Desarrollador: Isain Alvaro
+//Funcion para registrar el voto de un concierto
+function altaVotoConcierto2() {
+    if (isset($_POST['votoconcierto'])) {
+        extract($_SESSION);
+        $id_usuario = dimeidusuario($username);
+        echo$id_usuario;
+        $id_concierto = $_POST['id_concierto'];
+        if (altaVotoConcierto($id_usuario, $id_concierto) == "ok") {
+            echo"<script>alert('voto de concierto registrado')</script>";
+        } else {
+            echo"problemas con el voto de concierto";
+        }
+        echo "<script type='text/javascript'>window.location.href='usuariofan.php';</script>";
+    }
+}
+
+function eliminarVotoMusico1($id_musico) {
+    return "<form action='' method='POST'>" .
+            "<input type='hidden' value='$id_musico' name='id_musico'>" .
+            "<input type='submit' value='Dislike' name='deletevoto'>" .
+            "</form>";
+}
+
+function eliminarVotoMusico2() {
     if (isset($_POST['deletevoto'])) {
         extract($_SESSION);
         $id_usuario = dimeidusuario($username);
         echo$id_usuario;
         $id_musico = $_POST['id_musico'];
-        if(eliminarVotoMusico($id_usuario, $id_musico) == "ok"){
+        if (eliminarVotoMusico($id_usuario, $id_musico) == "ok") {
             echo"<script>alert('voto eliminado')</script>";
-        }else{
+        } else {
             echo"<script>alert('problemas eliminando voto')</script>";
         }
-        header("Refresh:0; url=usuariofan.php");
+        echo "<script type='text/javascript'>window.location.href='usuariofan.php';</script>";
     }
 }
 
-
 function nuevoVotoMusico($id_musico) {
-    return "<form action='' method='POST'>".
-    "<input type='hidden' value='$id_musico' name='id_musico'>".
-    "<input type='submit' value='voto' name='voto'>".
-    "</form>";
+    return "<form action='' method='POST'>" .
+            "<input type='hidden' value='$id_musico' name='id_musico'>" .
+            "<input type='submit' value='Like' name='voto'>" .
+            "</form>";
 }
 
 function altaVotoMusico2() {
@@ -38,26 +133,23 @@ function altaVotoMusico2() {
         $id_usuario = dimeidusuario($username);
         echo$id_usuario;
         $id_musico = $_POST['id_musico'];
-        if(altaVotoMusico($id_usuario, $id_musico) == "ok"){
+        if (altaVotoMusico($id_usuario, $id_musico) == "ok") {
             echo"<script>alert('voto registrado')</script>";
-        }else{
+        } else {
             echo"<script>alert('problemas registrando voto')</script>";
         }
-        header("Refresh:0; url=usuariofan.php");
+        echo "<script type='text/javascript'>window.location.href='usuariofan.php';</script>";
     }
 }
 
 //Desarrollador: Artur
-function conviertearray($datos)
-{
-    $cont=0;
-    while($fila=mysqli_fetch_assoc($datos))
-    {
-        $resultado[$cont]=$fila;
+function conviertearray($datos) {
+    $cont = 0;
+    while ($fila = mysqli_fetch_assoc($datos)) {
+        $resultado[$cont] = $fila;
         $cont++;
     }
     return $resultado;
-
 }
 
 //Desarrolador: Isain
@@ -327,13 +419,9 @@ function muestradatosfan() {
         extract($_SESSION);
         if ($tipo == 3) {
             echo "Fan<br>";
-            $nombre = dimenombre($username);
-            echo "<p>$nombre</p>";
-            echo "<hr>";
-            echo "<div id='info'>";
-            //echo "<img src='Imagenes/usuario.png'>";
-            echo "</div>";
+            imprimenombreyfoto($username);
         }
+        
     }
 }
 
@@ -346,13 +434,7 @@ function muestradatosmusico() {
             echo"Musicos";
         }
 
-        $nombre = dimenombre($username);
-
-        echo"<p>$nombre</p>";
-        echo"<hr>";
-        echo"<div id='info'>";
-        //echo"<img src='Imagenes/usuario.png'>";
-        echo"</div>";
+       imprimenombreyfoto($username);
     }
 }
 
@@ -375,14 +457,34 @@ function muestradatoslocal() {
                 echo"Fan<br>";
                 break;
         }
-        $nombre = dimenombre($username);
 
-        echo"<p>$nombre</p>";
-        echo"<hr>";
-        echo"<div id='info'>";
-        //echo"<img src='Imagenes/usuario.png'>";
-        echo"</div>";
+        imprimenombreyfoto($username);
     }
+}
+
+//Desarrollador: Artur
+//Muestra el nombre y la foto de un usuario
+function imprimenombreyfoto($username) {
+    $nombre = dimenombre($username);
+
+    echo"<p>$nombre</p>";
+    echo"<hr>";
+    echo"<div id='info'>";
+    $ruta = dimefoto($username);
+    if(empty($ruta))
+    {
+        $ruta="Imagenes/sinimagen.jpg";
+    }
+    echo"<img src='$ruta' id='fotoperfil'>";
+    echo "<style type='text/css'>";
+        echo "#info #fotoperfil {"
+            . "border-radius: 100px;"
+            . "margin-top: -20px;"
+                . "width: 129px;"
+                . "height: 129px;"
+                . "margin-left: -20px;";
+        echo "</style>";
+    echo"</div>";
 }
 
 //funcion para cerrar session

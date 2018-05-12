@@ -15,8 +15,23 @@ require_once 'funciones.php';
         <header>
             <div class="contenedor">
                 <h1 class="icon-music">Ooh Music</h1>
+                <!-- Segundo -->
+                <input type="checkbox" id="menu-user">
+                <label id="label1" class="icon-user-circle" for="menu-user"></label>
+                <!-- Primero -->
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
+                <nav class="menuuser">
+                    <a href="#">Mi perfil</a>
+                    <?php
+                    $mostrar = 0;
+                    if (isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        echo "<a href='index.php'>Hola $username</a>";
+                    }
+                    ?>
+                    
+                </nav>
                 <nav class="menu">
                     <ul>
                         <li><a href="index.php">Inicio</a></li>
@@ -77,8 +92,7 @@ require_once 'funciones.php';
                         <div id="contenidoInteres">
                             <p class="titulo">LISTA DE TODOS LOS CONCIERTOS PROPUESTOS</p>
                             <?php
-                            if(cancelaconciertosantiguos()!="ok")
-                            {
+                            if (cancelaconciertosantiguos() != "ok") {
                                 echo "<script>alert('Error cancelando conciertos antiguos')</script>";
                             }
                             extract($_SESSION);
@@ -86,7 +100,7 @@ require_once 'funciones.php';
                             $idgeneroMusico = dimeIdgeneroUsuario($id_usuario);
 
                             $listaConciertosGenero = listaConciertosporGenero($idgeneroMusico);
-                            
+
                             echo"<table border='1' id='tablapropuestos'>";
                             echo "<tr>";
                             echo "<td><p class='titulodatos'>Nombre</p></td>";
@@ -144,7 +158,7 @@ require_once 'funciones.php';
                     <?php
                 }
                 ?>
-                    
+
 
             </section>
         </main>

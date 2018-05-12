@@ -1,5 +1,7 @@
 <?php
 require_once 'bbdd.php';
+require_once 'funciones.php';
+
 ?>
 <html lang="es">
     <head>
@@ -15,8 +17,16 @@ require_once 'bbdd.php';
         <header>
             <div class="contenedor">
                 <h1 class="icon-music">Ooh Music</h1>
+                <!-- Segundo -->
+                <input type="checkbox" id="menu-user">
+                <label id="label1" class="icon-user-circle" for="menu-user"></label>
+                <!-- Primero -->
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
+                <nav class="menuuser">
+                    <a href="#">Mi perfil</a>
+                    <a href="index.php">Cerrar sesión</a>
+                </nav>
                 <nav class="menu">
                     <ul>
                         <li><a href="index.php">Inicio</a></li>
@@ -44,13 +54,16 @@ require_once 'bbdd.php';
                     <?php
                     if (isset($_POST['name'])) {
                         extract($_POST);
+                        $target_file=subefoto();
+
+
                         if (usuarioexiste($username) > 0) {
                             echo "<script>alert('Error. El usuario que deseas dar de alta ya existe')</script>";
                             //echo"Error. El usuario que deseas dar de alta ya existe.";
                         } else {
 
 
-                            if (registrar_local($username, $pass1, $name, $mail, $phone, $city, $location, "", $aforo) == "ok") {
+                            if (registrar_local($username, $pass1, $name, $mail, $phone, $city, $location, $target_file, $aforo) == "ok") {
                                 echo"<script>alert('Se ha registrado el local correctamente')</script>";
                                 header("Refresh:0; url=login.php");
                             } else {
@@ -60,7 +73,7 @@ require_once 'bbdd.php';
                         }
                     } else {
                         ?>
-                        <form method="post" onsubmit="return verificapass()">  
+                        <form method="post" onsubmit="return verificapass()" enctype="multipart/form-data">  
                             <table>
                                 <tr>
                                     <td>
@@ -96,31 +109,29 @@ require_once 'bbdd.php';
                                 <tr>
                                     <td>
                                         <p>Provincia:</p><p><select id="provincia">
-                                            <?php
+                                                <?php
                                                 $provincias = dimeprovincias();
-                                                $cont=0;
-                                                while($fila=mysqli_fetch_assoc($provincias))
-                                                {
+                                                $cont = 0;
+                                                while ($fila = mysqli_fetch_assoc($provincias)) {
                                                     extract($fila);
-                                                    if($cont==0)
-                                                    {
+                                                    if ($cont == 0) {
                                                         $primeraprovincia = $provincia;
                                                         $cont++;
                                                     }
                                                     echo"<option value='$provincia'>$provincia</option>";
                                                 }
-                                            ?>
-       
+                                                ?>
+
                                             </select></p>
                                         <p>Ciudad:</p>
                                         <p><select name="city" required id="city">-->
-                                        <?php
-                                        $ciudades = leeciudades($primeraprovincia);
-                                        while ($fila = mysqli_fetch_assoc($ciudades)) {
-                                            extract($fila);
-                                            echo"<option value='$id_ciudad'>$nombre</option>";
-                                        }
-                                        ?>
+                                                <?php
+                                                $ciudades = leeciudades($primeraprovincia);
+                                                while ($fila = mysqli_fetch_assoc($ciudades)) {
+                                                    extract($fila);
+                                                    echo"<option value='$id_ciudad'>$nombre</option>";
+                                                }
+                                                ?>
                                             </select></p>
                                     </td>
                                 </tr>
@@ -133,7 +144,9 @@ require_once 'bbdd.php';
                                 <tr>
                                     <td>
                                         <p>Imagen:</p>
-                                        <p><input type="button" value="Seleccionar imagen"></p>
+                                        <p>
+                                            <input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload">
+                                        </p>
                                     </td>
                                 </tr>
                                 <tr>
@@ -146,9 +159,9 @@ require_once 'bbdd.php';
                             <br><br><br>
                             <p><input type="submit" value="Registrarme como local" id="button"></p>
                         </form>
-    <?php
-}
-?>
+                        <?php
+                    }
+                    ?>
                 </div>
             </section>
         </main>

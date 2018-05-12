@@ -1,7 +1,7 @@
 <?php
-    session_start(); 
-    require_once 'bbdd.php';
-    require_once 'funciones.php';
+session_start();
+require_once 'bbdd.php';
+require_once 'funciones.php';
 ?>
 <!DOCTYPE html>
 <!--
@@ -20,12 +20,20 @@ and open the template in the editor.
         <script type="text/javascript" src="funciones.js"></script>
     </head>
     <body>
-        
+
         <header>
             <div class="contenedor">
                 <h1 class="icon-music">Ooh Music</h1>
+                <!-- Segundo -->
+                <input type="checkbox" id="menu-user">
+                <label id="label1" class="icon-user-circle" for="menu-user"></label>
+                <!-- Primero -->
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
+                <nav class="menuuser">
+                    <a href="#">Mi perfil</a>
+                    <a href="index.php">Cerrar sesión</a>
+                </nav>
                 <nav class="menu">
                     <ul>
                         <li><a href="index.php">Inicio</a></li>
@@ -42,7 +50,7 @@ and open the template in the editor.
                         <li><a href="fans.php">Fans</a></li>
                         <li><a href="contacto.php">Contacto</a></li>
                     </ul>
-                    
+
                 </nav>
             </div>
         </header>       
@@ -54,22 +62,21 @@ and open the template in the editor.
                     <div id="usuario">
                         <?php
                         muestradatosmusico();
-                        
                         ?>
                     </div>
-                        
+
                     <div id="menu">
                         <ul>
                             <li><a href="usuariomusico.php">Perfil</a></li>
                             <li><a href="#">Fotos</a></li>
                             <li><a href="#">Mensajes</a></li>
                             <li><a href="miperfilmusico.php">Configuración</a></li>
-                            <?php cerraSession2()?>
+                            <?php cerraSession2() ?>
                         </ul>
                     </div>
-    <script>
+                    <script>
                         function abrirParametros() {
-                            var ventana=open('','','status=yes,width=400,height=250,menubar=yes');
+                            var ventana = open('', '', 'status=yes,width=400,height=250,menubar=yes');
                             ventana.document.write("<style>");
                             ventana.document.write("backgound: rgba(51,51,51,0.8);")
                             ventana.document.write("</style>");
@@ -86,116 +93,110 @@ and open the template in the editor.
                         }
                     </script>
                     <?php
-                    if(isset($_POST['name']))
-                    {
+                    if (isset($_POST['name'])) {
                         extract($_POST);
                         extract($_SESSION);
                         echo"$gender";
                         //Hacer la modificación.
 
-                        if(modificarperfilmusico($username, $name, $email, $phone, $city, $surname1, $surname2, $web, $nombreart, $components,$gender)=="ok")
-                        {
-                            echo"<script>alert('Modificacion realizada')</script>";
+                        if ($_FILES['fileupload']['name'] == "") {
+                            $foto = dimefoto($username);
+                        } else {
+                            $foto = subefoto();
+                            if (empty($foto)) {
+                                $foto = dimefoto($username);
+                            }
                         }
-                        else
-                        {
+
+                        if (modificarperfilmusico($username, $name, $email, $phone, $city, $surname1, $surname2, $web, $nombreart, $components, $gender,$foto) == "ok") {
+                            echo"<script>alert('Modificacion realizada')</script>";
+                        } else {
                             echo"<script>('Error modificando perfil de Genero')</script>";
-                        }  
-                    }        
+                        }
+                    }
                     ?>
                     <div id="miperfil">
                         <p id="tituloperfil">Modificar datos</p>
                         <div id="formulariodatos">
-                            <form method="post">  
+                            <form method="post" enctype="multipart/form-data">  
                                 <table>
-                                    <?php
-                                    
-                                    if(isset($_SESSION['username']))
-                                    {
-                                        extract($_SESSION);
-                                        $perfil= leerPerfilMusico($username);
-                                        if($datos=mysqli_fetch_assoc($perfil))
-                                        {
-                                            extract($datos);
-                                            echo"<tr><td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre' required></p></td>";
-                                            echo"<td><p>Nombreart:<input type='text' name='nombreart' value='$nombreart' required></p></td></tr>";   
-                                            echo"<tr><td><p>Email:<input type='email' name='email' value='$email' required></p></td>";      
-                                            echo"<td><p>Aforo:<input type='text' name='web' value='$web' required></p></td></tr>";
-                                            echo"<tr><td><p>Teléfono:<input type='tel' name='phone' value='$telefono' required></p></td>";
-                                            echo"<td><p>Nombre de usuario:$username</p></td></tr>";
-                                            
-                                            echo"<tr>td><p>Provincia:<select id='provincia'>";
-                            
-                            
-                                            $laprovincia = dimeprovinciadeciudad($ciudad);
-                                
-                                            $provincias = dimeprovincias();
-                                            while($fila=mysqli_fetch_assoc($provincias))
-                                            {
-                                                extract($fila);
-                                                if($laprovincia == $provincia)
-                                                {
-                                                    echo"<option value='$provincia' selected>$provincia</option>";
-                                                }
-                                                else
-                                                {
-                                                    echo"<option value='$provincia'>$provincia</option>";
-                                                }                
-                                            }
-                                            
-                                            echo"<tr><td><p>Ciudad:<select id='city' name='city'>";
-                                            $ciudades = leeciudades($laprovincia);
-                                            while($fila = mysqli_fetch_assoc($ciudades))
-                                            {
-                                                extract($fila);
-                                                if ($id_ciudad==$ciudad)
-                                                {
-                                                    echo"<option value='$id_ciudad' selected>$nombre</option>";
-                                                }
-                                                else
-                                                {
-                                                    echo"<option value='$id_ciudad'>$nombre</option>";
-                                                }
-                                                
-                                            }
-                                            
-                                            echo"</select></p></td>";
-                                            
-                                            echo"<td><p>Apellidoa:<input type='text' name='surname1' value='$apellidoa'></p></td></tr>";
-                                            echo"<tr><td><p>Apellidob:<input type='text' name='surname2' value='$apellidob'</p></td>";
-                                            echo"<td><p>Componentes:<input type='number' name='components' value='$componentes'></p></td></tr>";
-                                            
-                                            echo"<tr><td><p>Genero:<select id='select' name='gender'>";
-                                            $generos=muestrageneros();
-                                            while($fila = mysqli_fetch_assoc($generos)){
-                                                extract($fila);
-                                                if($id_genero == $genero)
-                                                {
-                                                    echo"<option value='$id_genero' selected>$nombre</option>";
-                                                }
-                                                else {
-                                                     echo"<option value='$id_genero'>$nombre</option>";
-                                                }
-                                            } 
-                                            echo"</select>";
-                                        }
-                                        else
-                                        {
+                    <?php
+                    if (isset($_SESSION['username'])) {
+                        extract($_SESSION);
+                        $perfil = leerPerfilMusico($username);
+                        if ($datos = mysqli_fetch_assoc($perfil)) {
+                            extract($datos);
+                            echo"<tr><td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre' required></p></td>";
+                            echo"<td><p>Nombreart:<input type='text' name='nombreart' value='$nombreart' required></p></td></tr>";
+                            echo"<tr><td><p>Email:<input type='email' name='email' value='$email' required></p></td>";
+                            echo"<td><p>Aforo:<input type='text' name='web' value='$web' required></p></td></tr>";
+                            echo"<tr><td><p>Teléfono:<input type='tel' name='phone' value='$telefono' required></p></td>";
+                            echo"<td><p>Nombre de usuario:$username</p></td></tr>";
+
+                            echo"<tr>td><p>Provincia:<select id='provincia'>";
+
+
+                            $laprovincia = dimeprovinciadeciudad($ciudad);
+
+                            $provincias = dimeprovincias();
+                            while ($fila = mysqli_fetch_assoc($provincias)) {
+                                extract($fila);
+                                if ($laprovincia == $provincia) {
+                                    echo"<option value='$provincia' selected>$provincia</option>";
+                                } else {
+                                    echo"<option value='$provincia'>$provincia</option>";
+                                }
+                            }
+
+                            echo"<tr><td><p>Ciudad:<select id='city' name='city'>";
+                            $ciudades = leeciudades($laprovincia);
+                            while ($fila = mysqli_fetch_assoc($ciudades)) {
+                                extract($fila);
+                                if ($id_ciudad == $ciudad) {
+                                    echo"<option value='$id_ciudad' selected>$nombre</option>";
+                                } else {
+                                    echo"<option value='$id_ciudad'>$nombre</option>";
+                                }
+                            }
+
+                            echo"</select></p></td>";
+
+                            echo"<td><p>Apellidoa:<input type='text' name='surname1' value='$apellidoa'></p></td></tr>";
+                            echo"<tr><td><p>Apellidob:<input type='text' name='surname2' value='$apellidob'</p></td>";
+                            echo"<td><p>Componentes:<input type='number' name='components' value='$componentes'></p></td></tr>";
+
+                            echo"<tr><td><p>Genero:<select id='select' name='gender'>";
+                            $generos = muestrageneros();
+                            while ($fila = mysqli_fetch_assoc($generos)) {
+                                extract($fila);
+                                if ($id_genero == $genero) {
+                                    echo"<option value='$id_genero' selected>$nombre</option>";
+                                } else {
+                                    echo"<option value='$id_genero'>$nombre</option>";
+                                }
+                            }
+                            echo"</select>";
+                            ?>
+                                            <td>
+                                                <p>Imagen:</p>
+                                                <p>
+                                                    <input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload">
+                                                </p>
+                                            </td></tr>
+
+                                            <?php
+                                        } else {
                                             echo"<script>alert('El usuario se ha eliminado')</script>";
                                         }
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         echo"<script>alert('No puedes entrar aquí')</script>";
                                     }
-                                    
-                                    
-                                ?>
+                                    ?>
                                 </table>
                                 <br><br><br>
                                 <p><input type="button" value="Cambiar contraseña" id="contraseña" onClick="abrirParametros()"></p>
-                            <p><input type="submit" value="Modificar datos de perfil" id="button"></p>
-                    </form>
+                                <p><input type="submit" value="Modificar datos de perfil" id="button"></p>
+                            </form>
                         </div>
                     </div>
                 </div>

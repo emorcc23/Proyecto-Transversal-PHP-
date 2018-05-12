@@ -198,6 +198,20 @@ footer .contenedor {
     display: block;
 }
 
+
+.menuuser {
+    list-style: none;
+}
+
+.menuuser a span {
+    margin-left: 10px;
+}
+
+.menuuser a:hover {
+    display: block;
+}
+
+
 form #botoncerrar {
     width: 170px;
     padding: 10px;
