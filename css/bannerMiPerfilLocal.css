@@ -1,4 +1,4 @@
-#banner {
+/*#banner {
     margin-top: 50px;
     position: relative;
 }
@@ -48,7 +48,7 @@
 }
 
 #centro p {
-    font-size: 58px;
+    font-size: 20px;
     padding: 18px;
     color: #fff;
 }
@@ -136,6 +136,15 @@ hr {
     border: none;
 }
 
+.trarriba {
+    border: solid;
+    
+}
+
+.data {
+    border: solid;
+}
+
 #miperfil #formulariodatos p{
     font-size: 30px;
     margin-left: 180px;
@@ -204,10 +213,10 @@ hr {
 .menuLocal #boton1 {
     width: 270px;
     border-radius: 0px;
-    /*
+    
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
-    */
+    
 }
 
 .menuLocal #boton1:hover {
@@ -240,4 +249,4 @@ hr {
     width: 370px; 
     color: black;
     border-radius: 0px;
-}
+}*/
