@@ -22,15 +22,10 @@ require_once 'funciones.php';
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
                 <nav class="menuuser">
-                    <a href="#">Mi perfil</a>
                     <?php
-                    $mostrar = 0;
-                    if (isset($_SESSION['username'])) {
-                        $username = $_SESSION['username'];
-                        echo "<a href='index.php'>Hola $username</a>";
-                    }
+                    controlDesplegable();
                     ?>
-                    
+
                 </nav>
                 <nav class="menu">
                     <ul>
