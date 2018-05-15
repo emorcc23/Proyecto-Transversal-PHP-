@@ -25,6 +25,7 @@
                 <!-- Primero -->
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
+
                 <nav class="menuuser">
                     <?php
                         controlDesplegable();
@@ -153,6 +154,32 @@
 
                         </div>
                     </article>
+                    
+                    <article>
+                        <h4>Liata Musicos mas votados</h4>
+                        <div class="listas">
+                            <?php
+                            echo "<table>";
+                            echo"<td>NOMBREAR TISTICO</td><td>GENRO</td><td>TOTAL VOTOS</td>";
+                            $tendencias = totalVotosPorMusico();
+                            while($fila = mysqli_fetch_assoc($tendencias)){
+                                extract($fila);
+                                echo"<tr>";
+                                $tendenciasMusico = listaMusicosMasVotados($musico);
+                                while($fila2 = mysqli_fetch_assoc($tendenciasMusico)){
+                                extract($fila2);
+                                    echo"<td>$nombreart</td><td>$nombre</td><td>$totalvotos</td>";
+                                }
+                                
+                                echo"</tr>";
+                            }
+                            echo "</table>";
+                            
+                            ?>
+
+
+                        </div>
+                    </article>
 
                     <article>
                         <h4 id="conc">Conciertos</h4>
@@ -211,10 +238,8 @@
 
                     </article>
                     <article>
-                        <!--                        Buscador-->
                         <div>
                             <p>
-
 
 
 

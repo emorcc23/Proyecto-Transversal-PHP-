@@ -82,6 +82,26 @@ function altaVotoConcierto($id_usuario,$id_concierto){
 
 
 //Desarrollado: Isain Alvaro
+//Total votos por musico
+function totalVotosPorMusico(){
+    $c = conectar();
+    $select = "select musico, count(musico) as totalvotos from votomusico group by musico order by count(musico) desc limit 10;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
+//Desarrollador: Isain Alvaro
+function listaMusicosMasVotados($musico){
+    $c = conectar();
+    $select = "select m.nombreart, g.nombre from musico m inner join genero g on m.genero = g.id_genero where id_usuario = $musico;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
+
+//Desarrollado: Isain Alvaro
 //Funcion que borra el voto en caso de que este
 function eliminarVotoMusico($id_usuario,$id_musico){
     $c = conectar();
