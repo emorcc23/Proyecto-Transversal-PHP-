@@ -194,7 +194,7 @@ function autoCompletado() {
 // Funcion que da todos los conciertos de una ciudad en especial
 function dimeCociertosPorCiudad($ciudad) {
     $c = conectar();
-    $select = "select c.id_concierto, c.nombre, c.fecha, c.hora, l.ciudad, l.usuario from concierto c inner join login l on c.localm = l.id_usuario where l.ciudad = $ciudad; ";
+    $select = "select c.id_concierto, c.nombre, c.fecha, c.hora, l.ciudad, l.usuario from concierto c inner join login l on c.localm = l.id_usuario where l.ciudad = $ciudad and c.fecha>now(); ";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
@@ -462,7 +462,7 @@ function muestraDatosCiudadLocalMusico() {
 //Lista de conciertos ya filtrados, segun sea el genero del musico que haya hecho login
 function listaConciertosporGenero($idgeneroMusico) {
     $c = conectar();
-    $select = "select c.id_concierto,c.nombre as nomconcierto, c.fecha, c.hora, l.nombre from concierto c inner join localm lo on lo.id_usuario = c.localm inner join login l on lo.id_usuario = l.id_usuario where c.genero = $idgeneroMusico and c.estado <> 2 ";
+    $select = "select c.id_concierto,c.nombre as nomconcierto, c.fecha, c.hora, l.nombre from concierto c inner join localm lo on lo.id_usuario = c.localm inner join login l on lo.id_usuario = l.id_usuario where c.genero = $idgeneroMusico and c.estado <> 2 and c.fecha>now()";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
@@ -472,7 +472,7 @@ function listaConciertosporGenero($idgeneroMusico) {
 //Lista de conciertos propuestos
 function listaConciertosPropuestos() {
     $c = conectar();
-    $select = "select c.nombre as nomconcierto, c.fecha from concierto c inner join genero g on c.genero = g.id_genero inner join login l on l.id_usuario = c.localm where c.estado = 0 order by fecha;";
+    $select = "select c.nombre as nomconcierto, c.fecha from concierto c inner join genero g on c.genero = g.id_genero inner join login l on l.id_usuario = c.localm where c.estado = 0 and c.fecha>now() order by fecha;";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
@@ -482,7 +482,7 @@ function listaConciertosPropuestos() {
 //Muestra todos los conciertos ya programados
 function mostrarListaConciertosAceptados($inicio, $cuantos) {
     $c = conectar();
-    $select = "select c.nombre as nomconcierto, c.fecha, c.hora, c.pago, l.nombre as nomlocal, g.nombre as nomgenero from concierto c inner join genero g on c.genero = g.id_genero inner join login l on l.id_usuario = c.localm where c.estado = 1 order by fecha limit $inicio,$cuantos;";
+    $select = "select c.nombre as nomconcierto, c.fecha, c.hora, c.pago, l.nombre as nomlocal, g.nombre as nomgenero from concierto c inner join genero g on c.genero = g.id_genero inner join login l on l.id_usuario = c.localm where c.estado = 1 AND c.fecha>NOW() order by fecha limit $inicio,$cuantos;";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
@@ -560,7 +560,7 @@ function bajaconcierto($idconcierto) {
 function listaconciertoslocal($localm) {
     $c = conectar();
     //Sentencia SQL. No se leen todos los campos, solo los principales.
-    $select = "select id_concierto,nombre,fecha,hora,genero,estado,musico from concierto where localm='$localm';";
+    $select = "select id_concierto,nombre,fecha,hora,genero,estado,musico from concierto where localm='$localm' order by fecha desc;";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
     return $resultado;
