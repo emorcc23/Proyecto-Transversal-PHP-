@@ -185,6 +185,17 @@ function conviertearray($datos) {
     return $resultado;
 }
 
+
+//Desarrollador: Artur
+//function conviertearray($datos) {
+//    $cont = 0;
+//    while ($fila = mysqli_fetch_assoc($datos)) {
+//        $resultado[$cont] = array_map('utf8_encode', $fila);
+//        $cont++;
+//    }
+//    return $resultado;
+//}
+
 //Desarrolador: Isain
 //Funcion que crea un  boton para dar de alta el musico en un concierto.
 function bajaMusicoConcierto($id_concierto) {
