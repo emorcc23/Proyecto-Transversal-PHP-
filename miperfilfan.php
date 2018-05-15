@@ -75,8 +75,11 @@ Pagina de locales.
                     <script>
                         function abrirParametros() {
                             var ventana = open('', '', 'status=yes,width=400,height=250,menubar=yes');
-                            ventana.document.write("<style>");
-                            ventana.document.write("backgound: rgba(51,51,51,0.8);")
+                            ventana.document.write("<style type='text/css'>");
+                            ventana.document.write("* {text-align: center; background: rgba(55,55,55,.21); color:#fff;}");
+                            ventana.document.write("input {border: none; border-radius: 15px; background: rgba(255,255,255,.8);}");
+                            ventana.document.write("input[type=submit]{color: black; cursor: pointer;}");
+                            ventana.document.write("input[type=submit]:hover {background: rgba(55,55,55,.3); color: #fff;}");
                             ventana.document.write("</style>");
                             ventana.document.write("\x3Cscript type='text/javascript' src='funciones.js'>\x3C/script>");
                             ventana.document.write("<form method='post' action='modipass.php' onsubmit='return verificapass();'>");
@@ -113,83 +116,81 @@ Pagina de locales.
                     }
                     ?>
                     <div id="miperfil">
-                        <p id="tituloperfil">Modificar datos</p>
+                   
                         <div id="formulariodatos">
-                            <form method="post" enctype="multipart/form-data">  
-                                <table>
-<?php
-if (isset($_SESSION['username'])) {
-    extract($_SESSION);
-    $perfil = leerperfilfan($username);
-    if ($datos = mysqli_fetch_assoc($perfil)) {
-        extract($datos);
-        echo "<tr>";
-        echo "<td><p>Nombre:<input type='text' id='nombre' name='name' value='$nombre' required></p></td>";
-
-        echo"<tr>td><p>Provincia:<select id='provincia'>";
-
-
-        $laprovincia = dimeprovinciadeciudad($ciudad);
-
-        $provincias = dimeprovincias();
-        while ($fila = mysqli_fetch_assoc($provincias)) {
-            extract($fila);
-            if ($laprovincia == $provincia) {
-                echo"<option value='$provincia' selected>$provincia</option>";
-            } else {
-                echo"<option value='$provincia'>$provincia</option>";
-            }
-        }
-
-
-        echo "<td><p>Ciudad:<select id='city' name='city'>";
-        $ciudades = leeciudades($laprovincia);
-        while ($fila = mysqli_fetch_assoc($ciudades)) {
-            extract($fila);
-            if ($id_ciudad == $ciudad) {
-                echo "<option value='$id_ciudad' selected>$nombre</option>";
-            } else {
-                echo "<option value='$id_ciudad'>$nombre</option>";
-            }
-        }
-        echo "</select>";
-        echo "</tr>";
-        echo "<tr>";
-        echo "<td><p>Primer apellido:<input type='text' name='surname1' value='$apellidoa' required></p></td>";
-        echo "<td><p>Direccion:<input type='text' name='address' value='$direccion' required><p></td>";
-        echo "</tr>";
-        echo "<tr>";
-        echo "<td><p>Segundo apellido: <input type='text' name='surname2' value='$apellidob' required></p></td>";
-       // echo "<td><p>Imagen: <input type='button' name='image' value='Seleccionar imagen'></p></td></tr>";
-        ?>
-                                    <td>
-                                                <p>Imagen:</p>
-                                                <p>
-                                                    <input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload">
-                                                </p>
-                                            </td>
-                                    
+                            <form method="post" enctype="multipart/form-data">
+                                <table border="1">
                                     <?php
-        echo "</tr>";
-        echo "<tr>";
-        echo "<td><p>Email: <input type='email' name='email' value='$email' required></p></td>";
-        echo "<td><p>Nombre de usuario: $username</p></td>";
-        echo "</tr>";
-        echo "<tr>";
-        echo "<td><p>Telefono: <input type='tel' name='phone' value='$telefono' required></p></td>";
-                      
+                                    if (isset($_SESSION['username'])) {
+                                        extract($_SESSION);
+                                        $perfil = leerperfilfan($username);
+                                        if ($datos = mysqli_fetch_assoc($perfil)) {
+                                            extract($datos);
+                                            echo "<tr class='data'>";
+                                            echo "<td><p>Nombre:</p></td>";
+                                            echo "<td><p>Email:</p></td>";
+                                            echo "</tr>";
+                                            echo "<tr>";
+                                            echo "<td><input type='text' id='nombre' name='name' value='$nombre' required></td>";
+                                            echo "<td><input type='email' id='email' name='email' value='$email' required></td>";
+                                            echo "</tr>";
+                                            echo "<tr class='data'>";
+                                            echo "<td><p>Primer apellido:</p></td>";
+                                            echo "<td><p>Provincia:</p></td>";
+                                            echo "</tr>";
+                                            echo "<tr>";
+                                            echo "<td><input type='text' name='surname1' value='$apellidoa' required></td>";
+                                            echo "<td><select id='provincia'>";
+                                            $laprovincia = dimeprovinciadeciudad($ciudad);
+                                            $provincias = dimeprovincias();
+                                            while ($fila = mysqli_fetch_assoc($provincias)) {
+                                                extract($fila);
+                                                if (($laprovincia == $provincia)) {
+                                                    echo "<option value='$provincia selected>$provincia</option>";
+                                                } else {
+                                                    echo "<option value='$provincia'>$provincia</option>";
+                                                }
+                                            }
+                                            echo "</select></td>";
+                                            echo "</tr>";
+                                            echo "<tr class='data'>";
+                                            echo "<td><p>Segundo apellido:</p></td>";
+                                            echo "<td><p>Ciudad:</p></td>";
+                                            echo "</tr>";
+                                            echo "<tr>";
+                                            echo "<td><input type='text' name='surname2' value='$apellidob' required></td>";
+                                            echo "<td><select id='city' name='city'>";
+                                            $ciudades = leeciudades($laprovincia);
+                                            while ($fila = mysqli_fetch_assoc($ciudades)) {
+                                                extract($fila);
+                                                if ($id_ciudad == $ciudad) {
+                                                    echo "<option value='$id_ciudad' selected>$nombre</option>";
+                                                } else {
+                                                    echo "<option value='$id_ciudad'>$nombre</option>";
+                                                }
+                                            }
+                                            echo "</select></td>";
+                                            echo "</tr>";
+                                            echo "<tr class='data'>";
+                                            echo "<td><p>Teléfono:</p></td>";
+                                            echo "<td><p>Imagen:</p></td>";
+                                            echo "</tr>";
+                                            echo "<tr>";
+                                            echo "<td><input type='tel' name='phone' value='$telefono' required></td>";
+                                            echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload' class='file-input'></td>";
+                                            echo "</tr>";
+                                            echo "<tr id='botones'>";
+                                            echo "<td><p><input type='button' value='Cambiar contraseña' id='contaseña' class='boton' onClick='abrirParametros()'></p></td>";
+                                            echo "<td><p><input type='submit' value='Modificar datos de perfil' id='button' class='boton'></p></td>";
                                             echo "</tr>";
                                         } else {
-                                            echo"<script>alert('El usuario se ha elliminado')</script>";
-                                        }
+                                            echo "<script>alert('El usuario se ha eliminado')</script>";
+                                        } 
                                     } else {
-                                        echo"<script>alert('No puedes entrar aquí')</script>";
+                                        echo "<script>alert('No puedes entrar aquí')</script>";
                                     }
                                     ?>
                                 </table>
-                                <br><br><br>
-                                <p><input type="button" value="Cambiar contraseña" id="contraseña" onClick="abrirParametros()"></p>
-                                <p><input type="submit" value="Modificar datos de perfil" id="button"></p>
                             </form>
                         </div>
                     </div>
