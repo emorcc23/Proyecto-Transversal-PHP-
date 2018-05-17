@@ -3,6 +3,83 @@
 @import url(bannerRfan.css);
 @import url(infoRfan.css);
 
+
+#formulariodatos {
+    width: 1300px;
+    height: 1700px;
+    margin-left: 350px;
+    margin-top: -750px;
+    position: absolute;
+    
+}
+
+table {
+    width: 1000px;
+    border-collapse: collapse; 
+    text-align: center;
+    border: none;
+}
+
+#izquierda {
+    width: 200px;
+}
+
+table tr {
+    height: 35px;
+}
+
+table tr td {
+    border: none;
+    border-color: #fff;
+}
+
+table input {
+    border: none;
+    padding: 7px;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+}
+
+table select {
+    border: none;
+    padding: 7px;
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+}
+
+.file-input {
+      visibility: hidden;
+      width: 0;
+      position: relative;
+}
+
+.file-input::before {
+      content: 'Selecciona una imagen';
+      display: inline-block;
+      background: #fff;
+      border: solid;
+      border-width: thin;
+      padding: 7px;
+      white-space: nowrap;
+      cursor: pointer;
+      font-size: 15px;
+      visibility: visible;
+      position: absolute;
+    margin-left: -295px;
+    margin-top: -5.5px;
+    width: 483px;
+    text-align: center;
+}
+
+.data {
+    border: solid;
+    border-width: thin;
+    border-color: #fff;
+    background: rgba(255,255,255,.3);
+}
+
 * {
     margin: 0;
     padding: 0;

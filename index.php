@@ -124,17 +124,34 @@
                     }
                 }
                 ?>
+                
+                <div class='content-all'>
+                    <div class='content-carrousel'>
+                        <figure><img src="Imagenes/img1.jpg"></figure>
+                        <figure><img src="Imagenes/img2.jpg"></figure>
+                        <figure><img src="Imagenes/img3.jpg"></figure>
+                        <figure><img src="Imagenes/img4.jpg"></figure>
+                        <figure><img src="Imagenes/img5.jpg"></figure>
+                        <figure><img src="Imagenes/img6.jpg"></figure>
+                        <figure><img src="Imagenes/img7.jpg"></figure>
+                        <figure><img src="Imagenes/img8.jpg"></figure>
+                        <figure><img src="Imagenes/img9.jpg"></figure>
+                        <figure><img src="Imagenes/img10.jpg"></figure>
+                    </div>
+                </div>
+                
+                <br><br><br><br><br><br><br><br>
 
                 <div class="contenedor">
-                    <article>
+<!--                    <article>
                         <h4>Locales</h4>
                         <div class="listas">
                             <?php
-                            $locales = listalocalesordenadosporciudad();
-                            while ($ellocal = mysqli_fetch_assoc($locales)) {
-                                extract($ellocal);
-                                echo"<p>$nombre - $ciudad</p><hr>";
-                            }
+                           // $locales = listalocalesordenadosporciudad();
+                            //while ($ellocal = mysqli_fetch_assoc($locales)) {
+                             //  extract($ellocal);
+                             //   echo"<p>$nombre - $ciudad</p><hr>";
+                            //}
                             ?>
 
                         </div>
@@ -143,17 +160,17 @@
                         <h4>Músicos</h4>
                         <div class="listas">
                             <?php
-                            $listamusicos = ordenarMusicosPorGenero();
-                            while ($musicos = mysqli_fetch_assoc($listamusicos)) {
-                                extract($musicos);
-                                echo"<p>$nombreart - $nombre</p><hr>";
-                            }
+                            //$listamusicos = ordenarMusicosPorGenero();
+                            //while ($musicos = mysqli_fetch_assoc($listamusicos)) {
+                            //    extract($musicos);
+                            //    echo"<p>$nombreart - $nombre</p><hr>";
+                            //}
                             ?>
 
 
                         </div>
-                    </article>
-
+                    </article>-->
+                    
                     <article>
                         <h4 id="conc">Conciertos</h4>
                         <div class="listas" id="conciertos">
