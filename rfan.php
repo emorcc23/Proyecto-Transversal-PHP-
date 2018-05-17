@@ -13,7 +13,7 @@ require_once 'funciones.php';
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <link rel="stylesheet" href="css/fontello.css">
         <link rel="stylesheet" href="css/estilosRfan.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="jquery.min.js"></script>
         <script type="text/javascript" src="funciones.js"></script>
     </head>
     <body>

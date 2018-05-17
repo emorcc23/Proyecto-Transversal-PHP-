@@ -305,9 +305,19 @@ function muestraSelectCiudad() {
     $datosCiudad = muestraDatosCiudadLocalMusico();
     echo"<form id='formulario' action='' method='POST'>";
     echo"<p>Ciudad<select name = 'ciudad'>";
+    if (isset($_POST['buscar3'])) {
+        extract($_POST);
+    }
     while ($fila = mysqli_fetch_assoc($datosCiudad)) {
         extract($fila);
-        echo"<option value='$id_ciudad'>$nombre</option>";
+        if (isset($_POST['buscar3']) && $id_ciudad == $ciudad) {
+            
+            echo"<option value='$id_ciudad' selected>$nombre</option>";
+        }
+        else
+        {
+            echo"<option value='$id_ciudad'>$nombre</option>";
+        }
     }
     echo"</select></p>";
 

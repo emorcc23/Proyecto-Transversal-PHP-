@@ -25,6 +25,7 @@
                 <!-- Primero -->
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
+
                 <nav class="menuuser">
                     <?php
                         controlDesplegable();
@@ -143,34 +144,33 @@
                 <br><br><br><br><br><br><br><br>
 
                 <div class="contenedor">
-<!--                    <article>
-                        <h4>Locales</h4>
+                                       
+                    <article>
+                        <h4>Liata Musicos mas votados</h4>
                         <div class="listas">
                             <?php
-                           // $locales = listalocalesordenadosporciudad();
-                            //while ($ellocal = mysqli_fetch_assoc($locales)) {
-                             //  extract($ellocal);
-                             //   echo"<p>$nombre - $ciudad</p><hr>";
-                            //}
+                            echo "<table>";
+                            echo"<td>NOMBREAR TISTICO</td><td>GENRO</td><td>TOTAL VOTOS</td>";
+                            $tendencias = totalVotosPorMusico();
+                            while($fila = mysqli_fetch_assoc($tendencias)){
+                                extract($fila);
+                                echo"<tr>";
+                                $tendenciasMusico = listaMusicosMasVotados($musico);
+                                while($fila2 = mysqli_fetch_assoc($tendenciasMusico)){
+                                extract($fila2);
+                                    echo"<td>$nombreart</td><td>$nombre</td><td>$totalvotos</td>";
+                                }
+                                
+                                echo"</tr>";
+                            }
+                            echo "</table>";
+                            
                             ?>
+
 
                         </div>
                     </article>
-                    <article>
-                        <h4>Músicos</h4>
-                        <div class="listas">
-                            <?php
-                            //$listamusicos = ordenarMusicosPorGenero();
-                            //while ($musicos = mysqli_fetch_assoc($listamusicos)) {
-                            //    extract($musicos);
-                            //    echo"<p>$nombreart - $nombre</p><hr>";
-                            //}
-                            ?>
 
-
-                        </div>
-                    </article>-->
-                    
                     <article>
                         <h4 id="conc">Conciertos</h4>
                         <div class="listas" id="conciertos">
@@ -228,10 +228,8 @@
 
                     </article>
                     <article>
-                        <!--                        Buscador-->
                         <div>
                             <p>
-
 
 
 
