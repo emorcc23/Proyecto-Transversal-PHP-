@@ -1,6 +1,6 @@
 <html lang="es">
     <head>
-        <title>OohMusic</title>
+        <title>Ooh Music</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
@@ -127,48 +127,27 @@
                 ?>
 
                 <div class="contenedor">
+                        
                     <article>
-                        <h4>Locales</h4>
-                        <div class="listas">
+                        <h4 id="mus">Liata Musicos mas votados</h4>
+                        <div class="listas" id="votosmusicos">
                             <?php
-                            $locales = listalocalesordenadosporciudad();
-                            while ($ellocal = mysqli_fetch_assoc($locales)) {
-                                extract($ellocal);
-                                echo"<p>$nombre - $ciudad</p><hr>";
-                            }
-                            ?>
-
-                        </div>
-                    </article>
-                    <article>
-                        <h4>Músicos</h4>
-                        <div class="listas">
-                            <?php
-                            $listamusicos = ordenarMusicosPorGenero();
-                            while ($musicos = mysqli_fetch_assoc($listamusicos)) {
-                                extract($musicos);
-                                echo"<p>$nombreart - $nombre</p><hr>";
-                            }
-                            ?>
-
-
-                        </div>
-                    </article>
-                    
-                    <article>
-                        <h4>Liata Musicos mas votados</h4>
-                        <div class="listas">
-                            <?php
-                            echo "<table>";
-                            echo"<td>NOMBREAR TISTICO</td><td>GENRO</td><td>TOTAL VOTOS</td>";
+                            echo "<table border='1'>";
+                            echo "<tr id='titulos'>";
+                            echo "<td><p>Nombre artístico</p></td>";
+                            echo "<td><p>Género</p></td>";
+                            echo "<td><p>Votos de los fans</p></td>";
                             $tendencias = totalVotosPorMusico();
                             while($fila = mysqli_fetch_assoc($tendencias)){
                                 extract($fila);
-                                echo"<tr>";
+                                echo"<tr id='datos'>";
                                 $tendenciasMusico = listaMusicosMasVotados($musico);
                                 while($fila2 = mysqli_fetch_assoc($tendenciasMusico)){
                                 extract($fila2);
-                                    echo"<td>$nombreart</td><td>$nombre</td><td>$totalvotos</td>";
+                                    echo"<tr id='datos'>";
+                                    echo"<td><p>$nombreart</p></td>";
+                                    echo"<td><p>$nombre</p></td>";
+                                    echo"<td><p>$totalvotos</p></td>";
                                 }
                                 
                                 echo"</tr>";

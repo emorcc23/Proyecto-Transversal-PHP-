@@ -1,4 +1,4 @@
-#blog h3,h4 {
+ #blog h3,h4 {
     text-align: center;
     padding: 10px;
     background: rgba(51,51,51,0.9);
@@ -66,6 +66,46 @@
 #blog #conciertos {
     min-width: 928px;
 
+}
+
+#blog #votosmusicos {
+    min-width: 928px;
+}
+
+#blog article #mus {
+    width: 928px;
+}
+#blog article #votosmusicos {
+    border: solid;
+    border-width: thin;
+    background: rgba(255,255,255,.8);
+    border-right-style: none;
+    border-left-style: none;
+}
+
+#blog article #votosmusicos table {
+    border: none;
+    border-collapse: collapse;
+    border-width: thin;
+    width: 924px;
+    font-size: 15px;
+    height: 298px;
+}
+
+#blog article #votosmusicos table tr td {
+    padding: 1px;
+}
+
+#blog article #votosmusicos #titulos td {
+    padding: 7px;
+    font-size: 18px;
+    background: rgba(255,255,255,.8);
+    border-color: rgba(55,55,55,0.2);
+
+}
+
+#blog article #votosmusicos {
+    height: 375px;
 }
 
 #blog article #conc {

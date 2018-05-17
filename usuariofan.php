@@ -188,6 +188,7 @@ require_once 'funciones.php';
                     <a class="icon-twitter" href="#"></a>
                     <a class="icon-instagram" href="#"></a>
                     <a class="icon-gmail" href="#"></a>
+                    <a class="icon-trash" href="#"></a>
                 </div>
             </div>
 
