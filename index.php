@@ -145,32 +145,60 @@
 
                 <div class="contenedor">
                                        
-                    <article>
-                        <h4>Liata Musicos mas votados</h4>
-                        <div class="listas">
-                            <?php
-                            echo "<table>";
-                            echo"<td>NOMBREAR TISTICO</td><td>GENRO</td><td>TOTAL VOTOS</td>";
-                            $tendencias = totalVotosPorMusico();
-                            while($fila = mysqli_fetch_assoc($tendencias)){
-                                extract($fila);
-                                echo"<tr>";
-                                $tendenciasMusico = listaMusicosMasVotados($musico);
-                                while($fila2 = mysqli_fetch_assoc($tendenciasMusico)){
-                                extract($fila2);
-                                    echo"<td>$nombreart</td><td>$nombre</td><td>$totalvotos</td>";
-                                }
+                    <article id="votados">
+                        <h4 id="conc">Musicos mas votados</h4>
+                        <div class="listas" id="conciertos">
+                            <table border="1">
+                                <tr id="titulos">
+                                    <td>Nombre artístico</td>
+                                    <td>Genero</td>
+                                    <td>Votos de sus fans</td>
+                                </tr>
                                 
-                                echo"</tr>";
-                            }
-                            echo "</table>";
+                               <?php
+                                $tendencias = totalVotosPorMusico();
+                                while ($fila = mysqli_fetch_assoc($tendencias)) {
+                                    extract($fila);
+                                    echo "<tr id='datos'>";
+                                    $tendenciasMusico = listaMusicosMasVotados($musico);
+                                    while ($fila2 = mysqli_fetch_assoc($tendenciasMusico)) {
+                                        extract($fila2);
+                                        echo "<td><p>$nombreart</p></td>";
+                                        echo "<td><p>$nombre</p></td>";
+                                        echo "<td><p>$totalvotos</p></td>";
+                                    }
+                                    echo "</tr>";
+                                    
+                                }
+                                echo "</table>";
+                                
+                               
+                                ?> 
+                                
+<!--                        <div class="listas">
+                            //<?php
+//                            echo "<table>";
+//                            echo"<td>NOMBREAR TISTICO</td><td>GENRO</td><td>TOTAL VOTOS</td>";
+//                            $tendencias = totalVotosPorMusico();
+//                            while($fila = mysqli_fetch_assoc($tendencias)){
+//                                extract($fila);
+//                                echo"<tr>";
+//                                $tendenciasMusico = listaMusicosMasVotados($musico);
+//                                while($fila2 = mysqli_fetch_assoc($tendenciasMusico)){
+//                                extract($fila2);
+//                                    echo"<td>$nombreart</td><td>$nombre</td><td>$totalvotos</td>";
+//                                }
+//                                
+//                                echo"</tr>";
+//                            }
+//                            echo "</table>";
                             
                             ?>
+                            
 
 
-                        </div>
+                        </div>-->
                     </article>
-
                     <article>
                         <h4 id="conc">Conciertos</h4>
                         <div class="listas" id="conciertos">
