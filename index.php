@@ -125,42 +125,69 @@
                     }
                 }
                 ?>
-
-                <div class="contenedor">
+                
+                <div class='content-all'>
+                    <div class='content-carrousel'>
+                        <figure><img src="Imagenes/img1.jpg"></figure>
+                        <figure><img src="Imagenes/img2.jpg"></figure>
+                        <figure><img src="Imagenes/img3.jpg"></figure>
+                        <figure><img src="Imagenes/img4.jpg"></figure>
+                        <figure><img src="Imagenes/img5.jpg"></figure>
+                        <figure><img src="Imagenes/img6.jpg"></figure>
+                        <figure><img src="Imagenes/img7.jpg"></figure>
+                        <figure><img src="Imagenes/img8.jpg"></figure>
+                        <figure><img src="Imagenes/img9.jpg"></figure>
+                        <figure><img src="Imagenes/img10.jpg"></figure>
                         
+                    </div>
+                </div>
+                
+                <br><br><br><br><br><br><br><br>
+                
+                
+
+                <div class="contenedor">                       
                     <article>
-                        <h4 id="mus">Liata Musicos mas votados</h4>
-                        <div class="listas" id="votosmusicos">
-                            <?php
-                            echo "<table border='1'>";
-                            echo "<tr id='titulos'>";
-                            echo "<td><p>Nombre artístico</p></td>";
-                            echo "<td><p>Género</p></td>";
-                            echo "<td><p>Votos de los fans</p></td>";
-                            $tendencias = totalVotosPorMusico();
-                            while($fila = mysqli_fetch_assoc($tendencias)){
-                                extract($fila);
-                                echo"<tr id='datos'>";
-                                $tendenciasMusico = listaMusicosMasVotados($musico);
-                                while($fila2 = mysqli_fetch_assoc($tendenciasMusico)){
-                                extract($fila2);
-                                    echo"<tr id='datos'>";
-                                    echo"<td><p>$nombreart</p></td>";
-                                    echo"<td><p>$nombre</p></td>";
-                                    echo"<td><p>$totalvotos</p></td>";
-                                }
+                        
+                    </article>
+                    <article>
+                        <h4 id="vot">Musicos mas votados</h4>
+                        <div class="listas" id="votos">
+                            <table border="1">
+                                <tr id="titulosvotos">
+                                    <td>Nombre artístico</td>
+                                    <td>Genero</td>
+                                    <td>Votos de sus fans</td>
+                                </tr>
                                 
-                                echo"</tr>";
-                            }
-                            echo "</table>";
+                               <?php
+                                $tendencias = totalVotosPorMusico();
+                                while ($fila = mysqli_fetch_assoc($tendencias)) {
+                                    extract($fila);
+                                    echo "<tr id='datosvotos'>";
+                                    $tendenciasMusico = listaMusicosMasVotados($musico);
+                                    while ($fila2 = mysqli_fetch_assoc($tendenciasMusico)) {
+                                        extract($fila2);
+                                        echo "<td><p>$nombreart</p></td>";
+                                        echo "<td><p>$nombre</p></td>";
+                                        echo "<td><p>$totalvotos</p></td>";
+                                    }
+                                    echo "</tr>";
+                                    
+                                }
+                                echo "</table>";
+                                
+                               
+                                ?> 
+                                
                             
-                            ?>
 
 
                         </div>
                     </article>
-
-                    <article>
+                    
+                    <article id="prueba">
+                        
                         <h4 id="conc">Conciertos</h4>
                         <div class="listas" id="conciertos">
                             <table border="1">
@@ -214,16 +241,6 @@
                                 }
                                 ?>
                         </div>
-
-                    </article>
-                    <article>
-                        <div>
-                            <p>
-
-
-
-                            </p>
-                        </div>
                     </article>
                 </div>
             </section>
@@ -270,6 +287,3 @@
         </footer>
     </body>
 </html>
-<script>
-
-</script> 

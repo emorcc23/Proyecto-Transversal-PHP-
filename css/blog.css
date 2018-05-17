@@ -14,7 +14,7 @@
 }
 
 #blog .contenedor {
-    display: flex;
+/*    display: flex;*/
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -67,45 +67,13 @@
     min-width: 928px;
 
 }
-
-#blog #votosmusicos {
+/**/
+#blog #votos {
     min-width: 928px;
 }
-
-#blog article #mus {
-    width: 928px;
-}
-#blog article #votosmusicos {
-    border: solid;
-    border-width: thin;
-    background: rgba(255,255,255,.8);
-    border-right-style: none;
-    border-left-style: none;
-}
-
-#blog article #votosmusicos table {
-    border: none;
-    border-collapse: collapse;
-    border-width: thin;
-    width: 924px;
-    font-size: 15px;
-    height: 298px;
-}
-
-#blog article #votosmusicos table tr td {
-    padding: 1px;
-}
-
-#blog article #votosmusicos #titulos td {
-    padding: 7px;
-    font-size: 18px;
-    background: rgba(255,255,255,.8);
-    border-color: rgba(55,55,55,0.2);
-
-}
-
-#blog article #votosmusicos {
-    height: 375px;
+/**/
+#blog article #vot {
+    width:928px;
 }
 
 #blog article #conc {
@@ -120,17 +88,40 @@
     border-left-style: none;
 }
 
+/**/
+#blog article #votos table {
+    border: none;
+    border-collapse: collapse;
+    border-width: thin;
+    width: 100%;
+    font-size: 15px;
+    height: 100%;
+}
+
 #blog article #conciertos table {
     border: none;
     border-collapse: collapse;
     border-width: thin;
-    width: 924px;
+    width: 100%;
     font-size: 15px;
     height: 298px;
 }
 
+/**/
+#blog article #votos table tr td {
+    padding: 1px;
+}
+
 #blog article #conciertos table tr td {
     padding: 1px;
+}
+
+/**/
+#blog article #votos #titulosvotos td {
+    padding: 7px;
+    font-size: 18px;
+    background: rgba(255,255,255,.8);
+    border-color: rgba(55,55,55,.2);
 }
 
 #blog article #conciertos #titulos td {
@@ -139,6 +130,11 @@
     background: rgba(255,255,255,.8);
     border-color: rgba(55,55,55,0.2);
 
+}
+
+/**/
+#blog article #votos {
+    height: 375px;
 }
 
 #blog article #conciertos {
@@ -282,6 +278,11 @@
     cursor: pointer;
 }
 
+#blog article #votos #datosvotos:hover {
+    background: rgba(255,255,255,.9);
+    cursor: pointer;
+}
+
 #blog #busc {
     border:solid;
     border-width: thin;
@@ -336,8 +337,30 @@
 }
 
 @media (max-width:1005px) {
+    
+    
+    #blog .contenedor #votos {
+        margin-left: 0%;
+    }
+    
+    #blog .contenedor {
+   display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    }   
+    /**/
+    #blog #votos {
+        min-width: 70px;
+    }
+    
     #blog #conciertos {
         min-width: 70px;
+        
+    }
+    
+    /**/
+    #blog article #vot {
+        width: 450px;
     }
 
     #blog article #conc {
