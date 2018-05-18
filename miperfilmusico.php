@@ -31,8 +31,9 @@ and open the template in the editor.
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
                 <nav class="menuuser">
-                    <a href="#">Mi perfil</a>
-                    <a href="index.php">Cerrar sesión</a>
+                    <?php
+                    controlDesplegable();
+                    ?>
                 </nav>
                 <nav class="menu">
                     <ul>
@@ -137,9 +138,9 @@ and open the template in the editor.
                                         echo "<td><input type='text' id='nombre' name='name' value='$nombre' readonly required></td>";
                                         echo "<td><select id='select' name='gender' required>";
                                         $generos = muestrageneros();
-                                        $generos = muestrageneros();
                                         while ($fila = mysqli_fetch_assoc($generos)) {
                                             extract($fila);
+                                            $nombre = utf8_encode($nombre);
                                             if ($id_genero == $genero) {
                                                 echo"<option value='$id_genero' selected>$nombre</option>";
                                             } else {
@@ -190,10 +191,11 @@ and open the template in the editor.
                                         $provincias = dimeprovincias();
                                         while ($fila = mysqli_fetch_assoc($provincias)) {
                                             extract($fila);
+                                            $p = utf8_encode($provincia);
                                             if ($laprovincia == $provincia) {
-                                                echo "<option value='$provincia' selected>$provincia</option>";
+                                                echo "<option value='$p' selected>$p</option>";
                                             } else {
-                                                echo "<option value='$provincia'>$provincia</option>";
+                                                echo "<option value='$p'>$p</option>";
                                             }
                                         }
                                         echo "</select></td>";
@@ -207,6 +209,7 @@ and open the template in the editor.
                                         $ciudades = leeciudades($laprovincia);
                                         while ($fila = mysqli_fetch_assoc($ciudades)) {
                                             extract($fila);
+                                            $nombre = utf8_encode($nombre);
                                             if ($id_ciudad == $ciudad) {
                                                 echo "<option value='$id_ciudad' selected'>$nombre</option>";
                                             } else {

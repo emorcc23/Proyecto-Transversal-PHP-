@@ -30,7 +30,7 @@
                     <?php
                         controlDesplegable();
                     ?>
-                    
+                
                 </nav>
                 <nav class="menu">
                     <ul>

@@ -29,8 +29,9 @@ Pagina de locales.
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
                 <nav class="menuuser">
-                    <a href="#">Mi perfil</a>
-                    <a href="index.php">Cerrar sesión</a>
+                    <?php
+                    controlDesplegable();
+                    ?>
                 </nav>
                 <nav class="menu">
                     <ul>
@@ -145,10 +146,11 @@ Pagina de locales.
                                             $provincias = dimeprovincias();
                                             while ($fila = mysqli_fetch_assoc($provincias)) {
                                                 extract($fila);
+                                                $p = utf8_encode($provincia);
                                                 if ($laprovincia == $provincia) {
-                                                    echo "<option value='$provincia' selected>$provincia</option>";
+                                                    echo "<option value='$p' selected>$p</option>";
                                                 } else {
-                                                    echo "<option value='$provincia'>$provincia</option>";
+                                                    echo "<option value='$p'>$p</option>";
                                                 }
                                             }
                                             echo "</select></td>";
@@ -163,7 +165,8 @@ Pagina de locales.
                                             $ciudades = leeciudades($laprovincia);
                                             while ($fila = mysqli_fetch_assoc($ciudades)) {
                                                 extract($fila);
-                                                if ($if_ciudad == $ciudad) {
+                                                $nombre = utf8_encode($nombre);
+                                                if ($id_ciudad == $ciudad) {
                                                     echo "<option value='$id_ciudad' selected>$nombre</option>";
                                                 } else {
                                                     echo "<option value='$id_ciudad'>$nombre</option>";

@@ -39,47 +39,58 @@ function controlDesplegable() {
 //Sube una foto enviada por post al servidor.
 function subefoto() {
     if (isset($_FILES['fileupload'])) {
+        if (!empty($_FILES['fileupload']['name'])) {
 
-        $target_dir = "uploads/";
-        $target_file = $target_dir . basename($_FILES["fileupload"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            $target_dir = "uploads/";
+            $target_file = $target_dir . basename($_FILES["fileupload"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
 
-        $check = getimagesize($_FILES["fileupload"]["tmp_name"]);
-        if ($check == false) {
-            echo "<script>alert('El archivo no es una imagen válida.')</script>";
-            $uploadOk = 0;
-        }
+            $check = getimagesize($_FILES["fileupload"]["tmp_name"]);
+            if ($check == false) {
+                echo "<script>alert('El archivo no es una imagen válida.')</script>";
+                $uploadOk = 0;
+            }
 
-        // Check if file already exists
+            // Check if file already exists
 
-        if (file_exists($target_file)) {
-            echo "<script>alert('Error. El archivo de la foto ya existe en el servidor.')</script>";
-            $uploadOk = 0;
-        }
-        // Check file size
-        if ($_FILES["fileupload"]["size"] > 500000) {
-            echo "<script>alert('Error. El archivo de la foto es demasiado grande.')</script>";
-            $uploadOk = 0;
-        }
-        // Allow certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-            echo "<script>alert('Error. Solo se admiten imágenes jpg, png y gif.')</script>";
-            $uploadOk = 0;
-        }
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            echo "<script>alert('La foto no se ha enviado.')</script>";
-            // if everything is ok, try to upload file
-            $target_file = '';
-        } else {
-            if (!move_uploaded_file($_FILES["fileupload"]["tmp_name"], $target_file)) {
-                echo "<script>alert('Ha habido un error subiendo la foto.')</script>";
+            if (file_exists($target_file)) {
+                echo "<script>alert('Error. El archivo de la foto ya existe en el servidor.')</script>";
+                $uploadOk = 0;
+            }
+            // Check file size
+            if ($_FILES["fileupload"]["size"] > 500000) {
+                echo "<script>alert('Error. El archivo de la foto es demasiado grande.')</script>";
+                $uploadOk = 0;
+            }
+            // Allow certain file formats
+            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                echo "<script>alert('Error. Solo se admiten imágenes jpg, png y gif.')</script>";
+                $uploadOk = 0;
+            }
+            // Check if $uploadOk is set to 0 by an error
+            if ($uploadOk == 0) {
+                echo "<script>alert('La foto no se ha enviado.')</script>";
+                // if everything is ok, try to upload file
                 $target_file = '';
+            } else {
+                if (!move_uploaded_file($_FILES["fileupload"]["tmp_name"], $target_file)) {
+                    echo "<script>alert('Ha habido un error subiendo la foto.')</script>";
+                    $target_file = '';
+                }
             }
         }
+        else
+        {
+            $target_file="";
+        }
     }
+    else
+    {
+       $target_file=""; 
+    }
+   
     return $target_file;
 }
 
@@ -159,6 +170,7 @@ function nuevoVotoMusico($id_musico) {
             "<input type='submit' value='Like' name='voto'>" .
             "</form>";
 }
+
 //<a class="icon-thumbs-up"></a>
 function altaVotoMusico2() {
     if (isset($_POST['voto'])) {
@@ -179,12 +191,12 @@ function altaVotoMusico2() {
 function conviertearray($datos) {
     $cont = 0;
     while ($fila = mysqli_fetch_assoc($datos)) {
-        $resultado[$cont] = $fila;
+        $f = Array("id_ciudad" => $fila["id_ciudad"], "nombre" => utf8_encode($fila["nombre"]));
+        $resultado[$cont] = $f;
         $cont++;
     }
     return $resultado;
 }
-
 
 //Desarrollador: Artur
 //function conviertearray($datos) {
@@ -195,7 +207,6 @@ function conviertearray($datos) {
 //    }
 //    return $resultado;
 //}
-
 //Desarrolador: Isain
 //Funcion que crea un  boton para dar de alta el musico en un concierto.
 function bajaMusicoConcierto($id_concierto) {
@@ -322,11 +333,9 @@ function muestraSelectCiudad() {
     while ($fila = mysqli_fetch_assoc($datosCiudad)) {
         extract($fila);
         if (isset($_POST['buscar3']) && $id_ciudad == $ciudad) {
-            
+
             echo"<option value='$id_ciudad' selected>$nombre</option>";
-        }
-        else
-        {
+        } else {
             echo"<option value='$id_ciudad'>$nombre</option>";
         }
     }
@@ -389,7 +398,7 @@ function muestraSelectGenero($id_usuario) {
     echo"<p>Genero<select name = 'gender'>";
     while ($fila = mysqli_fetch_assoc($datosGeneros)) {
         extract($fila);
-
+        $nombre = utf8_encode($nombre);
         echo"<option value = '$id_genero'>$nombre</option>";
     }
     echo"</select></p>";

@@ -22,8 +22,9 @@ require_once 'funciones.php';
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
                 <nav class="menuuser">
-                    <a href="#">Mi perfil</a>
-                    <a href="index.php">Cerrar sesión</a>
+                    <?php
+                    controlDesplegable();
+                    ?>
                 </nav>
                 <nav class="menu">
                     <ul>
@@ -98,7 +99,7 @@ require_once 'funciones.php';
                                 echo"<tr>";
                                 $id_musico = dimeidusuario($nombreart);
                                     
-                                
+                                $nombre = utf8_encode($nombre);
                                 if(verificarVotoMusico($id_usuario, $id_musico)){
                                     echo"<td>$nombreart</td><td>$nombre</td><td>". eliminarVotoMusico1($id_musico)."</td>";
                                     

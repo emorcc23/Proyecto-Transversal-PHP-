@@ -43,8 +43,9 @@ require_once 'funciones.php';
                         <input type="checkbox" id="menu-bar">
                         <label class="icon-menu" for="menu-bar"></label>
                         <nav class="menuuser">
-                            <a href="#">Mi perfil</a>
-                            <a href="index.php">Cerrar sesión</a>
+                            <?php
+                            controlDesplegable();
+                            ?>
                         </nav>
                         <nav class="menu">
                             <ul>
@@ -106,6 +107,7 @@ require_once 'funciones.php';
                                         $generos = muestrageneros();
                                         while ($fila = mysqli_fetch_assoc($generos)) {
                                             extract($fila);
+                                            $nombre = utf8_encode($nombre);
                                             echo "<option value='$id_genero'>$nombre</option>";
                                         }
                                         echo "</select></p>";

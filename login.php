@@ -1,6 +1,7 @@
- <?php
+<?php
 session_start();
 require_once 'bbdd.php';
+require_once 'funciones.php';
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +28,9 @@ Pagina login
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
                 <nav class="menuuser">
-                    <a href="#">Mi perfil</a>
-                    <a href="index.php">Cerrar sesión</a>
+                    <?php
+                    controlDesplegable();
+                    ?>
                 </nav>
                 <nav class="menu">
                     <ul>

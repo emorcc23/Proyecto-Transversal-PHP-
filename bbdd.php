@@ -158,8 +158,7 @@ function dimeprovinciadeciudad($ciudad)
     $fila=mysqli_fetch_assoc($resultado);
     extract($fila);
     desconectar($c);
-    return $provincia;
-    
+    return utf8_encode($provincia);
 }
     
 
@@ -517,7 +516,7 @@ function mirarGeneroId($genero) {
     desconectar($c);
     if ($fila = mysqli_fetch_assoc($resultado)) {
         extract($fila);
-        return $nombre;
+        return utf8_encode($nombre);
     } else {
         return -1;
     }
