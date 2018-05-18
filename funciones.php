@@ -159,7 +159,7 @@ function nuevoVotoMusico($id_musico) {
             "<input type='submit' value='Like' name='voto'>" .
             "</form>";
 }
-
+//<a class="icon-thumbs-up"></a>
 function altaVotoMusico2() {
     if (isset($_POST['voto'])) {
         extract($_SESSION);

@@ -155,7 +155,7 @@ require_once 'funciones.php';
                             //echo"Página $pagina de $totalpaginas, Hay $cuantosconciertos conciertos aceptados.<br>";
                             echo "<p id='paginado'>$pagina/$totalpaginas</p>";
                             if ($pagina > 1) {
-                                echo"<a href='usuariofan.php?pagina=1' id='primera'><span class='icon-to-start-1'></span></a>";
+                                echo"<a href='usuariofan.php?pagina=1' id='primera'><span class='icon-to-start'></span></a>";
                                 $anterior = $pagina - 1;
                                 echo" <a href='usuariofan.php?pagina=$anterior' id='anterior'><span class='icon-left-dir'></span></a>";
                             }
@@ -188,7 +188,6 @@ require_once 'funciones.php';
                     <a class="icon-twitter" href="#"></a>
                     <a class="icon-instagram" href="#"></a>
                     <a class="icon-gmail" href="#"></a>
-                    <a class="icon-trash" href="#"></a>
                 </div>
             </div>
 
