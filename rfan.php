@@ -128,11 +128,9 @@ require_once 'funciones.php';
                                     </select></td>
                             </tr>
                             <tr class="data">
-                                <td><p>Nombre de usuario:</p></td>
                                 <td><p>Ciudad:</p></td>
                             </tr>
                             <tr>
-                                <td><input type="text" name="username" required></td>
                                 <td><select name='city' required>
                                     <?php
                                     $ciudades = leeciudades($primeraprovincia);
@@ -158,6 +156,9 @@ require_once 'funciones.php';
                             <tr>
                                 <td><input type="password" name="pass2" id="pass2" required></td>
                                 <td><input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" name="next" value="Registrar fan"></td>
                             </tr>
                         </table>
                     </form>
