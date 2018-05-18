@@ -187,7 +187,8 @@ Pagina de locales.
                                             echo "<td><p>Aforo:</p></td>";
                                             echo "</tr>";
                                             echo "<tr>";
-                                            echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload' class='file-input'></td>";
+//                                            echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload' class='file-input'></td>";
+                                            echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload'></td>";
                                             echo "<td><input type='number' name='aforo' value='$aforo' required></td>";
                                             echo "</tr>";
                                             ?>

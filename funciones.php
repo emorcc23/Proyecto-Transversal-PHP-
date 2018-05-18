@@ -80,17 +80,13 @@ function subefoto() {
                     $target_file = '';
                 }
             }
+        } else {
+            $target_file = "";
         }
-        else
-        {
-            $target_file="";
-        }
+    } else {
+        $target_file = "";
     }
-    else
-    {
-       $target_file=""; 
-    }
-   
+
     return $target_file;
 }
 

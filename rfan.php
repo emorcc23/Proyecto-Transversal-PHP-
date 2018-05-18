@@ -13,7 +13,7 @@ require_once 'funciones.php';
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <link rel="stylesheet" href="css/fontello.css">
         <link rel="stylesheet" href="css/estilosRfan.css">
-        <script src="jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="funciones.js"></script>
     </head>
     <body>
@@ -88,87 +88,94 @@ require_once 'funciones.php';
                         }
                     } else {
                         ?>
-                <div id="formulariodatos">
-                    <form action="" method="POST" onsubmit="return verificar();" enctype="multipart/form-data">
-                        <table border="1">
-                            <tr class="data">
-                                <td><p>Nombre:</p></td>
-                                <td><p>Nombre de usuario:</p></td>
-                            </tr>
-                            <tr>
-                                <td><input type="text" name="name" required></td>
-                                <td><input type="text" name="username" required></td>
-                            </tr>
-                            <tr class="data">
-                                <td><p>Primer apellido:</p></td>
-                                <td><p>Email:</p></td>
-                            </tr>
-                            <tr>
-                                <td><input type="text" name="surname1" required></td>
-                                <td><input type="email" name="mail" required></td>
-                            </tr>
-                            <tr class="data">
-                                <td><p>Segundo apellido:</p></td>
-                                <td><p>Provincia:</p></td>
-                            </tr>
-                            <tr>
-                                <td><input type="text" name="surname2" required></td>
-                                <td><select id="propvincia">
-                                    <?php
-                                    $provincias = dimeprovincias();
-                                    $cont = 0;
-                                    while ($fila = mysqli_fetch_assoc($provincias)) {
-                                        extract($fila);
-                                        if ($cont==0) {
-                                            $primeraprovincia = $provincia;
-                                            $cont++;
-                                        }
-                                        $provincia = utf8_encode($provincia);
-                                        echo "<option value='$provincia'>$provincia</option>";
-                                    }
-                                    ?>
-                                    </select></td>
-                            </tr>
-                            <tr class="data">
-                                <td><p>Ciudad:</p></td>
-                            </tr>
-                            <tr>
-                                <td><select name='city' required>
-                                    <?php
-                                    $ciudades = leeciudades($primeraprovincia);
-                                    while ($fila = mysqli_fetch_assoc($ciudades)) {
-                                        extract($fila);
-                                        $nombre = utf8_encode($nombre);
-                                        echo "<option value='$id_ciudad'>$nombre</option>";
-                                    }
-                                    ?>
-                                    </select></td>
-                            </tr>
-                            <tr class="data">
-                                <td><p>Contraseña:</p></td>
-                                <td><p>Dirección:</p></td>
-                            </tr>
-                            <tr>
-                                <td><input type="password" name="pass1" id="pass1" required></td>
-                                <td><input type="text" name="address" required></td>
-                            </tr>
-                            <tr class="data">
-                                <td><p>Repite contraseña:</p></td>
-                                <td><p>Imgen:</p></td>
-                            </tr>
-                            <tr>
-                                <td><input type="password" name="pass2" id="pass2" required></td>
-                                <td><input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload"></td>
-                            </tr>
-                            <tr>
-                                <td><input type="submit" name="next" value="Registrar fan"></td>
-                            </tr>
-                        </table>
-                    </form>
-                </div>
-    <?php
-}
-?>
+                        <div id="formulariodatos">
+                            <form action="" method="POST" onsubmit="return verificar();" enctype="multipart/form-data">
+                                <table border="1">
+                                    <tr class="data">
+                                        <td><p>Nombre:</p></td>
+                                        <td><p>Nombre de usuario:</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="name" required></td>
+                                        <td><input type="text" name="username" required></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td><p>Primer apellido:</p></td>
+                                        <td><p>Email:</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="surname1" required></td>
+                                        <td><input type="email" name="mail" required></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td><p>Segundo apellido:</p></td>
+                                        <td><p>Provincia:</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="surname2" required></td>
+                                        <td><select id="provincia">
+                                                <?php
+                                                $provincias = dimeprovincias();
+                                                $cont = 0;
+                                                while ($fila = mysqli_fetch_assoc($provincias)) {
+                                                    extract($fila);
+                                                    if ($cont == 0) {
+                                                        $primeraprovincia = $provincia;
+                                                        $cont++;
+                                                    }
+                                                    $provincia = utf8_encode($provincia);
+                                                    echo"<option value='$provincia'>$provincia</option>";
+                                                }
+                                                ?>
+                                            </select></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td></td>
+                                        <td><p>Ciudad:</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><select name='city' required id="city">
+                                                <?php
+                                                $ciudades = leeciudades($primeraprovincia);
+                                                while ($fila = mysqli_fetch_assoc($ciudades)) {
+                                                    extract($fila);
+                                                    $nombre = utf8_encode($nombre);
+                                                    echo"<option value='$id_ciudad'>$nombre</option>";
+                                                }
+                                                ?>
+                                            </select></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td><p>Contraseña:</p></td>
+                                        <td><p>Dirección:</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="password" name="pass1" id="pass1" required></td>
+                                        <td><input type="text" name="address" required></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td><p>Repite contraseña:</p></td>
+                                        <td><p>Imagen:</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="password" name="pass2" id="pass2" required></td>
+                                        <td><input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload"></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><input type="submit" name="next" value="Registrar fan"></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </div>
             </section>
         </main>

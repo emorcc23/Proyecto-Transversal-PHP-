@@ -121,7 +121,7 @@ and open the template in the editor.
                     ?>
                     <div id="miperfil">
 
-
+                        
                         <form method="post" enctype="multipart/form-data">
                             <table border="1">
                                 <?php
@@ -199,7 +199,8 @@ and open the template in the editor.
                                             }
                                         }
                                         echo "</select></td>";
-                                        echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload' class='file-input'></td>";
+//                                        echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload' class='file-input'></td>";
+                                        echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload'></td>";
                                         echo "</tr>";
                                         echo "<tr class='data'>";
                                         echo "<td><p>Provincia</p></td>";

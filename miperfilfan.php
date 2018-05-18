@@ -180,7 +180,8 @@ Pagina de locales.
                                             echo "</tr>";
                                             echo "<tr>";
                                             echo "<td><input type='tel' name='phone' value='$telefono' required></td>";
-                                            echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload' class='file-input'></td>";
+//                                            echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload' class='file-input'></td>";
+                                            echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload'></td>";
                                             echo "</tr>";
                                             echo "<tr id='botones'>";
                                             echo "<td><p><input type='button' value='Cambiar contraseña' id='contaseña' class='boton' onClick='abrirParametros()'></p></td>";

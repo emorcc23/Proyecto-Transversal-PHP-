@@ -168,6 +168,7 @@
                                     $tendenciasMusico = listaMusicosMasVotados($musico);
                                     while ($fila2 = mysqli_fetch_assoc($tendenciasMusico)) {
                                         extract($fila2);
+                                        $nombre = utf8_encode($nombre);
                                         echo "<td><p>$nombreart</p></td>";
                                         echo "<td><p>$nombre</p></td>";
                                         echo "<td><p>$totalvotos</p></td>";
