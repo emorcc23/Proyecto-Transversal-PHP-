@@ -216,6 +216,7 @@
 
                                     echo "<tr id='datos'>";
                                     echo "<td><p>$nomconcierto</p></td>";
+                                    $nomgenero = utf8_encode($nomgenero);
                                     echo "<td><p>$nomgenero</p></td>";
                                     echo "<td><p>$nomlocal</p></td>";
                                     echo "<td><p>$fecha</p></td>";
