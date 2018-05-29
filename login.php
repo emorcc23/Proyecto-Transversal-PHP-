@@ -81,14 +81,35 @@ Pagina login
                         }
                     } else {
                         ?>
-                        <form method="post">
+                    <div id="formulariodatos">
+                        <form method="POST">
+                            <table border="1">
+                                <tr class="data">
+                                    <td><p>Nombre de usuario</p></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" name="username" required></td>
+                                </tr>
+                                <tr class="data">
+                                    <td>Contraseña</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="password" name="pass" required></td>
+                                </tr>
+                                <tr>
+                                    <td id="botonr"><input type="submit" value="Entrar a mi cuenta" name="boton"></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+<!--                        <form method="post">
                             <p>Nombre de usuario:</p>
                             <p><input type="text" name="username" required></p>
                             <p>Contraseña:</p>
                             <p><input type="password" name="pass" required></p>
                             <br><br><br>
                             <p><input type="submit" value="Entrar a mi cuenta" id="button" name="boton"></p>
-                        </form>
+                        </form>-->
     <?php
 }
 ?>

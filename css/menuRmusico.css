@@ -61,10 +61,3 @@ header label {
 #menu-bar:checked ~ .menu {
     transform: translateX(0%);
 }
-
-form {
-    border: solid;
-    border-width: thin;
-    width: 370px; 
-}
-

@@ -47,6 +47,7 @@ section {
 }
 
 footer .contenedor {
+    margin-top: 180px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -66,6 +67,7 @@ footer .contenedor {
 .sociales a {
     color: #333;
     text-decoration: none;
+    margin-top: 1000px;
 }
 
 .menu ul ul {

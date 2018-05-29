@@ -69,18 +69,17 @@ require_once 'funciones.php';
                     <?php
                     if (isset($_POST['next'])) {
                         extract($_POST);
-                        $target_file=subefoto();
-                        
+                        $target_file = subefoto();
+
                         if (usuarioexiste($username) > 0) {
                             echo "<script>alert('Error. El usuario que deseas dar de alta ya existe')</script>";
                             //echo"Error. El usuario que deseas dar de alta ya existe.";
                         } else {
                             $idgenero = dimeidgenero($gender);
-                            if (registrar_musico($username, $pass1, 2, $name, $mail, $phone, $city, $surname1, $surname2, $web, $nickname, $components, $idgenero,$target_file) == "ok") {
+                            if (registrar_musico($username, $pass1, 2, $name, $mail, $phone, $city, $surname1, $surname2, $web, $nickname, $components, $idgenero, $target_file) == "ok") {
                                 echo"<script>alert('Se ha registrado el musico correctamente')</script>";
                                 header("Refresh:0; url=login.php");
                                 //echo"Se ha registrado el musico correctamente";
-                                
                             } else {
                                 echo "<script>alert('Error al registrar músico')</script>";
                                 //echo"Error al registrar musico";
@@ -88,88 +87,79 @@ require_once 'funciones.php';
                         }
                     } else {
                         ?>
-                        <form action="" method="POST" onsubmit="verificar();" enctype="multipart/form-data">  
-                            <table>
-                                <tr>
-                                    <td>
-                                        <p>Nombre:</p>
-                                        <p><input type="text" name="name" ></p>
-                                    </td>
-                                    <td>
-                                        <p>Nombre de usuario:</p>
-                                        <p><input type="text" name="username" ></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Primer apellido:</p>
-                                        <p><input type="text" name="surname1" ></p>
-                                    </td>
-                                    <td>
-                                        <p>Contraseña:</p>
-                                        <p><input type="password" name="pass1" id="pass1" ></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Segundo apellido:</p>
-                                        <p><input type="text" name="surname2" ></p>
-                                    </td>
-                                    <td>
-                                        <p>Repetir contraseña:</p>
-                                        <p><input type="password" name="pass2" id="pass2"></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Teléfono:</p>
-                                        <p><input type="tel" name="phone" ></p>
-                                    </td>
-                                    <td>
-                                        <p>Nombre artístico:</p>
-                                        <p><input type="text" name="nickname" ></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Email:</p>
-                                        <p><input type="email" name="mail" ></p>
-                                    </td>
-                                    <td>
-                                        <p>Componentes del grupo:</p>
-                                        <p><input type="number" name="components" ></p>
-                                    </td>
-                                     <td>
-                                        <p>Imagen:</p>
-                                        <p>
-                                            <input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload">
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                         <p>Provincia:</p><p><select id="provincia">
-                                            <?php
+                        <div id="formulariodatos">
+                            <form method="POST" onsubmit="return verificar();" enctype="multipart/form-data">
+                                <table border="1">
+                                    <tr class="data">
+                                        <td id="izquierda"><p>Nombre</p></td>
+                                        <td><p>Nombre de usuario</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="name" required></td>
+                                        <td><input type="text" name="username"></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td><p>Primer apellido</p></td>
+                                        <td><p>Contraseña</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="surname1" required></td>
+                                        <td><input type="password" name="pass1" required></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td><p>Segundo apellido</p></td>
+                                        <td><p>Repite contraseña</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="surname2" required></td>
+                                        <td><input type="password" name="pass2" required></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td><p>Teléfono</p></td>
+                                        <td><p>Nombre artístico</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="tel" name="phone" required></td>
+                                        <td><input type="text" name="nickname" required></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td><p>Email</p></td>
+                                        <td><p>Componentes</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="email" name="mail" required></td>
+                                        <td><input type="number" name="components" required></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td><p>Provincia</p></td>
+                                        <td><p>Web</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><select id="provincia">
+                                                <?php
                                                 $provincias = dimeprovincias();
-                                                $cont=0;
-                                                while($fila=mysqli_fetch_assoc($provincias))
-                                                {
+                                                $cont = 0;
+                                                while ($fila = mysqli_fetch_assoc($provincias)) {
                                                     extract($fila);
-                                                    if($cont==0)
-                                                    {
+                                                    if ($cont == 0) {
                                                         $primeraprovincia = $provincia;
                                                         $cont++;
                                                     }
-                                                    $provincia= utf8_encode($provincia);
+                                                    $provincia = utf8_encode($provincia);
                                                     echo"<option value='$provincia'>$provincia</option>";
                                                 }
-                                            ?>
-  
-                                            </select></p>
-                                          <p>Ciudad:</p>
-                                        <p><select name="city" id="city" required>
+                                                ?>
+
+                                            </select></td>
+                                        <td><input type="text" name="web" required></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td><p>Ciudad</p></td>
+                                        <td><p>Género</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><select name="city" required id="city">
                                                 <?php
-                                                
                                                 $ciudades = leeciudades($primeraprovincia);
                                                 while ($fila = mysqli_fetch_assoc($ciudades)) {
                                                     extract($fila);
@@ -177,30 +167,27 @@ require_once 'funciones.php';
                                                     echo"<option value='$id_ciudad'>$nombre</option>";
                                                 }
                                                 ?>
-                                            </select></p>
-                                    </td>
-                                    <td>
-                                        <p>Web:</p>
-                                        <p><input type="text" name="web" ></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    </td>
-                                    <td>
-                                        <p>Género:</p>
-                                        <p><select name="gender">
-                                                <option value="clasica">Clásica</option>    
-                                                <option value="Hip hop">Hip hop</option>
+                                            </select></td>
+                                        <td><select id='select' name='gender' required>
+                                                <option value="clasica">Clásica</option>
+                                                <option value="Hip Hop">Hip Hop</option>
                                                 <option value="rock">Rock</option>
                                                 <option value="electronica">Electrónica</option>
-                                            </select></p>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br><br><br>
-                            <p><input type="submit" value="Registrarme como músico" id="button" name="next" ></p>
-                        </form>
+                                            </select></td>
+
+                                    </tr>
+                                    <tr class="data">
+                                        <td colspan="2"><p>Imagen</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload" class="file-input"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="botonr" colspan="2"><input type="submit" name="next" value="Registrarme como músico" id="button"></td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
                         <?php
                     }
                     ?>

@@ -1,7 +1,6 @@
 <?php
 require_once 'bbdd.php';
 require_once 'funciones.php';
-
 ?>
 <html lang="es">
     <head>
@@ -55,7 +54,7 @@ require_once 'funciones.php';
                     <?php
                     if (isset($_POST['name'])) {
                         extract($_POST);
-                        $target_file=subefoto();
+                        $target_file = subefoto();
 
 
                         if (usuarioexiste($username) > 0) {
@@ -74,42 +73,39 @@ require_once 'funciones.php';
                         }
                     } else {
                         ?>
-                        <form method="post" onsubmit="return verificapass()" enctype="multipart/form-data">  
-                            <table>
-                                <tr>
-                                    <td>
-                                        <p>Nombre:</p>
-                                        <p><input type="text" name="name" required></p>
-                                    </td>
-                                    <td>
-                                        <p>Nombre de usuario:</p>
-                                        <p><input type="text" name="username" required></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Email:</p>
-                                        <p><input type="email" name="mail"></p>
-                                    </td>
-                                    <td>
-
-                                        <p>Contraseña:</p>
-                                        <p><input type="password" name="pass1" id="pass1" required></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Teléfono:</p>
-                                        <p><input type="tel" name="phone"></p>
-                                    </td>
-                                    <td>
-                                        <p>Repetir contraseña:</p>
-                                        <p><input type="password" name="pass2" id="pass2" required></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Provincia:</p><p><select id="provincia">
+                        <div id="formulariodatos">
+                            <form method="POST" onsubmit="return verificar();" enctype="multipart/form-data">
+                                <table border="1">
+                                    <tr class="data">
+                                        <td id="izquierda"><p>Nombre</p></td>
+                                        <td><p>Dirección</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="name" required></td>
+                                        <td><input type="text" name="location" required></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td><p>Email</p></td>
+                                        <td><p>Nombre de usuario</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="email" name="mail" required></td>
+                                        <td><input type="text" name="username" required></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td><p>Teléfono</p></td>
+                                        <td><p>Contraseña</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="tel" name="phone" required></td>
+                                        <td><input type="password" name="pass1" required></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td><p>Provincia</p></td>
+                                        <td><p>Repite contraseña</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><select id="provincia">
                                                 <?php
                                                 $provincias = dimeprovincias();
                                                 $cont = 0;
@@ -124,9 +120,16 @@ require_once 'funciones.php';
                                                 }
                                                 ?>
 
-                                            </select></p>
-                                        <p>Ciudad:</p>
-                                        <p><select name="city" required id="city">-->
+                                            </select>
+                                        </td>
+                                        <td><input type="password" name="pass2" required></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td><p>Ciudad</p></td>
+                                        <td><p>Aforo</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><select name="city" required id="city">
                                                 <?php
                                                 $ciudades = leeciudades($primeraprovincia);
                                                 while ($fila = mysqli_fetch_assoc($ciudades)) {
@@ -135,33 +138,21 @@ require_once 'funciones.php';
                                                     echo"<option value='$id_ciudad'>$nombre</option>";
                                                 }
                                                 ?>
-                                            </select></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Ubicación:</p>
-                                        <p><input type="text" name="location" required></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Imagen:</p>
-                                        <p>
-                                            <input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload">
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Aforo:</p>
-                                        <p><input type="number" name="aforo" required></p>
-                                    </td>
-                                </tr>
-                            </table>
-                            <br><br><br>
-                            <p><input type="submit" value="Registrarme como local" id="button"></p>
-                        </form>
+                                            </select></td>
+                                        <td><input type="number" name="aforo" required></td>
+                                    </tr>
+                                    <tr class="data">
+                                        <td colspan="2"><p>Imagen</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload" class="file-input"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="botonr" colspan="2"><input type="submit" name="next" value="Registrarme como local" id="button"></td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>  
                         <?php
                     }
                     ?>
