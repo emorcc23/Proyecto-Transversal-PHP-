@@ -58,7 +58,7 @@
                 <div class="contenedor">
                     <h2>Música para todos</h2>
                     <p>Nuevos conciertos en tu ciudad</p>
-                    <a href="#">Leer más</a>
+                    <a href="login.php">Leer más</a>
                 </div>
             </section>
 
