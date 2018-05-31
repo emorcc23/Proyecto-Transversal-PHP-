@@ -14,6 +14,7 @@ if(isset($_GET['id']))
              if(bajaconcierto($_GET['id'])=="ok")
              {
                  echo"Concierto eliminado.<br>";
+                 header("Refresh:1; url=conciertosdelocal.php");
              }       
          }       
     }
