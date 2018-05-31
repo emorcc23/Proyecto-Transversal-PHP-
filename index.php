@@ -208,7 +208,7 @@
                                 $elementospagina = 4;
                                 $inicio = ($pagina - 1) * $elementospagina;
                                 $cuantosconciertos = cuantosconciertosaceptados();
-                                $totalpaginas = ceil(($cuantosconciertos-1) / $elementospagina);
+                                $totalpaginas = ceil(($cuantosconciertos) / $elementospagina);
                                 $listaConciertosAceptados = mostrarListaConciertosAceptados($inicio, $elementospagina);
 
                                 while ($lista = mysqli_fetch_assoc($listaConciertosAceptados)) {

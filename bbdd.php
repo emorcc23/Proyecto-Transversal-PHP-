@@ -261,7 +261,7 @@ function dimeConciertoAceptado($id_usuario, $id_concierto) {
 //Dice cuantos conciertos aceptados hay, sirve para la paginación
 function cuantosconciertosaceptados() {
     $c = conectar();
-    $select = "select count(id_concierto) as cuantos from concierto where estado=1;";
+    $select = "select count(id_concierto) as cuantos from concierto c where estado=1 AND c.fecha>NOW();";
     $resultado = mysqli_query($c, $select);
     if ($dato = mysqli_fetch_assoc($resultado)) {
         return $dato['cuantos'];

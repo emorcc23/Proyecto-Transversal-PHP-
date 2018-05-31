@@ -130,7 +130,7 @@ require_once 'funciones.php';
                             $elementospagina = 4;
                             $inicio = ($pagina - 1) * $elementospagina;
                             $cuantosconciertos = cuantosconciertosaceptados();
-                            $totalpaginas = ceil($cuantosconciertos / $elementospagina);
+                            $totalpaginas = ceil(($cuantosconciertos) / $elementospagina);
                             $listaConciertosAceptados = mostrarListaConciertosAceptados($inicio, $elementospagina);
 
                             while ($lista = mysqli_fetch_assoc($listaConciertosAceptados)) {
