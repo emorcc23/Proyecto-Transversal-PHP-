@@ -1,4 +1,13 @@
 <?php
+//Desarrollador: Isain 
+//Comprueba si el mail esta repetido
+function compruebameEmail(){
+    $c = conectar();
+    $select = "select * from login;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
 
 //Desarrollador: Artur
 //Devuelve la ruta de la foto de un usuario
