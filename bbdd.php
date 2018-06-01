@@ -688,7 +688,7 @@ function registrar_musico($usuario, $pass, $tipo, $nombre, $email, $telefono, $c
     $idusuario = registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad,$imagen);
     if ($idusuario != -1) {
         $c = conectar();
-        $insert = "INSERT INTO `musica`.`musico` (`id_usuario`, `apellidoa`, `apellidob`, `web`, `nombreart`, `componentes`, `destacado`,`genero`) VALUES ('$idusuario', '$surname1', '$surname2', '$web', '$nickname', '$components', '0','$gender')";
+        $insert = "INSERT INTO `musico` (`id_usuario`, `apellidoa`, `apellidob`, `web`, `nombreart`, `componentes`, `destacado`,`genero`) VALUES ('$idusuario', '$surname1', '$surname2', '$web', '$nickname', '$components', '0','$gender')";
         if (mysqli_query($c, $insert)) {
             $resultado = "ok";
         } else {
@@ -698,6 +698,7 @@ function registrar_musico($usuario, $pass, $tipo, $nombre, $email, $telefono, $c
         desconectar($c);
         return $resultado;
     } else {
+        echo "<script>alert('Error al crear id')</script>";
         echo"Error añadiendo el musico";
         $resultado = -1;
     }
