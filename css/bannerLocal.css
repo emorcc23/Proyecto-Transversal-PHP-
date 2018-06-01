@@ -234,8 +234,8 @@ hr {
     background: rgba(51,51,51,0.6);
     border: none;
     border-radius: 50px;
-    width: 2300px;
-    height: 880px;
+    width: 1750px;
+    height: 800px; 
     
 }
 
@@ -249,20 +249,21 @@ hr {
     border: none;
     padding: 15px;
     position: absolute;
-    margin-left: 1870px;
+    margin-left: 1350px;
     background-color: rgba(255,255,255,0.3);
     border-radius: 50px;
     margin-top: -850px;
+    color:#fff;
 }
 
 #noticias {
     border: none;
     position: absolute;
     margin-top: -750px;
-    margin-left: 1830px;
+    margin-left: 1295px;
     background-color: rgba(255,255,255,0.3);
     width: 385px;
-    height: 600px;
+    height: 550px;
     overflow-y: scroll;
 }
 

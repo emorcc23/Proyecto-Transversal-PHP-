@@ -72,6 +72,9 @@ require_once 'funciones.php';
                         <div id="centro"> 
                             <p>Datos de mi perfil</p>
                             <div id="usuario">
+                                <?php
+                                muestradatoslocal();
+                                ?>
                             </div>
                             <nav class="menuLocal">
                                 <ul>

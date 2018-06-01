@@ -53,34 +53,75 @@ require_once 'funciones.php';
         </header>       
         <main>
             <section id="banner">
-                <img src="Imagenes/banner.jpg">
+                <img id="im" src="Imagenes/banner.jpg">
                 <div id="centro"> 
                     <p>Contacto</p>
-                    <div id="informulario">
-                        <form>
-                            <p class="pe">Nombre:</p>
-                            <p><input type="text"></p>
-                            <p class="pe">Apellidos:</p>
-                            <p><input type="text" name="mail"></p>
-                            <p class="pe" >Email:</p>
-                            <p><input type="email"></p>
-                            <p class="pe">Teléfono:</p>
-                            <p><input type="tel"></p>
-                            <p>¿Cómo nos ha conocido?</p>
-                            <p><select name="conocer">
-                                    <option value="">Ubicación</option>
-                                    <option value="">Cliente-Excliente</option>
-                                    <option value="">Recomendación</option>
-                                    <option value="">Internet</option>
-                                    <option value="">Otro</option>
-                                </select></p>
-                            <div id="comentario">
-                                <p>Comentario:</p>
-                                <p><textarea id="textarea">
-                                
-                                    </textarea></p>
-                            </div>
-                            <input type="submit" value="Enviar">
+                    <div id="informulariodatos">
+                        <form method="POST">
+                            <table border="1">
+                                <tr class="data">
+                                    <td><p class="pe">Nombre</p></td>
+                                    <td><p class="pe">Comentario:</p></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" name="name" required></td>
+                                   <td rowspan="9"><textarea id="textarea" name="coment">
+                                        
+                                        </textarea></td>
+                                </tr>
+                                <tr class="data">
+                                    <td><p class="pe">Apellidos</p></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" name="surnames" required></td>
+                                </tr>
+                                <tr class="data">
+                                    <td><p class="pe">Email</p></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="email" name="mail" required></td>
+                                </tr>
+                                <tr class="data">
+                                    <td><p class="pe">Teléfono</p></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="tel" name="phone" required></td>
+                                </tr>
+                                <tr class="data">
+                                    <td><p class="pe">¿Cómo nos has conocido?</p></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select name="conocer">
+                                            <option value="1">Ubicación</option>
+                                            <option value="2">Cliente-Excliente</option>
+                                            <option value="3">Recomendación</option>
+                                            <option value="4">Internet</option>
+                                            <option value="5">Otro</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td id="botonr" colspan="2"><input type="submit" value="Enviar"></td>
+                                </tr>
+                            </table>
+                            
+                            <div class='content-all'>
+                    <div class='content-carrousel'>
+                        <figure><img src="Imagenes/07.jpg"></figure>
+                        <figure><img src="Imagenes/03.jpg"></figure>
+                        <figure><img src="Imagenes/04.jpg"></figure>
+                        <figure><img src="Imagenes/05.jpg"></figure>
+                        <figure><img src="Imagenes/06.jpg"></figure>
+                        <figure><img src="Imagenes/07.jpg"></figure>
+                        <figure><img src="Imagenes/04.jpg"></figure>
+                        <figure><img src="Imagenes/03.jpg"></figure>
+                        <figure><img src="Imagenes/05.jpg"></figure>
+                        
+                    </div>
+                </div>
+                            
+                            
                         </form>
                         <div id="informacion">
                             <p id="titulo">Ooh Music</p>
