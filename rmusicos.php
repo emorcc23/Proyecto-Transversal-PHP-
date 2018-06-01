@@ -6,6 +6,7 @@ Esta es la pagina para registrar musicos.
 <?php
 require_once 'bbdd.php';
 require_once 'funciones.php';
+require_once 'msgbbdd.php';
 ?>
 <html lang="es">
     <head>
@@ -77,6 +78,7 @@ require_once 'funciones.php';
                         } else {
                             $idgenero = dimeidgenero($gender);
                             if (registrar_musico($username, $pass1, 2, $name, $mail, $phone, $city, $surname1, $surname2, $web, $nickname, $components, $idgenero, $target_file) == "ok") {
+                                alta_usuarios($username, $pass1, $name, $surname1);
                                 echo"<script>alert('Se ha registrado el musico correctamente')</script>";
                                 header("Refresh:0; url=login.php");
                                 //echo"Se ha registrado el musico correctamente";
@@ -127,7 +129,7 @@ require_once 'funciones.php';
                                         <td><p>Componentes</p></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="email" name="mail" required></td>
+                                        <td><input type="email" name="mail" id="email" required></td>
                                         <td><input type="number" name="components" required></td>
                                     </tr>
                                     <tr class="data">

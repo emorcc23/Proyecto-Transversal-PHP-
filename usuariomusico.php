@@ -76,7 +76,7 @@ require_once 'funciones.php';
                             <ul>
                                 <li><a href="#">Perfil</a></li>
                                 <li><a href="#">Fotos</a></li>
-                                <li><a href="#">Mensajes</a></li>
+                                <li><a href="homeuser.php">Mensajes</a></li>
                                 <li><a href="miperfilmusico.php">Configuración</a></li>
                                 <?php cerraSession2() ?>
                             </ul>

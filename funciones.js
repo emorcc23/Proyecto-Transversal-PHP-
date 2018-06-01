@@ -38,8 +38,26 @@ function inicializarEventos() {
     x.click(presionBuscador);*/
     x=$("#provincia");
     x.change(cambiaprovincia);
+    $("#email").keyup(comprobaremail);
 }
 
+function comprobaremail(){
+    var email = $("#email").val();
+    
+    $.ajax({
+        url: 'comprobaciones.php',
+        method: 'POST',
+        data: {email: email},
+        dataType: 'json',
+        success : function (data) {
+            if(data['estado'] == 0){
+                document.getElementById('email').style.background = '#FFF';
+            } else if (data['estado'] == 1) {
+                document.getElementById('email').style.background = '#FF5733';
+            } 
+        },
+    });
+}
 
 function cambiaprovincia()
 {
