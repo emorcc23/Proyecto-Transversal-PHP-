@@ -64,6 +64,7 @@ require_once 'funciones.php';
 
 
                             if (registrar_local($username, $pass1, $name, $mail, $phone, $city, $location, $target_file, $aforo) == "ok") {
+                                alta_usuarios($username, $pass1, $name, $name);
                                 echo"<script>alert('Se ha registrado el local correctamente')</script>";
                                 header("Refresh:0; url=login.php");
                             } else {
@@ -89,7 +90,7 @@ require_once 'funciones.php';
                                         <td><p>Nombre de usuario</p></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="email" name="mail" required></td>
+                                        <td><input type="email" name="mail" id="email"required></td>
                                         <td><input type="text" name="username" required></td>
                                     </tr>
                                     <tr class="data">

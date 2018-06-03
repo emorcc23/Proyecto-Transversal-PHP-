@@ -42,7 +42,9 @@ function inicializarEventos() {
     $("#email").keyup(comprobaremail);
 }
 
+
 function comprobaremail(){
+    var prueba = 0;
     var email = $("#email").val();
     
     $.ajax({
@@ -54,10 +56,16 @@ function comprobaremail(){
             if(data['estado'] == 0){
                 document.getElementById('email').style.background = '#FFF';
             } else if (data['estado'] == 1) {
+                prueba = 1;
                 document.getElementById('email').style.background = '#FF5733';
             } 
         },
     });
+}
+
+function erroremail(){
+    var nombre = "isain";
+    alert("entro");
 }
 
 function cambiaprovincia()

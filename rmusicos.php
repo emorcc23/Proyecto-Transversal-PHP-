@@ -185,8 +185,18 @@ require_once 'msgbbdd.php';
                                         <td colspan="2"><input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload" class="file-input"></td>
                                     </tr>
                                     <tr>
-                                        <td id="botonr" colspan="2"><input type="submit" name="next" value="Registrarme como músico" id="button"></td>
+                                        <td id="botonr" colspan="2"><input type="submit" name="next" value="Registrarme como músico" id="button" onclick="erroremail()"></td>
                                     </tr>
+<!--                                    <tr>
+                                        <td ><input type="button" value="prueba" id="prueba" onclick="erroremail()"></td>
+                                    </tr>-->
+                                    <?php
+//                                    echo"<tr>";
+//                                    echo"<p>kqbdluvibeiuprbñ isain</p>";
+//                                    $erroremail = "<script>document.write(prueba)</script>";
+//                                    echo $erroremail;
+//                                    echo"</tr>";
+                                    ?>
                                 </table>
                             </form>
                         </div>

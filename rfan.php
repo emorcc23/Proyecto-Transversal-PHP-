@@ -78,6 +78,7 @@ require_once 'funciones.php';
                         } else {
                             if ($pass1 == $pass2) {
                                 if (registrar_fan($username, $pass1, 3, $name, $mail, $phone, $city, $surname1, $surname2, $address, $target_file) == "ok") {
+                                    alta_usuarios($username, $pass1, $name, $surname1);
                                     echo"<script>alert('Se ha registrado el fan correctamente')</script>";
                                     header("Refresh:0; url=login.php");
                                 } else {
