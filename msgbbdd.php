@@ -1,6 +1,21 @@
 <!--FUNCIONES PARA LA BASE DE DATOS -->
 
 <?php
+//Funcion para ver cuantos mensaje estan pendientes por leer.
+function mensajeSinLeer($username){
+    $c = conectar2();
+    $select = "select count(*) as sinleer from message where message.read = 0 and receiver like '$username';";
+    $resultado = mysqli_query($c, $select);
+    if($fila = mysqli_fetch_assoc($resultado)){
+        extract($fila);
+        $resultado = $sinleer;
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar2($c);
+    return $resultado;
+    
+}
 
 //Funcion que muestra los mensajes enviados del usuario logeado.
 function selectMessageSender($username){

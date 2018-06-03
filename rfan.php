@@ -105,7 +105,7 @@ require_once 'funciones.php';
                                     </tr>
                                     <tr>
                                         <td><input type="text" name="surname1" required></td>
-                                        <td><input type="email" name="mail" required></td>
+                                        <td><input type="email" name="mail" id="email" required></td>
                                     </tr>
                                     <tr class="data">
                                         <td><p>Segundo apellido</p></td>

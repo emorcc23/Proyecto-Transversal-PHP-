@@ -70,7 +70,7 @@ and open the template in the editor.
                         <ul>
                             <li><a href="usuariomusico.php">Perfil</a></li>
                             <li><a href="#">Fotos</a></li>
-                            <li><a href="#">Mensajes</a></li>
+                            <li><a href="homeuser.php">Mensajes</a></li>
                             <li><a href="miperfilmusico.php">Configuración</a></li>
                             <?php cerraSession2() ?>
                         </ul>

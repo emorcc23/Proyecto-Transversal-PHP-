@@ -10,6 +10,7 @@ $(document).ready(function () {
     });
 });
 
+
 function buscador() {
     var query = $(this).val();
     if (query != '')
