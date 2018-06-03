@@ -72,7 +72,7 @@ session_start();
                         </div>
                         <nav class="menuLocal">
                             <ul>
-                                <li><a href="usuariolocal.php">Perfil</a></li>
+                                <li><a href="">Perfil</a></li>
                                 <li><a href="#">Fotos</a></li>
                                 <li><a class="concierto" href="" id="boton1">Conciertos</a>
                                     <ul>
@@ -82,7 +82,7 @@ session_start();
                                         </div>
                                     </ul>
                                 </li>
-                                <li><a href="#">Mensajes</a></li>
+                                <li><a href="homeuser.php">Mensajes</a></li>
                                 <li><a href="miperfillocal.php">Configuración</a></li>
                                 <?php cerraSession2() ?>
                             </ul>

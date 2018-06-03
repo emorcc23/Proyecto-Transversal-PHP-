@@ -57,6 +57,8 @@ require_once 'msgbbdd.php';
                 if (isset($_SESSION['username'])) {
                     //por seguridad compruebo si el usuario existe
                     if (usuarioexiste($_SESSION['username']) > 0) {
+                        $username = $_SESSION['username'];
+                        echo"<script>alert('$username')</script>";
                         $mostrar = 1;
                     } else {
                         echo"<script>alert('El usuario ya no existe')</script>";
@@ -77,11 +79,33 @@ require_once 'msgbbdd.php';
 
                         <div id="menu">
                             <ul>
-                                <li><a href="usuariomusico.php">Perfil</a></li>
-                                <li><a href="#">Fotos</a></li>
-                                <li><a href="homeuser.php">Mensajes</a></li>
-                                <li><a href="miperfilmusico.php">Configuración</a></li>
-                                <?php cerraSession2() ?>
+                                <?php
+                                $_SESSION['username'] = $username;
+                                $_SESSION['tipo'] = dimetipousuario($username);
+                                extract($_SESSION);
+                                switch ($tipo) {
+                                    case 1:
+                                        echo"<li><a href='usuariolocal.php'>Perfil</a></li>";
+                                        echo"<li><a href='#'>Fotos</a></li>";
+                                        echo"<li><a href='homeuser.php'>Mensajes</a></li>";
+                                        echo"<li><a href='miperfillocal.php'>Configuración</a></li>";
+                                        break;
+                                    case 2:
+                                        echo"<li><a href='usuariomusico.php'>Perfil</a></li>";
+                                        echo"<li><a href='#'>Fotos</a></li>";
+                                        echo"<li><a href='homeuser.php'>Mensajes</a></li>";
+                                        echo"<li><a href='miperfilmusico.php'>Configuración</a></li>";
+                                        break;
+                                    case 3:
+                                        echo"<li><a href='usuariofan.php'>Perfil</a></li>";
+                                        echo"<li><a href='#'>Fotos</a></li>";
+                                        echo"<li><a href='homeuser.php'>Mensajes</a></li>";
+                                        echo"<li><a href='miperfilfan.php'>Configuración</a></li>";
+                                        break;
+                                    default:
+                                }
+                                cerraSession2();
+                                ?>
                             </ul>
                         </div>
                         <div id="conciertosInteres">

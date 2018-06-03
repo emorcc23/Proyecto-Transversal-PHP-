@@ -15,7 +15,7 @@ require_once 'msgbbdd.php';
         <script type="text/javascript" src="funciones.js"></script>
     </head>
     <body>
-        <header>
+        <header> 
             <div class="contenedor">
                 <h1 class="icon-music">Ooh Music</h1>
                 <!-- Segundo -->

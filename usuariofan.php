@@ -75,7 +75,7 @@ require_once 'funciones.php';
                             <ul>
                                 <li><a href="usuariofan.php">Perfil</a></li>
                                 <li><a href="#">Fotos</a></li>
-                                <li><a href="#">Mensajes</a></li>
+                                <li><a href="homeuser.php">Mensajes</a></li>
                                 <li><a href="miperfilfan.php">Configuración</a></li>
                                 <?php cerraSession2() ?>
                             </ul>
