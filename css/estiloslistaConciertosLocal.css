@@ -136,9 +136,9 @@ form #botoncerrar:hover {
 }
 
 #tabladedatos {
-    width:1500px;
+    width:1000px;
     padding: 51px;
-    margin-left: 750px;
+    margin-left: 640px;
     border-color: #fff;
     border-collapse: collapse;
     border-right-style: none; 
@@ -182,9 +182,10 @@ form #botoncerrar:hover {
 #titulotabla {
     border: solid;
     border-width: thin;
-    width: 1400px;
+    width: 1000px;
     height: 80px;
     margin-top: -80px;
+    
     position: absolute;
     text-align: center;
     background: rgba(55,55,55,0.8); 

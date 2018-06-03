@@ -403,8 +403,8 @@ form #botoncerrar:hover {
     background: rgba(51,51,51,0.6);
     border: none;
     border-radius: 50px;
-    width: 2300px;
-    height: 880px;
+    width: 1750px;
+    height: 800px; 
     
 }
 
@@ -511,6 +511,8 @@ table {
     border-collapse: collapse; 
     text-align: center;
     border: none;
+    margin-left: -300px;
+    margin-top: -50px;
 }
 
 #izquierda {

@@ -89,7 +89,7 @@ require_once 'funciones.php';
                     } else {
                         ?>
                         <div id="formulariodatos">
-                            <form method="POST" onsubmit="return verifivar();" enctype="multipart/form-data">
+                            <form method="POST" onsubmit="return verificar();" enctype="multipart/form-data">
                                 <table border="1">
                                     <tr class="data">
                                         <td id="izquierda"><p>Nombre</p></td>
