@@ -84,43 +84,45 @@ require_once 'msgbbdd.php';
                                 <?php cerraSession2() ?>
                             </ul>
                         </div>
-                        <div id="conciertosInteres">
-                            <p>OohMessage</p>
-                        </div>
                         <div id="contenidoInteres">
-                            <p class="titulo">BANDEJA DE ENTRADA</p>
-                            <?php
-                            $username = $_SESSION["username"];
-                            //GUARDO EN LA VARIABLE $MOSTRARMENSAJE LA FUNCION QUE MUESTRA TODOS LOS DATOS 
-                            //DE LA TABALA MESSAGE DE LA BASE DE DATOS.        
-                            $mostrarmensajes = selectMessage($username);
-                            echo"<table>";
-                            echo"<tr>";
-                            echo"<td>EMISOR</td><td>FECHA</th><td>ESTADO</td><td>ASUNTO</td>";
-                            echo"</tr>";
-                            while ($fila = mysqli_fetch_assoc($mostrarmensajes)) {
-                                echo"<tr>";
-                                echo"<td>";
-                                echo$fila['sender'];
-                                echo"</td>";
-                                echo"<td>";
-                                echo$fila['date'];
-                                echo"</td>";
-                                echo"<td>";
-                                echo$fila['read'];
-                                echo"</td>";
-                                echo"<td>";
-                                echo$fila['subject'];
-                                echo"</td>";
-                                echo"<form method='POST'>";
-                                echo"<td><input type='hidden' name='idmessage' value='" . $fila['idmessage'] . "'>";
-                                echo"<input type='submit' name='next' value='leer'></td>";
-                                echo"</form>";
-                                echo"</tr>";
-                            }
-                            echo"</table>";
-                            //DESPUES DE GUARDAR EN UN CAMPO OCULTO EL ID DE MENSAJE, LO UTILIZO 
-                            //PARA SABER QUE MENSAJE ABRIR DESPUES DEL FORMULARIO.      
+                            <div id="formulariodatos">
+                                <p class="titulo">BANDEJA DE ENTRADA</p>
+                                <?php
+                                $username = $_SESSION['username'];
+                                //Guardo en la variable $mostrarmensaje la función que muestra
+                                //todos los datos de la tabla message de la base de datos.
+                                $mostrarmensajes = selectMessage($username);
+                                echo "<form method='POST'>";
+                                echo "<table border=1>";
+                                echo "<tr class='data'>";
+                                echo "<td><p>Emisor</p></td>";
+                                echo "<td><p>Fecha</p></td>";
+                                echo "<td><p>Estado</p></td>";
+                                echo "<td><p>Asunto</p></td>";
+                                echo "</tr>";
+                                while ($fila = mysqli_fetch_assoc($mostrarmensajes)) {
+                                    echo "<tr>";
+                                    echo "<td class='msgs'>";
+                                    echo $fila['sender'];
+                                    echo "</td>";
+                                    echo "<td class='msgs'>";
+                                    echo $fila['date'];
+                                    echo "</td>";
+                                    echo "<td class='msgs'>";
+                                    echo $fila['read'];
+                                    echo "</td>";
+                                    echo "<td class='msgs'>";
+                                    echo $fila['subject'];
+                                    echo "</td>";
+                                    echo "<input type='hidden' name='idmessage' value='".$fila['idmessage']."'>";
+                                    echo "<td class='msgs'><input type='submit' name='next' value='Leer'></td>";
+                                    echo "</tr>";
+                                }
+                                echo "</table>";
+                                echo "</form>";
+                            echo "</div>";
+                            //despues de guardar en un campo oculto el id de mensaje, lo utilizo
+                            //para saber que mensaje abrir despues del formulario.    
                             if (isset($_POST['next'])) {
                                 $username = $_SESSION["username"];
                                 $idmessage = $_POST['idmessage'];
@@ -133,7 +135,7 @@ require_once 'msgbbdd.php';
                                 echo"<br><br><br><br>";
                                 echo$body;
                                 $estadomensaje = 1;
-                                //UNA VEZ LEIDO EL MENSAJE CAMBIO DE NO LEIDO A LEIDO EL MENSAJE.
+                                //una vez leido el mensaje cambio de no leido a leido el mensaje.
                                 cambiarEstadomensaje($estadomensaje, $idmessage);
                             }
                             ?>

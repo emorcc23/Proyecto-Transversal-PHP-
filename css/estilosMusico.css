@@ -351,5 +351,8 @@ form #botoncerrar:hover {
     position: absolute;
     font-size: 29px;
     background: rgba(55,55,55,.0);
+}
 
+.links a{
+    border: none;
 }

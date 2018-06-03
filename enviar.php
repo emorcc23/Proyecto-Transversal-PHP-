@@ -84,42 +84,49 @@ require_once 'msgbbdd.php';
                                 <?php cerraSession2() ?>
                             </ul>
                         </div>
-                        <div id="conciertosInteres">
-                            <p>OohMessage</p>
-                        </div>
                         <div id="contenidoInteres">
-                            <p class="titulo">ENVIAR NUEVO MENSAJE</p>
+                            <p class="titulo">ENVIAR UN NUEVO MENSAJE</p>
+                            <div id="formulariodatos">
+                                <form method="POST">
+                                    <table border="1">
+                                        <tr class="data">
+                                            <td><p>Remitente</p></td>
+                                        </tr>
+                                        <tr>
+                                            <?php
+                                            echo "<td><select name='remitente'>";
+                                            $nombres = selectNameuser();
+                                            while ($fila = mysqli_fetch_assoc($nombres)) {
+                                                echo "<option>";
+                                                echo $fila ['username'];
+                                                echo "</option>";
+                                            }
+                                            echo "</select></td>";
+                                            ?>
+                                        </tr>
+                                        <tr class="data">
+                                            <td><p>Asunto</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="text" name="asunto" required></td>
+                                        </tr>
+                                        <tr class="data">
+                                            <td><p>Escribe el mail a continuación</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <textarea name="texto" required>
+                                                </textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="submit" name="next" value="Enviar mensaje"></td>
+
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
                             <?php
-                            echo"<form action='' method='POST'>";
-
-                            echo"Remitente:<select name='remitente'>";
-                            //CON LA SIGUIENTE FUNCION Y EL BUCLE WHILE METO TODOS LOS USUARIOS DE LA 
-                            //BASE DE DATOS EN UN SELECT.
-                            $nombres = selectNameuser();
-                            while ($fila = mysqli_fetch_assoc($nombres)) {
-                                echo"<option>";
-                                echo $fila ["username"];
-                                echo"</option>";
-                            }
-                            echo"</select>";
-                            echo"<br><br>";
-                            echo"Remitente 2:&nbsp<input type='text' name='buscador' autocomplete='off' size='80'id='buscador' required><br><br>";
-                            echo"Asunto:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type='text' name='asunto' size='80'required>";
-                            echo"<br><br>";
-
-                            echo"Escriba el mail acontinuacion:<br><textarea name='texto' rows='12' cols='50' required>Escribe...
-                </textarea>";
-                            echo"<br><br>";
-
-                            echo"<input type='submit' name='next' value='enviar'>";
-                            echo"<br><br>";
-
-                            echo"</form>";
-
-                            echo"<div id = 'autobuscador'>";
-
-                            echo"</div>";
-
                             if (isset($_POST["next"])) {
                                 $remitente = $_POST["remitente"];
                                 $asunto = $_POST["asunto"];

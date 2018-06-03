@@ -58,7 +58,6 @@ require_once 'msgbbdd.php';
                     //por seguridad compruebo si el usuario existe
                     if (usuarioexiste($_SESSION['username']) > 0) {
                         $username = $_SESSION['username'];
-                        echo"<script>alert('$username')</script>";
                         $mostrar = 1;
                     } else {
                         echo"<script>alert('El usuario ya no existe')</script>";
@@ -108,15 +107,13 @@ require_once 'msgbbdd.php';
                                 ?>
                             </ul>
                         </div>
-                        <div id="conciertosInteres">
-                            <p>OohMessage</p>
-                        </div>
+
                         <div id="contenidoInteres">
                             <p class="titulo">OhhMessage</p>
                             <?php
-                            echo"<p><a href='enviar.php'>ENVIAR UN MENSAJE</a></p>";
-                            echo"<p><a href='entrada.php'>CONSULTAR BANDEJA DE ENTRADA</a></p>";
-                            echo"<p><a href='enviados.php'>CONSULTA MENSAJES ENVIADOS</a></p>";
+                            echo"<p class='links'><a href='enviar.php'>ENVIAR UN MENSAJE</a></p>";
+                            echo"<p class='links'><a href='entrada.php'>CONSULTAR BANDEJA DE ENTRADA</a></p>";
+                            echo"<p class='links'><a href='enviados.php'>CONSULTA MENSAJES ENVIADOS</a></p>";
                             ?>
 
 

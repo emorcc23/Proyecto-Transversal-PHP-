@@ -84,39 +84,38 @@ require_once 'msgbbdd.php';
                                 <?php cerraSession2() ?>
                             </ul>
                         </div>
-                        <div id="conciertosInteres">
-                            <p>OohMessage</p>
-                        </div>
                         <div id="contenidoInteres">
-                            <p class="titulo">BANDEJA DE SALIDA</p>
-                            <?php
-                            //LLAMADA DE VARIABLES POR SESSION NECESARIAS PARA LAS FUNCIONES
-                            $username = $_SESSION["username"];
-
-                            //CON LA SIGUIENTE FUNCION MUESTRO TODOS LOS MENSAJES FILTRADOS POR NOMBRE DE USUARIO.
-                            $mostrarmensajes = selectMessageSender($username);
-                            echo"<table>";
-                            echo"<tr>";
-                            echo"<td>DESTINATARIO</td><td>FECHA</th><td>ASUNTO</td>";
-                            echo"</tr>";
-                            // CON EL SIGUIENTE BUCLE WHILW MUESTRO LOS DATOS.
-                            while ($fila = mysqli_fetch_assoc($mostrarmensajes)) {
-                                echo"<tr>";
-                                echo"<td>";
-                                echo$fila['receiver'];
-                                echo"</td>";
-                                echo"<td>";
-                                echo$fila['date'];
-                                echo"</td>";
-                                echo"<td>";
-                                echo$fila['subject'];
-                                echo"</td>";
-                                echo"</tr>";
-                            }
-
-                            echo"</table>";
-                            ?>
-
+                            <div id="formulariodatos">
+                                <p class="titulo">BANDEJA DE ENVIADOS</p>
+                                <?php
+                                $username = $_SESSION['username'];
+                                //Guardo en la variable $mostrarmensaje la función que muestra
+                                //todos los datos de la tabla message de la base de datos.
+                                $mostrarmensajes = selectMessagesENDER($username);
+                                echo "<form method='POST'>";
+                                echo "<table border=1>";
+                                echo "<tr class='data'>";
+                                echo "<td><p>Destinatario</p></td>";
+                                echo "<td><p>Fecha</p></td>";
+                                echo "<td><p>Asunto</p></td>";
+                                echo "</tr>";
+                                while ($fila = mysqli_fetch_assoc($mostrarmensajes)) {
+                                    echo "<tr>";
+                                    echo "<td class='msgs'>";
+                                    echo $fila['receiver'];
+                                    echo "</td>";
+                                    echo "<td class='msgs'>";
+                                    echo $fila['date'];
+                                    echo "</td>";
+                                    echo "<td class='msgs'>";
+                                    echo $fila['subject'];
+                                    echo "</td>";
+                                    echo "</tr>";
+                                }
+                                echo "</table>";
+                                echo "</form>";
+                            echo "</div>";
+?>
 
                         </div>
                         <div id="titulonoticias">
