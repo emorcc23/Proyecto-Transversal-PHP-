@@ -194,8 +194,9 @@ function altaVotoMusico2() {
 function conviertearray($datos) {
     $cont = 0;
     while ($fila = mysqli_fetch_assoc($datos)) {
-        $f = Array("id_ciudad" => $fila["id_ciudad"], "nombre" => utf8_encode($fila["nombre"]));
-        $resultado[$cont] = $f;
+        //$f = Array("id_ciudad" => $fila["id_ciudad"], "nombre" => utf8_encode($fila["nombre"]));
+        $resultado[$cont]['id_ciudad'] = $fila['id_ciudad'];
+        $resultado[$cont]['nombre'] = utf8_encode($fila['nombre']);
         $cont++;
     }
     return $resultado;
