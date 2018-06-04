@@ -538,7 +538,7 @@ function mirarConciertosLocal($nombre, $id_usuario) {
     $select = "select musico.nombreart, concierto.fecha, concierto.pago, concierto.genero from musico inner join concierto on concierto.musico = musico.id_usuario  where concierto.localm like '$id_usuario';";
     $resultado = mysqli_query($c, $select);
     desconectar($c);
-    if ($fila = mysqli_fetch_assoc($resultado)) {
+    if ($fila = mysqli_fetch_assoc($resultado)) {    
         return $fila;
     } else {
         return -1;
@@ -1046,7 +1046,7 @@ function registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ci
 // Función que conecta a la base de datos 
 function conectar() {
     include('mysqlpass.php');
-    $conexion = mysqli_connect("localhost", $userbd, $passbd, "musica");
+    $conexion = mysqli_connect("localhost", $userbd, $passbd, "OhhMusic2");
     // Si no ha ido bien la conexión
     if (!$conexion) {
         die("No se ha podido establecer la conexión");

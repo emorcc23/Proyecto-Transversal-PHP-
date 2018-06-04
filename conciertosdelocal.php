@@ -114,6 +114,7 @@ extract($_SESSION);
                                 echo "<td><p>$nombre</p></td>";
                                 echo "<td><p>$fecha</p></td>";
                                 echo "<td><p>$hora</p></td>";
+                                $ngenero = utf8_encode($ngenero);
                                 echo "<td><p>$ngenero</p></td>";
                                 echo "<td><p>$estadop</p></td>";
                                 if ($estado == 0) {

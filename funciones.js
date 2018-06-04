@@ -71,8 +71,8 @@ function erroremail(){
 function cambiaprovincia()
 {
     var provincia=$("#provincia").val();
-    
     var ciudad = $("#city");
+    alert("manda");
      $.ajax({
                     url:"provincias.php",
                     method:"POST",
@@ -80,6 +80,7 @@ function cambiaprovincia()
                     dataType:'json',
                     success:function(data)
                     {
+                        alert("llega");
                         ciudad.empty();
                       for(var cont=0;cont<data.length;cont++)
                        {
@@ -117,4 +118,18 @@ function verificapass() {
         return false;
     }
 }
+
+function verificar() {
+    alert("verificar");
+                            var pass1 = document.getElementById("pass1").value;
+                            var pass2 = document.getElementById("pass2").value;
+                            if (pass1 != pass2) {
+                                alert("Las contraseñas no son iguales");
+                                return false;
+                            }
+                            else
+                            {                   
+                                return true;
+                            }
+                        }
 

@@ -58,14 +58,7 @@ require_once 'msgbbdd.php';
                 <img src="Imagenes/banner.jpg">
                 <div id="formulario">
                     <script>
-                        function verificar() {
-                            var pass1 = document.getElementById("pass1").value;
-                            var pass2 = document.getElementById("pass2").value;
-                            if (pass1 != pass2) {
-                                alert("Las contraseñas no son iguales");
-                                return false;
-                            }
-
+                        
                     </script>
                     <?php
                     if (isset($_POST['next'])) {
@@ -106,7 +99,7 @@ require_once 'msgbbdd.php';
                                     </tr>
                                     <tr>
                                         <td><input type="text" name="surname1" required></td>
-                                        <td><input type="password" name="pass1" required></td>
+                                        <td><input type="password" name="pass1" id="pass1" required></td>
                                     </tr>
                                     <tr class="data">
                                         <td><p>Segundo apellido</p></td>
@@ -114,7 +107,7 @@ require_once 'msgbbdd.php';
                                     </tr>
                                     <tr>
                                         <td><input type="text" name="surname2" required></td>
-                                        <td><input type="password" name="pass2" required></td>
+                                        <td><input type="password" name="pass2" id="pass2" required></td>
                                     </tr>
                                     <tr class="data">
                                         <td><p>Teléfono</p></td>
@@ -185,7 +178,7 @@ require_once 'msgbbdd.php';
                                         <td colspan="2"><input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload" class="file-input"></td>
                                     </tr>
                                     <tr>
-                                        <td id="botonr" colspan="2"><input type="submit" name="next" value="Registrarme como músico" id="button" onclick="erroremail()"></td>
+                                        <td id="botonr" colspan="2"><input type="submit" name="next" value="Registrarme como músico" id="button"></td>
                                     </tr>
 <!--                                    <tr>
                                         <td ><input type="button" value="prueba" id="prueba" onclick="erroremail()"></td>

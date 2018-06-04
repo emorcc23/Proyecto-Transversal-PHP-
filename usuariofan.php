@@ -133,8 +133,9 @@ require_once 'funciones.php';
                             $totalpaginas = ceil(($cuantosconciertos) / $elementospagina);
                             $listaConciertosAceptados = mostrarListaConciertosAceptados($inicio, $elementospagina);
 
-                            while ($lista = mysqli_fetch_assoc($listaConciertosAceptados)) {
+                            while ($lista = mysqli_fetch_assoc($listaConciertosAceptados)) {                            
                                 extract($lista);
+                                  $nomgenero= utf8_encode($nomgenero);
                                 echo "<tr>";
                                 $id_concierto = dimeidconcierto($nomconcierto);
 //                                echo "<td>$nomconcierto</td>";

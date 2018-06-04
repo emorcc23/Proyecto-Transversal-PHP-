@@ -99,7 +99,7 @@ require_once 'funciones.php';
                                     </tr>
                                     <tr>
                                         <td><input type="tel" name="phone" required></td>
-                                        <td><input type="password" name="pass1" required></td>
+                                        <td><input type="password" name="pass1" id="pass1" required></td>
                                     </tr>
                                     <tr class="data">
                                         <td><p>Provincia</p></td>
@@ -123,7 +123,7 @@ require_once 'funciones.php';
 
                                             </select>
                                         </td>
-                                        <td><input type="password" name="pass2" required></td>
+                                        <td><input type="password" name="pass2" id="pass2" required></td>
                                     </tr>
                                     <tr class="data">
                                         <td><p>Ciudad</p></td>

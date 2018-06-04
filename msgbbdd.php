@@ -114,7 +114,7 @@ function desconectar2($conexion){
 
 // Funcion para conectar a la base de datos
 function conectar2(){
-    $conexion = mysqli_connect("localhost", "root", "", "msg");
+    $conexion = mysqli_connect("localhost", "root", "ticmysql82", "msg");
     if(!$conexion){
         die("No se ha establecido conexion");
     }

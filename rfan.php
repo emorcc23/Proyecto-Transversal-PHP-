@@ -55,18 +55,7 @@ require_once 'funciones.php';
             <section id="banner">
                 <img src="Imagenes/banner.jpg">
                 <div id="formulario"> 
-                    <script>
-                        function verificar() {
-                            var pass1 = document.getElementById("pass1").value;
-                            var pass2 = document.getElementById("pass2").value;
-                            if (pass1 != pass2) {
-                                alert("Las contraseñas no son iguales");
-                                return false;
-                            }
-                            return true;
-                        }
-
-                    </script>
+                
                     <?php
                     if (isset($_POST["next"])) {
                         extract($_POST);
@@ -135,7 +124,7 @@ require_once 'funciones.php';
                                         <td><p>Ciudad</p></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="password" name="pass1" required></td>
+                                        <td><input type="password" name="pass1" id="pass1" required></td>
                                         <td><select id="city" name="city" required>
                                             <?php
                                             $ciudades = leeciudades($primeraprovincia);
@@ -152,7 +141,7 @@ require_once 'funciones.php';
                                         <td><p>Dirección</p></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="password" name="pass2" required></td>
+                                        <td><input type="password" name="pass2" id="pass2" required></td>
                                         <td><input type="text" name="address" required></td>
                                     </tr>
                                     <tr class="data">
