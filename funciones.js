@@ -1,5 +1,5 @@
 var x;
-x=$(document);
+x = $(document);
 x.ready(inicializarEventos);
 
 $(document).ready(function () {
@@ -35,57 +35,57 @@ function buscador() {
 function inicializarEventos() {
     /*autoCompletado();*/
     var x;
-   /* x = $("#buscador2");
-    x.click(presionBuscador);*/
-    x=$("#provincia");
+    /* x = $("#buscador2");
+     x.click(presionBuscador);*/
+    x = $("#provincia");
     x.change(cambiaprovincia);
     $("#email").keyup(comprobaremail);
 }
 
 
-function comprobaremail(){
+function comprobaremail() {
     var prueba = 0;
     var email = $("#email").val();
-    
+
     $.ajax({
         url: 'comprobaciones.php',
         method: 'POST',
         data: {email: email},
         dataType: 'json',
-        success : function (data) {
-            if(data['estado'] == 0){
+        success: function (data) {
+            if (data['estado'] == 0) {
                 document.getElementById('email').style.background = '#FFF';
             } else if (data['estado'] == 1) {
                 prueba = 1;
                 document.getElementById('email').style.background = '#FF5733';
-            } 
+            }
         },
     });
 }
 
-function erroremail(){
+function erroremail() {
     var nombre = "isain";
     alert("entro");
 }
 
 function cambiaprovincia()
 {
-    var provincia=$("#provincia").val();
+    var provincia = $("#provincia").val();
     var ciudad = $("#city");
-     $.ajax({
-                    url:"provincias.php",
-                    method:"POST",
-                    data:{provincia:provincia},
-                    dataType:'json',
-                    success:function(data)
-                    {
-                        ciudad.empty();
-                      for(var cont=0;cont<data.length;cont++)
-                       {
-                            ciudad.append('<option value=' + data[cont]['id_ciudad'] + '>'+ data[cont]['nombre'] + '</option>');
-                       }
-                    } ,
-     });
+    $.ajax({
+        url: "provincias.php",
+        method: "POST",
+        data: {provincia: provincia},
+        dataType: 'json',
+        success: function (data)
+        {
+            ciudad.empty();
+            for (var cont = 0; cont < data.length; cont++)
+            {
+                ciudad.append('<option value=' + data[cont]['id_ciudad'] + '>' + data[cont]['nombre'] + '</option>');
+            }
+        },
+    });
 }
 
 function verifech()
@@ -118,16 +118,14 @@ function verificapass() {
 }
 
 function verificar() {
-    alert("verificar");
-                            var pass1 = document.getElementById("pass1").value;
-                            var pass2 = document.getElementById("pass2").value;
-                            if (pass1 != pass2) {
-                                alert("Las contraseñas no son iguales");
-                                return false;
-                            }
-                            else
-                            {                   
-                                return true;
-                            }
-                        }
+    var pass1 = document.getElementById("pass1").value;
+    var pass2 = document.getElementById("pass2").value;
+    if (pass1 != pass2) {
+        alert("Las contraseñas no son iguales");
+        return false;
+    } else
+    {
+        return true;
+    }
+}
 
