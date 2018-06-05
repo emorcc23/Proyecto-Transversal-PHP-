@@ -1060,4 +1060,98 @@ function desconectar($conexion) {
     mysqli_close($conexion);
 }
 
+//Funcion para ver cuantos mensaje estan pendientes por leer.
+function mensajeSinLeer($username){
+    $c = conectar();
+    $select = "select count(*) as sinleer from message where message.read = 0 and receiver like '$username';";
+    $resultado = mysqli_query($c, $select);
+    if($fila = mysqli_fetch_assoc($resultado)){
+        extract($fila);
+        $resultado = $sinleer;
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+    
+}
+
+//Funcion que muestra los mensajes enviados del usuario logeado.
+function selectMessageSender($username){
+    $c = conectar();
+    $select = "select idmessage,sender,receiver,date,message.read,subject from message where sender='$username' order by date desc;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+//Function que cambia el estado del mensaje:
+function cambiarEstadomensaje($estadomensaje,$idmessage){
+    $c = conectar();
+    $update = "update message set message.read=$estadomensaje where idmessage=$idmessage;";
+    if(mysqli_query($c, $update)){
+        $resultado = "ok";
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+}
+
+//Funcion que muestra el mensaje segun usuario;
+function Mensaje($idmessage){
+    $c = conectar();
+    $select = "select body from message where idmessage=$idmessage;";
+    $resultado = mysqli_query($c, $select);
+    $fila = mysqli_fetch_assoc($resultado);
+    desconectar($c);
+    return $fila['body'];
+}
+
+//Funcion que muestra los mensajes recibidos del usuario logeado.
+function selectMessage($username){
+    $c = conectar();
+    $select = "select idmessage,sender,date,message.read,subject from message where receiver='$username' order by date desc;";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
+//Funcion para dar de alta un evento
+function alta_evento($username,$tipoevento){
+    $c = conectar();
+    $insert = "insert into event (user, date, type) values('$username',now(),'$tipoevento')";
+    if(mysqli_query($c, $insert)){
+        $resultado = "ok";
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+    
+} 
+
+//Funcion que inserta el envio de mensaje en la base de datos
+function insertarMensaje($username,$remitente,$asunto,$texto){
+    $c = conectar();
+    $insert = "insert into message (sender,receiver,date,message.read,subject,body) values ('$username','$remitente',now(),0,'$asunto','$texto')";
+    if(mysqli_query($c, $insert)){
+        $resultado = "ok";
+    }else{
+        $resultado = mysqli_error($c);
+    }
+    desconectar($c);
+    return $resultado;
+    
+}
+
+//Funcion que muestra todos los usuarios de la base de datos
+function selectNameuser(){
+    $c = conectar();
+    $select = "select usuario as username from login";
+    $resultado = mysqli_query($c, $select);
+    desconectar($c);
+    return $resultado;
+}
+
+
 ?>

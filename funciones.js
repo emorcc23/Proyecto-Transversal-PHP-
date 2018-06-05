@@ -72,7 +72,6 @@ function cambiaprovincia()
 {
     var provincia=$("#provincia").val();
     var ciudad = $("#city");
-    alert("manda");
      $.ajax({
                     url:"provincias.php",
                     method:"POST",
@@ -80,7 +79,6 @@ function cambiaprovincia()
                     dataType:'json',
                     success:function(data)
                     {
-                        alert("llega");
                         ciudad.empty();
                       for(var cont=0;cont<data.length;cont++)
                        {

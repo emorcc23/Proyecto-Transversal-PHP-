@@ -1,8 +1,7 @@
 <?php
 
 require_once 'bbdd.php';
-require_once 'msgbbdd.php';
-require_once 'funciones.php';
+//require_once 'msgbbdd.php';
 
 //Desarrollador: Isain Alvaro
 //Control desplegable de usuario
@@ -194,13 +193,13 @@ function altaVotoMusico2() {
 function conviertearray($datos) {
     $cont = 0;
     while ($fila = mysqli_fetch_assoc($datos)) {
-        //$f = Array("id_ciudad" => $fila["id_ciudad"], "nombre" => utf8_encode($fila["nombre"]));
-        $resultado[$cont]['id_ciudad'] = $fila['id_ciudad'];
-        $resultado[$cont]['nombre'] = utf8_encode($fila['nombre']);
+        $f = Array("id_ciudad" => $fila["id_ciudad"], "nombre" => utf8_encode($fila["nombre"]));
+        $resultado[$cont] = $f;
         $cont++;
     }
     return $resultado;
 }
+
 
 //Desarrollador: Artur
 //function conviertearray($datos) {

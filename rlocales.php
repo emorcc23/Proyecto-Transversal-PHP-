@@ -64,7 +64,7 @@ require_once 'funciones.php';
 
 
                             if (registrar_local($username, $pass1, $name, $mail, $phone, $city, $location, $target_file, $aforo) == "ok") {
-                                alta_usuarios($username, $pass1, $name, $name);
+                              //  alta_usuarios($username, $pass1, $name, $name);
                                 echo"<script>alert('Se ha registrado el local correctamente')</script>";
                                 header("Refresh:0; url=login.php");
                             } else {
