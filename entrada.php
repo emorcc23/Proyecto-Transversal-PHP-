@@ -162,7 +162,7 @@ require_once 'funciones.php';
                                     echo"<div class='noti'>";
 //                                echo"<p>$nomconcierto</p>";
 //                                echo"<p>$fecha</p>";
-                                    echo"<p><a href='conciertos.php' <p>$nomconcierto --- $fecha</p><img id='imgconc' src='Imagenes/AFS31.jpg'></a></p>";
+                                    echo"<p><a href='' <p>$nomconcierto --- $fecha</p><img id='imgconc' src='Imagenes/AFS31.jpg'></a></p>";
                                     echo"</div>";
                                 }
                                 ?>
