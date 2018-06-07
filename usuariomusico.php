@@ -82,7 +82,6 @@ require_once 'funciones.php';
                             </ul>
                         </div>
                         <div id="conciertosInteres">
-                            <p>Conciertos que pueden interesarte</p>
                         </div>
                         <div id="contenidoInteres">
                             <p class="titulo">LISTA DE TODOS LOS CONCIERTOS PROPUESTOS</p>

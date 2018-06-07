@@ -12,6 +12,7 @@ require_once 'funciones.php';
         <link rel="stylesheet" href="css/estilosMusico.css">
         <script src="jquery.min.js"></script>
         <script type="text/javascript" src="funciones.js"></script>
+        <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " > </script> 
     </head>
     <body>
         <header>
@@ -144,7 +145,7 @@ require_once 'funciones.php';
                                 $enviado = insertarMensaje($username, $remitente, $asunto, $texto);
 
                                 if ($enviado == "ok") {
-                                    echo"Mensaje enviado satisfactoriamente";
+                                    echo"<script>swal('¡ Mensaje Enviado ¡','Puedes seguir enviando mensajes','success')</script>";
                                 } else {
                                     echo"Error al enviar el mensaje $enviado";
                                 }
