@@ -37,7 +37,7 @@
 
 #centro {
     border: solid;
-    margin-top: -960px;
+    margin-top: -950px;
     margin-left: 80px;
     position: absolute;
     background: rgba(51,51,51,0.6);
@@ -190,7 +190,7 @@ hr {
 }
 
 */
-#miperfil {
+/*#miperfil {
     border: none;
     position: absolute;
     background: rgba(255,255,255,0.3);
@@ -284,7 +284,7 @@ hr {
     color: #fff;
     font-size: 18px;
     margin-left: 25px;
-}
+}*/
 
 #centro ul li a {
     
@@ -333,4 +333,50 @@ hr {
     width: 370px; 
     color: black;
     border-radius: 0px;
+}
+
+#crearconcierto table {
+    margin-left: 1200px;
+    border-collapse: collapse;
+    border: solid;
+    border-width: thin;
+    text-align: center;
+    width: 365px;
+    border-color: rgba(255,255,255,.3);
+}
+
+#crearconcierto input {
+    width: 97%;
+    height: 100%;
+    text-align: center;
+    padding: 5px;
+    margin: 4px;
+}
+
+#crearconcierto select {
+    text-align: center;
+    width: 97%;
+    height: 100%;
+    padding: 5px;
+    margin: 4px;
+}
+
+#crearconcierto table #titulo p {
+    background: rgba(55,55,55,.9);
+    color: #fff;
+    font-size: 25px;
+}
+
+#crearconcierto table td p {
+    color: black;
+    font-size: 15px;
+    padding: 15px;
+}
+
+#crearconcierto table .data {
+    background: rgba(255,255,255,.8);
+}
+
+#crearconcierto table .data p {
+    color: rgba(55,55,55,.9);
 }

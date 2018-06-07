@@ -95,29 +95,58 @@ require_once 'funciones.php';
                             </nav>
 
                             <div id="miperfil">
-                                <p id="tituloperfil">Organizar un concierto</p>
-                                <div id="formulariodatos">
-                                    <form method="post" onsubmit="return verifech()">  
-
-                                        <p>Nombre:<input type="text" name="nombre" id="nombre" required></p>
-                                        <?php
-                                        echo"<p>Fecha:<input type='date' name='fecha' id='fecha' value='" . date('Y-m-d') . "'" . "required></p>";
-                                        ?>
-
-                                        <p>Hora:<input type="time" name="hora" required></p>
-                                        <?php
-                                        echo "<p>Genero:<select id='select' name='gender'>";
-                                        $generos = muestrageneros();
-                                        while ($fila = mysqli_fetch_assoc($generos)) {
-                                            extract($fila);
-                                            $nombre = utf8_encode($nombre);
-                                            echo "<option value='$id_genero'>$nombre</option>";
-                                        }
-                                        echo "</select></p>";
-                                        ?>
-                                        <p>Precio de entradas:<input type="number" name="pago" required> €</p>
-                                        <p><input type="submit" value="Finalizar"></p>
-                                        <br><br><br>
+                                
+                                <div id="crearconcierto">
+                                    <form method="POST" onsubmit="return verifech()">
+                                        <table border="1">
+                                            <tr id="titulo">
+                                                <td><p>Organizar un concierto</p></td>
+                                            </tr>
+                                            <tr class="data">
+                                                <td><p>Nombre</p></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" name="nombre" id="nombre" required></td>
+                                            </tr>
+                                            <tr class="data">
+                                                <td><p>Fecha</p></td>
+                                            </tr>
+                                            <tr>
+                                                <?php
+                                                echo"<td><input type='date' name='fecha' id='fecha' value='" . date('Y-m-d') . "'" . "required></td>";
+                                                ?>
+                                            </tr>
+                                            <tr class="data">
+                                                <td><p>Hora</p></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="time" name="hora" required></td>
+                                            </tr>
+                                            <tr class="data">
+                                                <td><p>Género</p></td>
+                                            </tr>
+                                            <tr>
+                                                <?php
+                                                echo "<td><select id='select' name='gender'>";
+                                                $generos = muestrageneros();
+                                                while ($fila = mysqli_fetch_assoc($generos)) {
+                                                    extract($fila);
+                                                    $nombre = utf8_encode($nombre);
+                                                    echo "<option value='$id_genero'>$nombre</option>";
+                                                }
+                                                echo "</select></td>";
+                                                ?>
+                                            </tr>
+                                            <tr class="data">
+                                                <td><p>Precio de entradas</p></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="number" name="pago" required placeholder="en euros..."></td>
+                                            </tr>
+                                            <tr class="boton">
+                                                <td><input type="submit" value="Crear concierto"></td>
+                                            </tr>
+                                        </table>
                                     </form>
                                 </div>
                             </div>

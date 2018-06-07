@@ -88,7 +88,6 @@ extract($_SESSION);
                         </nav>
                         <?php
                         if (isset($_SESSION['username'])) {
-                            echo"<p>Conciertos de tu local.</p>";
                             $id_usuario = dimeidusuario($username);
                             $conciertos = listaconciertoslocal($id_usuario);
                             echo "<table id='tabladedatos' border=1>";
@@ -125,7 +124,7 @@ extract($_SESSION);
                                         echo "<td class='conciertop'><a href='confirmarconcierto.php?id=$id_concierto'>Hay $musicospropuestos"
                                         . "músicos propuestos.</a></td>";
                                     } else {
-                                        echo"<td class='conciertop'><a href='borraconcierto.php?id=$id_concierto'><span class='icon-down-dir'></span></a></td>";
+                                        echo"<td class='conciertop'><a href='borraconcierto.php?id=$id_concierto'><span class='icon-trash'></span></a></td>";
                                     }
                                 } else {
                                     if ($estado == 1) {
@@ -153,6 +152,7 @@ extract($_SESSION);
                     ?>
                 </div>
             </section>
+                
         </main>
         <footer>
             <div class="contenedor">

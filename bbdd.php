@@ -1046,7 +1046,7 @@ function registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ci
 // Función que conecta a la base de datos 
 function conectar() {
     include('mysqlpass.php');
-    $conexion = mysqli_connect("localhost", $userbd, $passbd, "OhhMusic2");
+    $conexion = mysqli_connect("localhost", $userbd, $passbd, "musica");
     // Si no ha ido bien la conexión
     if (!$conexion) {
         die("No se ha podido establecer la conexión");
