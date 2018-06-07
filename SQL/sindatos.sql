@@ -1,4 +1,4 @@
-
+DROP DATABASE OhhMusic2;
 CREATE DATABASE OhhMusic2;
 USE OhhMusic2;
 
@@ -8236,7 +8236,6 @@ INSERT INTO `ciudad` (`id_ciudad`,`nombre`,`provincia`) VALUES (8112,'Riu de Cer
 INSERT INTO `ciudad` (`id_ciudad`,`nombre`,`provincia`) VALUES (8113,'Zierbena','Bizkaia');
 INSERT INTO `ciudad` (`id_ciudad`,`nombre`,`provincia`) VALUES (8114,'Arratzu','Bizkaia');
 INSERT INTO `ciudad` (`id_ciudad`,`nombre`,`provincia`) VALUES (8115,'Ziortza-Bolibar','Bizkaia');
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
