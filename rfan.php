@@ -153,7 +153,7 @@ require_once 'funciones.php';
                                        <td><input type="number" name="phone"></td>
                                     </tr>
                                     <tr>
-                                        <td id="botonr" colspan="2"><input type="submit" name="next" value="Registrar Farn"></td>
+                                        <td id="botonr" colspan="2"><input type="submit" name="next" value="Registrar Fan"></td>
                                     </tr>
                                 </table>
                             </form>
