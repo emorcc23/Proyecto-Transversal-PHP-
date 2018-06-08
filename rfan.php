@@ -145,14 +145,12 @@ require_once 'funciones.php';
                                         <td><input type="text" name="address" required></td>
                                     </tr>
                                     <tr class="data">
-                                        <td colspan="2"><p>Imagen de perfil</p></td>
+                                        <td><p>Imagen de perfil</p></td>
+                                        <td><p>Teléfono</p></td>
                                     </tr>
                                     <tr>
-                                       <td colspan="2"><input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload" class="file-input"></td> 
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
+                                       <td><input type="file" accept=".jpeg,.png" name="fileupload" id="fileupload" class="file-input"></td> 
+                                       <td><input type="number" name="phone"></td>
                                     </tr>
                                     <tr>
                                         <td id="botonr" colspan="2"><input type="submit" name="next" value="Registrar Farn"></td>

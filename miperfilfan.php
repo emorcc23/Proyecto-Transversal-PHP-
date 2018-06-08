@@ -183,6 +183,12 @@ Pagina de locales.
 //                                            echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload' class='file-input'></td>";
                                             echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload'></td>";
                                             echo "</tr>";
+                                            echo "<tr class='data'>";
+                                            echo "<td><p>Dirección</p></td>";
+                                            echo "</tr>";
+                                            echo "<tr>";
+                                            echo "<td><input type='text' name='address' value=$direccion>";
+                                            echo "</tr>";
                                             echo "<tr id='botones'>";
                                             echo "<td><p><input type='button' value='Cambiar contraseña' id='contaseña' class='boton' onClick='abrirParametros()'></p></td>";
                                             echo "<td><p><input type='submit' value='Modificar datos de perfil' id='button' class='boton'></p></td>";
