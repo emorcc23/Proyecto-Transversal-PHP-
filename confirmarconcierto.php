@@ -41,7 +41,6 @@ session_start();
                         <li><a href="fans.php">Fans</a></li>
                         <li><a href="contacto.php">Contacto</a></li>
                     </ul>
-
                 </nav>
             </div>
         </header>       
@@ -85,7 +84,6 @@ session_start();
                                 <li><a href="miperfillocal.php">Configuración</a></li>
                                 <?php cerraSession2() ?>
                             </ul>
-
                         </nav>    
                         <?php
                         extract($_SESSION);
@@ -106,8 +104,6 @@ session_start();
                                 if (isset($_GET['id'])) {
                                     if (compruebaconciertoesdelocal($_SESSION['username'], $_GET['id']) == "ok") {
                                         $datosconcierto = infoconcierto($_GET['id']);
-
-
                                         if ($datos = mysqli_fetch_assoc($datosconcierto)) {
                                             extract($datos);
                                             echo"<div id='datosconciertos'>";
@@ -164,11 +160,7 @@ session_start();
                         ?>
                         </ul>
                     </div>
-                    <div id="titulonoticias">
-                        <p>Últimas noticias</p>
-                    </div>
-                    <div id="noticias">
-                    </div>
+
                     </div>  
                     <?php
                 }
@@ -185,7 +177,6 @@ session_start();
                     <a class="icon-gmail" href="#"></a>
                 </div>
             </div>
-
         </footer>
     </body>
 </html>

@@ -1,4 +1,3 @@
-/*
 @import url(https://fonts.googleapis.com/css?gamily=Open+Sans);
 @import url(menuLocal.css);
 @import url(bannerLocal.css);
@@ -85,119 +84,6 @@ footer .contenedor {
 .menu ul li:hover ul {
     display: block;
 }
-
-.submenuu {
-    background-color: rgba(255,255,255,0.2);
-    list-style: none;
-}
-
-.menuLocal ul ul {
-    display: none;
-}
-
-.menuLocal ul {
-    list-style: none;
-}
-
-.menuLocal a span {
-    margin-left: 10px;
-    
-}
-
-.menuLocal ul li:hover ul {
-    display: block;
-}
-
-*/
-
-
-@import url(https://fonts.googleapis.com/css?gamily=Open+Sans);
-@import url(menuLocal.css);
-@import url(bannerLocal.css);
-@import url(infoLocal.css);
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Open Sans', sans-serif;
-}
-
-header {
-    width: 100%;
-    height: 50px;
-    background: #333;
-    color: #fff;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-}
-
-.contenedor {
-    width: 98%;
-    margin: auto;
-}
-
-h1 {
-    float: left;
-}
-
-header .contenedor {
-    display: table;
-}
-
-section {
-    width: 100%;
-    margin-bottom: 25px;
-}
-
-#bienvenidos {
-    text-align: center;
-}
-
-footer .contenedor {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-bottom: 25px;
-}
-
-.copy {
-    font-size: 20px;
-}
-
-.sociales {
-    width:100%;
-    text-align: center;
-    font-size: 28px;
-}
-
-.sociales a {
-    color: #333;
-    text-decoration: none;
-}
-
-.menu ul ul {
-    display: none;
-}
-
-.menu ul {
-    list-style: none;
-}
-
-.menu a span {
-    margin-left: 10px;
-    
-}
-
-.menu ul li:hover ul {
-    display: block;
-}
-
 
 .menuuser {
     list-style: none;
@@ -210,7 +96,6 @@ footer .contenedor {
 .menuuser a:hover {
     display: block;
 }
-
 
 form #botoncerrar {
     width: 170px;
@@ -246,8 +131,8 @@ form #botoncerrar:hover {
 
 #datosconciertos {
     width: 1000px;
-    margin-left: 700px;
-    margin-top: 100px;
+    margin-left: 550px;
+    margin-top: 10px;
     height: 600px;
     background: rgba(255,255,255,.3);
 }
@@ -308,7 +193,7 @@ form #botoncerrar:hover {
     border-width: thin;
     padding: 15px;
     margin-left: 115px;
-    margin-top: 300px;
+    margin-top: 270px;
     font-size: 15px;
 }
 
@@ -342,4 +227,3 @@ form #botoncerrar:hover {
     font-size: 28px;
     color: #fff;
 }
-

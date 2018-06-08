@@ -47,7 +47,6 @@ require_once 'funciones.php';
                         <li><a href="fans.php">Fans</a></li>
                         <li><a href="contacto.php">Contacto</a></li>
                     </ul>
-
                 </nav>
             </div>
         </header>       
@@ -65,7 +64,7 @@ require_once 'funciones.php';
                                 </tr>
                                 <tr>
                                     <td><input type="text" name="name" required></td>
-                                   <td rowspan="9"><textarea id="textarea" name="coment">
+                                    <td rowspan="9"><textarea id="textarea" name="coment">
                                         
                                         </textarea></td>
                                 </tr>
@@ -105,23 +104,20 @@ require_once 'funciones.php';
                                     <td id="botonr" colspan="2"><input type="submit" value="Enviar"></td>
                                 </tr>
                             </table>
-                            
                             <div class='content-all'>
-                    <div class='content-carrousel'>
-                        <figure><img src="Imagenes/07.jpg"></figure>
-                        <figure><img src="Imagenes/03.jpg"></figure>
-                        <figure><img src="Imagenes/04.jpg"></figure>
-                        <figure><img src="Imagenes/05.jpg"></figure>
-                        <figure><img src="Imagenes/06.jpg"></figure>
-                        <figure><img src="Imagenes/07.jpg"></figure>
-                        <figure><img src="Imagenes/04.jpg"></figure>
-                        <figure><img src="Imagenes/03.jpg"></figure>
-                        <figure><img src="Imagenes/05.jpg"></figure>
-                        
-                    </div>
-                </div>
-                            
-                            
+                                <div class='content-carrousel'>
+                                    <figure><img src="Imagenes/07.jpg"></figure>
+                                    <figure><img src="Imagenes/03.jpg"></figure>
+                                    <figure><img src="Imagenes/04.jpg"></figure>
+                                    <figure><img src="Imagenes/05.jpg"></figure>
+                                    <figure><img src="Imagenes/06.jpg"></figure>
+                                    <figure><img src="Imagenes/07.jpg"></figure>
+                                    <figure><img src="Imagenes/04.jpg"></figure>
+                                    <figure><img src="Imagenes/03.jpg"></figure>
+                                    <figure><img src="Imagenes/05.jpg"></figure>
+
+                                </div>
+                            </div>
                         </form>
                         <div id="informacion">
                             <p id="titulo">Ooh Music</p>
@@ -149,7 +145,6 @@ require_once 'funciones.php';
                     <a class="icon-gmail" href="#"></a>
                 </div>
             </div>
-
         </footer>
     </body>
 </html>

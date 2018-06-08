@@ -12,10 +12,7 @@ require_once 'funciones.php';
         <link rel="stylesheet" href="css/estilosanadirLocal.css">
         <script src="jquery.min.js"></script>
         <script type="text/javascript" src="funciones.js"></script>
-        <script type="text/javascript">
-
-
-        </script>
+        <script type="text/javascript"></script>
     </head>
     <body>
         <?php
@@ -32,7 +29,6 @@ require_once 'funciones.php';
                 header("Location:usuariolocal.php");
             } else {
                 ?>
-
                 <header>
                     <div class="contenedor">
                         <h1 class="icon-music">Ooh Music</h1>
@@ -93,9 +89,7 @@ require_once 'funciones.php';
                                     <?php cerraSession2() ?>
                                 </ul>
                             </nav>
-
                             <div id="miperfil">
-                                
                                 <div id="crearconcierto">
                                     <form method="POST" onsubmit="return verifech()">
                                         <table border="1">

@@ -102,14 +102,6 @@ Pagina login
                             </table>
                         </form>
                     </div>
-<!--                        <form method="post">
-                            <p>Nombre de usuario:</p>
-                            <p><input type="text" name="username" required></p>
-                            <p>Contraseña:</p>
-                            <p><input type="password" name="pass" required></p>
-                            <br><br><br>
-                            <p><input type="submit" value="Entrar a mi cuenta" id="button" name="boton"></p>
-                        </form>-->
     <?php
 }
 ?>

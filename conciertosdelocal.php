@@ -25,20 +25,17 @@ extract($_SESSION);
             }
         } else {
             ?>
-
             <header>
                 <div class="contenedor">
                     <h1 class="icon-music">Ooh Music</h1>
-                    <!-- Segundo -->
                     <input type="checkbox" id="menu-user">
                     <label id="label1" class="icon-user-circle" for="menu-user"></label>
-                    <!-- Primero -->
                     <input type="checkbox" id="menu-bar">
                     <label class="icon-menu" for="menu-bar"></label>
                     <nav class="menuuser">
                         <?php
-                    controlDesplegable();
-                    ?>
+                        controlDesplegable();
+                        ?>
                     </nav>
                     <nav class="menu">
                         <ul>
@@ -104,7 +101,6 @@ extract($_SESSION);
                             if (cancelaconciertosantiguos() != "ok") {
                                 echo "<script>alert('Error cancelando conciertos antiguos')</script>";
                             }
-
                             while ($fila = mysqli_fetch_assoc($conciertos)) {
                                 extract($fila);
                                 $ngenero = dimenombregenero($genero);
@@ -118,7 +114,6 @@ extract($_SESSION);
                                 echo "<td><p>$estadop</p></td>";
                                 if ($estado == 0) {
                                     $musicospropuestos = cuantosmusicospropuestos($id_concierto);
-
                                     if ($musicospropuestos > 0) {
                                         echo"<td class='conciertop'><a href='cancelarconcierto.php?id=$id_concierto'>Cancelar</a></td>";
                                         echo "<td class='conciertop'><a href='confirmarconcierto.php?id=$id_concierto'>Hay $musicospropuestos"
@@ -133,12 +128,6 @@ extract($_SESSION);
                                     } else {
                                         echo "<td class='conciertop'>Ninguno</td>";
                                     }
-
-
-
-                                    /* if ($estado == 1) {
-                                      echo "<td class='conciertop'><a href='quitamusicoconcierto.php?id=$id_concierto'>Quitar músico</a></td>";
-                                      } */
                                 }
                                 echo"</tr>";
                             }
@@ -152,7 +141,6 @@ extract($_SESSION);
                     ?>
                 </div>
             </section>
-                
         </main>
         <footer>
             <div class="contenedor">
@@ -162,7 +150,6 @@ extract($_SESSION);
                     <a class="icon-twitter" href="#"></a>
                     <a class="icon-instagram" href="#"></a>
                     <a class="icon-gmail" href="#"></a>
-
                 </div>
             </div>
         </footer>

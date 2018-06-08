@@ -1,14 +1,13 @@
 <?php
 
 require_once 'bbdd.php';
-//require_once 'msgbbdd.php';
 
+//require_once 'msgbbdd.php';
 //Desarrollador: Isain Alvaro
 //Control desplegable de usuario
 function controlDesplegable() {
     $mostrar = 0;
     if (isset($_SESSION['username'])) {
-
         $username = $_SESSION['username'];
         echo "<p id='saludo'>Hola $username</p>";
         echo "<style type='text/css'>";
@@ -31,11 +30,9 @@ function controlDesplegable() {
                 break;
             default:
         }
-        
+
         $mensajessinleer = mensajeSinLeer($username);
         echo"<a href='entrada.php'>Mensajes Pendientes por leer $mensajessinleer</a>";
-        
-        
     } else {
         echo "<a href='login.php'>Iniciar Sesión</a>";
     }
@@ -199,7 +196,6 @@ function conviertearray($datos) {
     }
     return $resultado;
 }
-
 
 //Desarrollador: Artur
 //function conviertearray($datos) {

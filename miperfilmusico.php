@@ -121,7 +121,7 @@ and open the template in the editor.
                     ?>
                     <div id="miperfil">
 
-                        
+
                         <form method="post" enctype="multipart/form-data">
                             <table border="1">
                                 <?php
@@ -183,7 +183,7 @@ and open the template in the editor.
                                         echo "</tr>";
                                         echo "<tr class='data'>";
                                         echo "<td><p>Ciudad:</p></td>";
-                                        echo "<td><p>Imagen:</p></td>";
+                                        echo "<td><p>Provincia:</p></td>";
                                         echo "</tr>";
                                         echo "<tr>";
                                         echo "<td><select id='provincia'>";
@@ -200,12 +200,6 @@ and open the template in the editor.
                                         }
                                         echo "</select></td>";
 //                                        echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload' class='file-input'></td>";
-                                        echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload'></td>";
-                                        echo "</tr>";
-                                        echo "<tr class='data'>";
-                                        echo "<td><p>Provincia</p></td>";
-                                        echo "</tr>";
-                                        echo "<tr>";
                                         echo "<td><select id='city' name='city'>";
                                         $ciudades = leeciudades($laprovincia);
                                         while ($fila = mysqli_fetch_assoc($ciudades)) {
@@ -218,7 +212,14 @@ and open the template in the editor.
                                             }
                                         }
                                         echo "</select></td>";
-                                        echo "<td></td>";
+                                        
+                                        echo "</tr>";
+                                        echo "<tr class='data'>";
+                                        echo "<td colspan='2'><p>Imagen</p></td>";
+                                        echo "</tr>";
+                                        echo "<tr>";
+                                        echo "<td colspan='2'><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload'></td>";
+                                        
                                         echo "</tr>";
                                         echo "<tr id='botones'>";
                                         echo "<td><p><input type='button' value='Cambiar contraseña' id='contaseña' class='boton' onClick='abrirParametros()'></p></td>";

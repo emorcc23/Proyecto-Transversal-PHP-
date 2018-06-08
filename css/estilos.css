@@ -86,7 +86,6 @@ footer .contenedor {
     display: block;
 }
 
-
 .menuuser {
     list-style: none;
 }
@@ -155,8 +154,6 @@ form #botoncerrar:hover {
     background: rgba(255,255,255,.9);
     cursor: pointer;
 }
-
-
 
 @media(min-width:1024px) {
     .contenedor {

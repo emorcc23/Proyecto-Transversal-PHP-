@@ -104,9 +104,6 @@ footer .contenedor {
     display: block;
 }
 
-
-
-
 #menu-user {
     display: none;
 }
@@ -145,7 +142,6 @@ header #label1 {
 #menu-user:checked ~ .menuuser {
     transform: translateX(70%);
 }
-
 
 form #botoncerrar {
     width: 170px;

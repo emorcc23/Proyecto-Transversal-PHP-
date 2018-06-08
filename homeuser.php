@@ -27,7 +27,6 @@ require_once 'funciones.php';
                     <?php
                     controlDesplegable();
                     ?>
-
                 </nav>
                 <nav class="menu">
                     <ul>
@@ -45,7 +44,6 @@ require_once 'funciones.php';
                         <li><a href="fans.php">Fans</a></li>
                         <li><a href="contacto.php">Contacto</a></li>
                     </ul>
-
                 </nav>
             </div>
         </header>       
@@ -106,7 +104,6 @@ require_once 'funciones.php';
                                 ?>
                             </ul>
                         </div>
-
                         <div id="contenidoInteres">
                             <p class="titulo">OhhMessage</p>
                             <?php
@@ -114,8 +111,6 @@ require_once 'funciones.php';
                             echo"<p class='links'><a href='entrada.php'>CONSULTAR BANDEJA DE ENTRADA</a></p>";
                             echo"<p class='links'><a href='enviados.php'>CONSULTA MENSAJES ENVIADOS</a></p>";
                             ?>
-
-
                         </div>
                         <div id="titulonoticias">
                             <p>Últimas noticias</p>
@@ -137,8 +132,6 @@ require_once 'funciones.php';
                     <?php
                 }
                 ?>
-
-
             </section>
         </main>
         <footer>
@@ -151,7 +144,6 @@ require_once 'funciones.php';
                     <a class="icon-gmail" href="#"></a>
                 </div>
             </div>
-
         </footer>
     </body>
 </html>

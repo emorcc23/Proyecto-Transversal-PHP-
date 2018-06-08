@@ -27,7 +27,6 @@ require_once 'funciones.php';
                     <?php
                     controlDesplegable();
                     ?>
-
                 </nav>
                 <nav class="menu">
                     <ul>
@@ -45,7 +44,6 @@ require_once 'funciones.php';
                         <li><a href="fans.php">Fans</a></li>
                         <li><a href="contacto.php">Contacto</a></li>
                     </ul>
-
                 </nav>
             </div>
         </header>       
@@ -113,32 +111,29 @@ require_once 'funciones.php';
                                 }
                                 echo "</table>";
                                 echo "</form>";
-                            echo "</div>";
-?>
-
-                        </div>
-                        <div id="titulonoticias">
-                            <p>Últimas noticias</p>
-                        </div>
-                        <div id="noticias">
-                            <?php
-                            $listaCociertos = listaConciertosPropuestos();
-                            while ($fila = mysqli_fetch_assoc($listaCociertos)) {
-                                extract($fila);
-                                echo"<div class='noti'>";
+                                echo "</div>";
+                                ?>
+                            </div>
+                            <div id="titulonoticias">
+                                <p>Últimas noticias</p>
+                            </div>
+                            <div id="noticias">
+                                <?php
+                                $listaCociertos = listaConciertosPropuestos();
+                                while ($fila = mysqli_fetch_assoc($listaCociertos)) {
+                                    extract($fila);
+                                    echo"<div class='noti'>";
 //                                echo"<p>$nomconcierto</p>";
 //                                echo"<p>$fecha</p>";
-                                echo"<p><a href='conciertos.php' <p>$nomconcierto --- $fecha</p><img id='imgconc' src='Imagenes/AFS31.jpg'></a></p>";
-                                echo"</div>";
-                            }
-                            ?>
-                        </div>
-                    </div>  
-                    <?php
-                }
-                ?>
-
-
+                                    echo"<p><a href='conciertos.php' <p>$nomconcierto --- $fecha</p><img id='imgconc' src='Imagenes/AFS31.jpg'></a></p>";
+                                    echo"</div>";
+                                }
+                                ?>
+                            </div>
+                        </div>  
+                        <?php
+                    }
+                    ?>
             </section>
         </main>
         <footer>
@@ -151,7 +146,6 @@ require_once 'funciones.php';
                     <a class="icon-gmail" href="#"></a>
                 </div>
             </div>
-
         </footer>
     </body>
 </html>

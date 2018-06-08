@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="css/estilos.css">
         <script src="jquery.min.js"></script>
         <script type="text/javascript" src="funciones.js"></script>
-
     </head>
     <body>
         <?php
@@ -25,12 +24,10 @@
                 <!-- Primero -->
                 <input type="checkbox" id="menu-bar">
                 <label class="icon-menu" for="menu-bar"></label>
-
                 <nav class="menuuser">
                     <?php
-                        controlDesplegable();
+                    controlDesplegable();
                     ?>
-                
                 </nav>
                 <nav class="menu">
                     <ul>
@@ -51,7 +48,6 @@
                 </nav>
             </div>
         </header>
-
         <main>
             <section id="banner">
                 <img src="Imagenes/banner.jpg">
@@ -61,33 +57,23 @@
                     <a href="login.php">Leer más</a>
                 </div>
             </section>
-
             <section id="bienvenidos">
                 <h2>Bienvenidos</h2>
                 <p>En nuestra página podrás disfrutar de todos los conciertos de tu ciudad con solo un clik, apoyar a tus artistas favoritos o hacerte fan.</p>
             </section>
-
             <section id="blog">
                 <h3>Aquí tienes a nuestros locales y músicos ¡Échales un ojo!</h3>
-
-
-
-
-
                 <div id="busc">
                     <form method="POST">  
                         <p>Buscar: <input id="buscador" type="text" name="buscador" autocomplete="off" placeholder="Busca aquí" required>
                             <input type="submit" value="GO" name="buscar2" id="auto" ></p>
                     </form>
                 </div>
-
                 <div id="autobuscador">
-
                 </div>
                 <?php
                 if (isset($_POST["buscar2"])) {
                     extract($_POST);
-
                     $resuBusqueda = buscador($buscador);
                     if ($resuBusqueda == -1) {
                         echo "<div id='descripcion' class='recuadro'>";
@@ -117,15 +103,12 @@
                                 echo"<td><p>$nombre</p></td><td><p>$fecha</p></td> <td><p>$hora</p></td>";
                                 echo "</tr>";
                             }
-
                             echo "</table>";
                         }
-
                         echo "</div>";
                     }
                 }
                 ?>
-                
                 <div class='content-all'>
                     <div class='content-carrousel'>
                         <figure><img src="Imagenes/img1.jpg"></figure>
@@ -138,17 +121,12 @@
                         <figure><img src="Imagenes/img8.jpg"></figure>
                         <figure><img src="Imagenes/img9.jpg"></figure>
                         <figure><img src="Imagenes/img10.jpg"></figure>
-                        
                     </div>
                 </div>
-                
                 <br><br><br><br><br><br><br><br>
-                
-                
-
                 <div class="contenedor">                       
                     <article>
-                        
+
                     </article>
                     <article>
                         <h4 id="vot">Musicos mas votados</h4>
@@ -159,8 +137,7 @@
                                     <td>Genero</td>
                                     <td>Votos de sus fans</td>
                                 </tr>
-                                
-                               <?php
+                                <?php
                                 $tendencias = totalVotosPorMusico();
                                 while ($fila = mysqli_fetch_assoc($tendencias)) {
                                     extract($fila);
@@ -174,19 +151,12 @@
                                         echo "<td><p>$totalvotos</p></td>";
                                     }
                                     echo "</tr>";
-                                    
                                 }
                                 echo "</table>";
                                 ?> 
-                                
-                            
-
-
                         </div>
                     </article>
-                    
                     <article id="prueba">
-                        
                         <h4 id="conc">Conciertos</h4>
                         <div class="listas" id="conciertos">
                             <table border="1">
@@ -198,7 +168,6 @@
                                     <td>Hora</td>
                                     <td>Pago</td>
                                 </tr>
-
                                 <?php
                                 if (isset($_GET['pagina'])) {
                                     extract($_GET);
@@ -244,7 +213,6 @@
                     </article>
                 </div>
             </section>
-
             <section id="info">
                 <h3>¡Vívelo! No solo es música...</h3>
                 <div class="contenedor">
@@ -271,9 +239,7 @@
                 cerraSession();
             }
             ?>
-
         </main>
-
         <footer>
             <div class="contenedor">
                 <p class="copy">Ooh Music &copy; 2018</p>

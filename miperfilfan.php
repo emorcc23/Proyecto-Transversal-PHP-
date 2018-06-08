@@ -117,7 +117,7 @@ Pagina de locales.
                     }
                     ?>
                     <div id="miperfil">
-                   
+
                         <div id="formulariodatos">
                             <form method="post" enctype="multipart/form-data">
                                 <table border="1">
@@ -176,18 +176,17 @@ Pagina de locales.
                                             echo "</tr>";
                                             echo "<tr class='data'>";
                                             echo "<td><p>Teléfono:</p></td>";
-                                            echo "<td><p>Imagen:</p></td>";
+                                            echo "<td><p>Direccion:</p></td>";
                                             echo "</tr>";
                                             echo "<tr>";
                                             echo "<td><input type='tel' name='phone' value='$telefono' required></td>";
-//                                            echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload' class='file-input'></td>";
-                                            echo "<td><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload'></td>";
+                                            echo "<td><input type='text' name='address' value=$direccion>";
                                             echo "</tr>";
                                             echo "<tr class='data'>";
-                                            echo "<td><p>Dirección</p></td>";
+                                            echo "<td colspan='2'><p>Imagen</p></td>";
                                             echo "</tr>";
                                             echo "<tr>";
-                                            echo "<td><input type='text' name='address' value=$direccion>";
+                                            echo "<td colspan='2'><input type='file' accept='.jpeg,.png' name='fileupload' id='fileupload'></td>";
                                             echo "</tr>";
                                             echo "<tr id='botones'>";
                                             echo "<td><p><input type='button' value='Cambiar contraseña' id='contaseña' class='boton' onClick='abrirParametros()'></p></td>";
@@ -195,7 +194,7 @@ Pagina de locales.
                                             echo "</tr>";
                                         } else {
                                             echo "<script>alert('El usuario se ha eliminado')</script>";
-                                        } 
+                                        }
                                     } else {
                                         echo "<script>alert('No puedes entrar aquí')</script>";
                                     }

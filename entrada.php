@@ -12,7 +12,7 @@ require_once 'funciones.php';
         <link rel="stylesheet" href="css/estilosMusico.css">
         <script src="jquery.min.js"></script>
         <script type="text/javascript" src="funciones.js"></script>
-        <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " > </script> 
+        <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " ></script> 
     </head>
     <body>
         <header> 
@@ -28,7 +28,6 @@ require_once 'funciones.php';
                     <?php
                     controlDesplegable();
                     ?>
-
                 </nav>
                 <nav class="menu">
                     <ul>
@@ -46,7 +45,6 @@ require_once 'funciones.php';
                         <li><a href="fans.php">Fans</a></li>
                         <li><a href="contacto.php">Contacto</a></li>
                     </ul>
-
                 </nav>
             </div>
         </header>       
@@ -74,7 +72,6 @@ require_once 'funciones.php';
                             muestradatosmusico();
                             ?>
                         </div>
-
                         <div id="menu">
                             <ul>
                                 <li><a href="usuariomusico.php">Perfil</a></li>
@@ -109,9 +106,9 @@ require_once 'funciones.php';
                                     echo $fila['date'];
                                     echo "</td>";
                                     echo "<td class='msgs'>";
-                                    if($read == 0){
+                                    if ($read == 0) {
                                         echo "No leido";
-                                    }else{
+                                    } else {
                                         echo "leido";
                                     }
                                     echo "</td>";
@@ -148,8 +145,6 @@ require_once 'funciones.php';
                                     cambiarEstadomensaje($estadomensaje, $idmessage);
                                 }
                                 ?>
-
-
                             </div>
                             <div id="titulonoticias">
                                 <p>Últimas noticias</p>
@@ -171,8 +166,6 @@ require_once 'funciones.php';
                         <?php
                     }
                     ?>
-
-
             </section>
         </main>
         <footer>
@@ -185,7 +178,6 @@ require_once 'funciones.php';
                     <a class="icon-gmail" href="#"></a>
                 </div>
             </div>
-
         </footer>
     </body>
 </html>

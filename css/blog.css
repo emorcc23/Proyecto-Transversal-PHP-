@@ -67,11 +67,11 @@
     min-width: 928px;
 
 }
-/**/
+
 #blog #votos {
     min-width: 928px;
 }
-/**/
+
 #blog article #vot {
     width:928px;
 }
@@ -88,7 +88,6 @@
     border-left-style: none;
 }
 
-/**/
 #blog article #votos table {
     border: none;
     border-collapse: collapse;
@@ -107,7 +106,6 @@
     height: 298px;
 }
 
-/**/
 #blog article #votos table tr td {
     padding: 1px;
 }
@@ -116,7 +114,6 @@
     padding: 1px;
 }
 
-/**/
 #blog article #votos #titulosvotos td {
     padding: 7px;
     font-size: 18px;
@@ -132,7 +129,6 @@
 
 }
 
-/**/
 #blog article #votos {
     height: 375px;
 }
@@ -324,10 +320,12 @@
     list-style: none;
     text-align: center;
 }  
+
 .autobuscar{  
     background: rgba(255,255,255);
     padding:12px;  
 }  
+
 .autobuscar:hover {
     background: rgba(255,255,255);
     border: solid;

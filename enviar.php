@@ -12,7 +12,7 @@ require_once 'funciones.php';
         <link rel="stylesheet" href="css/estilosMusico.css">
         <script src="jquery.min.js"></script>
         <script type="text/javascript" src="funciones.js"></script>
-        <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " > </script> 
+        <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " ></script> 
     </head>
     <body>
         <header>
@@ -28,7 +28,6 @@ require_once 'funciones.php';
                     <?php
                     controlDesplegable();
                     ?>
-
                 </nav>
                 <nav class="menu">
                     <ul>
@@ -46,7 +45,6 @@ require_once 'funciones.php';
                         <li><a href="fans.php">Fans</a></li>
                         <li><a href="contacto.php">Contacto</a></li>
                     </ul>
-
                 </nav>
             </div>
         </header>       
@@ -121,7 +119,6 @@ require_once 'funciones.php';
                                         </tr>
                                         <tr>
                                             <td><input type="submit" name="next" value="Enviar mensaje"></td>
-
                                         </tr>
                                     </table>
                                 </form>
@@ -151,8 +148,6 @@ require_once 'funciones.php';
                                 }
                             }
                             ?>
-
-
                         </div>
                         <div id="titulonoticias">
                             <p>Últimas noticias</p>
@@ -174,8 +169,6 @@ require_once 'funciones.php';
                     <?php
                 }
                 ?>
-
-
             </section>
         </main>
         <footer>
@@ -188,7 +181,6 @@ require_once 'funciones.php';
                     <a class="icon-gmail" href="#"></a>
                 </div>
             </div>
-
         </footer>
     </body>
 </html>
