@@ -3,7 +3,6 @@
 require_once 'bbdd.php';
 
 //require_once 'msgbbdd.php';
-//Desarrollador: Isain Alvaro
 //Control desplegable de usuario
 function controlDesplegable() {
     $mostrar = 0;
@@ -38,7 +37,6 @@ function controlDesplegable() {
     }
 }
 
-//Desarrollador: Artur
 //Sube una foto enviada por post al servidor.
 function subefoto() {
     if (isset($_FILES['fileupload'])) {
@@ -93,7 +91,6 @@ function subefoto() {
     return $target_file;
 }
 
-//Desarrolador: Isain Alvaro
 function eliminarVotoConcierto1($id_concierto) {
     return "<form action='' method='POST'>" .
             "<input type='hidden' value='$id_concierto' name='id_concierto'>" .
@@ -115,7 +112,6 @@ function eliminarVotoConcierto2() {
     }
 }
 
-//Desarrollador: Isain Alvaro
 //Funcion para mostrar el botón de voto
 function nuevoVotoConcierto($id_concierto) {
     return "<form action='' method='POST'>" .
@@ -124,7 +120,6 @@ function nuevoVotoConcierto($id_concierto) {
             "</form>";
 }
 
-//Desarrollador: Isain Alvaro
 //Funcion para registrar el voto de un concierto
 function altaVotoConcierto2() {
     if (isset($_POST['votoconcierto'])) {
@@ -186,7 +181,6 @@ function altaVotoMusico2() {
     }
 }
 
-//Desarrollador: Artur
 function conviertearray($datos) {
     $cont = 0;
     while ($fila = mysqli_fetch_assoc($datos)) {
@@ -197,7 +191,6 @@ function conviertearray($datos) {
     return $resultado;
 }
 
-//Desarrollador: Artur
 //function conviertearray($datos) {
 //    $cont = 0;
 //    while ($fila = mysqli_fetch_assoc($datos)) {
@@ -237,7 +230,6 @@ function bajaPeticion() {
     }
 }
 
-//Desarrolador: Alvaro -- Isain
 // Funcion que hace una tabla de todos los conciertos en que ha sido aceptado un musico en especial.
 function peticionAceptadaLocal($id_usuario) {
     echo"<table id='tablapropuestos2' border='1'>";
@@ -275,9 +267,6 @@ function peticionAceptadaLocal($id_usuario) {
     echo"</table>";
 }
 
-//Desarrollador: Alvaro -- Isain
-//Funcion que transforma en aceptado o no un numero
-//Desarrollador: Alvaro -- Isain
 // Funcion que transforma en aceptado o no un numero
 function estado($estadoP, $estado) {
     switch ($estadoP) {
@@ -293,7 +282,6 @@ function estado($estadoP, $estado) {
     }
 }
 
-//Desarrolador: Isain
 //Funcion que crea un  boton para dar de alta el musico en un concierto.
 function altaMusicoConcierto($id_concierto) {
     echo"<form action='' method='POST'>";
@@ -320,7 +308,6 @@ function insertarPeticion() {
     }
 }
 
-//Desarrolador: Isain
 //Esta función muestra un select con todos los locales y regresa el id_local elegido.
 function muestraSelectCiudad() {
     $datosCiudad = muestraDatosCiudadLocalMusico();
@@ -366,7 +353,6 @@ function muestraSelectCiudad() {
     }
 }
 
-//Desarrolador: Isain
 //Esta función muestra un select con todos los locales y regresa el id_local elegido.
 function muestraSelectLocal() {
     $datosLocales = muestraDatosLocal2();
@@ -388,7 +374,6 @@ function muestraSelectLocal() {
     }
 }
 
-//Desarrollador: Isain
 //Esta función muestra un select con todos los generos y regresa el id_genero elegido.
 function muestraSelectGenero($id_usuario) {
     $datosGeneros = muestrageneros();
@@ -426,7 +411,6 @@ function muestraSelectGenero($id_usuario) {
     insertarPeticion();
 }
 
-//Desarrollador: Isain
 //Muestra Usuario segun tipo
 function muestraUsuariosTipo($tipo) {
     switch ($tipo) {
@@ -443,7 +427,6 @@ function muestraUsuariosTipo($tipo) {
     }
 }
 
-//Desarrollador:Artur
 //Devuelve el nombre de un género por el id
 function dimenombregenero($idgenero) {
     $c = conectar();
@@ -459,7 +442,6 @@ function dimenombregenero($idgenero) {
     return $salida;
 }
 
-//Desarrollador: Artur
 //Muestra cual es el estado del concierto según el código
 function cualestado($num) {
     switch ($num) {
@@ -474,7 +456,6 @@ function cualestado($num) {
     return $cual;
 }
 
-//Desarrollador: Álvaro
 //Muestra los datos de perfil de fan
 function muestradatosfan() {
     if (isset($_SESSION['tipo'])) {
@@ -486,7 +467,6 @@ function muestradatosfan() {
     }
 }
 
-//Desarrolador Isain
 //Muestra los datos del perfil del musico
 function muestradatosmusico() {
     if (isset($_SESSION['tipo'])) {
@@ -499,7 +479,6 @@ function muestradatosmusico() {
     }
 }
 
-//Desarrollador Artur
 //Muestra los datos del perfil del local en los campos informativos.
 function muestradatoslocal() {
     if (isset($_SESSION['tipo'])) {
@@ -523,7 +502,6 @@ function muestradatoslocal() {
     }
 }
 
-//Desarrollador: Artur
 //Muestra el nombre y la foto de un usuario
 function imprimenombreyfoto($username) {
     $nombre = dimenombre($username);

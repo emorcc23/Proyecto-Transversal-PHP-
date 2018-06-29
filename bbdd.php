@@ -1,5 +1,4 @@
 <?php
-//Desarrollador: Isain 
 //Comprueba si el mail esta repetido
 function compruebameEmail(){
     $c = conectar();
@@ -9,7 +8,6 @@ function compruebameEmail(){
     return $resultado;
 }
 
-//Desarrollador: Artur
 //Devuelve la ruta de la foto de un usuario
 function dimefoto($usuario)
 {
@@ -27,7 +25,6 @@ function dimefoto($usuario)
     return $imagen;
 }
 
-//Desarrollado: Isain Alvaro
 //Funcion que borra el voto en caso de que este
 function eliminarVotoConcierto($id_usuario,$id_concierto){
     $c = conectar();
@@ -41,7 +38,6 @@ function eliminarVotoConcierto($id_usuario,$id_concierto){
     return $resultado;
 }
 
-//Desarrollado: Isain Alvaro
 //Funcion que valida si el voto del concierto ya esta registrado
 function verificarVotoConcierto($id_usuario,$id_concierto){
     $c = conectar();
@@ -57,7 +53,6 @@ function verificarVotoConcierto($id_usuario,$id_concierto){
     return $resultado;
 }
 
-//Desarrollador: Isain Alvaro
 //Obtiene el identificador de un concierto
 function dimeidconcierto($nomconcierto) {
     //Conectar base de datos
@@ -75,7 +70,6 @@ function dimeidconcierto($nomconcierto) {
         return -1;
     }
 }
-//Desarrollado: Isain Alvaro
 //Funcion que da de alta un voto en concierto
 function altaVotoConcierto($id_usuario,$id_concierto){
     $c = conectar();
@@ -90,7 +84,6 @@ function altaVotoConcierto($id_usuario,$id_concierto){
 }
 
 
-//Desarrollado: Isain Alvaro
 //Total votos por musico
 function totalVotosPorMusico(){
     $c = conectar();
@@ -100,7 +93,6 @@ function totalVotosPorMusico(){
     return $resultado;
 }
 
-//Desarrollador: Isain Alvaro
 function listaMusicosMasVotados($musico){
     $c = conectar();
     $select = "select m.nombreart, g.nombre from musico m inner join genero g on m.genero = g.id_genero where id_usuario = $musico;";
@@ -110,7 +102,6 @@ function listaMusicosMasVotados($musico){
 }
 
 
-//Desarrollado: Isain Alvaro
 //Funcion que borra el voto en caso de que este
 function eliminarVotoMusico($id_usuario,$id_musico){
     $c = conectar();
@@ -125,7 +116,6 @@ function eliminarVotoMusico($id_usuario,$id_musico){
 }
 
 
-//Desarrollado: Isain Alvaro
 //Funcion que valida si el voto ya esta registrado
 function verificarVotoMusico($id_usuario,$id_musico){
     $c = conectar();
@@ -143,7 +133,6 @@ function verificarVotoMusico($id_usuario,$id_musico){
 
 
 
-//Desarrollado: Isain Alvaro
 //Funcion que da de alta un voto
 function altaVotoMusico($id_usuario,$id_musico){
     $c = conectar();
@@ -157,7 +146,6 @@ function altaVotoMusico($id_usuario,$id_musico){
     return $resultado;
 }
 
-//Desarrollador: Artur
 //Dice la provincia de una ciudad
 function dimeprovinciadeciudad($ciudad)
 {
@@ -171,7 +159,6 @@ function dimeprovinciadeciudad($ciudad)
 }
     
 
-//Desarrollador: Artur
 //Lee la lista de provincias
 function dimeprovincias()
 {
@@ -183,7 +170,6 @@ function dimeprovincias()
     return $resultado;
 }
 
-//Desarrollador: Artur
 //Cancela conciertos antiguos
 function cancelaconciertosantiguos()
 {
@@ -198,7 +184,6 @@ function cancelaconciertosantiguos()
     return $resultado;
 }
 
-//Desarrollador: Alvaro -- Isain
 // Autocompletado buscador
 function autoCompletado() {
     $c = conectar();
@@ -218,7 +203,6 @@ function autoCompletado() {
     desconectar($c);
 }
 
-//Desarrollador: Alvaro -- Isain
 // Funcion que da todos los conciertos de una ciudad en especial
 function dimeCociertosPorCiudad($ciudad) {
     $c = conectar();
@@ -228,7 +212,6 @@ function dimeCociertosPorCiudad($ciudad) {
     return $resultado;
 }
 
-//Desarrollador: Alvaro -- Isain
 //Lista Conciertos, buscados por id.
 function dimeConciertosporid($id_concierto) {
     $c = conectar();
@@ -238,7 +221,6 @@ function dimeConciertosporid($id_concierto) {
     return $resultado;
 }
 
-//Desarrollador: Alvaro -- Isain
 //Funcion que dice que si el concierto esta aceptado o no.
 function dimeConciertosAceptados($id_usuario) {
     $c = conectar();
@@ -250,7 +232,6 @@ function dimeConciertosAceptados($id_usuario) {
     return $resultado;
 }
 
-//Desarrollador: Alvaro
 //Funcion que dice que si el concierto esta aceptado o no.
 function dimeConciertoAceptado($id_usuario, $id_concierto) {
     $c = conectar();
@@ -266,7 +247,6 @@ function dimeConciertoAceptado($id_usuario, $id_concierto) {
     return $resultado;
 }
 
-//Desarrollador: Artur
 //Dice cuantos conciertos aceptados hay, sirve para la paginación
 function cuantosconciertosaceptados() {
     $c = conectar();
@@ -279,7 +259,6 @@ function cuantosconciertosaceptados() {
     }
 }
 
-//Desarrollador: Artur
 //Quita músico de concierto
 //No se altera la tabla de peticiones marcando los cancelados. Simplemente se ponen en 1 al ser aceptados una vez.
 function quitamusicoconcierto($concierto) {
@@ -296,7 +275,6 @@ function quitamusicoconcierto($concierto) {
     return $resultado;
 }
 
-//Desarrollador: Artur
 //Cancela un concierto
 function cancelaconcierto($concierto) {
     $c = conectar();
@@ -310,7 +288,6 @@ function cancelaconcierto($concierto) {
     return $resultado;
 }
 
-//Desarrollador: Artur
 //Obtiene el alias del músico por el id
 function dimealiasmusico($musico) {
     $c = conectar();
@@ -326,7 +303,6 @@ function dimealiasmusico($musico) {
     return $resultado;
 }
 
-//Desarrollador: Artur
 //Confirma un concierto
 function confirmaconcierto($concierto, $musico) {
     $c = conectar();
@@ -345,7 +321,6 @@ function confirmaconcierto($concierto, $musico) {
     return $resultado;
 }
 
-//Desarrollador: Artur
 //Inserta una proposición de músico para concierto
 function insproposicion($concierto, $musico) {
     $c = conectar();
@@ -359,7 +334,6 @@ function insproposicion($concierto, $musico) {
     return $resultado;
 }
 
-//Desarrollador: Artur
 //Devuelve la lista de músicos que han propuesto actuar en un concierto
 function listamusicospropuestos($concierto) {
     $c = conectar();
@@ -369,7 +343,6 @@ function listamusicospropuestos($concierto) {
     return $resultado;
 }
 
-//Desarrollador: Artur
 //Información de un concierto
 function infoconcierto($concierto) {
     $c = conectar();
@@ -380,7 +353,6 @@ function infoconcierto($concierto) {
     return $resultado;
 }
 
-//Desarrollador: Artur
 //Comprueba si un concierto es realmente de un local. Función de seguridad
 function compruebaconciertoesdelocal($elocal, $concierto) {
     $c = conectar();
@@ -396,7 +368,6 @@ function compruebaconciertoesdelocal($elocal, $concierto) {
     desconectar($c);
 }
 
-//Desarrollador: Artur
 //Ver cuantos músicos propuestos para concierto
 function cuantosmusicospropuestos($concierto) {
     $c = conectar();
@@ -408,7 +379,6 @@ function cuantosmusicospropuestos($concierto) {
     return $cuantos;
 }
 
-//Desarrollador: Isain
 //funcion que da de baja la peticion a un concierto
 function bajaPeticionConcierto($id_usuario, $id_concierto) {
     $c = conectar();
@@ -422,7 +392,6 @@ function bajaPeticionConcierto($id_usuario, $id_concierto) {
     return $resultado;
 }
 
-//Desarrollador: Isain
 //funcion que da el id_genero de un musico desde el id_usuario.
 function dimeIdgeneroUsuario($id_usuario) {
     $c = conectar();
@@ -436,7 +405,6 @@ function dimeIdgeneroUsuario($id_usuario) {
     return $resultado;
 }
 
-//Desarrollador: Isain
 //Verifica si la peticion se ha realizado o no
 function verificarPeticion($id_usuario, $id_concierto) {
     $c = conectar();
@@ -452,7 +420,6 @@ function verificarPeticion($id_usuario, $id_concierto) {
     return $resultado;
 }
 
-//Desarrollador: Isain
 //Insertar una petición de concierto
 function insertarPeticionConcierto($id_usuario, $id_concierto) {
     $c = conectar();
@@ -466,7 +433,6 @@ function insertarPeticionConcierto($id_usuario, $id_concierto) {
     return $resultado;
 }
 
-//Desarrollador: Isain
 //Busqueda de conciertos por genero
 function conciertosPorGenero($gender) {
     $c = conectar();
@@ -476,7 +442,6 @@ function conciertosPorGenero($gender) {
     return $resultado;
 }
 
-//Desarrollador: Isain
 //Muestra id_ciudad de cada local o musico.
 function muestraDatosCiudadLocalMusico() {
     $c = conectar();
@@ -486,7 +451,6 @@ function muestraDatosCiudadLocalMusico() {
     return $resultado;
 }
 
-//Desarrollador: Isain
 //Lista de conciertos ya filtrados, segun sea el genero del musico que haya hecho login
 function listaConciertosporGenero($idgeneroMusico) {
     $c = conectar();
@@ -496,7 +460,6 @@ function listaConciertosporGenero($idgeneroMusico) {
     return $resultado;
 }
 
-//Desarrollador: Isain
 //Lista de conciertos propuestos
 function listaConciertosPropuestos() {
     $c = conectar();
@@ -506,7 +469,6 @@ function listaConciertosPropuestos() {
     return $resultado;
 }
 
-//Desarrollador: Isain
 //Muestra todos los conciertos ya programados
 function mostrarListaConciertosAceptados($inicio, $cuantos) {
     $c = conectar();
@@ -516,7 +478,6 @@ function mostrarListaConciertosAceptados($inicio, $cuantos) {
     return $resultado;
 }
 
-//Desarrollador: Isain
 //Ver el nombre del genero desde el id.
 function mirarGeneroId($genero) {
     $c = conectar();
@@ -531,7 +492,6 @@ function mirarGeneroId($genero) {
     }
 }
 
-//Desarrollador: Isain
 //Mirar conciertos en local
 function mirarConciertosLocal($nombre, $id_usuario) {
     $c = conectar();
@@ -545,7 +505,6 @@ function mirarConciertosLocal($nombre, $id_usuario) {
     }
 }
 
-//Desarrollador: Isain
 //Mirar conciertos en local
 function mirarConciertosLocal2($id_usuario) {
     $c = conectar();
@@ -555,7 +514,6 @@ function mirarConciertosLocal2($id_usuario) {
     return $resultado;
 }
 
-//Desarrollador: Isain
 //Buscador base de datos
 function buscador($buscador) {
     $c = conectar();
@@ -569,7 +527,6 @@ function buscador($buscador) {
     }
 }
 
-//Desarrollador:Artur
 //Baja de concierto
 //En el caso de no ser 0 el estado no se borrará.
 function bajaconcierto($idconcierto) {
@@ -583,7 +540,6 @@ function bajaconcierto($idconcierto) {
     desconectar($c);
 }
 
-//Desarrollador: Artur
 //Lista los conciertos que tiene un local
 function listaconciertoslocal($localm) {
     $c = conectar();
@@ -594,7 +550,6 @@ function listaconciertoslocal($localm) {
     return $resultado;
 }
 
-//Desarrollador: Artur
 //Da de alta un concierto
 //Hemos añadido el campo nombre a la tabla concierto
 function anadeconcierto($nombre, $fecha, $hora, $pago, $localm, $genero) {
@@ -610,7 +565,6 @@ function anadeconcierto($nombre, $fecha, $hora, $pago, $localm, $genero) {
     return $resultado;
 }
 
-//Desarrolador: Isain
 //Muestra Datos de locales
 function muestraDatosLocal2() {
     $c = conectar();
@@ -620,7 +574,6 @@ function muestraDatosLocal2() {
     return $resultado;
 }
 
-//Desarrolador: Isain
 ////Muestra Datos de los generos
 function muestrageneros() {
     $c = conectar();
@@ -630,7 +583,6 @@ function muestrageneros() {
     return $resultado;
 }
 
-//Desarrollador: Álvaro
 //Modifica los datos de un perfil fan
 function modificarperfilfan($usuario, $nombre, $email, $telefono, $ciudad, $apellidoa, $apellidob, $direccion, $imagen) {
     //Conectamos con la base de datos
@@ -654,7 +606,6 @@ function modificarperfilfan($usuario, $nombre, $email, $telefono, $ciudad, $apel
     return $resultado;
 }
 
-//Desarrollador: Alvaro
 function leerperfilfan($usuario) {
     //Conectamos con la base de datos
     $c = conectar();
@@ -664,7 +615,6 @@ function leerperfilfan($usuario) {
     return $resultado;
 }
 
-//Desarrollador:Isain Alvaro
 //Ordenar Musicos ordenados por genero musical
 function ordenarMusicosPorGenero() {
     $c = conectar();
@@ -674,7 +624,6 @@ function ordenarMusicosPorGenero() {
     return $resultado;
 }
 
-//Desarrollador:Isain
 //Registrar un musico
 function dimeidgenero($gender) {
     $c = conectar();
@@ -690,7 +639,6 @@ function dimeidgenero($gender) {
     }
 }
 
-//Desarrollador:Isain
 //Registrar un musico
 function registrar_musico($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad, $surname1, $surname2, $web, $nickname, $components, $gender,$imagen) {
     //llamamos a la funcion de registrar_login para obtener el idusuario
@@ -713,7 +661,6 @@ function registrar_musico($usuario, $pass, $tipo, $nombre, $email, $telefono, $c
     }
 }
 
-//Desarrollador:Isain
 //Registrar un fan
 function registrar_fan($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad, $surname1, $surname2, $address, $imagen) {
     // con la funcionregistrar_login obtenemos el id de usuario, despues damos de alta el fan en su respectiva tabla.
@@ -736,7 +683,6 @@ function registrar_fan($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciud
     }
 }
 
-//Desarrollador:Artur
 //Destacar o des-destacar un local
 function destacalocal($usuario, $destacado) {
     //Conectar base de datos
@@ -757,7 +703,6 @@ function destacalocal($usuario, $destacado) {
     return $resultado;
 }
 
-//Desarrollador:Artur
 //Modifica el password de un usuario
 //Se necesita el password antiguo por seguridad
 function modificarpassword($usuario, $pass) {
@@ -773,7 +718,6 @@ function modificarpassword($usuario, $pass) {
     return $resultado;
 }
 
-//Desarrollado:Artur
 //Obtiene la lista de locales ordenados por ciudad
 function listalocalesordenadosporciudad() {
     $c = conectar();
@@ -783,7 +727,6 @@ function listalocalesordenadosporciudad() {
     return $resultado;
 }
 
-//Desarrollador:Artur
 //Obtiene el identificador de un usuario
 function dimeidusuario($usuario) {
     //Conectar base de datos
@@ -820,7 +763,6 @@ function modificarperfilmusico($usuario, $nombre, $email, $telefono, $ciudad, $s
     return $resultado;
 }
 
-//Desarrollador:Artur
 //Modifica los datos de un perfil de local
 function modificaperfillocal($usuario, $nombre, $email, $telefono, $ciudad, $ubicacion, $imagen, $aforo) {
     //Conectar base de datos
@@ -844,7 +786,6 @@ function modificaperfillocal($usuario, $nombre, $email, $telefono, $ciudad, $ubi
     return $resultado;
 }
 
-//Desarrollador:Isain
 //Lee todos los datos del perfil de musico
 function leerPerfilMusico($usuario) {
     $c = conectar();
@@ -854,7 +795,6 @@ function leerPerfilMusico($usuario) {
     return $resultado;
 }
 
-//Desarrollador:Artur
 //Lee todos los datos del perfil de un local de la base de datos.
 function leeperfillocal($usuario) {
     //Conectar con la base de datos
@@ -867,7 +807,6 @@ function leeperfillocal($usuario) {
     return $resultado;
 }
 
-//Desarrollador:Artur
 //Elimina un usuario de la tabla principal login
 function borralogin($usuario) {
     $c = conectar();
@@ -880,7 +819,6 @@ function borralogin($usuario) {
     }
 }
 
-//Desarrollador:Artur
 //Devuelve el nombre de un usuario
 function dimenombre($usuario) {
     //Conectar con la base de datos
@@ -899,7 +837,6 @@ function dimenombre($usuario) {
     }
 }
 
-//Desarrollador: Artur
 //Devuelve el tipo de un usuario
 function dimetipousuario($usuario) {
     //Conexión base de datos
@@ -919,7 +856,6 @@ function dimetipousuario($usuario) {
     }
 }
 
-//Desarrollador: Artur
 //Comprueba si el usuario y password son correctos
 function compruebainicio($usuario, $pass) {
     //Conectar base de datos
@@ -944,7 +880,6 @@ function compruebainicio($usuario, $pass) {
     return $cuantos;
 }
 
-//Desarrollador: Artur
 //Detecta si un usuario existe en la base de datos
 function usuarioexiste($usuario) {
     //Conectar base de datos
@@ -959,7 +894,6 @@ function usuarioexiste($usuario) {
     return $cuantos;
 }
 
-//Desarrollador: Artur
 //Devuelve la lista de ciudades de una provincia en concreto.
 function leeciudades($provincia) {
     //Conectar base de datos.
@@ -971,7 +905,6 @@ function leeciudades($provincia) {
     return $resultado;
 }
 
-//Desarrollador: Artur
 //Devuelve el ID de una ciudad especificando el nombre.
 function dimeidciudad($ciudad) {
     //Conectar base de datos
@@ -991,7 +924,6 @@ function dimeidciudad($ciudad) {
     }
 }
 
-//Desarrollador: Artur
 //Da de alta un local en la base de datos con todos sus campos.
 function registrar_local($usuario, $pass, $nombre, $email, $telefono, $ciudad, $ubicacion, $imagen, $aforo) {
     //Se da de alta el usuario en la tabla principal de login
@@ -1021,7 +953,6 @@ function registrar_local($usuario, $pass, $nombre, $email, $telefono, $ciudad, $
     return $resultado;
 }
 
-//Desarrollador: Artur
 //Función que da de alta un usuario, sirve tanto para local, como para músico y fan.
 //Se añaden los campos comunes.
 function registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ciudad,$imagen) {
@@ -1042,7 +973,6 @@ function registrar_login($usuario, $pass, $tipo, $nombre, $email, $telefono, $ci
     return $resultado;
 }
 
-//Desarrollador: Artur
 // Función que conecta a la base de datos 
 function conectar() {
     include('mysqlpass.php');
@@ -1054,7 +984,6 @@ function conectar() {
     return $conexion;
 }
 
-//Desarrollador: Artur
 // Función que cierra una conexión con la base de datos
 function desconectar($conexion) {
     mysqli_close($conexion);
